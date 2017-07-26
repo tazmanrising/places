@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "FrontierSSRSReports", "FrontierSSRSReports\FrontierSSRSReports.rptproj", "{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FrontierSSRSReports\\FrontierSSRSReports.rptproj
+		SccProjectName1 = FrontierSSRSReports
+		SccLocalPath1 = FrontierSSRSReports
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Debug|Default.ActiveCfg = Debug
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Debug|Default.Build.0 = Debug
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Debug|Default.Deploy.0 = Debug
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.DebugLocal|Default.Build.0 = DebugLocal
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Release|Default.ActiveCfg = Release
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Release|Default.Build.0 = Release
+		{84BAD6A5-96CB-4FC2-B8BA-F26F855632D6}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

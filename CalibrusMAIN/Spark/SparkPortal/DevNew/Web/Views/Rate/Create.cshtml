@@ -1,0 +1,430 @@
+﻿@model Calibrus.SparkPortal.ViewModel.RateViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Create Program</small>
+        </h1>
+    </div>
+
+    <div class="row"  ng-controller="rateFormController as vm">
+        @using (Html.BeginForm("Edit", "Rate", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-offset-3 col-md-6">
+                @Html.ValidationSummary(true, "Please fix the following errors:", new { @class = "alert alert-danger" })
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProgramCode, new { @class = "col-md-2 control-label", @for = "ProgramCode" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.ProgramCode, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.ProgramCode)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProgramName, new { @class = "col-md-2 control-label", @for = "ProgramName" })
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.ProgramName, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.ProgramName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProgramDescription, new { @class = "col-md-2 control-label", @for = "ProgramDescription" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.ProgramDescription, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.ProgramDescription)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DefaultPricingPlanDescription, new { @class = "col-md-2 control-label", @for = "DefaultPricingPlanDescription" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.DefaultPricingPlanDescription, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.DefaultPricingPlanDescription)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EffectiveStartDate, new { @class = "col-md-2 control-label", @for = "EffectiveStartDate" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.EffectiveStartDate, "{0:MM/dd/yyyy}", new { @class = "form-control", @ng_model = "vm.startDt", @datepicker_popup = "{{vm.format}}", @is_open = "vm.startOpened", @datepicker_options = "vm.dateOptions", @ng_required = "true", @close_text = "Close" })
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" ng-click="vm.openStart($event)"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.EffectiveStartDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EffectiveEndDate, new { @class = "col-md-2 control-label", @for = "EffectiveEndDate" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.EffectiveEndDate, "{0:MM/dd/yyyy}", new { @class = "form-control", @ng_model = "vm.endDt", @datepicker_popup = "{{vm.format}}", @is_open = "vm.endOpened", @datepicker_options = "vm.dateOptions", @ng_required = "true", @close_text = "Close" })
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" ng-click="vm.openEnd($event)"><i class="fa fa-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.EffectiveEndDate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rate, new { @class = "col-md-2 control-label", @for = "Rate" })
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i>&nbsp;<i class="fa fa-usd"></i></span>
+
+                        @Html.TextBoxFor(model => model.Rate, "{0:N4}", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.Rate)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Msf, new { @class = "col-md-2 control-label", @for = "Msf" })
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                        @Html.TextBoxFor(model => model.Msf, "{0:N4}", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.Msf)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Etf, new { @class = "col-md-2 control-label", @for = "Etf" })
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-usd"></i></span>
+                        @Html.TextBoxFor(model => model.Etf, "{0:N4}", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.Etf)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PromotionalCode, new { @class = "col-md-2 control-label", @for = "PromotionalCode" })
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.PromotionalCode, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.PromotionalCode)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UnitOfMeasureId, new { @class = "col-md-2 control-label", @for = "UnitOfMeasureId" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.UnitOfMeasureId, new SelectList(Model.UnitsOfMeasure, "UnitOfMeasureId", "UnitOfMeasureName"), "", new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.UnitOfMeasureId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Term, new { @class = "col-md-2 control-label", @for = "Term" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.Term, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.Term)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UtilityTypeId, new { @class = "col-md-2 control-label", @for = "UtilityTypeId" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.UtilityTypeId, new SelectList(Model.UtilityTypes, "UtilityTypeId", "UtilityTypeName"), "", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.UtilityTypeId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PremiseTypeId, new { @class = "col-md-2 control-label", @for = "PremiseTypeId" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.PremiseTypeId, new SelectList(Model.PremiseTypes, "PremiseTypeId", "PremiseTypeName"), "", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.PremiseTypeId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, new { @class = "col-md-2 control-label", @for = "State" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.State, new SelectList(Model.States, "StateCode", "StateName"), "", new { @class = "form-control col-md-3" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.State)
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UtilityId, new {@class = "col-md-2 control-label", @for = "UtilityId"})
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                    @Html.DropDownListFor(model => model.UtilityId, new SelectList(Model.Utilities, "UtilityId", "LdcCode"), "", new {@class = "form-control col-md-3"})
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                @Html.ValidationMessageFor(model => model.UtilityId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BrandId, new { @class = "col-md-2 control-label", @for = "BrandId" })
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                    @Html.DropDownListFor(model => model.BrandId, new SelectList(Model.Brands, "BrandId", "BrandName"), "", new { @class = "form-control col-md-3" })
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                @Html.ValidationMessageFor(model => model.BrandId)
+            </div>
+        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountNumberTypeId, new { @class = "col-md-2 control-label", @for = "AccountNumberTypeId" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.AccountNumberTypeId, new SelectList(Model.AccountNumberTypes, "AccountNumberTypeId", "AccountNumberTypeName"), "", new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.AccountNumberTypeId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountNumberLength, new { @class = "col-md-2 control-label", @for = "AccountNumberLength" })
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.AccountNumberLength, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.AccountNumberLength)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountNumberFixedLength, new { @class = "col-md-2 control-label", @for = "AccountNumberFixedLength" })
+                <div class="col-md-2 checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.AccountNumberFixedLength, new { @class = "" })
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MeterNumber, new { @class = "col-md-2 control-label", @for = "MeterNumber" })
+                <div class="col-md-2 checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.MeterNumber, new { @class="" })
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.MeterNumberLength, new { @class = "col-md-2 control-label", @for = "MeterNumberLength" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.MeterNumberLength, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.MeterNumberLength)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ServiceReference, new { @class = "col-md-2 control-label", @for = "ServiceReference" })
+                <div class="col-md-2 checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.ServiceReference, new { @class = "" })
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RescindBy, new { @class = "col-md-2 control-label", @for = "RescindBy" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.RescindBy, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.RescindBy)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Hefpa, new { @class = "col-md-2 control-label", @for = "Hefpa" })
+                <div class="col-md-2 checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.Hefpa, new { @class = "" })
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreditCheck, new { @class = "col-md-2 control-label", @for = "CreditCheck" })
+                <div class="col-md-2 checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.CreditCheck, new { @class = "" })
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SelectedVendors, new { @class = "col-md-2 control-label", @for = "SelectedVendors" })
+                <div class="col-md-5">
+                    @foreach (var vendor in Model.Vendors)
+                {
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="SelectedVendors" value="@vendor.VendorId" />@vendor.VendorName
+                            </label>
+                        </div>
+                }
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SelectedSalesChannels, new { @class = "col-md-2 control-label", @for = "SelectedSalesChannels" })
+                <div class="col-md-3">
+                    @foreach (var saleschannel in Model.SalesChannels)
+                    {
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="SelectedSalesChannels" value="@saleschannel.SalesChannelId"  />@saleschannel.Name
+                            </label>
+                        </div>
+                    }
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.SelectedSalesChannels)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RateVerbiage, new { @class = "col-md-2 control-label", @for = "RateVerbiage" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.RateVerbiage, new { @class = "form-control", @rows = "6" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ValidationMessageFor(model => model.RateVerbiage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CancellationVerbiage, new { @class = "col-md-2 control-label", @for = "CancellationVerbiage" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.CancellationVerbiage, new { @class = "form-control", @rows = "6" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ValidationMessageFor(model => model.CancellationVerbiage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RateVerbiageSpanish, new { @class = "col-md-2 control-label", @for = "RateVerbiageSpanish" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.RateVerbiageSpanish, new { @class = "form-control", @rows = "6" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ValidationMessageFor(model => model.RateVerbiageSpanish)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CancellationVerbiageSpanish, new { @class = "col-md-2 control-label", @for = "CancellationVerbiageSpanish" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.CancellationVerbiageSpanish, new { @class = "form-control", @rows = "6" })
+                </div>
+                <div class="col-md-2">
+                    @Html.ValidationMessageFor(model => model.CancellationVerbiageSpanish)
+                </div>
+            </div>
+
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="form-group">
+                <div class="col-lg-12 text-center">
+                    <input class="btn btn-primary" type="submit" value="Save" />
+                    <a href="@SessionVars.ReturnUrl" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+    }
+    </div>
+
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+   
+    <script src="~/Scripts/app/rateFormController.js"></script>
+}

@@ -1,0 +1,9 @@
+ data: {{data}}
+
+
+<div ng-if="data==='zipcode'">
+    <input type="text" ng-model="vm.answers.zipcode">
+    <button type="button" class="btn btn-success" ng-click="validateZipCode(vm.answers.zipcode)">Validate
+</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div id="CityState"></div>
+</div>

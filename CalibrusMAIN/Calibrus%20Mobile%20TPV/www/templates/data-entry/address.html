@@ -1,0 +1,25 @@
+<ion-view view-title="Service Address">
+  <ion-content>
+    <ion-list show-delete="shouldShowDelete" on-double-tap="shouldShowDelete = !shouldShowDelete">
+      <ion-item class="item-icon-left item-icon-right item-text-wrap">
+        <ion-delete-button class="ion-minus-circled" ng-click="vmDataEntryLineItem.removeServiceLocation()"></ion-delete-button>
+        <i class="icon ion-location"></i>
+        {{vmDataEntryLineItem.lineItem.serviceLocation.address1}} <br>
+        {{vmDataEntryLineItem.lineItem.serviceLocation.city}},
+        {{vmDataEntryLineItem.lineItem.serviceLocation.state}}
+        {{vmDataEntryLineItem.lineItem.serviceLocation.zip}} <br>
+        <p><span ng-class="{balanced: true, assertive:false}">Verified</span></p>
+        <i class="icon ion-edit" ui-sref="^.address.manual"></i>
+      </ion-item>
+
+      <ion-item class="item-icon-right" style="margin-top: 20px;" ui-sref="^.utilities-and-programs">
+        <span class="positive">Utilities & Programs</span>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+  <div ng-if="false" class="float-button float-button-positive">
+    <span class="height-fix"><a class="content"><i class="ion-plus"></i></a></span>
+  </div>
+</ion-view>

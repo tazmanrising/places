@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ClearviewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Clearview.v1.ScriptLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ScriptLog">
+          <Key>
+            <PropertyRef Name="logId" />
+            <PropertyRef Name="ScriptName" />
+            <PropertyRef Name="ScriptId" />
+            <PropertyRef Name="ScriptOrder" />
+            <PropertyRef Name="Active" />
+            <PropertyRef Name="ChangeDate" />
+          </Key>
+          <Property Name="logId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScriptName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ScriptId" Type="int" Nullable="false" />
+          <Property Name="ScriptOrder" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Verbiage" Type="varchar(max)" />
+          <Property Name="VerbiageSpanish" Type="varchar(max)" />
+          <Property Name="Condition" Type="varchar(max)" />
+          <Property Name="YesNo" Type="bit" />
+          <Property Name="YesNoValue" Type="varchar" MaxLength="50" />
+          <Property Name="TextBox" Type="bit" />
+          <Property Name="TextBoxValue" Type="varchar" MaxLength="50" />
+          <Property Name="BlueNote" Type="bit" />
+          <Property Name="BlueNoteVerbiage" Type="varchar(max)" />
+          <Property Name="NoVerbiage" Type="varchar(max)" />
+          <Property Name="NoVerbiageSpanish" Type="varchar(max)" />
+          <Property Name="NoConcern" Type="varchar" MaxLength="50" />
+          <Property Name="NoConcernCode" Type="varchar" MaxLength="50" />
+          <Property Name="Loop" Type="char" MaxLength="1" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScriptLookup">
+          <Key>
+            <PropertyRef Name="ScriptLookupId" />
+          </Key>
+          <Property Name="ScriptLookupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dnis" Type="char" MaxLength="4" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="SalesChannel" Type="varchar" MaxLength="5" />
+          <Property Name="Script" Type="varchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <Function Name="spReturnScript" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="param1" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ClearviewModelStoreContainer">
+          <EntitySet Name="ScriptLookup" EntityType="Self.ScriptLookup" Schema="v1" store:Type="Tables" />
+          <EntitySet Name="ScriptLog" EntityType="Self.ScriptLog" store:Type="Tables" store:Schema="v1">
+            <DefiningQuery>SELECT 
+    [ScriptLog].[logId] AS [logId], 
+    [ScriptLog].[ScriptName] AS [ScriptName], 
+    [ScriptLog].[ScriptId] AS [ScriptId], 
+    [ScriptLog].[ScriptOrder] AS [ScriptOrder], 
+    [ScriptLog].[Active] AS [Active], 
+    [ScriptLog].[Verbiage] AS [Verbiage], 
+    [ScriptLog].[VerbiageSpanish] AS [VerbiageSpanish], 
+    [ScriptLog].[Condition] AS [Condition], 
+    [ScriptLog].[YesNo] AS [YesNo], 
+    [ScriptLog].[YesNoValue] AS [YesNoValue], 
+    [ScriptLog].[TextBox] AS [TextBox], 
+    [ScriptLog].[TextBoxValue] AS [TextBoxValue], 
+    [ScriptLog].[BlueNote] AS [BlueNote], 
+    [ScriptLog].[BlueNoteVerbiage] AS [BlueNoteVerbiage], 
+    [ScriptLog].[NoVerbiage] AS [NoVerbiage], 
+    [ScriptLog].[NoVerbiageSpanish] AS [NoVerbiageSpanish], 
+    [ScriptLog].[NoConcern] AS [NoConcern], 
+    [ScriptLog].[NoConcernCode] AS [NoConcernCode], 
+    [ScriptLog].[Loop] AS [Loop], 
+    [ScriptLog].[ChangeDate] AS [ChangeDate]
+    FROM [v1].[ScriptLog] AS [ScriptLog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClearviewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ScriptLookup">
+          <Key>
+            <PropertyRef Name="ScriptLookupId" />
+          </Key>
+          <Property Name="ScriptLookupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dnis" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="SalesChannel" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Script" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ScriptLog">
+          <Key>
+            <PropertyRef Name="logId" />
+            <PropertyRef Name="ScriptName" />
+            <PropertyRef Name="ScriptId" />
+            <PropertyRef Name="ScriptOrder" />
+            <PropertyRef Name="Active" />
+            <PropertyRef Name="ChangeDate" />
+          </Key>
+          <Property Name="logId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScriptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ScriptId" Type="Int32" Nullable="false" />
+          <Property Name="ScriptOrder" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Verbiage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VerbiageSpanish" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YesNo" Type="Boolean" />
+          <Property Name="YesNoValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TextBox" Type="Boolean" />
+          <Property Name="TextBoxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BlueNote" Type="Boolean" />
+          <Property Name="BlueNoteVerbiage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoVerbiage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoVerbiageSpanish" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoConcern" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NoConcernCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Loop" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ChangeDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="ClearviewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ScriptLookups" EntityType="Self.ScriptLookup" />
+          <EntitySet Name="ScriptLogs" EntityType="Self.ScriptLog" />
+          <FunctionImport Name="spReturnScript" ReturnType="Collection(ClearviewModel.spReturnScript_Result)">
+            <Parameter Name="param1" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spReturnScript_Result" >
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Boolean" Name="BlueNote" Nullable="true" />
+          <Property Type="String" Name="BlueNoteVerbiage" Nullable="true" />
+          <Property Type="String" Name="Condition" Nullable="true" />
+          <Property Type="Int32" Name="History" Nullable="false" />
+          <Property Type="String" Name="Loop" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="NoConcern" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NoConcernCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NoVerbiage" Nullable="true" />
+          <Property Type="String" Name="NoVerbiageSpanish" Nullable="true" />
+          <Property Type="Int32" Name="ScriptId" Nullable="false" />
+          <Property Type="Int32" Name="ScriptOrder" Nullable="true" />
+          <Property Type="Boolean" Name="TextBox" Nullable="true" />
+          <Property Type="String" Name="TextBoxValue" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Verbiage" Nullable="true" />
+          <Property Type="String" Name="VerbiageSpanish" Nullable="true" />
+          <Property Type="Boolean" Name="YesNo" Nullable="true" />
+          <Property Type="String" Name="YesNoValue" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClearviewModelStoreContainer" CdmEntityContainer="ClearviewEntities">
+          <EntitySetMapping Name="ScriptLookups">
+            <EntityTypeMapping TypeName="ClearviewModel.ScriptLookup">
+              <MappingFragment StoreEntitySet="ScriptLookup">
+                <ScalarProperty Name="ScriptLookupId" ColumnName="ScriptLookupId" />
+                <ScalarProperty Name="Dnis" ColumnName="Dnis" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+                <ScalarProperty Name="Script" ColumnName="Script" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScriptLogs">
+            <EntityTypeMapping TypeName="ClearviewModel.ScriptLog">
+              <MappingFragment StoreEntitySet="ScriptLog">
+                <ScalarProperty Name="logId" ColumnName="logId" />
+                <ScalarProperty Name="ScriptName" ColumnName="ScriptName" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="ScriptOrder" ColumnName="ScriptOrder" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Verbiage" ColumnName="Verbiage" />
+                <ScalarProperty Name="VerbiageSpanish" ColumnName="VerbiageSpanish" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="YesNo" ColumnName="YesNo" />
+                <ScalarProperty Name="YesNoValue" ColumnName="YesNoValue" />
+                <ScalarProperty Name="TextBox" ColumnName="TextBox" />
+                <ScalarProperty Name="TextBoxValue" ColumnName="TextBoxValue" />
+                <ScalarProperty Name="BlueNote" ColumnName="BlueNote" />
+                <ScalarProperty Name="BlueNoteVerbiage" ColumnName="BlueNoteVerbiage" />
+                <ScalarProperty Name="NoVerbiage" ColumnName="NoVerbiage" />
+                <ScalarProperty Name="NoVerbiageSpanish" ColumnName="NoVerbiageSpanish" />
+                <ScalarProperty Name="NoConcern" ColumnName="NoConcern" />
+                <ScalarProperty Name="NoConcernCode" ColumnName="NoConcernCode" />
+                <ScalarProperty Name="Loop" ColumnName="Loop" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spReturnScript" FunctionName="ClearviewModel.Store.spReturnScript" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClearviewModel.spReturnScript_Result">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="BlueNote" ColumnName="BlueNote" />
+                <ScalarProperty Name="BlueNoteVerbiage" ColumnName="BlueNoteVerbiage" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="History" ColumnName="History" />
+                <ScalarProperty Name="Loop" ColumnName="Loop" />
+                <ScalarProperty Name="NoConcern" ColumnName="NoConcern" />
+                <ScalarProperty Name="NoConcernCode" ColumnName="NoConcernCode" />
+                <ScalarProperty Name="NoVerbiage" ColumnName="NoVerbiage" />
+                <ScalarProperty Name="NoVerbiageSpanish" ColumnName="NoVerbiageSpanish" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="ScriptOrder" ColumnName="ScriptOrder" />
+                <ScalarProperty Name="TextBox" ColumnName="TextBox" />
+                <ScalarProperty Name="TextBoxValue" ColumnName="TextBoxValue" />
+                <ScalarProperty Name="Verbiage" ColumnName="Verbiage" />
+                <ScalarProperty Name="VerbiageSpanish" ColumnName="VerbiageSpanish" />
+                <ScalarProperty Name="YesNo" ColumnName="YesNo" />
+                <ScalarProperty Name="YesNoValue" ColumnName="YesNoValue" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

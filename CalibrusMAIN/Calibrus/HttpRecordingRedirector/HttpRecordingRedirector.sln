@@ -1,0 +1,50 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "HttpRecordingRedirector", "HttpRecordingRedirector", "{534256C6-AF9F-459F-A492-F919D89BCEBE}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
+		Debug.AspNetCompiler.VirtualPath = "/HttpRecordingRedirector"
+		Debug.AspNetCompiler.PhysicalPath = "HttpRecordingRedirector\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\HttpRecordingRedirector\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/HttpRecordingRedirector"
+		Release.AspNetCompiler.PhysicalPath = "HttpRecordingRedirector\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\HttpRecordingRedirector\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "13323"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccWebProject1 = true
+		SccProjectUniqueName1 = HttpRecordingRedirector
+		SccProjectName1 = HttpRecordingRedirector
+		SccLocalPath1 = HttpRecordingRedirector
+		SccProjectEnlistmentChoice1 = 2
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{534256C6-AF9F-459F-A492-F919D89BCEBE}.Debug|Default.ActiveCfg = Debug|Any CPU
+		{534256C6-AF9F-459F-A492-F919D89BCEBE}.Release|Default.ActiveCfg = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

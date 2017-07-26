@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-header bar-positive">
+    <h1 class="title">Lookup Lead</h1>
+    <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <form name="LeadRecordLocator" novalidate ng-submit="getLead(LeadRecordLocator, leadRecordLocator.recordLocator, loading)" ng-init="loading={};">
+      <ion-list>
+        <label class="item item-input item-stacked-label item-borderless" form-validation="LeadRecordLocator.RecordLocator">
+          <span class="input-label">Record Locator</span>
+          <input type="number" placeholder="Enter lead record locator" name="RecordLocator"
+                 autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                 ng-model="leadRecordLocator.recordLocator"
+                 ng-required="true" minlength="6" maxlength="10">
+        </label>
+        <button type="submit" class="button button-block button-balanced" ng-disabled="loading.lead">
+          Lookup
+        </button>
+    </form>
+  </ion-content>
+</ion-modal-view>

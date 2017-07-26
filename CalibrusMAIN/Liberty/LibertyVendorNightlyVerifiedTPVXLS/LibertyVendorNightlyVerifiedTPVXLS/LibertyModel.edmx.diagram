@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="91fb4c4c1f704a44a15681b26771f446" Name="Diagram1">
+        <EntityTypeShape EntityType="LibertyModel.ContractTerm" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.Main" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.MarketProduct" Width="1.5" PointX="5.375" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.OrderDetail" Width="1.5" PointX="7.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.SalesChannel" Width="1.5" PointX="5.375" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.User" Width="1.5" PointX="0.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibertyModel.Vendor" Width="1.5" PointX="0.875" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="LibertyModel.FK_Main_ContractTerm" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_Main_MarketProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_Main_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_Main_User" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_OrderDetail_MainId" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_Vendor_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="LibertyModel.FK_User_Vendor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LibertyModel.MarketState" Width="1.5" PointX="5.375" PointY="6.125" />
+        <EntityTypeShape EntityType="LibertyModel.MarketUtility" Width="1.5" PointX="5.375" PointY="8.625" />
+        <AssociationConnector Association="LibertyModel.FK_Main_MarketState" />
+        <AssociationConnector Association="LibertyModel.FK_Main_MarketUtility" />
+        <AssociationConnector Association="LibertyModel.FK_MarketProduct_MarketStateId" />
+        <AssociationConnector Association="LibertyModel.FK_MarketUtility_MarketStateId" />
+        <EntityTypeShape EntityType="LibertyModel.Program" Width="1.5" PointX="9.625" PointY="0.5" />
+        <AssociationConnector Association="LibertyModel.FK_OrderDetail_Program" />
+        <EntityTypeShape EntityType="LibertyModel.Office" Width="1.5" PointX="0.5" PointY="6.375" />
+        <AssociationConnector Association="LibertyModel.FK_Office_Vendor" />
+        <AssociationConnector Association="LibertyModel.FK_User_Office" />
+        <EntityTypeShape EntityType="LibertyModel.NightlyReportDistro" Width="1.5" PointX="7.375" PointY="7.875" />
+        <AssociationConnector Association="LibertyModel.FK_Main_GasMarketUtility" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

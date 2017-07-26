@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="SignUpChoiceEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Electric" />
+      <xs:enumeration value="Gas" />
+      <xs:enumeration value="Dual" />
+      <xs:enumeration value="HomeServices" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SignUpChoiceEnum" nillable="true" type="tns:SignUpChoiceEnum" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressID" type="xs:long" />
+      <xs:element minOccurs="0" name="AddressType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponseID" type="xs:long" />
+      <xs:element minOccurs="0" name="SiebelAddressID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BirthDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CellPhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactID" type="xs:long" />
+      <xs:element minOccurs="0" name="ContactType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PIN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Preferences" nillable="true" type="tns:ArrayOfContactPreference" />
+      <xs:element minOccurs="0" name="ResponseID" type="xs:long" />
+      <xs:element minOccurs="0" name="SSN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkPhoneNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contact" nillable="true" type="tns:Contact" />
+  <xs:complexType name="ArrayOfContactPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactPreference" nillable="true" type="tns:ContactPreference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContactPreference" nillable="true" type="tns:ArrayOfContactPreference" />
+  <xs:complexType name="ContactPreference">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="tns:ContactPreferenceStatusEnum" />
+      <xs:element minOccurs="0" name="Type" type="tns:ContactPreferenceTypeEnum" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdatedDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactPreference" nillable="true" type="tns:ContactPreference" />
+  <xs:simpleType name="ContactPreferenceStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Requested" />
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Rejected" />
+      <xs:enumeration value="Active" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContactPreferenceStatusEnum" nillable="true" type="tns:ContactPreferenceStatusEnum" />
+  <xs:simpleType name="ContactPreferenceTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Email" />
+      <xs:enumeration value="SMS" />
+      <xs:enumeration value="ThirdParty" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContactPreferenceTypeEnum" nillable="true" type="tns:ContactPreferenceTypeEnum" />
+  <xs:simpleType name="LanaguageEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="English" />
+      <xs:enumeration value="Spanish" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LanaguageEnum" nillable="true" type="tns:LanaguageEnum" />
+  <xs:complexType name="Plan">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AdjustmentBands" nillable="true" type="q1:ArrayOfKeyValueOfstringArrayOfAdjustmentBandVRyvmXTi" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Attributes" nillable="true" type="q2:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="Brokers" nillable="true" type="tns:ArrayOfPromoBrokerData" />
+      <xs:element minOccurs="0" name="CancelFee" type="xs:float" />
+      <xs:element minOccurs="0" name="ContractTemplate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HasCancelFee" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasCoupon" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasDinning" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasGiftCard" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasGreen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasGuarantee" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasMatrixPrice" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="HasPlanIncentiveList" nillable="true" type="q3:ArrayOfKeyValueOfstringboolean" />
+      <xs:element minOccurs="0" name="HasPromoDiscount" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasValueIncentive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasVariablePeriod" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefaultPlan" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMatrixPriceValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPreferred" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRnewalPlan" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OfferType" type="tns:OfferTypeEnum" />
+      <xs:element minOccurs="0" name="PlanDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanDetailDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanDetailDesc2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanIncentiveList" nillable="true" type="tns:ArrayOfPlanIncentive" />
+      <xs:element minOccurs="0" name="PlanLeg" nillable="true" type="tns:PlanLeg" />
+      <xs:element minOccurs="0" name="PlanLegList" nillable="true" type="tns:ArrayOfPlanLeg" />
+      <xs:element minOccurs="0" name="PlanType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanTypeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="PriceZone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PromoId" type="xs:int" />
+      <xs:element minOccurs="0" name="RateClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RateID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReferralDetailDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Savings" type="xs:float" />
+      <xs:element minOccurs="0" name="Savings2" type="xs:float" />
+      <xs:element minOccurs="0" name="Savings2UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SavingsUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Segment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceType" type="tns:ServiceTypeEnum" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TaxGRTRate" type="xs:float" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDSContractText" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plan" nillable="true" type="tns:Plan" />
+  <xs:complexType name="ArrayOfAdjustmentBand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdjustmentBand" nillable="true" type="tns:AdjustmentBand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdjustmentBand" nillable="true" type="tns:ArrayOfAdjustmentBand" />
+  <xs:complexType name="AdjustmentBand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="AmountUom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FeeCredit" type="tns:FeeCredit" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxUsage" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MinUsage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UsageUom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdjustmentBand" nillable="true" type="tns:AdjustmentBand" />
+  <xs:simpleType name="FeeCredit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Fee" />
+      <xs:enumeration value="Credit" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FeeCredit" nillable="true" type="tns:FeeCredit" />
+  <xs:complexType name="ArrayOfPromoBrokerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PromoBrokerData" nillable="true" type="tns:PromoBrokerData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPromoBrokerData" nillable="true" type="tns:ArrayOfPromoBrokerData" />
+  <xs:complexType name="PromoBrokerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrokerID" type="xs:int" />
+      <xs:element minOccurs="0" name="BrokerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommissionID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PromoBrokerData" nillable="true" type="tns:PromoBrokerData" />
+  <xs:simpleType name="OfferTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Default" />
+      <xs:enumeration value="Alternate" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OfferTypeEnum" nillable="true" type="tns:OfferTypeEnum" />
+  <xs:complexType name="ArrayOfPlanIncentive">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanIncentive" nillable="true" type="tns:PlanIncentive" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanIncentive" nillable="true" type="tns:ArrayOfPlanIncentive" />
+  <xs:complexType name="PlanIncentive">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IncentiveTypeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Incentive_TypeID" type="xs:long" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" type="xs:float" />
+      <xs:element minOccurs="0" name="ValueUOM" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanIncentive" nillable="true" type="tns:PlanIncentive" />
+  <xs:complexType name="PlanLeg">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancelFee" type="xs:float" />
+      <xs:element minOccurs="0" name="CustomPriceFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CustomPriceRemark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GreenPercent" type="xs:float" />
+      <xs:element minOccurs="0" name="GreenType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LS_PlanName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Margin1" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin2" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin3" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin4" type="xs:float" />
+      <xs:element minOccurs="0" name="MaxtrixPriceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetPrice1" type="xs:float" />
+      <xs:element minOccurs="0" name="NetPrice2" type="xs:float" />
+      <xs:element minOccurs="0" name="NetPrice3" type="xs:float" />
+      <xs:element minOccurs="0" name="NetPrice4" type="xs:float" />
+      <xs:element minOccurs="0" name="PlanLegID" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanLegPrice" nillable="true" type="tns:PlanLegPrice" />
+      <xs:element minOccurs="0" name="Price1" type="xs:float" />
+      <xs:element minOccurs="0" name="Price1UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price2" type="xs:float" />
+      <xs:element minOccurs="0" name="Price2UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price3" type="xs:float" />
+      <xs:element minOccurs="0" name="Price3UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price4" type="xs:float" />
+      <xs:element minOccurs="0" name="Price4UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceID" type="xs:long" />
+      <xs:element minOccurs="0" name="Price_AccountId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_Margin" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_MinMargin" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_Premium" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_QuoteId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_RateClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_TargetPrice" type="xs:float" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductId" type="xs:long" />
+      <xs:element minOccurs="0" name="RateReadyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiebelAgreementId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TermType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TermValue" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanLeg" nillable="true" type="tns:PlanLeg" />
+  <xs:complexType name="PlanLegPrice">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Margin1" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin2" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin3" type="xs:float" />
+      <xs:element minOccurs="0" name="Margin4" type="xs:float" />
+      <xs:element minOccurs="0" name="MaxtrixPriceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanLegID" type="xs:long" />
+      <xs:element minOccurs="0" name="Price1" type="xs:float" />
+      <xs:element minOccurs="0" name="Price1UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price2" type="xs:float" />
+      <xs:element minOccurs="0" name="Price2UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price3" type="xs:float" />
+      <xs:element minOccurs="0" name="Price3UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price4" type="xs:float" />
+      <xs:element minOccurs="0" name="Price4UOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceAccountId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceID" type="xs:long" />
+      <xs:element minOccurs="0" name="PriceQuoteId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_Margin" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_MinMargin" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_Premium" type="xs:float" />
+      <xs:element minOccurs="0" name="Price_RateClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TargetPrice" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PlanLegPrice" nillable="true" type="tns:PlanLegPrice" />
+  <xs:complexType name="ArrayOfPlanLeg">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlanLeg" nillable="true" type="tns:PlanLeg" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlanLeg" nillable="true" type="tns:ArrayOfPlanLeg" />
+  <xs:simpleType name="ServiceTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Electric" />
+      <xs:enumeration value="Gas" />
+      <xs:enumeration value="HomeServices" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ServiceTypeEnum" nillable="true" type="tns:ServiceTypeEnum" />
+  <xs:simpleType name="TaxExemptReasonEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE" />
+      <xs:enumeration value="PERSONALRESIDENCEORVACATIONHOMEORTENANT" />
+      <xs:enumeration value="LANDLORD" />
+      <xs:enumeration value="COMMERCIAL" />
+      <xs:enumeration value="PARENTORGUARDIAN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TaxExemptReasonEnum" nillable="true" type="tns:TaxExemptReasonEnum" />
+  <xs:simpleType name="TypeCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNKNOWN" />
+      <xs:enumeration value="New" />
+      <xs:enumeration value="GasNew" />
+      <xs:enumeration value="PLANCHANGE" />
+      <xs:enumeration value="PLANCHANGEPOSTINVOICE" />
+      <xs:enumeration value="REENROLLMENT" />
+      <xs:enumeration value="RENEWALFIXED" />
+      <xs:enumeration value="RENEWALVARIABLE" />
+      <xs:enumeration value="RENEWALAUTO" />
+      <xs:enumeration value="RENEWALPLANCHANGEPOSTINVOICE" />
+      <xs:enumeration value="RENEWALPLANSWITCH" />
+      <xs:enumeration value="RENEWALPLANCHANGE" />
+      <xs:enumeration value="PLANSWITCH" />
+      <xs:enumeration value="TRANSFEROFSERVICE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TypeCodeEnum" nillable="true" type="tns:TypeCodeEnum" />
+  <xs:complexType name="ArrayOfServiceAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceAccount" nillable="true" type="tns:ServiceAccount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceAccount" nillable="true" type="tns:ArrayOfServiceAccount" />
+  <xs:complexType name="ServiceAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActualAnnualUsage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ActualAnnualUsageUom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillLocation" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="BillMonth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerNameKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Demand" type="xs:int" />
+      <xs:element minOccurs="0" name="DemandUom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstimatedAnnualUsage" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MeterNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecondaryIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceLocation" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="UdcCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Usage" type="xs:int" />
+      <xs:element minOccurs="0" name="UsageUom" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceAccount" nillable="true" type="tns:ServiceAccount" />
+  <xs:complexType name="CustomerInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="CustomerContact" nillable="true" type="tns:Contact" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerInformation" nillable="true" type="tns:CustomerInformation" />
+  <xs:complexType name="SMBResponseData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" type="tns:AccountTypeEnum" />
+      <xs:element minOccurs="0" name="AnnualUsage" type="xs:long" />
+      <xs:element minOccurs="0" name="CCToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractExpiration" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ContractType" type="xs:int" />
+      <xs:element minOccurs="0" name="Created_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreditAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="CreditCheckSubmitCounter" type="xs:int" />
+      <xs:element minOccurs="0" name="CreditInfo" nillable="true" type="tns:CreditInfo" />
+      <xs:element minOccurs="0" name="CurrentSupplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerInformation" nillable="true" type="tns:CustomerInformation" />
+      <xs:element minOccurs="0" name="D2DRepId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DownloadGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edited_By" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExceptionReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Exception_YN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FederalEmpID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsOpportunity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsParent" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTPV" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVoiceLogUpdate" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LegalEntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatrixPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="Partner" nillable="true" type="tns:Partner" />
+      <xs:element minOccurs="0" name="PartnerUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlanLegPriceId" type="xs:int" />
+      <xs:element minOccurs="0" name="PlanName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PromoCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ResponseID" type="xs:long" />
+      <xs:element minOccurs="0" name="Segment" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceAccounts" nillable="true" type="tns:ArrayOfServiceAccount" />
+      <xs:element minOccurs="0" name="ServiceLocationState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiebelCompanyId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SignUpType" type="tns:SignUpChoiceEnum" />
+      <xs:element minOccurs="0" name="SignedLOA_YN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SoldPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="SourceID" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" type="tns:AccountStatus" />
+      <xs:element minOccurs="0" name="StatusDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="TPVReprocess_YN" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TPVStatusFlag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TPV_Vendor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxExemptReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Term" type="xs:int" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Updated_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VoiceLogComment" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMBResponseData" nillable="true" type="tns:SMBResponseData" />
+  <xs:simpleType name="AccountTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Commercial" />
+      <xs:enumeration value="Residential" />
+      <xs:enumeration value="SMB" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccountTypeEnum" nillable="true" type="tns:AccountTypeEnum" />
+  <xs:complexType name="CreditInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApprovedContractEndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ApprovedExposure" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CCMID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractStartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreditDecision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditDecisionReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditRequestID" type="xs:int" />
+      <xs:element minOccurs="0" name="FileUploadCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditInfo" nillable="true" type="tns:CreditInfo" />
+  <xs:complexType name="Partner">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Partner" nillable="true" type="tns:Partner" />
+  <xs:simpleType name="AccountStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="DuplicateAccount">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="BasicInfoCompleted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">7</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ContactOnly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AddressCompleted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AwaitingCreditCheck">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CompletedCreditCheck">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SelectPlan">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TermsAndConditionsAgreed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ProspectAccount">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TermsAndConditionsRejected">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccountDataOnly">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VerifyCustomerInfo">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RemindMeAccountNumber">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccountNumberCompleted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TPVCNEProcessing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TPVVerificationStart">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PendingContract">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PendingSubmission">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TPVVerificationNonVerified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TPVVerificationDeclined">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">27</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CancelledByUser">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">28</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PendingTPVOverDue">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">29</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CustomerAcceptance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PlanChange">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">31</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Reenrollment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SiebelProcessError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">33</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ProcessingSiebelPart2a">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">34</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OpportunityCreated">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">40</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ContractCountersigned">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">43</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CustomerProcessed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">45</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EnrollmentSubmitted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">50</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EnrollmentRejected">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">55</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EnrollmentIneligible">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">56</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EnrollmentAccepted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">60</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PowerFlowOn">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">65</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RescissionEnded">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">70</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PlanChanged">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">97</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Terminated">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">98</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Cancelled">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">99</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Completed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Renewal">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">300</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalVariable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">304</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AutoRenewalFailed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">310</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalPlanSelected">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">315</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalTPVCNEProcessing">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">324</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalPendingTPVverfication">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">325</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalTPVNonVerified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">326</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalTPVVerificationDeclined">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">327</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalPendingTPVOverDue">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">329</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalCustomerAcceptance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">330</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalPlanChange">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">331</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalReenrollment">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">332</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalVariableCustomerAcceptance">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">334</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalCustomerDrop">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">335</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalProcessError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">340</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalSaveProcessError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">344</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalProcessEnd">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">350</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalProcessEndVariable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">354</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalRescissionEnded">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">370</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalDropped">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">390</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalPlanChanged">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">397</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalTerminated">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">398</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalCancelled">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">399</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RenewalCompleted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">400</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccountStatus" nillable="true" type="tns:AccountStatus" />
+  <xs:complexType name="ArrayOfPlan">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plan" nillable="true" type="tns:Plan" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlan" nillable="true" type="tns:ArrayOfPlan" />
+  <xs:complexType name="ArrayOfSwitchType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SwitchType" nillable="true" type="tns:SwitchType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSwitchType" nillable="true" type="tns:ArrayOfSwitchType" />
+  <xs:complexType name="SwitchType">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllowedDates" nillable="true" type="q4:ArrayOfdateTime" />
+      <xs:element minOccurs="0" name="Available_EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Available_StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MeterDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MeterStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwitchDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwitchFee" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SwitchFeeUOM" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwitchTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDC_CODE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDC_ID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SwitchType" nillable="true" type="tns:SwitchType" />
+  <xs:simpleType name="FieldSetupENUM">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hidden" />
+      <xs:enumeration value="Required" />
+      <xs:enumeration value="Optional" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FieldSetupENUM" nillable="true" type="tns:FieldSetupENUM" />
+</xs:schema>

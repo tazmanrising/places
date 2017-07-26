@@ -1,0 +1,5 @@
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Common\bin\Debug\CalibrusTPV.Common.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Common\bin\Debug\CalibrusTPV.Common.pdb
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Common\obj\Debug\CalibrusTPV.Common.csprojResolveAssemblyReference.cache
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Common\obj\Debug\CalibrusTPV.Common.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Common\obj\Debug\CalibrusTPV.Common.pdb

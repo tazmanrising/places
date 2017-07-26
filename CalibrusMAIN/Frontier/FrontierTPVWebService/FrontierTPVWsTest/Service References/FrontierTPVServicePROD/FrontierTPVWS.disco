@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://ws.calibrus.com/FrontierTPVWebService/FrontierTPVWS.asmx?wsdl" docRef="http://ws.calibrus.com/FrontierTPVWebService/FrontierTPVWS.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://ws.calibrus.com/FrontierTPVWebService/FrontierTPVWS.asmx" xmlns:q1="http://ws.calibrus.com/FrontierTPVWebService" binding="q1:FrontierTPVWSSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://ws.calibrus.com/FrontierTPVWebService/FrontierTPVWS.asmx" xmlns:q2="http://ws.calibrus.com/FrontierTPVWebService" binding="q2:FrontierTPVWSSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

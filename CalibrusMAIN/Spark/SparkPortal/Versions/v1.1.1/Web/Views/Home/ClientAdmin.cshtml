@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "ClientAdmin";
+}
+
+<div class="row"  >
+    
+    <div class="panel panel-default panel-collapse" >
+        <div class="panel-heading">
+            <h3>Client Administrator Dashboard</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Dashboard", "Home")
+        </div>
+        <div class="panel-footer">
+            
+        </div>
+    </div>
+    
+    @*<div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Vendors</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Index", "Vendor")
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Create", new { controller = "Vendor" })" class="btn btn-sm btn-success">Add</a>
+            <a href="@Url.Action("Index", new { controller = "Vendor" })" class="btn btn-sm btn-info">View All</a>
+        </div>
+    </div>
+    
+    <div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Offices</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Index", "Office")
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Create", new { controller = "Office" })" class="btn btn-sm btn-success">Add</a>
+            <a href="@Url.Action("Index", new { controller = "Office" })" class="btn btn-sm btn-info">View All</a>
+        </div>
+    </div>
+    
+    <div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Programs</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Index", "Rate")
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Create", new { controller = "Rate" })" class="btn btn-sm btn-success">Add</a>
+            <a href="@Url.Action("Index", new { controller = "Rate" })" class="btn btn-sm btn-info">View All</a>
+        </div>
+    </div>
+    
+    <div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Users</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Index", "User")
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Create", new { controller = "User" })" class="btn btn-sm btn-success">Add</a>
+            <a href="@Url.Action("Index", new { controller = "User" })" class="btn btn-sm btn-info">View All</a>
+        </div>
+    </div>*@
+    
+    
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/app/reportService.js"></script>
+   
+    <script src="~/Scripts/app/rateController.js"></script>
+    <script src="~/Scripts/app/vendorController.js"></script>
+    <script src="~/Scripts/app/userController.js"></script>
+    <script src="~/Scripts/app/officeController.js"></script>
+    <script src="~/Scripts/app/dashboardController.js"></script>
+    
+    
+    <script src="~/Scripts/highcharts-more.js"></script>
+    <script src="~/Scripts/data.js"></script>
+    <script src="~/Scripts/drilldown.js"></script>
+    <script src="~/Scripts/solid-gauge.js"></script>
+    <script src="~/Scripts/no-data-to-display.js"></script>
+    
+    
+
+
+
+}

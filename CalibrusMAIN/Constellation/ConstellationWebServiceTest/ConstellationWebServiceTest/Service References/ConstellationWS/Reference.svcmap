@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0a7bae87-9650-4b4b-a1f7-8063c7bc683a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="basic15.xsd" MetadataType="Schema" ID="f0af459e-a478-4c23-9978-d3c03ce4edcc" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd13" />
+    <MetadataFile FileName="basic1.disco" MetadataType="Disco" ID="ecebff12-5b47-465e-a1a6-ede9890c8525" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?disco" />
+    <MetadataFile FileName="basic151.xsd" MetadataType="Schema" ID="05c56d22-625b-43f5-9b12-df897b733a7a" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd14" />
+    <MetadataFile FileName="ResidentialPartnerService1.wsdl" MetadataType="Wsdl" ID="271cf967-3cc2-49b2-adcf-f64727e65c24" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?wsdl" />
+    <MetadataFile FileName="basic152.xsd" MetadataType="Schema" ID="023407d7-fa9f-4d25-9635-f109b85679f5" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" />
+    <MetadataFile FileName="basic153.xsd" MetadataType="Schema" ID="698778d7-a186-4c20-9f3e-19cff79293da" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd4" />
+    <MetadataFile FileName="basic156.xsd" MetadataType="Schema" ID="aed4c5b3-92a9-4369-83ce-d6b1a1977712" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd9" />
+    <MetadataFile FileName="basic154.xsd" MetadataType="Schema" ID="b7b1da84-d962-4815-80f1-ccb382534766" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd12" />
+    <MetadataFile FileName="basic155.xsd" MetadataType="Schema" ID="aa88496a-e7f2-45c1-b105-7e86be5a0c3a" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd7" />
+    <MetadataFile FileName="basic.xsd" MetadataType="Schema" ID="8d6f5d5c-df78-4e9c-b810-1ec13a6765c6" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd16" />
+    <MetadataFile FileName="basic1.xsd" MetadataType="Schema" ID="e6be4654-e314-45cf-a57f-7c9ff6483683" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd15" />
+    <MetadataFile FileName="basic157.xsd" MetadataType="Schema" ID="15b62a47-2894-4a82-be26-dca26c05cd2d" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd11" />
+    <MetadataFile FileName="basic158.xsd" MetadataType="Schema" ID="1f43760d-fc30-49e2-bc3c-6718f90d2e76" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd6" />
+    <MetadataFile FileName="basic159.xsd" MetadataType="Schema" ID="84ed56ee-2c80-44c4-8131-2a799094eba6" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd8" />
+    <MetadataFile FileName="basic1510.xsd" MetadataType="Schema" ID="0fc23d17-1f18-46e0-9947-0713e88e6ff5" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd5" />
+    <MetadataFile FileName="basic1511.xsd" MetadataType="Schema" ID="11125972-7e46-4152-aa0c-97f2faab62a2" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd0" />
+    <MetadataFile FileName="basic1512.xsd" MetadataType="Schema" ID="314defc8-1cb1-41d2-931f-fbb64815d0d9" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd1" />
+    <MetadataFile FileName="basic1513.xsd" MetadataType="Schema" ID="ef1bdf1b-5d08-42a9-91d6-b46b7b2bb999" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd2" />
+    <MetadataFile FileName="basic1514.xsd" MetadataType="Schema" ID="8d8afc0d-6f39-4742-a4a0-1906783b9819" SourceId="1" SourceUrl="https://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd10" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

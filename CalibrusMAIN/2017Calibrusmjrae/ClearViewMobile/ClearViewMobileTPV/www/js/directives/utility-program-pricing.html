@@ -1,0 +1,24 @@
+<div ng-show="utilityAndProgram" class="utility-program-pricing">
+  <h2>
+    <i class="icon" ng-class="{'ion-outlet energized': utilityAndProgram.utilityTypeName === 'Electric', 'ion-fireball assertive': utilityAndProgram.utilityTypeName === 'Gas', }"></i>
+    {{utilityAndProgram.name}}
+  </h2>
+  <p>{{utilityAndProgram.programName}}</p>
+  <div class="row">
+    <div class="col col-40">
+      <p ng-if="utilityAndProgram.etf">ETF <span class="assertive pull-right">${{utilityAndProgram.etf}}</span></p>
+      <p ng-if="utilityAndProgram.msf">MSF <span class="positive pull-right">${{utilityAndProgram.msf}}</span></p>
+      <p ng-if="utilityAndProgram.term">TERM <SPAN class="positive pull-right">{{utilityAndProgram.term}} Months</span> </p>
+    </div>
+    <div class="col text-center">
+      <div class="balanced pricing-text">
+        <span class="plan-price-dollar">$</span>
+        <span class="plan-price">{{utilityAndProgram.rate}}</span>
+        <span class="plan-price-slash">/</span>
+        <span ng-if="utilityAndProgram.utilityTypeName === 'Electric'" class="plan-units-kwh">{{utilityAndProgram.unitOfMeasureName}}</span>
+        <span ng-if="utilityAndProgram.utilityTypeName === 'Gas'" class="plan-units-therms">{{utilityAndProgram.unitOfMeasureName}}</span>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>

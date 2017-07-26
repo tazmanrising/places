@@ -1,0 +1,101 @@
+<ion-view view-title="Summary &amp; Signature">
+  <ion-content>
+    <form name="vmDataEntry.SubmitEnrollment" novalidate ng-submit="vmDataEntry.submitEnrollment()">
+      <ion-list>
+        <div class="item item-divider">
+          Authorized Party
+        </div>
+        <ion-item>
+          {{vmDataEntrySummaryAndSignature.order.authorizedParty.firstName}}
+          {{vmDataEntrySummaryAndSignature.order.authorizedParty.lastName}}<br>
+          {{vmDataEntrySummaryAndSignature.order.authorizedParty.phone}}
+        </ion-item>
+        <div ng-repeat="lineItem in vmDataEntrySummaryAndSignature.order.lineItems">
+          <div class="item item-divider">
+            Account Detail<span ng-if="vmDataEntrySummaryAndSignature.order.lineItems.length > 1"> for Line Item {{$index + 1}}</span>
+          </div>
+          <ion-item>
+            <strong>Service Address</strong><br>
+            <p>
+               {{lineItem.serviceLocation.address1}}&nbsp;{{lineItem.serviceLocation.address2}},&nbsp;{{lineItem.serviceLocation.city}},
+              {{lineItem.serviceLocation.state}} {{lineItem.serviceLocation.zip}}
+            </p>
+            <br>
+            <ion-list ng-repeat="utility in [{type:'electric',name:'Electric'},{type:'naturalGas',name:'Natural Gas'}]">
+              <div ng-if="lineItem.services[utility.type].selectedProgramId">
+                <div class="item item-divider">
+                  {{utility.name}} <span style="font-size: .9em;">{{lineItem.services[utility.type].serviceProvider.name}}</span>
+                </div>
+                <ion-item>
+                  <strong>Account Number</strong>
+                  <p>{{lineItem.services[utility.type].currentService.accountNumber}}</p>
+                  <strong>Billing Contact</strong>
+                  <p ng-if="lineItem.services[utility.type].currentService.nameSameAsAuthorizedParty">
+                    {{vmDataEntrySummaryAndSignature.order.authorizedParty.firstName}}
+                    {{vmDataEntrySummaryAndSignature.order.authorizedParty.lastName}}<br>
+                  </p>
+                  <p ng-if="!lineItem.services[utility.type].currentService.nameSameAsAuthorizedParty">
+                    {{lineItem.services[utility.type].currentService.firstName}}
+                    {{lineItem.services[utility.type].currentService.lastName}}<br>
+                  </p>
+
+                  <strong>Billing Address</strong>
+                  <p ng-if="lineItem.services[utility.type].currentService.billingAddressSameAsServiceAddress">Same as Service Address</p>
+                  <p ng-if="!lineItem.services[utility.type].currentService.billingAddressSameAsServiceAddress">
+                    {{lineItem.services[utility.type].currentService.billingLocation.address1}}&nbsp;{{lineItem.services[utility.type].currentService.billingLocation.address2}}, {{lineItem.services[utility.type].currentService.billingLocation.city}},
+                    {{lineItem.services[utility.type].currentService.billingLocation.currentLocation.state}} {{lineItem.services[utility.type].currentService.billingLocation.zip}}
+                  </p>
+
+                  <strong>Relationship to Authorized Party</strong>
+                  <p>{{lineItem.services[utility.type].currentService.relationshipToAuthorizedParty}}</p>
+                </ion-item>
+                <br>
+              </div>
+            </ion-list>
+            <utility-program-pricing ng-repeat="service in lineItem.services" class="utility-list"
+                                     program="service.utilityAndProgram"></utility-program-pricing>
+          </ion-item>
+        </div>
+        <ion-toggle ng-if="vmDataEntrySummaryAndSignature.verifyContact">
+        <div class="item item-divider">
+          How may we reach you?
+        </div>
+        <div class="list-borderless">
+          <ion-radio ng-model="vmDataEntrySummaryAndSignature.order.contactPreference"
+                     ng-change="vmDataEntrySummaryAndSignature.toggleContactPreference(vmDataEntrySummaryAndSignature.order.contactPreference)"
+                     ng-if="vmDataEntrySummaryAndSignature.order.authorizedParty.phoneIsMobile"
+                     name="contactPreference" value="text">
+            Text <span style="float: right; font-size: .8em;">{{vmDataEntrySummaryAndSignature.order.authorizedParty.phone}}</span>
+          </ion-radio>
+        </div>
+        <div class="list-borderless">
+          <ion-radio ng-model="vmDataEntrySummaryAndSignature.order.contactPreference"
+                     ng-change="vmDataEntrySummaryAndSignature.toggleContactPreference(vmDataEntrySummaryAndSignature.order.contactPreference)"
+                     name="contactPreference" value="phone">
+            Phone <span style="float: right; font-size: .8em;">{{vmDataEntrySummaryAndSignature.order.authorizedParty.phone}}</span>
+          </ion-radio>
+        </div>
+        <div class="list-borderless">
+          <ion-radio ng-model="vmDataEntrySummaryAndSignature.order.contactPreference"
+                     ng-change="vmDataEntrySummaryAndSignature.toggleContactPreference(vmDataEntrySummaryAndSignature.order.contactPreference)"
+                     name="contactPreference" value="email">
+            Email <span style="float: right; font-size: .8em;">{{vmDataEntrySummaryAndSignature.order.authorizedParty.email}}</span>
+          </ion-radio>
+        </div>
+        </ion-toggle>
+        <ion-toggle ng-if="vmDataEntrySummaryAndSignature.enableSignature" ng-model="vmDataEntrySummaryAndSignature.hasSigned" toggle-class="toggle-balanced"
+                    ng-click="vmDataEntrySummaryAndSignature.toggleAgreeAndSign()">I Agree to the Above
+        </ion-toggle>
+         <ion-item ng-show="vmDataEntrySummaryAndSignature.order.signature.dataUrl" class="text-center">
+          <img ng-src="{{vmDataEntrySummaryAndSignature.order.signature.dataUrl}}" style="width: 20%; height: 10vh">
+        </ion-item>
+        <div class="padding">
+          <button type="submit" class="button button-block button-balanced"
+                  ng-disabled="vmDataEntrySummaryAndSignature.enableSignature && !vmDataEntrySummaryAndSignature.order.signature.dataUrl">
+            Submit Enrollment
+          </button>
+        </div>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

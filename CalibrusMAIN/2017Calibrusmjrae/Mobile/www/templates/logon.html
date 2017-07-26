@@ -1,0 +1,58 @@
+<ion-view view-title="Spark Energy Logon">
+  <ion-content>
+    <div ng-if="!vmLogon.location.geoposition" class="row row-no-padding row-center vm-height-100">
+      <div class="col">
+        <div ng-if="!vmLogon.location.error" class="text-center" style="margin-bottom: 40px;">
+          <ion-spinner icon="ripple"></ion-spinner>
+          <p>Detecting Your Location</p>
+        </div>
+        <ion-list ng-if="vmLogon.location.error">
+          <ion-item class="item-text-wrap">
+            <h2>On No!</h2>
+            <p>
+              We can't proceed for the following reasons: <br>
+              <span class="assertive">{{vmLogon.location.error.message}}</span>
+            </p>
+
+            <div style="margin-top: 40px; margin-bottom: 10px;">
+              <h2 class="positive">Fix it</h2>
+              <h4>Allow this app to access your location. <br> Look for the location icon <img
+                src="/img/icons/ic_location_disabled_black_24px.svg" style="height: 12px;"> and click it to
+                accept location access. Then try again to see if we can detect your location.</h4>
+            </div>
+            <div class="text-right">
+              <button class="button button-outline button-small button-positive" ng-click="vmLogon.processLocation()">
+                Try Again
+              </button>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+    <form ng-if="vmLogon.location.geoposition" name="vmLogon.form" novalidate ng-submit="vmLogon.sparkLogon()">
+      <ion-list class="list-borderless">
+        <ion-item class="text-center">
+          <img src="/img/spark-logo-sm.png" alt="">
+        </ion-item>
+        <label class="item item-input item-stacked-label"
+               ng-class="{'has-error': (vmLogon.form.SparkId.$invalid && vmLogon.form.SparkId.$touched) || (vmLogon.form.SparkId.$error && vmLogon.isSubmitted)}">
+          <span class="input-label">Spark Id</span>
+          <input type="text" placeholder="Enter your Spark Id" name="SparkId"
+                 ng-model="vmLogon.credentials.sparkId"
+                 ng-required="true"
+                 ng-pattern="vmLogon.sparkIdPattern">
+        </label>
+        <label class="item item-input item-stacked-label"
+               ng-class="{'has-error': (vmLogon.form.Password.$invalid && vmLogon.form.Password.$touched) || (vmLogon.form.Password.$error && vmLogon.isSubmitted)}">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="Enter your Password" name="Password"
+                 ng-model="vmLogon.credentials.password"
+                 ng-required="true">
+        </label>
+      </ion-list>
+      <div class="padding">
+        <button class="button button-block button-balanced" type="submit">Login</button>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

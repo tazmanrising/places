@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Office Administrator Portal";
+}
+
+<div >
+    
+    <div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Office Administrator Dashboard</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Dashboard", "Home")
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+
+    @*<div class="panel panel-default panel-collapse">
+        <div class="panel-heading">
+            <h3>Users</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Action("_Index", "User", new { id = SessionVars.LoggedInOfficeId })
+        </div>
+        <div class="panel-footer">
+            <a href="@Url.Action("Create", "User", new { vendorId = @SessionVars.LoggedInVendorId, officeId = @SessionVars.LoggedInOfficeId })" class="btn btn-sm btn-success">Add</a>
+        </div>
+    </div>*@
+
+</div>
+
+    @section scripts
+    {
+        <script src="~/Scripts/app/reportService.js"></script>
+       
+        <script src="~/Scripts/app/rateController.js"></script>
+        <script src="~/Scripts/app/vendorController.js"></script>
+        <script src="~/Scripts/app/userController.js"></script>
+        <script src="~/Scripts/app/officeController.js"></script>
+        <script src="~/Scripts/app/dashboardController.js"></script>
+
+        <script src="~/Scripts/highcharts-more.js"></script>
+        <script src="~/Scripts/data.js"></script>
+        <script src="~/Scripts/drilldown.js"></script>
+        <script src="~/Scripts/solid-gauge.js"></script>
+        <script src="~/Scripts/no-data-to-display.js"></script>
+
+    }

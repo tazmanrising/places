@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e0c826ba2d342c287014323aac3557e" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="ClearviewModel.AccountNumberType" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Brand" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Disposition" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.IpLocation" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.PremiseType" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Program" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.ProgramVendor" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.RateClassLookup" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Relationship" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Report" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Role" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.SalesChannel" Width="1.5" PointX="1.5" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.State" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UnitOfMeasure" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UserLog" Width="1.5" PointX="3" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UserType" Width="1.5" PointX="1.5" PointY="45.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Utility" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UtilityType" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.WavLog" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.DST" Width="1.5" PointX="14.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.ZipCodeLookup" Width="1.5" PointX="12.125" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_AccountNumberType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_PremiseType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_Utility" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_UtilityType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_ProgramVendor_Program" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ClearviewModel.Office" Width="1.5" PointX="1.25" PointY="32" />
+        <EntityTypeShape EntityType="ClearviewModel.Vendor" Width="1.5" PointX="3.75" PointY="37.5" />
+        <AssociationConnector Association="ClearviewModel.FK_Office_Vendor" />
+        <AssociationConnector Association="ClearviewModel.FK_ProgramVendor_Vendor" />
+        <AssociationConnector Association="ClearviewModel.FK_Vendor_SalesChannel" />
+        <EntityTypeShape EntityType="ClearviewModel.User" Width="1.5" PointX="6" PointY="36.25" />
+        <AssociationConnector Association="ClearviewModel.FK_User_Office" />
+        <AssociationConnector Association="ClearviewModel.FK_User_UserType" />
+        <AssociationConnector Association="ClearviewModel.FK_User_Vendor" />
+        <AssociationConnector Association="ClearviewModel.FK_UserLog_User" />
+        <EntityTypeShape EntityType="ClearviewModel.Lead" Width="1.5" PointX="7.5" PointY="10.375" />
+        <EntityTypeShape EntityType="ClearviewModel.Main" Width="1.5" PointX="8.25" PointY="34.75" />
+        <AssociationConnector Association="ClearviewModel.FK_IpLocation_Main" />
+        <AssociationConnector Association="ClearviewModel.FK_Main_User" />
+        <EntityTypeShape EntityType="ClearviewModel.DtDAgentTrack" Width="1.5" PointX="12.5" PointY="12.875" />
+        <EntityTypeShape EntityType="ClearviewModel.OrderDetail" Width="1.5" PointX="5.25" PointY="4.25" />
+        <AssociationConnector Association="ClearviewModel.FK_OfficeDetail_Main" />
+        <AssociationConnector Association="ClearviewModel.FK_OfficeDetail_Program" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

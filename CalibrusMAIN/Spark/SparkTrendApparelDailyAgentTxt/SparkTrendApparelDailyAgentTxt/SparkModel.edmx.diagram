@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="de68fa4c7b194bf6b2ebbbb559cae770" Name="Diagram1">
+        <EntityTypeShape EntityType="SparkModel.Office" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.User" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Vendor" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="SparkModel.FK_Office_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_User_Office" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_User_Vendor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

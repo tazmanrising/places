@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ConstellationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ConstellationModelStoreContainer">
+          <EntitySet Name="tblMain" EntityType="ConstellationModel.Store.tblMain" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblVendor" EntityType="ConstellationModel.Store.tblVendor" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="datetime" />
+          <Property Name="WavName" Type="varchar" MaxLength="50" />
+          <Property Name="Dnis" Type="char" MaxLength="4" />
+          <Property Name="Verified" Type="char" MaxLength="1" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" />
+          <Property Name="ConcernCode" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentId" Type="nchar" MaxLength="10" />
+          <Property Name="VendorId" Type="varchar" MaxLength="50" />
+          <Property Name="VendorAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="ResponseId" Type="int" />
+          <Property Name="SignUpType" Type="varchar" MaxLength="10" />
+          <Property Name="ServiceFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceLastName" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCity" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCountry" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCounty" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceState" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="ServicePhoneNumber" Type="char" MaxLength="10" />
+          <Property Name="ServiceEmail" Type="varchar" MaxLength="100" />
+          <Property Name="BillingFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="BillingLastName" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="BillingCity" Type="varchar" MaxLength="50" />
+          <Property Name="BillingCountry" Type="varchar" MaxLength="50" />
+          <Property Name="BillingCounty" Type="varchar" MaxLength="50" />
+          <Property Name="BillingState" Type="varchar" MaxLength="50" />
+          <Property Name="BillingZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="BillingEmail" Type="varchar" MaxLength="100" />
+          <Property Name="UDCCode" Type="varchar" MaxLength="50" />
+          <Property Name="UDCAccountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GasUDCCode" Type="varchar" MaxLength="50" />
+          <Property Name="GasUDCAccountNumber" Type="varchar" MaxLength="50" />
+          <Property Name="FixedEnergyPrice" Type="varchar" MaxLength="50" />
+          <Property Name="KWH2000Price" Type="varchar" MaxLength="50" />
+          <Property Name="MinimumUsageFee" Type="varchar" MaxLength="50" />
+          <Property Name="MinimumUsageThreshold" Type="varchar" MaxLength="50" />
+          <Property Name="ElectricTerm" Type="varchar" MaxLength="50" />
+          <Property Name="ElectricPrice" Type="varchar" MaxLength="50" />
+          <Property Name="ElectricCancelFee" Type="varchar" MaxLength="50" />
+          <Property Name="ElectricPlanName" Type="varchar" MaxLength="100" />
+          <Property Name="GasTerm" Type="varchar" MaxLength="50" />
+          <Property Name="GasPrice" Type="varchar" MaxLength="50" />
+          <Property Name="GasCancelFee" Type="varchar" MaxLength="50" />
+          <Property Name="MeterNumber" Type="varchar" MaxLength="50" />
+          <Property Name="EmailNeedsUpdate" Type="char" MaxLength="1" />
+          <Property Name="UpdatedServiceEmail" Type="varchar" MaxLength="100" />
+          <Property Name="tblAgentKeyId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblVendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="100" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConstellationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ConstellationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMains" EntityType="ConstellationModel.tblMain" />
+          <EntitySet Name="tblVendors" EntityType="ConstellationModel.tblVendor" />
+        </EntityContainer>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WavName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Dnis" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Verified" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Concern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ConcernCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentId" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="VendorId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ResponseId" Type="Int32" />
+          <Property Name="SignUpType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceAddress1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceAddress2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceZipCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServicePhoneNumber" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="ServiceEmail" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingAddress1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingZipCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingEmail" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UDCCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UDCAccountNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GasUDCCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GasUDCAccountNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FixedEnergyPrice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="KWH2000Price" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MinimumUsageFee" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MinimumUsageThreshold" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ElectricTerm" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ElectricPrice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ElectricCancelFee" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ElectricPlanName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="GasTerm" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GasPrice" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GasCancelFee" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MeterNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmailNeedsUpdate" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="UpdatedServiceEmail" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="tblAgentKeyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblVendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="VendorName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConstellationModelStoreContainer" CdmEntityContainer="ConstellationEntities">
+          <EntitySetMapping Name="tblMains">
+            <EntityTypeMapping TypeName="ConstellationModel.tblMain">
+              <MappingFragment StoreEntitySet="tblMain">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="WavName" ColumnName="WavName" />
+                <ScalarProperty Name="Dnis" ColumnName="Dnis" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+                <ScalarProperty Name="ConcernCode" ColumnName="ConcernCode" />
+                <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+                <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorAgentId" ColumnName="VendorAgentId" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="SignUpType" ColumnName="SignUpType" />
+                <ScalarProperty Name="ServiceFirstName" ColumnName="ServiceFirstName" />
+                <ScalarProperty Name="ServiceLastName" ColumnName="ServiceLastName" />
+                <ScalarProperty Name="ServiceAddress1" ColumnName="ServiceAddress1" />
+                <ScalarProperty Name="ServiceAddress2" ColumnName="ServiceAddress2" />
+                <ScalarProperty Name="ServiceCity" ColumnName="ServiceCity" />
+                <ScalarProperty Name="ServiceCountry" ColumnName="ServiceCountry" />
+                <ScalarProperty Name="ServiceCounty" ColumnName="ServiceCounty" />
+                <ScalarProperty Name="ServiceState" ColumnName="ServiceState" />
+                <ScalarProperty Name="ServiceZipCode" ColumnName="ServiceZipCode" />
+                <ScalarProperty Name="ServicePhoneNumber" ColumnName="ServicePhoneNumber" />
+                <ScalarProperty Name="ServiceEmail" ColumnName="ServiceEmail" />
+                <ScalarProperty Name="BillingFirstName" ColumnName="BillingFirstName" />
+                <ScalarProperty Name="BillingLastName" ColumnName="BillingLastName" />
+                <ScalarProperty Name="BillingAddress1" ColumnName="BillingAddress1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingCountry" ColumnName="BillingCountry" />
+                <ScalarProperty Name="BillingCounty" ColumnName="BillingCounty" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="BillingZipCode" ColumnName="BillingZipCode" />
+                <ScalarProperty Name="BillingEmail" ColumnName="BillingEmail" />
+                <ScalarProperty Name="UDCCode" ColumnName="UDCCode" />
+                <ScalarProperty Name="UDCAccountNumber" ColumnName="UDCAccountNumber" />
+                <ScalarProperty Name="GasUDCCode" ColumnName="GasUDCCode" />
+                <ScalarProperty Name="GasUDCAccountNumber" ColumnName="GasUDCAccountNumber" />
+                <ScalarProperty Name="FixedEnergyPrice" ColumnName="FixedEnergyPrice" />
+                <ScalarProperty Name="KWH2000Price" ColumnName="KWH2000Price" />
+                <ScalarProperty Name="MinimumUsageFee" ColumnName="MinimumUsageFee" />
+                <ScalarProperty Name="MinimumUsageThreshold" ColumnName="MinimumUsageThreshold" />
+                <ScalarProperty Name="ElectricTerm" ColumnName="ElectricTerm" />
+                <ScalarProperty Name="ElectricPrice" ColumnName="ElectricPrice" />
+                <ScalarProperty Name="ElectricCancelFee" ColumnName="ElectricCancelFee" />
+                <ScalarProperty Name="ElectricPlanName" ColumnName="ElectricPlanName" />
+                <ScalarProperty Name="GasTerm" ColumnName="GasTerm" />
+                <ScalarProperty Name="GasPrice" ColumnName="GasPrice" />
+                <ScalarProperty Name="GasCancelFee" ColumnName="GasCancelFee" />
+                <ScalarProperty Name="MeterNumber" ColumnName="MeterNumber" />
+                <ScalarProperty Name="EmailNeedsUpdate" ColumnName="EmailNeedsUpdate" />
+                <ScalarProperty Name="UpdatedServiceEmail" ColumnName="UpdatedServiceEmail" />
+                <ScalarProperty Name="tblAgentKeyId" ColumnName="tblAgentKeyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVendors">
+            <EntityTypeMapping TypeName="ConstellationModel.tblVendor">
+              <MappingFragment StoreEntitySet="tblVendor">
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,288 @@
+﻿@{
+    ViewBag.Title = "Call Report";
+}
+
+<div class="container page-header">
+    <h1>
+        Reports
+        <small>Call Report</small>
+    </h1>
+</div>
+
+<div  ng-controller="reportController as vm" ng-cloak>
+
+    <div class="container" ng-show="!vm.results">
+
+        <form id="callForm" name="callForm" class="form-horizontal" role="form" novalidate>
+
+            <div class="row col-md-offset-3 col-md-6 alert alert-danger" ng-show="callForm.$invalid && vm.submitted">
+                <div>Please fix highlighted errors and submit again.</div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.recordId.$invalid && callForm.recordId.$touched) || (callForm.recordId.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="recordId">Record ID</label>
+                    <div class="col-md-2">
+                        <input type="number" id="recordId" name="recordId" class="form-control input-sm" ng-model="vm.search.recordId" />
+                    </div>
+                    <div class="col-md-4 help-block" ng-messages="callForm.recordId.$error" ng-if="(callForm.recordId.$error && callForm.recordId.$touched) || (callForm.recordId.$error && vm.submitted)">
+                        <div ng-message="number" class="label label-danger">Record ID must be a number</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.phoneNumber.$invalid && callForm.phoneNumber.$touched) || (callForm.phoneNumber.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="phoneNumber">Phone Number</label>
+                    <div class="col-md-2">
+                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control input-sm"
+                               ng-model="vm.search.phoneNumber"
+                               ng-pattern="/(\d{10})/" />
+                    </div>
+                    <div class="col-md-4 help-block" ng-messages="callForm.phoneNumber.$error" ng-if="(callForm.phoneNumber.$error && callForm.phoneNumber.$touched) || (callForm.phoneNumber.$error && vm.submitted)">
+                        <div ng-message="pattern" class="label label-danger">Phone Number must be a 10 digit number</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.vendorAgentId.$invalid && callForm.vendorAgentId.$touched) || (callForm.vendorAgentId.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="vendorAgentId">Vendor Agent ID</label>
+                    <div class="col-md-3">
+                        <input type="text" id="vendorAgentId" name="vendorAgentId" class="form-control input-sm" ng-model="vm.search.vendorAgentId" ng-max="20" />
+                    </div>
+                    <div class="col-md-4 help-block" ng-messages="callForm.vendorAgentId.$error" ng-if="(callForm.vendorAgentId.$error && callForm.vendorAgentId.$touched) || (callForm.vendorAgentId.$error && vm.submitted)">
+                        <div ng-message="max" class="label label-danger">Vendor Agent ID must be fewer than 20 characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.tpvAgentId.$invalid && callForm.tpvAgentId.$touched) || (callForm.tpvAgentId.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="tpvAgentId">TPV Agent ID</label>
+                    <div class="col-md-3">
+                        <input type="text" id="tpvAgentId" name="tpvAgentId" class="form-control input-sm" ng-model="vm.search.tpvAgentId" ng-max="20" />
+                    </div>
+                    <div class="col-md-4 help-block" ng-messages="callForm.tpvAgentId.$error" ng-if="(callForm.tpvAgentId.$error && callForm.tpvAgentId.$touched) || (callForm.tpvAgentId.$error && vm.submitted)">
+                        <div ng-message="max" class="label label-danger">TPV Agent ID must be fewer than 20 characters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.accountNumber.$invalid && callForm.accountNumber.$touched) || (callForm.accountNumber.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="accountNumber">Account Number</label>
+                    <div class="col-md-2">
+                        <input type="text" id="accountNumber" name="accountNumber" class="form-control input-sm" ng-model="vm.search.accountNumber" />
+                    </div>
+                    <div class="col-md-4 help-block" ng-messages="callForm.accountNumber.$error" ng-if="(callForm.accountNumber.$error && callForm.accountNumber.$touched) || (callForm.accountNumber.$error && vm.submitted)">
+                        <div ng-message="number" class="label label-danger">Account number must be a number</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-class="{'has-error': (callForm.startDate.$invalid && callForm.startDate.$touched) || (callForm.startDate.$invalid && vm.submitted)}">
+                    <label class="col-md-2 control-label" for="startDate">Date Range</label>
+                    <div class="col-md-2">
+                        <div ng-controller="startDateController as vmStart" class="input-group">
+                            <input type="text"
+                                   id="startDate"
+                                   name="startDate"
+                                   class="form-control input-sm"
+                                   ng-model="vm.search.startDate"
+                                   datepicker-popup="{{vmStart.format}}"
+                                   is-open="vmStart.opened"
+                                   datepicker-options="vmStart.dateOptions"
+                                   close-text="Close"
+                                   show-button-bar="true"
+                                   ng-required="vm.search.endDate"
+                                   readonly />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="vmStart.open($event)"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div ng-class="{'has-error': (callForm.endDate.$invalid && callForm.endDate.$touched) || (callForm.endDate.$invalid && vm.submitted)}">
+                    <label class="col-md-1 control-label" for="endDate">through</label>
+                    <div class="col-md-2">
+                        <div ng-controller="endDateController as vmEnd" class="input-group">
+                            <input type="text"
+                                   id="endDate"
+                                   name="endDate"
+                                   class="form-control input-sm"
+                                   ng-model="vm.search.endDate"
+                                   datepicker-popup="{{vmEnd.format}}"
+                                   is-open="vmEnd.opened"
+                                   datepicker-options="vmEnd.dateOptions"
+                                   close-text="Close"
+                                   show-button-bar="true"
+                                   ng-required="vm.search.startDate" 
+                                   readonly/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary btn-sm" ng-click="vmEnd.open($event)"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-sm btn-default"
+                            ng-show="vm.search.startDate!=undefined || vm.search.endDate!=undefined"
+                            ng-click="vm.search.startDate=undefined;vm.search.endDate=undefined;">
+                        Clear Dates
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <div class="help-block" ng-messages="callForm.startDate.$error" ng-if="(callForm.startDate.$error && vm.submitted)">
+                        <div ng-message="required" class="label label-danger">Start Date is required</div>
+                        <div ng-message="date" class="label label-danger">Start Date is invalid</div>
+                    </div>
+                    <div class="help-block" ng-messages="callForm.endDate.$error" ng-if="(callForm.endDate.$error && vm.submitted)">
+                        <div ng-message="required" class="label label-danger">End Date is required</div>
+                        <div ng-message="date" class="label label-danger">End Date is invalid</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="dispisition">Disposition</label>
+                <div class="col-md-3">
+                    <select id="dispisition" name="dispisition" class="form-control input-sm" ng-model="vm.search.disposition"
+                            ng-options="disposition.Concern for disposition in vm.dispositions"></select>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            @if (SessionVars.IsClientAdmin)
+            {
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="vendorId">Vendors</label>
+                    <div class="col-md-3">
+                        <select id="vendorId" name="vendorId" class="form-control input-sm" ng-model="vm.search.vendorId" ng-change="vm.getOffices(vm.search.vendorId)"
+                                ng-options="v.Id as v.VendorName for v in vm.vendors"></select>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            }
+
+            @if (SessionVars.IsClientAdmin || SessionVars.IsVendorAdmin)
+            {
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="officeId">Offices</label>
+                    <div class="col-md-3">
+                        <select id="officeId" name="officeId" class="form-control input-sm" ng-model="vm.search.officeId" ng-disabled="!vm.search.vendorId" placeholder="select vendor..."
+                                ng-options="o.Id as o.OfficeName for o in vm.offices"></select>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            }
+
+            <div class="form-group">
+                <div class="col-md-10 text-center">
+                    <button class="btn btn-sm btn-primary" ng-click="vm.getResults(callForm.$valid);">
+                        Get Results
+                        <i class="fa fa-spinner fa-pulse" ng-show="vm.resultsLoading===true"></i>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="container-fluid" ng-if="vm.results">
+
+        <div>
+            <div class="col-md-9">
+                <button class="btn btn-sm btn-primary" ng-click="vm.newSearch()">New Search</button>
+            </div>
+            <div class="col-md-3 pull-right">
+                <input type="text" class="form-control input-sm" ng-model="vm.filter" ng-change="vm.filterResults()" placeholder="filter results..." />
+            </div>
+        </div>
+
+        <table class="table table-condensed table-striped table-hover table-bordered">
+
+            <thead>
+                <tr>
+                    <th></th>
+                    <th nowrap>Record ID</th>
+                    <th nowrap>Call DateTime</th>
+                    <th nowrap>Recording</th>
+                    <th nowrap>TPV Recording</th>
+                    <th nowrap>Script</th>
+                    <th nowrap>Disposition Code</th>
+                    <th nowrap>Auth First Name</th>
+                    <th nowrap>Auth Last Name</th>
+                    <th nowrap>Billing First Name</th>
+                    <th nowrap>Billing Last Name</th>
+                    <th nowrap>State</th>
+                    <th nowrap>Phone Number</th>
+                    <th nowrap>Vendor Name</th>
+                    <th nowrap>Vendor ID</th>
+                    <th nowrap>Vendor Agent ID</th>
+                    <th nowrap>TPV Agent ID</th>
+                    <th nowrap>Verified</th>
+                    <th nowrap>Disposition</th>
+                </tr>
+                <tr ng-show="vm.filteredResults">
+                    <th colspan="19">
+                        <span class="label label-success col-md-12 text-center" ng-show="vm.filteredResults.length>0">{{vm.filteredResults.length}} records found!</span>
+                        <span class="label label-warning col-md-12 text-center" ng-show="vm.filteredResults.length===0">No records found!</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="call in vm.filteredResults" ng-init="showChildren=false;">
+                <tr>
+                    <td><button class="btn btn-link" ng-click="showChildren=!showChildren"><i class="fa" ng-class="showChildren==true ? 'fa-minus' : 'fa-plus'"></i></button></td>
+                    <td>{{call.MainId}}</td>
+                    <td>{{call.CallDateTime| date:'medium'}}</td>
+                    <td><a href="http://reports.calibrus.com/httprecordingredirector/crr.ashx?recording={{call.WavName}}" style="cursor:pointer;">Recording</a></td>
+                    <td><a href="http://reports.calibrus.com/httprecordingredirector/crr.ashx?recording={{call.OutboundWavName}}" style="cursor:pointer;">TPV Recording</a></td>
+                    <td><a href="http://reports.calibrus.com/httprecordingredirector/crr.ashx?recording=SPARKENERGY_{{call.OutboundWavName}}" target="_blank" style="cursor:pointer;">Script</a></td>
+                    <td>{{call.ConcernCode}}</td>
+                    <td>{{call.AuthorizationFirstName}}</td>
+                    <td>{{call.AuthorizationLastName}}</td>
+                    <td>{{call.AccountFirstName}}</td>
+                    <td>{{call.AccountLastName}}</td>
+                    <td>{{call.SalesState}}</td>
+                    <td>{{call.Btn | phoneNumber}}</td>
+                    <td>{{call.User.Vendor.VendorName}}</td>
+                    <td>{{call.User.Vendor.VendorNumber}}</td>
+                    <td>{{call.User.AgentId}}</td>
+                    <td>{{call.TpvAgentId}}</td>
+                    <td>{{call.Verified == '1' ? 'YES' : 'NO'}}</td>
+                    <td>{{call.Concern}}</td>
+                </tr>
+                <tr ng-show="showChildren==true">
+                    <td colspan="16">
+                        <div class="col-md-6">
+                            <table class="table table-condensed table-striped table-hover  table-bordered">
+                                <tr>
+                                    <th>Account Number</th>
+                                    <th>Program Name</th>
+                                </tr>
+                                <tr ng-repeat="detail in call.OrderDetails">
+                                    <td>{{detail.AccountNumber}}</td>
+                                    <td>{{detail.Program.ProgramName}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/app/reportService.js"></script>
+    <script src="~/Scripts/app/reportController.js"></script>
+}

@@ -1,0 +1,78 @@
+﻿@using Calibrus.SparkPortal.Web
+@model Calibrus.SparkPortal.ViewModel.VendorViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Create Vendor</small>
+        </h1>
+    </div>
+
+    <div class="row">
+        @using (Html.BeginForm("Create", "Vendor", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+            @Html.AntiForgeryToken()
+
+            <div class="col-lg-offset-3 col-lg-6">
+                @Html.ValidationSummary(true)
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VendorName, new { @class = "col-md-2 control-label", @for = "VendorName" })
+                <div class="col-md-6 col-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.VendorName, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.VendorName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VendorNumber, new { @class = "col-md-2 control-label ", @for = "VendorNumber" })
+                <div class="col-md-6 col-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.VendorNumber, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.VendorNumber)
+                </div>
+            </div>            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CommissionNumber, new { @class = "col-md-2 control-label ", @for = "CommissionNumber" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.CommissionNumber, new { @class = "form-control" })
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.CommissionNumber)
+                </div>
+            </div>
+
+            @Html.HiddenFor(model => model.IsActive)
+
+            <div class="form-group">
+                <div class="col-lg-7 text-center">
+                    <input class="btn btn-primary" type="submit" value="Save" />
+                    <a href="@SessionVars.ReturnUrl" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+    }
+    </div>
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

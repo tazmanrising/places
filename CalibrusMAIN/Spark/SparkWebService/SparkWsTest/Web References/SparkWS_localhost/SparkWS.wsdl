@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://wsssl.calibrus.com/Spark/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://wsssl.calibrus.com/Spark/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://wsssl.calibrus.com/Spark/">
+      <s:element name="SubmitInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="record" type="tns:Record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AgentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VendorNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecordLocator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SalesState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationMiddle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Btn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyContactFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyContactLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyContactTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Territory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeadType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Relation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumberOfAccounts" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecordDetails" type="tns:ArrayOfRecordDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRecordDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RecordDetail" nillable="true" type="tns:RecordDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RecordDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProgramCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UtilityType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MeterNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RateClass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerNameKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceReferenceNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InCityLimits" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingLastName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubmitInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveRecords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StartDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VendorNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveRecordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveRecordsResult" type="tns:ArrayOfTPVRecord" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTPVRecord">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TPVRecord" nillable="true" type="tns:TPVRecord" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TPVRecord">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CalibrusRecordLocator" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CallDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="WebDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Verified" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Concern" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConcernCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpvAgentName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpvAgentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgentLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorizationLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Relation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Btn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerNameKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingCounty" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingZip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProgramCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProgramName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MSF" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ETF" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rate" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Term" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="UtilityType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PremiseType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LdcCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumberType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BillingLastName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitInformation" />
+  </wsdl:message>
+  <wsdl:message name="SubmitInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveRecordsSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveRecords" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveRecordsSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveRecordsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SparkWSSoap">
+    <wsdl:operation name="SubmitRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a Spark Energy Record</wsdl:documentation>
+      <wsdl:input name="SubmitInformation" message="tns:SubmitInformationSoapIn" />
+      <wsdl:output name="SubmitInformation" message="tns:SubmitInformationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves Spark Energy Record(s)</wsdl:documentation>
+      <wsdl:input name="RetrieveRecords" message="tns:RetrieveRecordsSoapIn" />
+      <wsdl:output name="RetrieveRecords" message="tns:RetrieveRecordsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SparkWSSoap" type="tns:SparkWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitRecord">
+      <soap:operation soapAction="https://wsssl.calibrus.com/Spark/SubmitInformation" style="document" />
+      <wsdl:input name="SubmitInformation">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SubmitInformation">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveRecord">
+      <soap:operation soapAction="https://wsssl.calibrus.com/Spark/RetrieveRecords" style="document" />
+      <wsdl:input name="RetrieveRecords">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveRecords">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SparkWSSoap12" type="tns:SparkWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitRecord">
+      <soap12:operation soapAction="https://wsssl.calibrus.com/Spark/SubmitInformation" style="document" />
+      <wsdl:input name="SubmitInformation">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SubmitInformation">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveRecord">
+      <soap12:operation soapAction="https://wsssl.calibrus.com/Spark/RetrieveRecords" style="document" />
+      <wsdl:input name="RetrieveRecords">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RetrieveRecords">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SparkWS">
+    <wsdl:port name="SparkWSSoap" binding="tns:SparkWSSoap">
+      <soap:address location="http://localhost:41051/SparkWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SparkWSSoap12" binding="tns:SparkWSSoap12">
+      <soap12:address location="http://localhost:41051/SparkWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

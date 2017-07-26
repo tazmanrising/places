@@ -1,0 +1,7 @@
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\bin\Debug\CalibrusTPV.Tests.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\bin\Debug\CalibrusTPV.Tests.pdb
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\obj\Debug\CalibrusTPV.Tests.csprojResolveAssemblyReference.cache
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\obj\Debug\CalibrusTPV.Tests.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Tests\obj\Debug\CalibrusTPV.Tests.pdb

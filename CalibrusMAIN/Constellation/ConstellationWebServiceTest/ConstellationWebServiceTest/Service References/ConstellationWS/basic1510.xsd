@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="CreditExceptionCodeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CCR" />
+      <xs:enumeration value="BP" />
+      <xs:enumeration value="PA" />
+      <xs:enumeration value="SC" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CreditExceptionCodeEnum" nillable="true" type="tns:CreditExceptionCodeEnum" />
+  <xs:simpleType name="TPVStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TPVNonVerified" />
+      <xs:enumeration value="TPVVerified" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TPVStatusEnum" nillable="true" type="tns:TPVStatusEnum" />
+  <xs:complexType name="ServiceLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AmsIndicator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DunsNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EsiID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasSwitchHold" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSmartmeter" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MeterStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoveOut" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MoveOutDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PremiseType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxExemptReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UdcCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UdcID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceLocation" nillable="true" type="tns:ServiceLocation" />
+  <xs:complexType name="ArrayOfServiceLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceLocation" nillable="true" type="tns:ServiceLocation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceLocation" nillable="true" type="tns:ArrayOfServiceLocation" />
+</xs:schema>

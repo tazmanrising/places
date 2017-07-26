@@ -1,0 +1,228 @@
+/* ================================ HEADER ================================= */
+/*highlight current link*/
+header ul > li:nth-of-type(3) a {
+	color: hsl(360, 1.2%, 90%);
+}
+
+/* ================================ LEFT NAV ================================= */
+nav#left {
+	position: relative; /* for positioning pointer */
+	z-index: 2;
+	float: left;
+	height: 600px;
+	width: 280px;
+	margin-bottom: 20px; 
+	padding-top: 28px;
+	border: 1px solid hsl(360, 0.85%, 77%);
+	background-color: hsl(60, 9%, 98%);
+	box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, .2);
+}
+
+div#accordion h3, div#accordion p {
+	/*keeps positiong the same*/
+	border-top: 1px solid hsl(60, 9%, 98%);  
+	border-bottom: 1px solid hsl(60, 9%, 98%);
+}
+
+div#accordion h3 {	
+	height: 37px;
+	line-height: 2.5;
+	text-indent: 20px;
+	font-size: 15px;
+	font-weight: bold;	
+	border-top: 1px solid hsl(0, 0.0000%, 64.5098%); 
+}
+
+div#accordion h3, div#accordion h3 a {
+	display: block;
+	color: hsl(198, 43.2692%, 40.7843%);
+}
+
+/*must be above the active state rules*/
+div#accordion h3:hover {
+	border-top: 1px solid hsl(0, 0.0000%, 65%);
+	border-bottom: 1px solid hsl(0, 0.0000%, 85%);
+	box-shadow: 
+		0px 0 5px hsl(0, 0%, 85%) inset; 
+}
+
+div#accordion h3.active  { 
+	border-top: 1px solid hsl(0, 0.0000%, 65%);
+	border-bottom: 1px solid hsl(0, 0.0000%, 75%);
+	box-shadow: 
+		0px 0 10px hsl(0, 0%, 78%) inset;
+}
+
+div#accordion p {
+	height: 28px;
+	line-height: 2.2;
+	text-indent: 43px;
+	font-size: 13px;
+}
+
+div#accordion p:hover {
+	border-top: 1px solid hsl(0, 0.0000%, 85%);
+	border-bottom: 1px solid hsl(0, 0.0000%, 85%);
+	box-shadow: 
+		0px 0 5px hsl(0, 0%, 85%) inset; 
+	/*background-color: hsl(0, 0.0000%, 92%);*/
+}
+
+div#accordion p.active  { 
+	border-top: 1px solid hsl(0, 0.0000%, 75%);
+	border-bottom: 1px solid hsl(0, 0.0000%, 75%);
+	box-shadow: 
+		0px 0 10px hsl(0, 0%, 83%) inset;
+}
+
+div#accordion p, div#accordion p a {
+	display: block;
+	color: hsl(0, 0.0000%, 34.5098%);
+}
+
+div#accordion p.active {		
+	font-weight: bold;
+}
+
+a#quote-img {
+/*	display: none;
+*/
+	position: absolute;
+	top: 550px;
+	left: 30px;
+}
+
+a#quote {
+	position: absolute;
+	top: 575px;
+	left: 108px;
+	height: 32px;
+	width: 150px;
+	line-height: 32px;
+	text-indent: 25px;
+	border: 1px solid white;
+	box-shadow: 0 0 2px 0px hsl(0, 0%, 38%);
+	background: hsl(198, 44.9275%, 52.4118%);
+	
+	font-size: 18px;
+	font-style: italic;
+	font-weight: bold;
+	text-shadow: 0px 1px 1px black;	
+	color: white;
+}
+
+img[alt="pointer"] {
+	position: absolute;
+	top: 30px;
+	left: 260px;
+	z-index: 1;
+}
+
+/* ================================ RIGHT CONTENT ================================= */
+div#content {
+	margin: 38px 0 38px 310px;
+	padding: 28px;
+	border-radius: 10px;
+	font-size: 13px;
+	line-height: 1.4;
+	font-style: italic;
+	letter-spacing: 1px;
+	color: white;
+	background-color: hsl(198, 44.9275%, 52.4118%);	
+	/*background: 
+   		url(../images/contentbg.png) top repeat-x, hsl(196, 63.1285%, 34.3980%); */	
+	/*background-image: -webkit-gradient(linear, 0 0%, 0 100%, 
+		from(hsl(198, 44.9275%, 52.4118%)), 
+		color-stop(0.3, hsl(198, 38.5281%, 49.7059%)),
+		color-stop(0.6, hsl(198, 35.8025%, 45.6471%)),
+		to(hsl(198, 43.2692%, 40.7843%)));*/
+	box-shadow: 0 0 10px 0px hsla(0, 0%, 0%, .2);
+}
+
+div#content h2 {
+	line-height: 2.1;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	font-size: 29px;
+	text-shadow: 0px 2px 2px #555;	
+	text-indent: 10px;
+	/*box-shadow: 0px 0 20px 2px hsl(0, 0%, 78%) inset;*/
+	/*background-image: -webkit-gradient(linear, 0 0%, 0 100%, 
+		from(hsla(0, 0%, 100%, .2)),
+		color-stop(0.3, hsla(0, 0%, 100%, 0)), 
+		color-stop(0.7, hsla(0, 0%, 100%, 0)),
+		to(hsla(0, 0%, 100%, .2)));*/
+}
+
+div#content h3, strong {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+div#content em {
+	font-weight: bold;
+}
+
+div#content a {
+	color: hsl(360, 0%, 87%);
+	text-decoration: underline;
+}
+
+div#info {
+	margin-top: 50px;	
+}
+
+/*list item image*/
+div#info ul > li {
+	background: url(../images/dot.png) left 4px no-repeat;
+	padding-left: 30px;
+}
+
+div#info ol {
+	padding-left: 30px;
+}
+
+div#info ol > li {
+	padding-left: 30px;
+}
+
+div#content .full-bio {
+	display: none;
+}
+
+div#content a.toggle-bio {
+	float: right;
+	margin-right: 15px;
+	font-size: 12px;
+	text-decoration: none;
+	font-color: ;
+}
+
+/* ================================ STYLES THAT CHANGE BY PAGE ================================= */
+body#about-us img[alt="pointer"] {
+	top: 151px;
+}
+
+body#purpose img[alt="pointer"] {
+	top: 185px;
+}
+
+body#values img[alt="pointer"] {
+	top: 215px;
+}
+
+body#competencies img[alt="pointer"] {
+	top: 245px;
+}
+
+body#team img[alt="pointer"] {
+	top: 275px;
+}
+
+body#board img[alt="pointer"] {
+	top: 305px;
+}
+
+body#employment img[alt="pointer"] {
+	top: 335px;
+}

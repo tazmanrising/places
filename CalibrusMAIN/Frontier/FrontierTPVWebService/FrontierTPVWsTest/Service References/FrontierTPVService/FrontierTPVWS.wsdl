@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://ws.calibrus.com/FrontierTPVWebService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.calibrus.com/FrontierTPVWebService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://ws.calibrus.com/FrontierTPVWebService">
+      <s:element name="SubmitOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="tns:Account" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Account">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SalesAgentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DecisionMaker" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Product" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Business" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhoneNumbers" type="tns:ArrayOfPhoneNumber" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPhoneNumber">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PhoneNumber" nillable="true" type="tns:PhoneNumber" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PhoneNumber">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Tn" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PLOCChange" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PLOCFreeze" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ILPIntra" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ILPIntraFreeze" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PICInter" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PICInterFreeze" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SubmitOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SubmitOrderResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataTelephoneNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PhoneNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataTelephoneNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveDataTelephoneNumberResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataRecordLocator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecordLocator" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveDataRecordLocatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveDataRecordLocatorResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SubmitOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitOrder" />
+  </wsdl:message>
+  <wsdl:message name="SubmitOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataTelephoneNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveDataTelephoneNumber" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataTelephoneNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveDataTelephoneNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataRecordLocatorSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveDataRecordLocator" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveDataRecordLocatorSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveDataRecordLocatorResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FrontierTPVWSSoap">
+    <wsdl:operation name="SubmitOrder">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Submits a Frontier Order</wsdl:documentation>
+      <wsdl:input message="tns:SubmitOrderSoapIn" />
+      <wsdl:output message="tns:SubmitOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataTelephoneNumber">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve information about a specific record using the Telephone Number.</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataTelephoneNumberSoapIn" />
+      <wsdl:output message="tns:RetrieveDataTelephoneNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataRecordLocator">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve information about a specific record using the Record Locator.</wsdl:documentation>
+      <wsdl:input message="tns:RetrieveDataRecordLocatorSoapIn" />
+      <wsdl:output message="tns:RetrieveDataRecordLocatorSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FrontierTPVWSSoap" type="tns:FrontierTPVWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitOrder">
+      <soap:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/SubmitOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataTelephoneNumber">
+      <soap:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/RetrieveDataTelephoneNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataRecordLocator">
+      <soap:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/RetrieveDataRecordLocator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FrontierTPVWSSoap12" type="tns:FrontierTPVWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SubmitOrder">
+      <soap12:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/SubmitOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataTelephoneNumber">
+      <soap12:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/RetrieveDataTelephoneNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDataRecordLocator">
+      <soap12:operation soapAction="http://ws.calibrus.com/FrontierTPVWebService/RetrieveDataRecordLocator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FrontierTPVWS">
+    <wsdl:port name="FrontierTPVWSSoap" binding="tns:FrontierTPVWSSoap">
+      <soap:address location="http://localhost:41331/FrontierTPVWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FrontierTPVWSSoap12" binding="tns:FrontierTPVWSSoap12">
+      <soap12:address location="http://localhost:41331/FrontierTPVWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,66 @@
+<ion-view view-title="Home Consumer">
+  <ion-content >
+    <!--<ion-scroll zooming="false" direction="y" style="height: 900px;">-->
+
+      <ion-list class="list-borderless">
+        <ion-item>
+          Please Confirm the following:<br><br>
+          <h2 style="text-decoration: underline;"><strong>Account Details</strong></h2>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <div>
+            Name: {{vmHome.account[0].authorizationFirstName}} {{vmHome.account[0].authorizationLastName}}
+          </div>
+          <div>
+            Phone Number: {{vmHome.account[0].btn}}
+          </div>
+          <div>
+            Relationship: {{vmHome.account[0].relation}}
+          </div>
+          <div><strong>Service Address:</strong>
+          </div>
+          <div>
+            {{vmHome.account[0].serviceAddress}}
+          </div>
+          <div>
+            {{vmHome.account[0].serviceCity}}, {{vmHome.account[0].serviceState}} {{vmHome.account[0].serviceZip}}
+          </div>
+          <div>
+            <strong>Order Details:</strong>
+          </div>
+          <div ng-repeat="accountType in vmHome.account">
+            {{accountType.utilityTypeName}} Acct#: {{accountType.accountNumber}}
+          </div>
+          <div>
+            &nbsp;
+          </div>
+          <div style="text-decoration: underline;"><strong>Program Details:</strong>
+          </div>
+
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+
+          <div ng-repeat="account in vmHome.account">
+            <div> <strong>{{account.utilityTypeName}}</strong></div>
+            <div> {{account.programName}} </div>
+            <div> Rate: {{account.rate}}</div>
+            <div>Term (months): {{account.term}}</div>
+            <div> MSF: {{account.msf | currency}}</div>
+            <div> ETF: {{account.etf | currency}}</div>
+          </div>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-item ng-click="vmHome.newEnrollment()" class="item-icon-right">
+            Next <i class="icon ion-ios-arrow-right"></i>          
+        </ion-item>
+      </ion-list>
+    <!--</ion-scroll>-->
+  </ion-content>
+
+</ion-view>
+

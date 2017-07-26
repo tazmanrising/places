@@ -1,0 +1,1608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SparkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SparkModelStoreContainer">
+          <EntitySet Name="AccountNumberType" EntityType="SparkModel.Store.AccountNumberType" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Leads" EntityType="SparkModel.Store.Leads" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Main" EntityType="SparkModel.Store.Main" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Office" EntityType="SparkModel.Store.Office" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="OrderDetail" EntityType="SparkModel.Store.OrderDetail" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="PremiseType" EntityType="SparkModel.Store.PremiseType" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Program" EntityType="SparkModel.Store.Program" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="ProgramVendor" EntityType="SparkModel.Store.ProgramVendor" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="SalesChannel" EntityType="SparkModel.Store.SalesChannel" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="UnitOfMeasure" EntityType="SparkModel.Store.UnitOfMeasure" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="User" EntityType="SparkModel.Store.User" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Utility" EntityType="SparkModel.Store.Utility" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="UtilitySalesChannel" EntityType="SparkModel.Store.UtilitySalesChannel" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="UtilityType" EntityType="SparkModel.Store.UtilityType" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Vendor" EntityType="SparkModel.Store.Vendor" store:Type="Tables" Schema="v1" />
+          <AssociationSet Name="FK_Main_User" Association="SparkModel.Store.FK_Main_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Main" EntitySet="Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_SalesChannel" Association="SparkModel.Store.FK_Office_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannel" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Vendor" Association="SparkModel.Store.FK_Office_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_MainId" Association="SparkModel.Store.FK_OrderDetail_MainId">
+            <End Role="Main" EntitySet="Main" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Program" Association="SparkModel.Store.FK_OrderDetail_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_AccountNumberType" Association="SparkModel.Store.FK_Program_AccountNumberType">
+            <End Role="AccountNumberType" EntitySet="AccountNumberType" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_PremiseType" Association="SparkModel.Store.FK_Program_PremiseType">
+            <End Role="PremiseType" EntitySet="PremiseType" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_UnitOfMeasure" Association="SparkModel.Store.FK_Program_UnitOfMeasure">
+            <End Role="UnitOfMeasure" EntitySet="UnitOfMeasure" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_Utility" Association="SparkModel.Store.FK_Program_Utility">
+            <End Role="Utility" EntitySet="Utility" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_UtilityType" Association="SparkModel.Store.FK_Program_UtilityType">
+            <End Role="UtilityType" EntitySet="UtilityType" />
+            <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramVendor_Program" Association="SparkModel.Store.FK_ProgramVendor_Program">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="ProgramVendor" EntitySet="ProgramVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramVendor_Vendor" Association="SparkModel.Store.FK_ProgramVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="ProgramVendor" EntitySet="ProgramVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Office" Association="SparkModel.Store.FK_User_Office">
+            <End Role="Office" EntitySet="Office" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Vendor" Association="SparkModel.Store.FK_User_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UtilitySalesChannel_SalesChannel" Association="SparkModel.Store.FK_UtilitySalesChannel_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannel" />
+            <End Role="UtilitySalesChannel" EntitySet="UtilitySalesChannel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UtilitySalesChannel_Utility" Association="SparkModel.Store.FK_UtilitySalesChannel_Utility">
+            <End Role="Utility" EntitySet="Utility" />
+            <End Role="UtilitySalesChannel" EntitySet="UtilitySalesChannel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_SalesChannel" Association="SparkModel.Store.FK_Vendor_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannel" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccountNumberType">
+          <Key>
+            <PropertyRef Name="AccountNumberTypeId" />
+          </Key>
+          <Property Name="AccountNumberTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumberTypeName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported for the target .NET Framework version. The column 'geolocation' in the table 'Spark.v1.Leads' was excluded from the model. To use the data type 'geography', target the .NET Framework 4.5 or higher.
+      -->
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="LeadsId" />
+          </Key>
+          <Property Name="LeadsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecordLocator" Type="varchar" MaxLength="50" />
+          <Property Name="VendorNumber" Type="varchar" MaxLength="10" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Zip" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="Utility" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="200" />
+          <Property Name="LoadDateTime" Type="datetime" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="Zip4" Type="varchar" MaxLength="4" />
+          <Property Name="ZipPlus4" Type="varchar" MaxLength="10" />
+          <Property Name="ConnectDate" Type="varchar" MaxLength="50" />
+          <Property Name="UtilityZone" Type="varchar" MaxLength="50" />
+          <Property Name="HispanicFlag" Type="varchar" MaxLength="1" />
+          <Property Name="HispanicLangPref" Type="varchar" MaxLength="1" />
+          <Property Name="HomeSqFt" Type="varchar" MaxLength="10" />
+          <Property Name="DwellType" Type="varchar" MaxLength="1" />
+          <Property Name="ContactTitle" Type="varchar" MaxLength="50" />
+          <Property Name="HomeYrBuilt" Type="varchar" MaxLength="10" />
+          <Property Name="BuildingSqFt" Type="varchar" MaxLength="50" />
+          <Property Name="HispanicAculturation" Type="varchar" MaxLength="50" />
+          <Property Name="UsageThreshold" Type="varchar" MaxLength="50" />
+          <Property Name="IndividualCreditScore" Type="varchar" MaxLength="50" />
+          <Property Name="SicCode" Type="varchar" MaxLength="50" />
+          <Property Name="EmployeeSize" Type="varchar" MaxLength="50" />
+          <Property Name="CreditRating" Type="varchar" MaxLength="50" />
+          <Property Name="YrStartDate" Type="varchar" MaxLength="10" />
+          <Property Name="SicDesc" Type="varchar" MaxLength="100" />
+          <Property Name="CampaignCode" Type="varchar" MaxLength="50" />
+          <Property Name="RecordType" Type="varchar" MaxLength="50" />
+          <Property Name="Vendor" Type="varchar" MaxLength="50" />
+          <Property Name="ProcessDate" Type="varchar" MaxLength="50" />
+          <Property Name="ESIID" Type="varchar" MaxLength="100" />
+          <Property Name="CarrierRoute" Type="varchar" MaxLength="10" />
+          <Property Name="SequenceNumber" Type="varchar" MaxLength="10" />
+          <Property Name="Lat" Type="varchar" MaxLength="100" />
+          <Property Name="Long" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported for the target .NET Framework version. The column 'geolocation' in the table 'Spark.v1.Main' was excluded from the model. To use the data type 'geography', target the .NET Framework 4.5 or higher.
+      -->
+        <EntityType Name="Main">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="datetime" />
+          <Property Name="WebDateTime" Type="datetime" />
+          <Property Name="WavName" Type="varchar" MaxLength="50" />
+          <Property Name="Dnis" Type="char" MaxLength="4" />
+          <Property Name="Verified" Type="char" MaxLength="1" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" />
+          <Property Name="ConcernCode" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="TotalTime" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="RecordLocator" Type="varchar" MaxLength="50" />
+          <Property Name="SalesState" Type="varchar" MaxLength="2" />
+          <Property Name="AuthorizationFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorizationMiddle" Type="varchar" MaxLength="1" />
+          <Property Name="AuthorizationLastName" Type="varchar" MaxLength="50" />
+          <Property Name="Btn" Type="varchar" MaxLength="10" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyContactFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyContactLastName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyContactTitle" Type="varchar" MaxLength="50" />
+          <Property Name="Territory" Type="varchar" MaxLength="50" />
+          <Property Name="LeadType" Type="varchar" MaxLength="50" />
+          <Property Name="Relation" Type="varchar" MaxLength="50" />
+          <Property Name="NumberOfAccounts" Type="varchar" MaxLength="5" />
+          <Property Name="AccountFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="AccountLastName" Type="varchar" MaxLength="50" />
+          <Property Name="OutboundWavName" Type="varchar" MaxLength="50" />
+          <Property Name="QaDateChange" Type="datetime" />
+          <Property Name="QaReasonChange" Type="varchar" MaxLength="100" />
+          <Property Name="QaAgentId" Type="varchar" MaxLength="10" />
+          <Property Name="QaOriginalConcern" Type="varchar" MaxLength="50" />
+          <Property Name="QaChanged" Type="bit" />
+          <Property Name="LeadsId" Type="int" />
+          <Property Name="PreferredLanguage" Type="varchar" MaxLength="50" />
+          <Property Name="SwitchDate" Type="varchar" MaxLength="10" />
+          <Property Name="SourceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="OfficeName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OfficeEmail" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MarketerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SalesChannelId" Type="int" Nullable="false" />
+          <Property Name="OfficeContact" Type="varchar" MaxLength="50" />
+          <Property Name="OfficePhone" Type="varchar" MaxLength="10" />
+          <Property Name="Address1" Type="varchar" MaxLength="255" />
+          <Property Name="Address2" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="StateCode" Type="char" MaxLength="2" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="int" />
+          <Property Name="UtilityType" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramId" Type="int" />
+          <Property Name="AccountType" Type="varchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="100" />
+          <Property Name="MeterNumber" Type="varchar" MaxLength="100" />
+          <Property Name="RateClass" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerNameKey" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceReferenceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceAddress" Type="varchar" MaxLength="100" />
+          <Property Name="ServiceCity" Type="varchar" MaxLength="100" />
+          <Property Name="ServiceState" Type="varchar" MaxLength="2" />
+          <Property Name="ServiceZip" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCounty" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAddress" Type="varchar" MaxLength="100" />
+          <Property Name="BillingCity" Type="varchar" MaxLength="100" />
+          <Property Name="BillingState" Type="varchar" MaxLength="2" />
+          <Property Name="BillingZip" Type="varchar" MaxLength="50" />
+          <Property Name="BillingCounty" Type="varchar" MaxLength="50" />
+          <Property Name="InCityLimits" Type="varchar" MaxLength="50" />
+          <Property Name="BillingFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="BillingLastName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PremiseType">
+          <Key>
+            <PropertyRef Name="PremiseTypeId" />
+          </Key>
+          <Property Name="PremiseTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PremiseTypeName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+          </Key>
+          <Property Name="ProgramId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramCode" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="ProgramName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="EffectiveStartDate" Type="datetime" Nullable="false" />
+          <Property Name="EffectiveEndDate" Type="datetime" Nullable="false" />
+          <Property Name="Msf" Type="decimal" Scale="4" />
+          <Property Name="Etf" Type="decimal" Scale="4" />
+          <Property Name="Rate" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PromotionalCode" Type="varchar" MaxLength="50" />
+          <Property Name="UnitOfMeasureId" Type="int" Nullable="false" />
+          <Property Name="Term" Type="int" />
+          <Property Name="UtilityTypeId" Type="int" />
+          <Property Name="PremiseTypeId" Type="int" />
+          <Property Name="State" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="UtilityId" Type="int" Nullable="false" />
+          <Property Name="AccountNumberTypeId" Type="int" Nullable="false" />
+          <Property Name="AccountNumberLength" Type="int" Nullable="false" />
+          <Property Name="AccountNumberFixedLength" Type="bit" />
+          <Property Name="MeterNumber" Type="bit" />
+          <Property Name="ServiceReferenceNumver" Type="varchar" MaxLength="50" />
+          <Property Name="RescindBy" Type="int" />
+          <Property Name="Hefpa" Type="bit" />
+          <Property Name="RateVerbiage" Type="varchar" MaxLength="2500" />
+          <Property Name="CancellationVerbiage" Type="varchar" MaxLength="2500" />
+          <Property Name="RateVerbiageSpanish" Type="varchar" MaxLength="2500" />
+          <Property Name="CancellationVerbiageSpanish" Type="varchar" MaxLength="2500" />
+          <Property Name="Vendor" Type="varchar" MaxLength="50" />
+          <Property Name="SalesChannel" Type="varchar" MaxLength="50" />
+          <Property Name="Market" Type="varchar" MaxLength="50" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDateTime" Type="datetime2" />
+          <Property Name="MeterNumberLength" Type="int" />
+          <Property Name="ServiceReference" Type="bit" Nullable="false" />
+          <Property Name="CreditCheck" Type="bit" Nullable="false" />
+          <Property Name="ProgramDescription" Type="varchar" MaxLength="250" />
+          <Property Name="DefaultPricingPlanDescription" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProgramVendor">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="ProgramId" Type="int" Nullable="false" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="SalesChannelId" />
+          </Key>
+          <Property Name="SalesChannelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasure">
+          <Key>
+            <PropertyRef Name="UnitOfMeasureId" />
+          </Key>
+          <Property Name="UnitOfMeasureId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UnitOfMeasureName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="SupervisiorId" Type="int" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="ShirtSize" Type="varchar" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="StateCode" Type="varchar" MaxLength="2" />
+          <Property Name="SSN" Type="char" MaxLength="4" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="DrugTest" Type="bit" />
+          <Property Name="BackgroundCheck" Type="bit" />
+          <Property Name="CodeOfConduct" Type="bit" />
+        </EntityType>
+        <EntityType Name="Utility">
+          <Key>
+            <PropertyRef Name="UtilityId" />
+          </Key>
+          <Property Name="UtilityId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LdcCode" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="UtilityScriptName" Type="varchar" MaxLength="50" />
+          <Property Name="BillMethod" Type="char" MaxLength="1" />
+          <Property Name="CommercialCustomerType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UtilitySalesChannel">
+          <Key>
+            <PropertyRef Name="UtilitySalesChannelId" />
+          </Key>
+          <Property Name="UtilitySalesChannelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UtilityId" Type="int" />
+          <Property Name="SalesChannelId" Type="int" />
+          <Property Name="UtilitySalesChannelName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UtilityType">
+          <Key>
+            <PropertyRef Name="UtilityTypeId" />
+          </Key>
+          <Property Name="UtilityTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UtilityTypeName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorNumber" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="VendorName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MarketerCode" Type="varchar" MaxLength="50" />
+          <Property Name="SalesChannelId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CommissionNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Main_User">
+          <End Role="User" Type="SparkModel.Store.User" Multiplicity="0..1" />
+          <End Role="Main" Type="SparkModel.Store.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_SalesChannel">
+          <End Role="SalesChannel" Type="SparkModel.Store.SalesChannel" Multiplicity="1" />
+          <End Role="Office" Type="SparkModel.Store.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Vendor">
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="1" />
+          <End Role="Office" Type="SparkModel.Store.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_MainId">
+          <End Role="Main" Type="SparkModel.Store.Main" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="SparkModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Main">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Program">
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="SparkModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_AccountNumberType">
+          <End Role="AccountNumberType" Type="SparkModel.Store.AccountNumberType" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountNumberType">
+              <PropertyRef Name="AccountNumberTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="AccountNumberTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_PremiseType">
+          <End Role="PremiseType" Type="SparkModel.Store.PremiseType" Multiplicity="0..1" />
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PremiseType">
+              <PropertyRef Name="PremiseTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="PremiseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_UnitOfMeasure">
+          <End Role="UnitOfMeasure" Type="SparkModel.Store.UnitOfMeasure" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitOfMeasure">
+              <PropertyRef Name="UnitOfMeasureId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UnitOfMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_Utility">
+          <End Role="Utility" Type="SparkModel.Store.Utility" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="UtilityId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UtilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_UtilityType">
+          <End Role="UtilityType" Type="SparkModel.Store.UtilityType" Multiplicity="0..1" />
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UtilityType">
+              <PropertyRef Name="UtilityTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UtilityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramVendor_Program">
+          <End Role="Program" Type="SparkModel.Store.Program" Multiplicity="1" />
+          <End Role="ProgramVendor" Type="SparkModel.Store.ProgramVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="ProgramVendor">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramVendor_Vendor">
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="1" />
+          <End Role="ProgramVendor" Type="SparkModel.Store.ProgramVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="ProgramVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Office">
+          <End Role="Office" Type="SparkModel.Store.Office" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Vendor">
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UtilitySalesChannel_SalesChannel">
+          <End Role="SalesChannel" Type="SparkModel.Store.SalesChannel" Multiplicity="0..1" />
+          <End Role="UtilitySalesChannel" Type="SparkModel.Store.UtilitySalesChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="UtilitySalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UtilitySalesChannel_Utility">
+          <End Role="Utility" Type="SparkModel.Store.Utility" Multiplicity="0..1" />
+          <End Role="UtilitySalesChannel" Type="SparkModel.Store.UtilitySalesChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="UtilityId" />
+            </Principal>
+            <Dependent Role="UtilitySalesChannel">
+              <PropertyRef Name="UtilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_SalesChannel">
+          <End Role="SalesChannel" Type="SparkModel.Store.SalesChannel" Multiplicity="0..1" />
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SparkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SparkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountNumberTypes" EntityType="SparkModel.AccountNumberType" />
+          <EntitySet Name="Mains" EntityType="SparkModel.Main" />
+          <EntitySet Name="OrderDetails" EntityType="SparkModel.OrderDetail" />
+          <EntitySet Name="PremiseTypes" EntityType="SparkModel.PremiseType" />
+          <EntitySet Name="Programs" EntityType="SparkModel.Program" />
+          <EntitySet Name="ProgramVendors" EntityType="SparkModel.ProgramVendor" />
+          <EntitySet Name="SalesChannels" EntityType="SparkModel.SalesChannel" />
+          <EntitySet Name="UnitOfMeasures" EntityType="SparkModel.UnitOfMeasure" />
+          <EntitySet Name="Users" EntityType="SparkModel.User" />
+          <EntitySet Name="Utilities" EntityType="SparkModel.Utility" />
+          <EntitySet Name="UtilityTypes" EntityType="SparkModel.UtilityType" />
+          <EntitySet Name="Vendors" EntityType="SparkModel.Vendor" />
+          <AssociationSet Name="FK_Program_AccountNumberType" Association="SparkModel.FK_Program_AccountNumberType">
+            <End Role="AccountNumberType" EntitySet="AccountNumberTypes" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_MainId" Association="SparkModel.FK_OrderDetail_MainId">
+            <End Role="Main" EntitySet="Mains" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_PremiseType" Association="SparkModel.FK_Program_PremiseType">
+            <End Role="PremiseType" EntitySet="PremiseTypes" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_UnitOfMeasure" Association="SparkModel.FK_Program_UnitOfMeasure">
+            <End Role="UnitOfMeasure" EntitySet="UnitOfMeasures" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_Utility" Association="SparkModel.FK_Program_Utility">
+            <End Role="Utility" EntitySet="Utilities" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_UtilityType" Association="SparkModel.FK_Program_UtilityType">
+            <End Role="UtilityType" EntitySet="UtilityTypes" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramVendor_Program" Association="SparkModel.FK_ProgramVendor_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="ProgramVendor" EntitySet="ProgramVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramVendor_Vendor" Association="SparkModel.FK_ProgramVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="ProgramVendor" EntitySet="ProgramVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_SalesChannel" Association="SparkModel.FK_Vendor_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannels" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Vendor" Association="SparkModel.FK_User_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_User" Association="SparkModel.FK_Main_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Main" EntitySet="Mains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Program" Association="SparkModel.FK_OrderDetail_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="UtilitySalesChannels" EntityType="SparkModel.UtilitySalesChannel" />
+          <AssociationSet Name="FK_UtilitySalesChannel_SalesChannel" Association="SparkModel.FK_UtilitySalesChannel_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannels" />
+            <End Role="UtilitySalesChannel" EntitySet="UtilitySalesChannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UtilitySalesChannel_Utility" Association="SparkModel.FK_UtilitySalesChannel_Utility">
+            <End Role="Utility" EntitySet="Utilities" />
+            <End Role="UtilitySalesChannel" EntitySet="UtilitySalesChannels" />
+          </AssociationSet>
+          <EntitySet Name="Offices" EntityType="SparkModel.Office" />
+          <AssociationSet Name="FK_Office_SalesChannel" Association="SparkModel.FK_Office_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannels" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Office_Vendor" Association="SparkModel.FK_Office_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Office" Association="SparkModel.FK_User_Office">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Leads" EntityType="SparkModel.Lead" />
+        </EntityContainer>
+        <EntityType Name="AccountNumberType">
+          <Key>
+            <PropertyRef Name="AccountNumberTypeId" />
+          </Key>
+          <Property Name="AccountNumberTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNumberTypeName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Programs" Relationship="SparkModel.FK_Program_AccountNumberType" FromRole="AccountNumberType" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Main">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WebDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WavName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Dnis" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Verified" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Concern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ConcernCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TotalTime" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RecordLocator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationMiddle" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Btn" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactTitle" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Territory" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LeadType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Relation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NumberOfAccounts" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="SparkModel.FK_OrderDetail_MainId" FromRole="Main" ToRole="OrderDetail" />
+          <Property Type="String" Name="AccountFirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountLastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="SparkModel.FK_Main_User" FromRole="Main" ToRole="User" />
+          <Property Type="String" Name="OutboundWavName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="QaDateChange" Precision="3" />
+          <Property Type="String" Name="QaReasonChange" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QaAgentId" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="QaOriginalConcern" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="QaChanged" />
+          <Property Type="Int32" Name="LeadsId" />
+          <Property Type="String" Name="PreferredLanguage" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SwitchDate" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SourceId" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="Int32" />
+          <Property Name="UtilityType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="AccountType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MeterNumber" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RateClass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerNameKey" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceReferenceNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCity" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCity" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="BillingZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="InCityLimits" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Main" Relationship="SparkModel.FK_OrderDetail_MainId" FromRole="OrderDetail" ToRole="Main" />
+          <NavigationProperty Name="Program" Relationship="SparkModel.FK_OrderDetail_Program" FromRole="OrderDetail" ToRole="Program" />
+          <Property Type="String" Name="BillingFirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BillingLastName" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PremiseType">
+          <Key>
+            <PropertyRef Name="PremiseTypeId" />
+          </Key>
+          <Property Name="PremiseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PremiseTypeName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Programs" Relationship="SparkModel.FK_Program_PremiseType" FromRole="PremiseType" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+          </Key>
+          <Property Name="ProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramCode" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="ProgramName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="EffectiveStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EffectiveEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Msf" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Etf" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="PromotionalCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UnitOfMeasureId" Type="Int32" Nullable="false" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="UtilityTypeId" Type="Int32" />
+          <Property Name="PremiseTypeId" Type="Int32" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="UtilityId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumberTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumberLength" Type="Int32" Nullable="false" />
+          <Property Name="AccountNumberFixedLength" Type="Boolean" />
+          <Property Name="MeterNumber" Type="Boolean" />
+          <Property Name="ServiceReferenceNumver" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RescindBy" Type="Int32" />
+          <Property Name="Hefpa" Type="Boolean" />
+          <Property Name="RateVerbiage" Type="String" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="CancellationVerbiage" Type="String" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="RateVerbiageSpanish" Type="String" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="CancellationVerbiageSpanish" Type="String" MaxLength="2500" Unicode="false" FixedLength="false" />
+          <Property Name="Vendor" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesChannel" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Market" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="AccountNumberType" Relationship="SparkModel.FK_Program_AccountNumberType" FromRole="Program" ToRole="AccountNumberType" />
+          <NavigationProperty Name="PremiseType" Relationship="SparkModel.FK_Program_PremiseType" FromRole="Program" ToRole="PremiseType" />
+          <NavigationProperty Name="UnitOfMeasure" Relationship="SparkModel.FK_Program_UnitOfMeasure" FromRole="Program" ToRole="UnitOfMeasure" />
+          <NavigationProperty Name="Utility" Relationship="SparkModel.FK_Program_Utility" FromRole="Program" ToRole="Utility" />
+          <NavigationProperty Name="UtilityType" Relationship="SparkModel.FK_Program_UtilityType" FromRole="Program" ToRole="UtilityType" />
+          <NavigationProperty Name="ProgramVendors" Relationship="SparkModel.FK_ProgramVendor_Program" FromRole="Program" ToRole="ProgramVendor" />
+          <NavigationProperty Name="OrderDetails" Relationship="SparkModel.FK_OrderDetail_Program" FromRole="Program" ToRole="OrderDetail" />
+          <Property Type="Int32" Name="BrandId" Nullable="false" />
+          <Property Type="String" Name="UpdatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdatedDateTime" Precision="7" />
+          <Property Type="Int32" Name="MeterNumberLength" />
+          <Property Type="Boolean" Name="ServiceReference" Nullable="false" />
+          <Property Type="Boolean" Name="CreditCheck" Nullable="false" />
+          <Property Type="String" Name="ProgramDescription" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DefaultPricingPlanDescription" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProgramVendor">
+          <Key>
+            <PropertyRef Name="ProgramId" />
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="ProgramId" Type="Int32" Nullable="false" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Program" Relationship="SparkModel.FK_ProgramVendor_Program" FromRole="ProgramVendor" ToRole="Program" />
+          <NavigationProperty Name="Vendor" Relationship="SparkModel.FK_ProgramVendor_Vendor" FromRole="ProgramVendor" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="SalesChannelId" />
+          </Key>
+          <Property Name="SalesChannelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Vendors" Relationship="SparkModel.FK_Vendor_SalesChannel" FromRole="SalesChannel" ToRole="Vendor" />
+          <NavigationProperty Name="UtilitySalesChannels" Relationship="SparkModel.FK_UtilitySalesChannel_SalesChannel" FromRole="SalesChannel" ToRole="UtilitySalesChannel" />
+          <NavigationProperty Name="Offices" Relationship="SparkModel.FK_Office_SalesChannel" FromRole="SalesChannel" ToRole="Office" />
+        </EntityType>
+        <EntityType Name="UnitOfMeasure">
+          <Key>
+            <PropertyRef Name="UnitOfMeasureId" />
+          </Key>
+          <Property Name="UnitOfMeasureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitOfMeasureName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Programs" Relationship="SparkModel.FK_Program_UnitOfMeasure" FromRole="UnitOfMeasure" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SupervisiorId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Vendor" Relationship="SparkModel.FK_User_Vendor" FromRole="User" ToRole="Vendor" />
+          <NavigationProperty Name="Mains" Relationship="SparkModel.FK_Main_User" FromRole="User" ToRole="Main" />
+          <NavigationProperty Name="Office" Relationship="SparkModel.FK_User_Office" FromRole="User" ToRole="Office" />
+          <Property Type="String" Name="Gender" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ShirtSize" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StateCode" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SSN" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="BirthDate" Precision="0" />
+          <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="DrugTest" />
+          <Property Type="Boolean" Name="BackgroundCheck" />
+          <Property Type="Boolean" Name="CodeOfConduct" />
+        </EntityType>
+        <EntityType Name="Utility">
+          <Key>
+            <PropertyRef Name="UtilityId" />
+          </Key>
+          <Property Name="UtilityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LdcCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Programs" Relationship="SparkModel.FK_Program_Utility" FromRole="Utility" ToRole="Program" />
+          <Property Type="String" Name="UtilityScriptName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UtilitySalesChannels" Relationship="SparkModel.FK_UtilitySalesChannel_Utility" FromRole="Utility" ToRole="UtilitySalesChannel" />
+          <Property Type="String" Name="BillMethod" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CommercialCustomerType" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UtilityType">
+          <Key>
+            <PropertyRef Name="UtilityTypeId" />
+          </Key>
+          <Property Name="UtilityTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UtilityTypeName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Programs" Relationship="SparkModel.FK_Program_UtilityType" FromRole="UtilityType" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorNumber" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="VendorName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MarketerCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesChannelId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ProgramVendors" Relationship="SparkModel.FK_ProgramVendor_Vendor" FromRole="Vendor" ToRole="ProgramVendor" />
+          <NavigationProperty Name="SalesChannel" Relationship="SparkModel.FK_Vendor_SalesChannel" FromRole="Vendor" ToRole="SalesChannel" />
+          <NavigationProperty Name="Users" Relationship="SparkModel.FK_User_Vendor" FromRole="Vendor" ToRole="User" />
+          <Property Type="String" Name="CommissionNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Offices" Relationship="SparkModel.FK_Office_Vendor" FromRole="Vendor" ToRole="Office" />
+        </EntityType>
+        <Association Name="FK_Program_AccountNumberType">
+          <End Role="AccountNumberType" Type="SparkModel.AccountNumberType" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountNumberType">
+              <PropertyRef Name="AccountNumberTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="AccountNumberTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_MainId">
+          <End Role="Main" Type="SparkModel.Main" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="SparkModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Main">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_PremiseType">
+          <End Role="PremiseType" Type="SparkModel.PremiseType" Multiplicity="0..1" />
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PremiseType">
+              <PropertyRef Name="PremiseTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="PremiseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_UnitOfMeasure">
+          <End Role="UnitOfMeasure" Type="SparkModel.UnitOfMeasure" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitOfMeasure">
+              <PropertyRef Name="UnitOfMeasureId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UnitOfMeasureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_Utility">
+          <End Role="Utility" Type="SparkModel.Utility" Multiplicity="1" />
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="UtilityId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UtilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Program_UtilityType">
+          <End Role="UtilityType" Type="SparkModel.UtilityType" Multiplicity="0..1" />
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UtilityType">
+              <PropertyRef Name="UtilityTypeId" />
+            </Principal>
+            <Dependent Role="Program">
+              <PropertyRef Name="UtilityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramVendor_Program">
+          <End Role="Program" Type="SparkModel.Program" Multiplicity="1" />
+          <End Role="ProgramVendor" Type="SparkModel.ProgramVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="ProgramVendor">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramVendor_Vendor">
+          <End Role="Vendor" Type="SparkModel.Vendor" Multiplicity="1" />
+          <End Role="ProgramVendor" Type="SparkModel.ProgramVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="ProgramVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_SalesChannel">
+          <End Role="SalesChannel" Type="SparkModel.SalesChannel" Multiplicity="0..1" />
+          <End Role="Vendor" Type="SparkModel.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Vendor">
+          <End Role="Vendor" Type="SparkModel.Vendor" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_User">
+          <End Type="SparkModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SparkModel.Main" Role="Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Program">
+          <End Type="SparkModel.Program" Role="Program" Multiplicity="0..1" />
+          <End Type="SparkModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UtilitySalesChannel">
+          <Key>
+            <PropertyRef Name="UtilitySalesChannelId" />
+          </Key>
+          <Property Type="Int32" Name="UtilitySalesChannelId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UtilityId" />
+          <Property Type="Int32" Name="SalesChannelId" />
+          <Property Type="String" Name="UtilitySalesChannelName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SalesChannel" Relationship="SparkModel.FK_UtilitySalesChannel_SalesChannel" FromRole="UtilitySalesChannel" ToRole="SalesChannel" />
+          <NavigationProperty Name="Utility" Relationship="SparkModel.FK_UtilitySalesChannel_Utility" FromRole="UtilitySalesChannel" ToRole="Utility" />
+        </EntityType>
+        <Association Name="FK_UtilitySalesChannel_SalesChannel">
+          <End Type="SparkModel.SalesChannel" Role="SalesChannel" Multiplicity="0..1" />
+          <End Type="SparkModel.UtilitySalesChannel" Role="UtilitySalesChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="UtilitySalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UtilitySalesChannel_Utility">
+          <End Type="SparkModel.Utility" Role="Utility" Multiplicity="0..1" />
+          <End Type="SparkModel.UtilitySalesChannel" Role="UtilitySalesChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utility">
+              <PropertyRef Name="UtilityId" />
+            </Principal>
+            <Dependent Role="UtilitySalesChannel">
+              <PropertyRef Name="UtilityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Type="Int32" Name="OfficeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VendorId" Nullable="false" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OfficeEmail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Precision="3" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MarketerCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SalesChannelId" Nullable="false" />
+          <NavigationProperty Name="SalesChannel" Relationship="SparkModel.FK_Office_SalesChannel" FromRole="Office" ToRole="SalesChannel" />
+          <NavigationProperty Name="Vendor" Relationship="SparkModel.FK_Office_Vendor" FromRole="Office" ToRole="Vendor" />
+          <NavigationProperty Name="Users" Relationship="SparkModel.FK_User_Office" FromRole="Office" ToRole="User" />
+          <Property Type="String" Name="OfficeContact" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OfficePhone" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address1" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address2" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StateCode" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="ZipCode" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Office_SalesChannel">
+          <End Type="SparkModel.SalesChannel" Role="SalesChannel" Multiplicity="1" />
+          <End Type="SparkModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Office_Vendor">
+          <End Type="SparkModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="SparkModel.Office" Role="Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Office">
+          <End Type="SparkModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="SparkModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Lead">
+          <Key>
+            <PropertyRef Name="LeadsId" />
+          </Key>
+          <Property Type="Int32" Name="LeadsId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="RecordLocator" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VendorNumber" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address2" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Phone" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Utility" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CompanyName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LoadDateTime" Precision="3" />
+          <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="County" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip4" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ZipPlus4" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConnectDate" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UtilityZone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HispanicFlag" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HispanicLangPref" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HomeSqFt" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DwellType" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactTitle" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HomeYrBuilt" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BuildingSqFt" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HispanicAculturation" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UsageThreshold" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IndividualCreditScore" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SicCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmployeeSize" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreditRating" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YrStartDate" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SicDesc" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CampaignCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RecordType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Vendor" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProcessDate" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ESIID" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CarrierRoute" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SequenceNumber" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Lat" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Long" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SparkModelStoreContainer" CdmEntityContainer="SparkEntities">
+          <EntitySetMapping Name="AccountNumberTypes">
+            <EntityTypeMapping TypeName="SparkModel.AccountNumberType">
+              <MappingFragment StoreEntitySet="AccountNumberType">
+                <ScalarProperty Name="AccountNumberTypeId" ColumnName="AccountNumberTypeId" />
+                <ScalarProperty Name="AccountNumberTypeName" ColumnName="AccountNumberTypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mains">
+            <EntityTypeMapping TypeName="SparkModel.Main">
+              <MappingFragment StoreEntitySet="Main">
+                <ScalarProperty Name="SourceId" ColumnName="SourceId" />
+                <ScalarProperty Name="SwitchDate" ColumnName="SwitchDate" />
+                <ScalarProperty Name="PreferredLanguage" ColumnName="PreferredLanguage" />
+                <ScalarProperty Name="LeadsId" ColumnName="LeadsId" />
+                <ScalarProperty Name="QaChanged" ColumnName="QaChanged" />
+                <ScalarProperty Name="QaOriginalConcern" ColumnName="QaOriginalConcern" />
+                <ScalarProperty Name="QaAgentId" ColumnName="QaAgentId" />
+                <ScalarProperty Name="QaReasonChange" ColumnName="QaReasonChange" />
+                <ScalarProperty Name="QaDateChange" ColumnName="QaDateChange" />
+                <ScalarProperty Name="OutboundWavName" ColumnName="OutboundWavName" />
+                <ScalarProperty Name="AccountLastName" ColumnName="AccountLastName" />
+                <ScalarProperty Name="AccountFirstName" ColumnName="AccountFirstName" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="WebDateTime" ColumnName="WebDateTime" />
+                <ScalarProperty Name="WavName" ColumnName="WavName" />
+                <ScalarProperty Name="Dnis" ColumnName="Dnis" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+                <ScalarProperty Name="ConcernCode" ColumnName="ConcernCode" />
+                <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+                <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RecordLocator" ColumnName="RecordLocator" />
+                <ScalarProperty Name="SalesState" ColumnName="SalesState" />
+                <ScalarProperty Name="AuthorizationFirstName" ColumnName="AuthorizationFirstName" />
+                <ScalarProperty Name="AuthorizationMiddle" ColumnName="AuthorizationMiddle" />
+                <ScalarProperty Name="AuthorizationLastName" ColumnName="AuthorizationLastName" />
+                <ScalarProperty Name="Btn" ColumnName="Btn" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyContactFirstName" ColumnName="CompanyContactFirstName" />
+                <ScalarProperty Name="CompanyContactLastName" ColumnName="CompanyContactLastName" />
+                <ScalarProperty Name="CompanyContactTitle" ColumnName="CompanyContactTitle" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="NumberOfAccounts" ColumnName="NumberOfAccounts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="SparkModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="BillingLastName" ColumnName="BillingLastName" />
+                <ScalarProperty Name="BillingFirstName" ColumnName="BillingFirstName" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="UtilityType" ColumnName="UtilityType" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="MeterNumber" ColumnName="MeterNumber" />
+                <ScalarProperty Name="RateClass" ColumnName="RateClass" />
+                <ScalarProperty Name="CustomerNameKey" ColumnName="CustomerNameKey" />
+                <ScalarProperty Name="ServiceReferenceNumber" ColumnName="ServiceReferenceNumber" />
+                <ScalarProperty Name="ServiceAddress" ColumnName="ServiceAddress" />
+                <ScalarProperty Name="ServiceCity" ColumnName="ServiceCity" />
+                <ScalarProperty Name="ServiceState" ColumnName="ServiceState" />
+                <ScalarProperty Name="ServiceZip" ColumnName="ServiceZip" />
+                <ScalarProperty Name="ServiceCounty" ColumnName="ServiceCounty" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="BillingZip" ColumnName="BillingZip" />
+                <ScalarProperty Name="BillingCounty" ColumnName="BillingCounty" />
+                <ScalarProperty Name="InCityLimits" ColumnName="InCityLimits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PremiseTypes">
+            <EntityTypeMapping TypeName="SparkModel.PremiseType">
+              <MappingFragment StoreEntitySet="PremiseType">
+                <ScalarProperty Name="PremiseTypeId" ColumnName="PremiseTypeId" />
+                <ScalarProperty Name="PremiseTypeName" ColumnName="PremiseTypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="SparkModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="DefaultPricingPlanDescription" ColumnName="DefaultPricingPlanDescription" />
+                <ScalarProperty Name="ProgramDescription" ColumnName="ProgramDescription" />
+                <ScalarProperty Name="CreditCheck" ColumnName="CreditCheck" />
+                <ScalarProperty Name="ServiceReference" ColumnName="ServiceReference" />
+                <ScalarProperty Name="MeterNumberLength" ColumnName="MeterNumberLength" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="ProgramCode" ColumnName="ProgramCode" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="EffectiveStartDate" ColumnName="EffectiveStartDate" />
+                <ScalarProperty Name="EffectiveEndDate" ColumnName="EffectiveEndDate" />
+                <ScalarProperty Name="Msf" ColumnName="Msf" />
+                <ScalarProperty Name="Etf" ColumnName="Etf" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="PromotionalCode" ColumnName="PromotionalCode" />
+                <ScalarProperty Name="UnitOfMeasureId" ColumnName="UnitOfMeasureId" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="UtilityTypeId" ColumnName="UtilityTypeId" />
+                <ScalarProperty Name="PremiseTypeId" ColumnName="PremiseTypeId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UtilityId" ColumnName="UtilityId" />
+                <ScalarProperty Name="AccountNumberTypeId" ColumnName="AccountNumberTypeId" />
+                <ScalarProperty Name="AccountNumberLength" ColumnName="AccountNumberLength" />
+                <ScalarProperty Name="AccountNumberFixedLength" ColumnName="AccountNumberFixedLength" />
+                <ScalarProperty Name="MeterNumber" ColumnName="MeterNumber" />
+                <ScalarProperty Name="ServiceReferenceNumver" ColumnName="ServiceReferenceNumver" />
+                <ScalarProperty Name="RescindBy" ColumnName="RescindBy" />
+                <ScalarProperty Name="Hefpa" ColumnName="Hefpa" />
+                <ScalarProperty Name="RateVerbiage" ColumnName="RateVerbiage" />
+                <ScalarProperty Name="CancellationVerbiage" ColumnName="CancellationVerbiage" />
+                <ScalarProperty Name="RateVerbiageSpanish" ColumnName="RateVerbiageSpanish" />
+                <ScalarProperty Name="CancellationVerbiageSpanish" ColumnName="CancellationVerbiageSpanish" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="SalesChannel" ColumnName="SalesChannel" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramVendors">
+            <EntityTypeMapping TypeName="SparkModel.ProgramVendor">
+              <MappingFragment StoreEntitySet="ProgramVendor">
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesChannels">
+            <EntityTypeMapping TypeName="SparkModel.SalesChannel">
+              <MappingFragment StoreEntitySet="SalesChannel">
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitOfMeasures">
+            <EntityTypeMapping TypeName="SparkModel.UnitOfMeasure">
+              <MappingFragment StoreEntitySet="UnitOfMeasure">
+                <ScalarProperty Name="UnitOfMeasureId" ColumnName="UnitOfMeasureId" />
+                <ScalarProperty Name="UnitOfMeasureName" ColumnName="UnitOfMeasureName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SparkModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CodeOfConduct" ColumnName="CodeOfConduct" />
+                <ScalarProperty Name="BackgroundCheck" ColumnName="BackgroundCheck" />
+                <ScalarProperty Name="DrugTest" ColumnName="DrugTest" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ShirtSize" ColumnName="ShirtSize" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SupervisiorId" ColumnName="SupervisiorId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilities">
+            <EntityTypeMapping TypeName="SparkModel.Utility">
+              <MappingFragment StoreEntitySet="Utility">
+                <ScalarProperty Name="CommercialCustomerType" ColumnName="CommercialCustomerType" />
+                <ScalarProperty Name="BillMethod" ColumnName="BillMethod" />
+                <ScalarProperty Name="UtilityScriptName" ColumnName="UtilityScriptName" />
+                <ScalarProperty Name="UtilityId" ColumnName="UtilityId" />
+                <ScalarProperty Name="LdcCode" ColumnName="LdcCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UtilityTypes">
+            <EntityTypeMapping TypeName="SparkModel.UtilityType">
+              <MappingFragment StoreEntitySet="UtilityType">
+                <ScalarProperty Name="UtilityTypeId" ColumnName="UtilityTypeId" />
+                <ScalarProperty Name="UtilityTypeName" ColumnName="UtilityTypeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="SparkModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="CommissionNumber" ColumnName="CommissionNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="MarketerCode" ColumnName="MarketerCode" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UtilitySalesChannels">
+            <EntityTypeMapping TypeName="SparkModel.UtilitySalesChannel">
+              <MappingFragment StoreEntitySet="UtilitySalesChannel">
+                <ScalarProperty Name="UtilitySalesChannelName" ColumnName="UtilitySalesChannelName" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="UtilityId" ColumnName="UtilityId" />
+                <ScalarProperty Name="UtilitySalesChannelId" ColumnName="UtilitySalesChannelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="SparkModel.Office">
+              <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="OfficeContact" ColumnName="OfficeContact" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="MarketerCode" ColumnName="MarketerCode" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OfficeEmail" ColumnName="OfficeEmail" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="SparkModel.Lead">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="CarrierRoute" ColumnName="CarrierRoute" />
+                <ScalarProperty Name="ESIID" ColumnName="ESIID" />
+                <ScalarProperty Name="ProcessDate" ColumnName="ProcessDate" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+                <ScalarProperty Name="SicDesc" ColumnName="SicDesc" />
+                <ScalarProperty Name="YrStartDate" ColumnName="YrStartDate" />
+                <ScalarProperty Name="CreditRating" ColumnName="CreditRating" />
+                <ScalarProperty Name="EmployeeSize" ColumnName="EmployeeSize" />
+                <ScalarProperty Name="SicCode" ColumnName="SicCode" />
+                <ScalarProperty Name="IndividualCreditScore" ColumnName="IndividualCreditScore" />
+                <ScalarProperty Name="UsageThreshold" ColumnName="UsageThreshold" />
+                <ScalarProperty Name="HispanicAculturation" ColumnName="HispanicAculturation" />
+                <ScalarProperty Name="BuildingSqFt" ColumnName="BuildingSqFt" />
+                <ScalarProperty Name="HomeYrBuilt" ColumnName="HomeYrBuilt" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="DwellType" ColumnName="DwellType" />
+                <ScalarProperty Name="HomeSqFt" ColumnName="HomeSqFt" />
+                <ScalarProperty Name="HispanicLangPref" ColumnName="HispanicLangPref" />
+                <ScalarProperty Name="HispanicFlag" ColumnName="HispanicFlag" />
+                <ScalarProperty Name="UtilityZone" ColumnName="UtilityZone" />
+                <ScalarProperty Name="ConnectDate" ColumnName="ConnectDate" />
+                <ScalarProperty Name="ZipPlus4" ColumnName="ZipPlus4" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LoadDateTime" ColumnName="LoadDateTime" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Utility" ColumnName="Utility" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="RecordLocator" ColumnName="RecordLocator" />
+                <ScalarProperty Name="LeadsId" ColumnName="LeadsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

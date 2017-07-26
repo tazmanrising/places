@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ResidentialPartnerService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential.DataType" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/ResidentialPartnerService" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Service.DataType.PricePlan" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.MX.PricePlan" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd10" namespace="http://schemas.constellation.com/2012/05/16/Residential" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/CreditRulesEngineDomain.ResidentialService" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Service" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Residential.Application.Detail" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.Data.Models" />
+      <xsd:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.Base" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedCustomerContractPDFByLanguage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedCustomerContractPDFByLanguage" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedCustomerContractPDFByLanguage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedCustomerContractPDFByLanguageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedUDSContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedUDSContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedUDSContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedUDSContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ImportD2DContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportD2DContract" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ImportD2DContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportD2DContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ImportContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportContract" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ImportContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_IsPromoCodeValid_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPromoCodeValid" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_IsPromoCodeValid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPromoCodeValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_IsReferralCodeValid_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsReferralCodeValid" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_IsReferralCodeValid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsReferralCodeValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_PerformCreditCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:PerformCreditCheck" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_PerformCreditCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PerformCreditCheckResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveReferenceData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReferenceData" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveReferenceData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReferenceDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUp" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpByType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpMultiple_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpMultiple" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpMultiple_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpSiebel_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpSiebel" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SaveCustomerSignUpSiebel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCustomerSignUpSiebelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SendWelcomeEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendWelcomeEmail" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SendWelcomeEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendWelcomeEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateReferralMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReferralMember" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateReferralMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReferralMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateTPVStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTPVStatus" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateTPVStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTPVStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ValidateReferralCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateReferralCode" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ValidateReferralCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateReferralCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ValidateReferralCodeStarTex_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateReferralCodeStarTex" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ValidateReferralCodeStarTex_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateReferralCodeStarTexResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_DoesAccountNumberAlreadyExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:DoesAccountNumberAlreadyExist" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_DoesAccountNumberAlreadyExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DoesAccountNumberAlreadyExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSMBCustomerResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSMBCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSMBCustomerResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSMBCustomerResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateSMBTPVStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSMBTPVStatus" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateSMBTPVStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSMBTPVStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPricingPlanFromMX_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPricingPlanFromMX" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPricingPlanFromMX_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPricingPlanFromMXResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerRenewalResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerRenewalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerRenewalResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerRenewalResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateRenewalTPVStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRenewalTPVStatus" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateRenewalTPVStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRenewalTPVStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateTPVVerificationCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTPVVerificationCode" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateTPVVerificationCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTPVVerificationCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerDataByDMPromoCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDataByDMPromoCode" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerDataByDMPromoCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDataByDMPromoCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerDataByPersonalCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDataByPersonalCode" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerDataByPersonalCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerDataByPersonalCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_PostTPVUpdateElement_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostTPVUpdateElement" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_PostTPVUpdateElement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostTPVUpdateElementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SubmitResidentialCreditCheckRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitResidentialCreditCheckRequest" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_SubmitResidentialCreditCheckRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SubmitResidentialCreditCheckRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateResponseWithUDCAccountNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponseWithUDCAccountNumber" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_UpdateResponseWithUDCAccountNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponseWithUDCAccountNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_TestPing_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestPing" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_TestPing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestPingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_TestAuthentication_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestAuthentication" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_TestAuthentication_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestAuthenticationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUdcZipCodes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUdcZipCodes" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUdcZipCodes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUdcZipCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListingBySignUpType_PTS_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListingBySignUpType_PTS" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListingBySignUpType_PTS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListingBySignUpType_PTSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanDetails_PTS_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanDetails_PTS" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanDetails_PTS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanDetails_PTSResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSwitchTypeGeorgia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSwitchTypeGeorgia" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSwitchTypeGeorgia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSwitchTypeGeorgiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSwitchTypeTexas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSwitchTypeTexas" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSwitchTypeTexas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSwitchTypeTexasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ApproveReferral_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveReferral" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ApproveReferral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveReferralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CancelReferral_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelReferral" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CancelReferral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelReferralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ConfirmCustomerSignUp_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCustomerSignUp" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ConfirmCustomerSignUp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCustomerSignUpResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ConfirmCustomerSignUpByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCustomerSignUpByType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_ConfirmCustomerSignUpByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmCustomerSignUpByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferralCustom_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferralCustom" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferralCustom_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferralCustomResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferral_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferral" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferral_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferralResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferralMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferralMember" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_CreateReferralMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateReferralMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContractVersionPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractVersionPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContractVersionPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractVersionPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentByUDC_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentByUDC" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentByUDC_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentByUDCResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentGlobal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentGlobal" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentGlobal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentGlobalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentGeneric_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentGeneric" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetContentGeneric_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContentGenericResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerContractHTML_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerContractHTML" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerContractHTML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerContractHTMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerResponse_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCustomerResponse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCustomerResponseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetDisclaimerText_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDisclaimerText" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetDisclaimerText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDisclaimerTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListing_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListing" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListingBySignUpType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListingBySignUpType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanListingBySignUpType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanListingBySignUpTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanUDSContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanUDSContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetPlanUDSContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlanUDSContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetReferrals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferrals" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetReferrals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferralsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetReferralMember_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferralMember" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetReferralMember_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReferralMemberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSignedCustomerContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedCustomerContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSignedCustomerContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedCustomerContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSignedUDSContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedUDSContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetSignedUDSContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedUDSContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStatesList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatesList" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStatesList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStatesListByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatesListByType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStatesListByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatesListByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStateUDCList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateUDCList" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetStateUDCList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStateUDCListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetTexasAddressByESID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTexasAddressByESID" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetTexasAddressByESID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTexasAddressByESIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetTexasAddressByText_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTexasAddressByText" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetTexasAddressByText_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTexasAddressByTextResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCList" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCListByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCListByType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCListByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCListByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCountyList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountyList" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetCountyList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCListViaZip_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCListViaZip" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCListViaZip_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCListViaZipResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCDetail" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCDetailByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCDetailByType" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUDCDetailByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUDCDetailByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedCustomerContractPDF_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedCustomerContractPDF" />
+  </wsdl:message>
+  <wsdl:message name="IResidentialPartnerService_GetUnSignedCustomerContractPDF_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnSignedCustomerContractPDFResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IResidentialPartnerService">
+    <wsdl:operation name="GetUnSignedCustomerContractPDFByLanguage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDFByLanguage" message="tns:IResidentialPartnerService_GetUnSignedCustomerContractPDFByLanguage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDFByLanguageResponse" message="tns:IResidentialPartnerService_GetUnSignedCustomerContractPDFByLanguage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSignedUDSContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedUDSContractPDF" message="tns:IResidentialPartnerService_GetUnSignedUDSContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedUDSContractPDFResponse" message="tns:IResidentialPartnerService_GetUnSignedUDSContractPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportD2DContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ImportD2DContract" message="tns:IResidentialPartnerService_ImportD2DContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ImportD2DContractResponse" message="tns:IResidentialPartnerService_ImportD2DContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ImportContract" message="tns:IResidentialPartnerService_ImportContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ImportContractResponse" message="tns:IResidentialPartnerService_ImportContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPromoCodeValid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/IsPromoCodeValid" message="tns:IResidentialPartnerService_IsPromoCodeValid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/IsPromoCodeValidResponse" message="tns:IResidentialPartnerService_IsPromoCodeValid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsReferralCodeValid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/IsReferralCodeValid" message="tns:IResidentialPartnerService_IsReferralCodeValid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/IsReferralCodeValidResponse" message="tns:IResidentialPartnerService_IsReferralCodeValid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PerformCreditCheck">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/PerformCreditCheck" message="tns:IResidentialPartnerService_PerformCreditCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/PerformCreditCheckResponse" message="tns:IResidentialPartnerService_PerformCreditCheck_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveReferenceData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveReferenceData" message="tns:IResidentialPartnerService_SaveReferenceData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveReferenceDataResponse" message="tns:IResidentialPartnerService_SaveReferenceData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUp" message="tns:IResidentialPartnerService_SaveCustomerSignUp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpResponse" message="tns:IResidentialPartnerService_SaveCustomerSignUp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpByType" message="tns:IResidentialPartnerService_SaveCustomerSignUpByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpByTypeResponse" message="tns:IResidentialPartnerService_SaveCustomerSignUpByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpMultiple">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpMultiple" message="tns:IResidentialPartnerService_SaveCustomerSignUpMultiple_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpMultipleResponse" message="tns:IResidentialPartnerService_SaveCustomerSignUpMultiple_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpSiebel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpSiebel" message="tns:IResidentialPartnerService_SaveCustomerSignUpSiebel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpSiebelResponse" message="tns:IResidentialPartnerService_SaveCustomerSignUpSiebel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendWelcomeEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SendWelcomeEmail" message="tns:IResidentialPartnerService_SendWelcomeEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SendWelcomeEmailResponse" message="tns:IResidentialPartnerService_SendWelcomeEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReferralMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateReferralMember" message="tns:IResidentialPartnerService_UpdateReferralMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateReferralMemberResponse" message="tns:IResidentialPartnerService_UpdateReferralMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTPVStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateTPVStatus" message="tns:IResidentialPartnerService_UpdateTPVStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateTPVStatusResponse" message="tns:IResidentialPartnerService_UpdateTPVStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateReferralCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ValidateReferralCode" message="tns:IResidentialPartnerService_ValidateReferralCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ValidateReferralCodeResponse" message="tns:IResidentialPartnerService_ValidateReferralCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateReferralCodeStarTex">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ValidateReferralCodeStarTex" message="tns:IResidentialPartnerService_ValidateReferralCodeStarTex_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ValidateReferralCodeStarTexResponse" message="tns:IResidentialPartnerService_ValidateReferralCodeStarTex_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DoesAccountNumberAlreadyExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/DoesAccountNumberAlreadyExist" message="tns:IResidentialPartnerService_DoesAccountNumberAlreadyExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/DoesAccountNumberAlreadyExistResponse" message="tns:IResidentialPartnerService_DoesAccountNumberAlreadyExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSMBCustomerResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSMBCustomerResponse" message="tns:IResidentialPartnerService_GetSMBCustomerResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSMBCustomerResponseResponse" message="tns:IResidentialPartnerService_GetSMBCustomerResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSMBTPVStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateSMBTPVStatus" message="tns:IResidentialPartnerService_UpdateSMBTPVStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateSMBTPVStatusResponse" message="tns:IResidentialPartnerService_UpdateSMBTPVStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPricingPlanFromMX">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPricingPlanFromMX" message="tns:IResidentialPartnerService_GetPricingPlanFromMX_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPricingPlanFromMXResponse" message="tns:IResidentialPartnerService_GetPricingPlanFromMX_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerRenewalResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerRenewalResponse" message="tns:IResidentialPartnerService_GetCustomerRenewalResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerRenewalResponseResponse" message="tns:IResidentialPartnerService_GetCustomerRenewalResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRenewalTPVStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateRenewalTPVStatus" message="tns:IResidentialPartnerService_UpdateRenewalTPVStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateRenewalTPVStatusResponse" message="tns:IResidentialPartnerService_UpdateRenewalTPVStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTPVVerificationCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateTPVVerificationCode" message="tns:IResidentialPartnerService_UpdateTPVVerificationCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateTPVVerificationCodeResponse" message="tns:IResidentialPartnerService_UpdateTPVVerificationCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDataByDMPromoCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByDMPromoCode" message="tns:IResidentialPartnerService_GetCustomerDataByDMPromoCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByDMPromoCodeResponse" message="tns:IResidentialPartnerService_GetCustomerDataByDMPromoCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDataByPersonalCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByPersonalCode" message="tns:IResidentialPartnerService_GetCustomerDataByPersonalCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByPersonalCodeResponse" message="tns:IResidentialPartnerService_GetCustomerDataByPersonalCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PostTPVUpdateElement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/PostTPVUpdateElement" message="tns:IResidentialPartnerService_PostTPVUpdateElement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/PostTPVUpdateElementResponse" message="tns:IResidentialPartnerService_PostTPVUpdateElement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitResidentialCreditCheckRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/SubmitResidentialCreditCheckRequest" message="tns:IResidentialPartnerService_SubmitResidentialCreditCheckRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/SubmitResidentialCreditCheckRequestResponse" message="tns:IResidentialPartnerService_SubmitResidentialCreditCheckRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResponseWithUDCAccountNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateResponseWithUDCAccountNumber" message="tns:IResidentialPartnerService_UpdateResponseWithUDCAccountNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/UpdateResponseWithUDCAccountNumberResponse" message="tns:IResidentialPartnerService_UpdateResponseWithUDCAccountNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestPing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/TestPing" message="tns:IResidentialPartnerService_TestPing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/TestPingResponse" message="tns:IResidentialPartnerService_TestPing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestAuthentication">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/TestAuthentication" message="tns:IResidentialPartnerService_TestAuthentication_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/TestAuthenticationResponse" message="tns:IResidentialPartnerService_TestAuthentication_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUdcZipCodes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUdcZipCodes" message="tns:IResidentialPartnerService_GetUdcZipCodes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUdcZipCodesResponse" message="tns:IResidentialPartnerService_GetUdcZipCodes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListingBySignUpType_PTS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpType_PTS" message="tns:IResidentialPartnerService_GetPlanListingBySignUpType_PTS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpType_PTSResponse" message="tns:IResidentialPartnerService_GetPlanListingBySignUpType_PTS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanDetails_PTS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanDetails_PTS" message="tns:IResidentialPartnerService_GetPlanDetails_PTS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanDetails_PTSResponse" message="tns:IResidentialPartnerService_GetPlanDetails_PTS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSwitchTypeGeorgia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeGeorgia" message="tns:IResidentialPartnerService_GetSwitchTypeGeorgia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeGeorgiaResponse" message="tns:IResidentialPartnerService_GetSwitchTypeGeorgia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSwitchTypeTexas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeTexas" message="tns:IResidentialPartnerService_GetSwitchTypeTexas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeTexasResponse" message="tns:IResidentialPartnerService_GetSwitchTypeTexas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveReferral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ApproveReferral" message="tns:IResidentialPartnerService_ApproveReferral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ApproveReferralResponse" message="tns:IResidentialPartnerService_ApproveReferral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReferral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/CancelReferral" message="tns:IResidentialPartnerService_CancelReferral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/CancelReferralResponse" message="tns:IResidentialPartnerService_CancelReferral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerSignUp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUp" message="tns:IResidentialPartnerService_ConfirmCustomerSignUp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUpResponse" message="tns:IResidentialPartnerService_ConfirmCustomerSignUp_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerSignUpByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUpByType" message="tns:IResidentialPartnerService_ConfirmCustomerSignUpByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUpByTypeResponse" message="tns:IResidentialPartnerService_ConfirmCustomerSignUpByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferralCustom">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferralCustom" message="tns:IResidentialPartnerService_CreateReferralCustom_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferralCustomResponse" message="tns:IResidentialPartnerService_CreateReferralCustom_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferral">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferral" message="tns:IResidentialPartnerService_CreateReferral_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferralResponse" message="tns:IResidentialPartnerService_CreateReferral_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferralMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferralMember" message="tns:IResidentialPartnerService_CreateReferralMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/CreateReferralMemberResponse" message="tns:IResidentialPartnerService_CreateReferralMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractVersionPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContractVersionPDF" message="tns:IResidentialPartnerService_GetContractVersionPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContractVersionPDFResponse" message="tns:IResidentialPartnerService_GetContractVersionPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContentByUDC">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentByUDC" message="tns:IResidentialPartnerService_GetContentByUDC_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentByUDCResponse" message="tns:IResidentialPartnerService_GetContentByUDC_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContentGlobal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentGlobal" message="tns:IResidentialPartnerService_GetContentGlobal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentGlobalResponse" message="tns:IResidentialPartnerService_GetContentGlobal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContentGeneric">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentGeneric" message="tns:IResidentialPartnerService_GetContentGeneric_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetContentGenericResponse" message="tns:IResidentialPartnerService_GetContentGeneric_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerContractHTML">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerContractHTML" message="tns:IResidentialPartnerService_GetCustomerContractHTML_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerContractHTMLResponse" message="tns:IResidentialPartnerService_GetCustomerContractHTML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerResponse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerResponse" message="tns:IResidentialPartnerService_GetCustomerResponse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCustomerResponseResponse" message="tns:IResidentialPartnerService_GetCustomerResponse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDisclaimerText">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetDisclaimerText" message="tns:IResidentialPartnerService_GetDisclaimerText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetDisclaimerTextResponse" message="tns:IResidentialPartnerService_GetDisclaimerText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListing" message="tns:IResidentialPartnerService_GetPlanListing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListingResponse" message="tns:IResidentialPartnerService_GetPlanListing_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListingBySignUpType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpType" message="tns:IResidentialPartnerService_GetPlanListingBySignUpType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpTypeResponse" message="tns:IResidentialPartnerService_GetPlanListingBySignUpType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanContractPDF" message="tns:IResidentialPartnerService_GetPlanContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanContractPDFResponse" message="tns:IResidentialPartnerService_GetPlanContractPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanUDSContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanUDSContractPDF" message="tns:IResidentialPartnerService_GetPlanUDSContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetPlanUDSContractPDFResponse" message="tns:IResidentialPartnerService_GetPlanUDSContractPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReferrals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetReferrals" message="tns:IResidentialPartnerService_GetReferrals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetReferralsResponse" message="tns:IResidentialPartnerService_GetReferrals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReferralMember">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetReferralMember" message="tns:IResidentialPartnerService_GetReferralMember_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetReferralMemberResponse" message="tns:IResidentialPartnerService_GetReferralMember_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedCustomerContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSignedCustomerContractPDF" message="tns:IResidentialPartnerService_GetSignedCustomerContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSignedCustomerContractPDFResponse" message="tns:IResidentialPartnerService_GetSignedCustomerContractPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedUDSContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSignedUDSContractPDF" message="tns:IResidentialPartnerService_GetSignedUDSContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetSignedUDSContractPDFResponse" message="tns:IResidentialPartnerService_GetSignedUDSContractPDF_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatesList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStatesList" message="tns:IResidentialPartnerService_GetStatesList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStatesListResponse" message="tns:IResidentialPartnerService_GetStatesList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatesListByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStatesListByType" message="tns:IResidentialPartnerService_GetStatesListByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStatesListByTypeResponse" message="tns:IResidentialPartnerService_GetStatesListByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateUDCList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStateUDCList" message="tns:IResidentialPartnerService_GetStateUDCList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetStateUDCListResponse" message="tns:IResidentialPartnerService_GetStateUDCList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTexasAddressByESID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByESID" message="tns:IResidentialPartnerService_GetTexasAddressByESID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByESIDResponse" message="tns:IResidentialPartnerService_GetTexasAddressByESID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTexasAddressByText">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByText" message="tns:IResidentialPartnerService_GetTexasAddressByText_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByTextResponse" message="tns:IResidentialPartnerService_GetTexasAddressByText_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCList" message="tns:IResidentialPartnerService_GetUDCList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCListResponse" message="tns:IResidentialPartnerService_GetUDCList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCListByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCListByType" message="tns:IResidentialPartnerService_GetUDCListByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCListByTypeResponse" message="tns:IResidentialPartnerService_GetUDCListByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCountyList" message="tns:IResidentialPartnerService_GetCountyList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetCountyListResponse" message="tns:IResidentialPartnerService_GetCountyList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCListViaZip">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCListViaZip" message="tns:IResidentialPartnerService_GetUDCListViaZip_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCListViaZipResponse" message="tns:IResidentialPartnerService_GetUDCListViaZip_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCDetail" message="tns:IResidentialPartnerService_GetUDCDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCDetailResponse" message="tns:IResidentialPartnerService_GetUDCDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCDetailByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCDetailByType" message="tns:IResidentialPartnerService_GetUDCDetailByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUDCDetailByTypeResponse" message="tns:IResidentialPartnerService_GetUDCDetailByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSignedCustomerContractPDF">
+      <wsdl:input wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDF" message="tns:IResidentialPartnerService_GetUnSignedCustomerContractPDF_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDFResponse" message="tns:IResidentialPartnerService_GetUnSignedCustomerContractPDF_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IResidentialPartnerService" type="tns:IResidentialPartnerService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUnSignedCustomerContractPDFByLanguage">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDFByLanguage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSignedUDSContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUnSignedUDSContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportD2DContract">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ImportD2DContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportContract">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ImportContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPromoCodeValid">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/IsPromoCodeValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsReferralCodeValid">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/IsReferralCodeValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PerformCreditCheck">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/PerformCreditCheck" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveReferenceData">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SaveReferenceData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUp">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpByType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpMultiple">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpMultiple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCustomerSignUpSiebel">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SaveCustomerSignUpSiebel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendWelcomeEmail">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SendWelcomeEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReferralMember">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateReferralMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTPVStatus">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateTPVStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateReferralCode">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ValidateReferralCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateReferralCodeStarTex">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ValidateReferralCodeStarTex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoesAccountNumberAlreadyExist">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/DoesAccountNumberAlreadyExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSMBCustomerResponse">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetSMBCustomerResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSMBTPVStatus">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateSMBTPVStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPricingPlanFromMX">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPricingPlanFromMX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerRenewalResponse">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCustomerRenewalResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRenewalTPVStatus">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateRenewalTPVStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTPVVerificationCode">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateTPVVerificationCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDataByDMPromoCode">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByDMPromoCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerDataByPersonalCode">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCustomerDataByPersonalCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostTPVUpdateElement">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/PostTPVUpdateElement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitResidentialCreditCheckRequest">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/SubmitResidentialCreditCheckRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateResponseWithUDCAccountNumber">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/UpdateResponseWithUDCAccountNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestPing">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/TestPing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestAuthentication">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/TestAuthentication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUdcZipCodes">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUdcZipCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListingBySignUpType_PTS">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpType_PTS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanDetails_PTS">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanDetails_PTS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSwitchTypeGeorgia">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeGeorgia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSwitchTypeTexas">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetSwitchTypeTexas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveReferral">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ApproveReferral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReferral">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/CancelReferral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerSignUp">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmCustomerSignUpByType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/ConfirmCustomerSignUpByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferralCustom">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/CreateReferralCustom" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferral">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/CreateReferral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateReferralMember">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/CreateReferralMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractVersionPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetContractVersionPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContentByUDC">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetContentByUDC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContentGlobal">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetContentGlobal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContentGeneric">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetContentGeneric" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerContractHTML">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCustomerContractHTML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerResponse">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCustomerResponse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDisclaimerText">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetDisclaimerText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListing">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanListing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanListingBySignUpType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanListingBySignUpType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlanUDSContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetPlanUDSContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferrals">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetReferrals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReferralMember">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetReferralMember" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedCustomerContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetSignedCustomerContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedUDSContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetSignedUDSContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatesList">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetStatesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatesListByType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetStatesListByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateUDCList">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetStateUDCList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTexasAddressByESID">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByESID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTexasAddressByText">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetTexasAddressByText" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCList">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUDCList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCListByType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUDCListByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCountyList">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetCountyList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCListViaZip">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUDCListViaZip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCDetail">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUDCDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUDCDetailByType">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUDCDetailByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnSignedCustomerContractPDF">
+      <soap:operation soapAction="http://tempuri.org/IResidentialPartnerService/GetUnSignedCustomerContractPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResidentialPartnerService">
+    <wsdl:port name="BasicHttpBinding_IResidentialPartnerService" binding="tns:BasicHttpBinding_IResidentialPartnerService">
+      <soap:address location="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontierTPVWebService", "FrontierTPVWebService\FrontierTPVWebService.csproj", "{F25574B5-70C1-4C39-93EB-94C027A3E575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontierTPVWsTest", "FrontierTPVWsTest\FrontierTPVWsTest.csproj", "{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F25574B5-70C1-4C39-93EB-94C027A3E575} = {F25574B5-70C1-4C39-93EB-94C027A3E575}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = FrontierTPVWebService\\FrontierTPVWebService.csproj
+		SccProjectName1 = FrontierTPVWebService
+		SccLocalPath1 = FrontierTPVWebService
+		SccProjectUniqueName2 = FrontierTPVWsTest\\FrontierTPVWsTest.csproj
+		SccProjectName2 = FrontierTPVWsTest
+		SccLocalPath2 = FrontierTPVWsTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F25574B5-70C1-4C39-93EB-94C027A3E575}.Release|x86.ActiveCfg = Release|Any CPU
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Debug|x86.ActiveCfg = Debug|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Debug|x86.Build.0 = Debug|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Release|Any CPU.ActiveCfg = Release|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Release|Mixed Platforms.Build.0 = Release|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Release|x86.ActiveCfg = Release|x86
+		{03AB9C16-5D6E-4329-ABA8-46C7E86954C6}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

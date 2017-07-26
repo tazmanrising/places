@@ -1,0 +1,32 @@
+{
+  "name": "qareporting",
+  "description": "QA Reporting Manager  //  npm init -y   // creates package.json with defaults",
+  "main": "app.js",
+  "authors": [
+    "Tom Stickel for Calibrus"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "angular": "^1.6.2",
+    "angular-route": "^1.6.2"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    }
+  }
+}

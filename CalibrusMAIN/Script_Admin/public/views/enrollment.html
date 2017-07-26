@@ -1,0 +1,195 @@
+<div class="panel panel-default" ng-if="vm.dataentry.accountChoice === 'show'">
+    <div class="panel-heading">Manual Data Entry</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div>
+                        <button type="button" class="btn btn-primary" ng-click="vm.accountType('Residential')">Residential
+                                </button>&nbsp;
+                        <button type="button" class="btn btn-info" ng-click="vm.accountType('Business')">Business
+                                </button>
+                        <!-- <label class="btn btn-primary ng-pristine ng-untouched ng-valid ng-empty" ng-model="vmRequest.request.accountType" uib-btn-radio="'Residential'">Residential</label> -->
+                        <!-- <label class="btn btn-info ng-pristine ng-untouched ng-valid ng-empty" ng-model="vmRequest.request.accountType" uib-btn-radio="'Business'"
+                            ng-click="vmRequest.getTitleList()">Business</label> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default" ng-if="vm.dataentry.accountType ==='Residential'">
+   <div class="panel-heading">Manual Data Entry      <!-- <button type="button" class="btn btn-warning" ng-click="vm.stateChange()">State change
+                                </button>&nbsp;  --> </div> 
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="exampleInputName2">Sale Channel ID</label>
+                            <input type="text" value="{{vm.Storage.salesChannel}}" class="form-control" id="exampleInputName2" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail2">Agent</label>
+                            <input type="text" value="{{vm.Storage.agentid}}" class="form-control" id="exampleInputEmail2" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>What is the customer's phone number?</strong>
+                </div>
+                <div class="col-md-3">
+                    <phone-number id="Phone" class="form-control" placeholder="Phone" model="vm.dataentry.phonenumber" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>What is the Market?</strong>
+                </div>
+                <div class="col-md-3">
+                    <!-- <select id="state" ng-model="vm.dataentry.state" ng-options="y.State for (x,y) in vm.dataentry.states"></select> -->
+                    <!-- <h1>You selected: {{selectedCar2.model}}</h1>
+                    <p>Its color is: {{selectedCar2.color}}</p> -->
+                    <br>
+                    <input type="text" ng-value="vm.dataentry.state" class="form-control" id="state">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>Is this Electric or Electric & Gas?</strong>
+                </div>
+                <!-- ng-options="y for (x,y) in vm.dataentry.utilities"-->
+                <div class="col-md-3">
+                    <select ng-model="vm.dataentry.utility" 
+                            ng-options="obj.type as obj.type for obj in vm.dataentry.utilities"
+                            ng-change="vm.getUtilities()"
+                            class="form-control"
+                            ng-required="true"
+                            id="utility">
+                            <option value="">-- Choose Utility --</option>
+                    </select>
+                    <br>
+                    <!-- {{vm.dataentry.utils}} -->
+                     <!-- ng-options="x.MarketUtilityId as x.UtilityName for x in vm.dataentry.utils" -->
+                     <select ng-model="vm.dataentry.utilresults" 
+                            ng-options="y.UtilityName for (x,y) in vm.dataentry.utils"                           
+                            ng-change="vm.xgetUtilities()"
+                            class="form-control"
+                            ng-required="true"
+                            id="utilityComp">
+                            <option value="">-- Choose Utility Market --</option>
+                    </select>
+                    <br>
+                    <select ng-model="vm.Country"                
+                            ng-options="obj.id as obj.country for obj in vm.countries"
+                            ng-change="vm.getCountryStates()"
+                            class="form-control" 
+                            ng-required="true"
+                            id="country">
+                        <option value="">-- Choose Country --</option>
+                    </select>  
+                    <br>
+                    <select ng-model="vm.State" 
+                        ng-options="x.Id as x.state for x in vm.sates"
+                        ng-change = "vm.getStateCities()"
+                        class="form-control"
+                        ng-required="true"
+                        id="state">
+                        <option value="">-- Choose State --</option>
+                    </select>    
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>What is the Utility?</strong>
+                </div>
+                <div class="col-md-3">
+                    <select ng-model="vm.dataentry.utility" ng-options="y for (x,y) in vm.dataentry.utilities"></select>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!-- <div class="col-md-12">
+        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.FirstName.$invalid && vmRequest.form.FirstName.$touched) || (vmRequest.form.FirstName.$invalid && vmRequest.submittingRequest)}">
+            <label class="col-md-2 control-label">Authorization Name:</label>
+            <div class="col-md-3">
+                <input type="text" id="FirstName" name="FirstName" class="form-control" ng-model="vmRequest.request.firstName" placeholder="First Name"
+                    required />
+            </div>
+        </div>
+        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.LastName.$invalid && vmRequest.form.LastName.$touched) || (vmRequest.form.LastName.$invalid && vmRequest.submittingRequest)}">
+            <div class="col-md-3">
+                <input type="text" id="LastName" name="LastName" class="form-control" ng-model="vmRequest.request.lastName" placeholder="Last Name"
+                    required />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <span ng-messages="vmRequest.form.FirstName.$error" ng-if="(vmRequest.form.FirstName.$invalid && vmRequest.form.FirstName.$touched) || (vmRequest.form.FirstName.$invalid && vmRequest.submittingRequest)">
+                                    <span ng-message="required" class="label label-danger">First Name is required.</span>
+            </span>
+            <span ng-messages="vmRequest.form.LastName.$error" ng-if="(vmRequest.form.LastName.$invalid && vmRequest.form.LastName.$touched) || (vmRequest.form.LastName.$invalid && vmRequest.submittingRequest)">
+                                    <span ng-message="required" class="label label-danger">Last Name is required.</span>
+            </span>
+        </div>
+    </div> -->
+
+
+
+<div class="panel panel-default" ng-if="vm.dataentry.accountType ==='Resssssidential'">
+    <div class="panel-heading"> <strong>Data Entry: Registration Enrollment:</strong>&nbsp;&nbsp;&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div ng-if="vm.question.language == 'e'">
+                        <h3>Hello this is <strong>{{vm.question.agent}}</strong> with verification. May I have the customer’s
+                            telephone number please?
+                        </h3>
+                    </div>
+                    <div ng-if="vm.question.language == 's'">
+                        <h3>Hola, soy <strong>{{vm.question.agent}}</strong> con Calibrus. Me permite el numero de telefono de
+                            cliente por favor?
+
+                        </h3>
+                    </div>
+
+                    <div class="container-fluid">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="form-group">
+                                <input class="col-xs-3" type="text" ng-model="vm.question.tn" id="tn" name="tn">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.savePhone(vm.question.tn)">Search
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

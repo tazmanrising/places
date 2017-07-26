@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ClearviewPortalSSRSReport", "ClearviewPortalSSRSReport\ClearviewPortalSSRSReport.rptproj", "{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ClearviewPortalSSRSReport\\ClearviewPortalSSRSReport.rptproj
+		SccProjectName1 = ClearviewPortalSSRSReport
+		SccLocalPath1 = ClearviewPortalSSRSReport
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Debug|Default.ActiveCfg = Debug
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Debug|Default.Build.0 = Debug
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Debug|Default.Deploy.0 = Debug
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.DebugLocal|Default.Build.0 = DebugLocal
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Release|Default.ActiveCfg = Release
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Release|Default.Build.0 = Release
+		{BA3584D5-A8BC-4943-9306-8A6F87A0B0D7}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

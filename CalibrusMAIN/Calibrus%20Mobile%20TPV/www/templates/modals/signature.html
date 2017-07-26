@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Sign</h1>
+  </ion-header-bar>
+  <ion-content scroll="false" style="display: flex;">
+    <signature-pad accept="vmDataEntrySummaryAndSignature.signaturePad.accept"
+                   clear="vmDataEntrySummaryAndSignature.signaturePad.clear"
+                   dataurl="vmDataEntrySummaryAndSignature.signaturePad.dataUrl"></signature-pad>
+  </ion-content>
+  <ion-footer-bar align-title="left">
+    <div class="buttons">
+      <button class="button button-assertive" ng-click="vmDataEntrySummaryAndSignature.modal.hide()">Cancel</button>
+    </div>
+    <h1 class="title" ></h1>
+    <div class="buttons" ng-click="vmDataEntrySummaryAndSignature.sign(vmDataEntrySummaryAndSignature.signaturePad.accept())">
+      <button class="button button-balanced">Accept</button>
+    </div>
+  </ion-footer-bar>
+</ion-modal-view>

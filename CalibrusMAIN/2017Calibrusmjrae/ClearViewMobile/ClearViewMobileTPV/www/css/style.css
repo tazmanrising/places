@@ -1,0 +1,518 @@
+/* Empty. Add your own CSS if you like */
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.vm-height-100 {
+  min-height: 100vh;
+}
+
+.signature {
+  display: flex;
+  flex-grow: 1;
+}
+
+.signature canvas {
+  margin: 0 auto;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.float-button {
+  opacity: 0.9;
+  color: white;
+  border-radius: 50%;
+  /*border-radius:15% 0 0 0;*/
+  width: 30px;
+  padding: 25px;
+  font-size: 40px;
+  position: fixed;
+  bottom: 5%; /* Adjust height */
+  right: 5%; /* Adjust position */
+  z-index: 1000;
+}
+
+.float-button .height_fix {
+  margin-top: 100%;
+  border: 1px solid red;
+}
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -20px;
+  color: white;
+}
+
+.float-button.float-button-light {
+  border-color: transparent;
+  background-color: #fff;
+  color: #444;
+}
+
+.float-button.float-button-light:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+.float-button.float-button-light.active, .float-button.float-button-light.activated {
+  border-color: #a2a2a2;
+  background-color: #fafafa;
+}
+
+.float-button.float-button-light.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #ddd;
+}
+
+.float-button.float-button-light.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-light.button-outline {
+  border-color: #ddd;
+  background: transparent;
+  color: #ddd;
+}
+
+.float-button.float-button-light.button-outline.active, .float-button.float-button-light.button-outline.activated {
+  background-color: #ddd;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-stable {
+  border-color: transparent;
+  background-color: #f8f8f8;
+  color: #444;
+}
+
+.float-button.float-button-stable:hover {
+  color: #444;
+  text-decoration: none;
+}
+
+.float-button.float-button-stable.active, .float-button.float-button-stable.activated {
+  border-color: #a2a2a2;
+  background-color: #e5e5e5;
+}
+
+.float-button.float-button-stable.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #b2b2b2;
+}
+
+.float-button.float-button-stable.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-stable.button-outline {
+  border-color: #b2b2b2;
+  background: transparent;
+  color: #b2b2b2;
+}
+
+.float-button.float-button-stable.button-outline.active, .float-button.float-button-stable.button-outline.activated {
+  background-color: #b2b2b2;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-positive {
+  border-color: transparent;
+  background-color: #387ef5;
+  color: #fff;
+}
+
+.float-button.float-button-positive:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-positive.active, .float-button.float-button-positive.activated {
+  border-color: #a2a2a2;
+  background-color: #0c60ee;
+}
+
+.float-button.float-button-positive.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #387ef5;
+}
+
+.float-button.float-button-positive.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-positive.button-outline {
+  border-color: #387ef5;
+  background: transparent;
+  color: #387ef5;
+}
+
+.float-button.float-button-positive.button-outline.active, .float-button.float-button-positive.button-outline.activated {
+  background-color: #387ef5;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-calm {
+  border-color: transparent;
+  background-color: #11c1f3;
+  color: #fff;
+}
+
+.float-button.float-button-calm:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-calm.active, .float-button.float-button-calm.activated {
+  border-color: #a2a2a2;
+  background-color: #0a9dc7;
+}
+
+.float-button.float-button-calm.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #11c1f3;
+}
+
+.float-button.float-button-calm.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-calm.button-outline {
+  border-color: #11c1f3;
+  background: transparent;
+  color: #11c1f3;
+}
+
+.float-button.float-button-calm.button-outline.active, .float-button.float-button-calm.button-outline.activated {
+  background-color: #11c1f3;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-assertive {
+  border-color: transparent;
+  background-color: #ef473a;
+  color: #fff;
+}
+
+.float-button.float-button-assertive:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-assertive.active, .float-button.float-button-assertive.activated {
+  border-color: #a2a2a2;
+  background-color: #e42112;
+}
+
+.float-button.float-button-assertive.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #ef473a;
+}
+
+.float-button.float-button-assertive.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-assertive.button-outline {
+  border-color: #ef473a;
+  background: transparent;
+  color: #ef473a;
+}
+
+.float-button.float-button-assertive.button-outline.active, .float-button.float-button-assertive.button-outline.activated {
+  background-color: #ef473a;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-balanced {
+  border-color: transparent;
+  background-color: #33cd5f;
+  color: #fff;
+}
+
+.float-button.float-button-balanced:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-balanced.active, .float-button.float-button-balanced.activated {
+  border-color: #a2a2a2;
+  background-color: #28a54c;
+}
+
+.float-button.float-button-balanced.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #33cd5f;
+}
+
+.float-button.float-button-balanced.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-balanced.button-outline {
+  border-color: #33cd5f;
+  background: transparent;
+  color: #33cd5f;
+}
+
+.float-button.float-button-balanced.button-outline.active, .float-button.float-button-balanced.button-outline.activated {
+  background-color: #33cd5f;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-energized {
+  border-color: transparent;
+  background-color: #ffc900;
+  color: #fff;
+}
+
+.float-button.float-button-energized:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-energized.active, .float-button.float-button-energized.activated {
+  border-color: #a2a2a2;
+  background-color: #e6b500;
+}
+
+.float-button.float-button-energized.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #ffc900;
+}
+
+.float-button.float-button-energized.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-energized.button-outline {
+  border-color: #ffc900;
+  background: transparent;
+  color: #ffc900;
+}
+
+.float-button.float-button-energized.button-outline.active, .float-button.float-button-energized.button-outline.activated {
+  background-color: #ffc900;
+  box-shadow: none;
+  color: #fff;
+}
+
+.float-button.float-button-royal {
+  border-color: transparent;
+  background-color: #886aea;
+  color: #fff;
+}
+
+.float-button.float-button-royal:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.float-button.float-button-royal.active, .float-button.float-button-royal.activated {
+  border-color: #a2a2a2;
+  background-color: #6b46e5;
+}
+
+.float-button.float-button-royal.button-clear {
+  border-color: transparent;
+  background: none;
+  box-shadow: none;
+  color: #886aea;
+}
+
+.float-button.float-button-royal.button-icon {
+  border-color: transparent;
+  background: none;
+}
+
+.float-button.float-button-royal.button-outline {
+  border-color: #886aea;
+  background: transparent;
+  color: #886aea;
+}
+
+.float-button.float-button-royal.button-outline.active, .float-button.float-button-royal.button-outline.activated {
+  background-color: #886aea;
+  box-shadow: none;
+  color: #fff;
+}
+
+.utility-list {
+  margin-bottom: 20px;
+}
+
+.utility-list .col {
+  overflow: auto;
+  white-space: normal;
+}
+
+.utility-list .col > .balanced {
+  padding-top: 20px;
+}
+
+.utility-list .col > .balanced + p {
+  margin-top: -5px !important;
+}
+
+.form-messages {
+  padding-left: 20px;
+  font-size: 12px;
+}
+
+.item.item-radio-right-padding .item-content {
+  padding-right: 14px;
+}
+
+.utility-program-pricing > h2 {
+  font-size: 1.4em;
+  margin-bottom: 0
+}
+
+.utility-program-pricing > p {
+  padding-left: 27px;
+  margin-bottom: 10px;
+}
+
+.utility-program-pricing > .row {
+  padding: 0 !important;
+}
+
+.utility-program-pricing > .row .col {
+  border: 1px solid #444;
+}
+
+.utility-program-pricing > .row .col:first-child {
+  padding: 10px;
+}
+
+.utility-program-pricing > .row .col:last-child {
+  padding-top: 18px;
+  border-left-width: 0;
+}
+
+.pricing-text {
+  line-height: 20px;
+}
+
+.plan-price {
+  font-size: 3em;
+  font-weight: 400;
+}
+
+.plan-price-dollar {
+  font-size: 1.3em;
+  font-weight: 200;
+  position: relative;
+  top: -14px;
+  left: 5px;
+}
+
+.plan-price-slash {
+  font-size: 2.175em;
+  margin-left: -5px;
+}
+
+.plan-units-kwh {
+  font-size: 1.4em;
+  margin-top: 5px;
+  margin-left: -6px;
+}
+
+.plan-units-therms {
+  font-size: 1.0em;
+  margin-top: 5px;
+  margin-left: -6px;
+}
+
+.plan-term {
+  margin-top: -3px;
+}
+
+.col-30 {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+
+.item-nested-padding {
+  padding-left: 0;
+  padding-top: 5px;
+}
+
+.item-nested-padding label.item {
+  width: 100%;
+}
+
+/* Form validation */
+
+.has-success {
+  border-right: 5px solid #bada55 !important;
+}
+
+.has-error {
+  border-right: 5px solid #b83e2c !important;
+}
+
+.has-mute {
+  border-right: 5px solid #ccc !important;
+}

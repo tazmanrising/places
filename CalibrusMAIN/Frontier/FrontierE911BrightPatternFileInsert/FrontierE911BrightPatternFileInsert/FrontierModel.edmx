@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FrontierModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FrontierModelStoreContainer">
+          <EntitySet Name="tblE911BrightPatternLoadFile" EntityType="FrontierModel.Store.tblE911BrightPatternLoadFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblE911BrightPatternLoadFileCallDetail" EntityType="FrontierModel.Store.tblE911BrightPatternLoadFileCallDetail" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblE911BrightPatternLoadFile">
+          <Key>
+            <PropertyRef Name="E911BrightPatternLoadFileId" />
+          </Key>
+          <Property Name="E911BrightPatternLoadFileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="E911LoadFileId" Type="int" />
+          <Property Name="SubscriberId" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Signature" Type="varchar" MaxLength="250" />
+          <Property Name="BirthYear" Type="varchar" MaxLength="10" />
+          <Property Name="TN" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="GeneralAction" Type="varchar" MaxLength="50" />
+          <Property Name="GeneralDate" Type="datetime" />
+          <Property Name="E911Action" Type="varchar" MaxLength="50" />
+          <Property Name="E911Date" Type="datetime" />
+          <Property Name="IsData" Type="char" MaxLength="1" />
+          <Property Name="IsVoip" Type="char" MaxLength="1" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="DPIRegion" Type="varchar" MaxLength="2" />
+          <Property Name="ThisPhonenumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsCallAttempt" Type="varchar" MaxLength="50" />
+          <Property Name="Completed" Type="varchar" MaxLength="50" />
+          <Property Name="RecordDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="RecordDispositionCode" Type="varchar" MaxLength="50" />
+          <Property Name="Outofquota" Type="varchar" MaxLength="50" />
+          <Property Name="Quotagroup" Type="varchar" MaxLength="50" />
+          <Property Name="CallDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="CallDispositionCode" Type="varchar" MaxLength="50" />
+          <Property Name="CallNote" Type="varchar(max)" />
+          <Property Name="CallTime" Type="datetime" />
+          <Property Name="DialingDuration" Type="varchar" MaxLength="50" />
+          <Property Name="CPADuration" Type="varchar" MaxLength="50" />
+          <Property Name="AnsweredDuration" Type="varchar" MaxLength="50" />
+          <Property Name="Agent" Type="varchar" MaxLength="50" />
+          <Property Name="Connected" Type="varchar" MaxLength="50" />
+          <Property Name="CPAresult" Type="varchar" MaxLength="50" />
+          <Property Name="CPArecordingfile" Type="varchar" MaxLength="100" />
+          <Property Name="CPARTPserverid" Type="varchar" MaxLength="50" />
+          <Property Name="Recordingfile" Type="varchar" MaxLength="100" />
+          <Property Name="RTPserverid" Type="varchar" MaxLength="50" />
+          <Property Name="GlobalInteractionID" Type="varchar" MaxLength="50" />
+          <Property Name="RecordID" Type="varchar" MaxLength="50" />
+          <Property Name="Listname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblE911BrightPatternLoadFileCallDetail">
+          <Key>
+            <PropertyRef Name="E911BrightPatternLoadFileCallDetailId" />
+          </Key>
+          <Property Name="E911BrightPatternLoadFileCallDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CallDetailDateTime" Type="datetime" />
+          <Property Name="Type" Type="varchar" MaxLength="10" />
+          <Property Name="IVR" Type="int" />
+          <Property Name="QueueTime" Type="int" />
+          <Property Name="DialingRinging" Type="int" />
+          <Property Name="Talk" Type="int" />
+          <Property Name="Hold" Type="int" />
+          <Property Name="WrapUpTime" Type="int" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="FromLocation" Type="varchar" MaxLength="50" />
+          <Property Name="OriginalDestination" Type="varchar" MaxLength="50" />
+          <Property Name="ConnectedTo" Type="varchar" MaxLength="50" />
+          <Property Name="ConectedToNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCampaign" Type="varchar" MaxLength="200" />
+          <Property Name="AgentDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="Notes" Type="varchar(max)" />
+          <Property Name="Disposition" Type="varchar" MaxLength="50" />
+          <Property Name="MediaType" Type="varchar" MaxLength="10" />
+          <Property Name="InSL" Type="varchar" MaxLength="50" />
+          <Property Name="GlobalID" Type="varchar" MaxLength="50" />
+          <Property Name="InteractionStepID" Type="varchar(max)" />
+          <Property Name="WavName" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FrontierModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FrontierEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblE911BrightPatternLoadFileCallDetail" EntityType="FrontierModel.tblE911BrightPatternLoadFileCallDetail" />
+          <EntitySet Name="tblE911BrightPatternLoadFile" EntityType="FrontierModel.tblE911BrightPatternLoadFile" />
+        </EntityContainer>
+        <EntityType Name="tblE911BrightPatternLoadFileCallDetail">
+          <Key>
+            <PropertyRef Name="E911BrightPatternLoadFileCallDetailId" />
+          </Key>
+          <Property Name="E911BrightPatternLoadFileCallDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CallDetailDateTime" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="IVR" Type="Int32" />
+          <Property Name="QueueTime" Type="Int32" />
+          <Property Name="DialingRinging" Type="Int32" />
+          <Property Name="Talk" Type="Int32" />
+          <Property Name="Hold" Type="Int32" />
+          <Property Name="WrapUpTime" Type="Int32" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="FromLocation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OriginalDestination" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ConnectedTo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ConectedToNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCampaign" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="AgentDisposition" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Disposition" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MediaType" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="InSL" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GlobalID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="InteractionStepID" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="WavName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblE911BrightPatternLoadFile">
+          <Key>
+            <PropertyRef Name="E911BrightPatternLoadFileId" />
+          </Key>
+          <Property Type="Int32" Name="E911BrightPatternLoadFileId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="E911LoadFileId" />
+          <Property Type="String" Name="SubscriberId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Signature" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BirthYear" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TN" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GeneralAction" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="GeneralDate" Precision="3" />
+          <Property Type="String" Name="E911Action" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="E911Date" Precision="3" />
+          <Property Type="String" Name="IsData" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IsVoip" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="User" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DPIRegion" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ThisPhonenumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IsCallAttempt" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Completed" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RecordDisposition" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RecordDispositionCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Outofquota" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Quotagroup" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CallDisposition" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CallDispositionCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CallNote" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CallTime" Precision="3" />
+          <Property Type="String" Name="DialingDuration" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CPADuration" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AnsweredDuration" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Agent" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Connected" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CPAresult" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CPArecordingfile" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CPARTPserverid" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Recordingfile" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RTPserverid" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GlobalInteractionID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RecordID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Listname" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FrontierModelStoreContainer" CdmEntityContainer="FrontierEntities">
+          <EntitySetMapping Name="tblE911BrightPatternLoadFileCallDetail">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911BrightPatternLoadFileCallDetail">
+              <MappingFragment StoreEntitySet="tblE911BrightPatternLoadFileCallDetail">
+                <ScalarProperty Name="E911BrightPatternLoadFileCallDetailId" ColumnName="E911BrightPatternLoadFileCallDetailId" />
+                <ScalarProperty Name="CallDetailDateTime" ColumnName="CallDetailDateTime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IVR" ColumnName="IVR" />
+                <ScalarProperty Name="QueueTime" ColumnName="QueueTime" />
+                <ScalarProperty Name="DialingRinging" ColumnName="DialingRinging" />
+                <ScalarProperty Name="Talk" ColumnName="Talk" />
+                <ScalarProperty Name="Hold" ColumnName="Hold" />
+                <ScalarProperty Name="WrapUpTime" ColumnName="WrapUpTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="FromLocation" ColumnName="FromLocation" />
+                <ScalarProperty Name="OriginalDestination" ColumnName="OriginalDestination" />
+                <ScalarProperty Name="ConnectedTo" ColumnName="ConnectedTo" />
+                <ScalarProperty Name="ConectedToNumber" ColumnName="ConectedToNumber" />
+                <ScalarProperty Name="ServiceCampaign" ColumnName="ServiceCampaign" />
+                <ScalarProperty Name="AgentDisposition" ColumnName="AgentDisposition" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+                <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+                <ScalarProperty Name="InSL" ColumnName="InSL" />
+                <ScalarProperty Name="GlobalID" ColumnName="GlobalID" />
+                <ScalarProperty Name="InteractionStepID" ColumnName="InteractionStepID" />
+                <ScalarProperty Name="WavName" ColumnName="WavName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblE911BrightPatternLoadFile">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911BrightPatternLoadFile">
+              <MappingFragment StoreEntitySet="tblE911BrightPatternLoadFile">
+                <ScalarProperty Name="Listname" ColumnName="Listname" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="GlobalInteractionID" ColumnName="GlobalInteractionID" />
+                <ScalarProperty Name="RTPserverid" ColumnName="RTPserverid" />
+                <ScalarProperty Name="Recordingfile" ColumnName="Recordingfile" />
+                <ScalarProperty Name="CPARTPserverid" ColumnName="CPARTPserverid" />
+                <ScalarProperty Name="CPArecordingfile" ColumnName="CPArecordingfile" />
+                <ScalarProperty Name="CPAresult" ColumnName="CPAresult" />
+                <ScalarProperty Name="Connected" ColumnName="Connected" />
+                <ScalarProperty Name="Agent" ColumnName="Agent" />
+                <ScalarProperty Name="AnsweredDuration" ColumnName="AnsweredDuration" />
+                <ScalarProperty Name="CPADuration" ColumnName="CPADuration" />
+                <ScalarProperty Name="DialingDuration" ColumnName="DialingDuration" />
+                <ScalarProperty Name="CallTime" ColumnName="CallTime" />
+                <ScalarProperty Name="CallNote" ColumnName="CallNote" />
+                <ScalarProperty Name="CallDispositionCode" ColumnName="CallDispositionCode" />
+                <ScalarProperty Name="CallDisposition" ColumnName="CallDisposition" />
+                <ScalarProperty Name="Quotagroup" ColumnName="Quotagroup" />
+                <ScalarProperty Name="Outofquota" ColumnName="Outofquota" />
+                <ScalarProperty Name="RecordDispositionCode" ColumnName="RecordDispositionCode" />
+                <ScalarProperty Name="RecordDisposition" ColumnName="RecordDisposition" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="IsCallAttempt" ColumnName="IsCallAttempt" />
+                <ScalarProperty Name="ThisPhonenumber" ColumnName="ThisPhonenumber" />
+                <ScalarProperty Name="DPIRegion" ColumnName="DPIRegion" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="IsVoip" ColumnName="IsVoip" />
+                <ScalarProperty Name="IsData" ColumnName="IsData" />
+                <ScalarProperty Name="E911Date" ColumnName="E911Date" />
+                <ScalarProperty Name="E911Action" ColumnName="E911Action" />
+                <ScalarProperty Name="GeneralDate" ColumnName="GeneralDate" />
+                <ScalarProperty Name="GeneralAction" ColumnName="GeneralAction" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TN" ColumnName="TN" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+                <ScalarProperty Name="E911LoadFileId" ColumnName="E911LoadFileId" />
+                <ScalarProperty Name="E911BrightPatternLoadFileId" ColumnName="E911BrightPatternLoadFileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

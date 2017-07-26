@@ -1,0 +1,71 @@
+﻿@model Calibrus.SparkPortal.ViewModel.VendorViewModel
+
+@using Calibrus.SparkPortal.ViewModel
+@using Calibrus.SparkPortal.Web;
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+<div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Vendor Detail</small>
+        </h1>
+    </div>
+
+<div class="row">
+
+    <h3>Vendor Information</h3><br />
+    <div class="row">
+        <div class="col-md-2">@Html.LabelFor(x=>x.VendorName):</div>
+        <div class="col-md-4">@Html.DisplayFor(x=>x.VendorName)</div> 
+    </div>
+    <div class="row">
+        <div class="col-md-2">@Html.LabelFor(x=>x.VendorNumber):</div>
+        <div class="col-md-4">@Html.DisplayFor(x=>x.VendorNumber)</div> 
+    </div>
+    <div class="row">
+        <div class="col-md-2">@Html.LabelFor(x=>x.IsActive):</div>
+        <div class="col-md-4">@Html.DisplayFor(x=>x.IsActive, "Boolean")</div> 
+    </div>
+</div>
+
+<h3>User List</h3>
+<table class="table table-striped table-condensed">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Language</th>
+            <th>Phone</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td colspan="6">pagination here</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (VendorViewModel.VendorUser user in Model.UserList)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Language</td>
+                <td>@user.Phone</td>
+                <td>@user.IsActive</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row col-md-offset-5">
+    
+    <a href="@Url.Action("Edit", new { controller = "Vendor", id = Model.Id })" class="btn btn-primary col-md-2">Edit</a>
+
+
+</div>

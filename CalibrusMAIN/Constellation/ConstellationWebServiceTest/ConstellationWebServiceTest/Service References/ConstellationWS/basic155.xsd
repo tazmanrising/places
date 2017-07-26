@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ResidentialPartnerService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ResidentialPartnerService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.Data.Models" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" />
+  <xs:complexType name="ValidateReferralCodeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q1:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ValidateReferralCodeResult" nillable="true" type="tns:ValidateReferralCodeResult" />
+  <xs:simpleType name="SourceCompanyEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Constellation" />
+      <xs:enumeration value="MX" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SourceCompanyEnum" nillable="true" type="tns:SourceCompanyEnum" />
+  <xs:simpleType name="CommodityTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Electric" />
+      <xs:enumeration value="Gas" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CommodityTypeEnum" nillable="true" type="tns:CommodityTypeEnum" />
+  <xs:complexType name="SwitchTypeListResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q2:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SwitchTypes" nillable="true" type="q3:ArrayOfSwitchType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SwitchTypeListResult" nillable="true" type="tns:SwitchTypeListResult" />
+  <xs:complexType name="CreateReferralMemberResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q4:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsNewMember" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReferralCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateReferralMemberResult" nillable="true" type="tns:CreateReferralMemberResult" />
+  <xs:complexType name="GetReferralsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q5:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.Data.Models" minOccurs="0" name="Referrals" nillable="true" type="q6:ArrayOfReferralDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetReferralsResult" nillable="true" type="tns:GetReferralsResult" />
+  <xs:complexType name="GetReferralMemberResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q7:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential" minOccurs="0" name="Member" nillable="true" type="q8:RewardMemberDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetReferralMemberResult" nillable="true" type="tns:GetReferralMemberResult" />
+  <xs:complexType name="ServiceLocationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q9="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q9:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" minOccurs="0" name="ServiceLocation" nillable="true" type="q10:ServiceLocation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceLocationResult" nillable="true" type="tns:ServiceLocationResult" />
+  <xs:complexType name="ServiceLocationListResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q11:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" minOccurs="0" name="ServiceLocations" nillable="true" type="q12:ArrayOfServiceLocation" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceLocationListResult" nillable="true" type="tns:ServiceLocationListResult" />
+</xs:schema>

@@ -1,0 +1,22 @@
+﻿@using Calibrus.SparkPortal.ViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-info">Office List</h2>
+
+<div>
+
+    @Html.Action("_Index")
+
+    <div class="col-md-2 col-md-offset-5">
+        <a href="@Url.Action("Create", new { controller = "Office" })" class="btn btn-success">New Office</a>
+    </div>
+
+</div>
+
+@section scripts
+{
+   
+    <script src="~/Scripts/app/officeController.js"></script>
+}

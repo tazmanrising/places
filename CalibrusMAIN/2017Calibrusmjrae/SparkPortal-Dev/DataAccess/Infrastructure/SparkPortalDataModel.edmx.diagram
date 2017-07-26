@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7d8b1f0c9824805a169fd2a825fc356" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="SparkPortalDataModel.AccountNumberType" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.PremiseType" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.ProgramVendor" Width="1.5" PointX="9.625" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.State" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.UnitOfMeasure" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.UserLog" Width="1.5" PointX="6" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.UserType" Width="1.5" PointX="2.625" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Utility" Width="1.5" PointX="9.375" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.UtilityType" Width="1.5" PointX="0.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Disposition" Width="1.5" PointX="9" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Report" Width="1.5" PointX="10.75" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Brand" Width="1.5" PointX="0.75" PointY="0.875" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.OrderDetail" Width="1.5" PointX="5" PointY="13.375" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Lead" Width="1.5" PointX="12.625" PointY="3.625" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Relationship" Width="1.5" PointX="5.5" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.IpLocation" Width="1.5" PointX="11.375" PointY="22.125" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Main" Width="1.5" PointX="7.125" PointY="18.25" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_IpLocation_Main" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_OfficeDetail_Main" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.SalesChannel" Width="1.5" PointX="2.875" PointY="29.625" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Program" Width="1.5" PointX="3.5" PointY="2.75" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_AccountNumberType" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_Brand" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_OfficeDetail_Program" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_PremiseType" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_UnitOfMeasure" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_Utility" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Program_UtilityType" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_ProgramVendor_Program" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.User" Width="1.5" PointX="4.875" PointY="20.375" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Main_User" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_User_UserType" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_UserLog_User" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Office" Width="1.5" PointX="9.125" PointY="27.875" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Office_SalesChannel" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_User_Office" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.SalesChannelProgram" Width="1.875" PointX="6.375" PointY="3.75" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_SalesChannelProgram_Program" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.CurrentCustomer" Width="1.5" PointX="16.875" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Vendor" Width="1.5" PointX="2.625" PointY="19.75" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Office_Vendor" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_ProgramVendor_Vendor" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_User_Vendor" />
+        <AssociationConnector Association="SparkPortalDataModel.FK_Vendor_SalesChannel" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.Title" Width="1.5" PointX="12.5" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkPortalDataModel.DtDAgentTrack" Width="1.5" PointX="9.375" PointY="4" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

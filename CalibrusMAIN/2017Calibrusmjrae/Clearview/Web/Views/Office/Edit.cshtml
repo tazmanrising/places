@@ -1,0 +1,172 @@
+﻿@using Calibrus.ClearviewPortal.Web
+@model Calibrus.ClearviewPortal.ViewModel.OfficeViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Edit Office</small>
+        </h1>
+    </div>
+
+    <div class="row">
+
+        <h3>Office Information</h3><br />
+
+        @using (Html.BeginForm("Edit", "Office", FormMethod.Post, new {@class = "form-horizontal"}))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-offset-3 col-md-6">
+                @Html.ValidationSummary(true, "Please fix the following errors:", new {@class = "alert alert-danger"})
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["success"]</div>
+                }
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OfficeName, new {@class = "col-lg-2 control-label", @for = "OfficeName"})
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.OfficeName, new {@class = "form-control"})
+                    </div>
+
+                </div>
+                <div class="col-lg-3">@Html.ValidationMessageFor(model => model.OfficeName)</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OfficeEmail, new {@class = "col-lg-2 control-label", @for = "OfficeEmail"})
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.OfficeEmail, new {@class = "form-control"})
+                    </div>
+
+                </div>
+                <div class="col-lg-3">@Html.ValidationMessageFor(model => model.OfficeEmail)</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MarketerCode, new { @class = "col-md-2 control-label ", @for = "MarketerCode" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.MarketerCode, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.MarketerCode)
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParentVendorFormatted, new {@class = "col-lg-2 control-label", @for = "ParentVendorFormatted"})
+                <div class="col-lg-5">
+                    @Html.TextBoxFor(model => model.ParentVendorFormatted, new {@class = "form-control", @readonly = "readonly"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, new {@class = "col-lg-2 control-label", @for = "IsActive"})
+                <div class="col-lg-10">
+                    @Html.CheckBoxFor(model => model.IsActive, new {@class = "checkbox"})
+                </div>
+            </div>
+
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.VendorId)
+
+            <div class="form-group">
+                <div class="col-lg-10 text-center">
+                    <input class="btn btn-primary" type="submit" value="Update" />
+                    <a href="@SessionVars.ReturnUrl" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+
+        }
+
+        <h3>Users</h3>
+
+        <div class="row"  ng-controller="vendorUserController as vm">
+
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr colspan="7">
+                        <div class="pull-right">
+                            <input type="text" class="form-control input-sm" ng-model="vm.filter" ng-change="vm.filterUsers()" placeholder="filter list..." />
+                        </div>
+                    </tr>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Agent ID</th>
+                        <th>Vendor</th>
+                        <th>Active</th>
+                        <th>Language</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <uib-pagination total-items="vm.totalItems" items-per-page="vm.pageSize" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></uib-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr ng-repeat="user in vm.userPage">
+                        <td>{{user.FirstName}}</td>
+                        <td>{{user.LastName}}</td>
+                        <td>{{user.AgentId}}</td>
+                        <td>{{user.Vendor.VendorName}}</td>
+                        <td>{{user.IsActive}}</td>
+                        <td>{{user.Language}}</td>
+                        <td class="col-lg-2 text-center">
+                            <a href="~/User/Edit/{{ user.UserId }}"><i class="fa fa-pencil-square-o fa-2x" title="Edit"></i></a>
+                            <a href="" style="cursor:pointer;">
+                                <i ng-if="user.IsActive" class="fa fa-minus-square-o fa-2x" title="Set Inactive" ng-click="vm.open(user)"></i>
+                                <i ng-if="!user.IsActive" class="fa fa-check-square-o fa-2x" title="Set Active" ng-click="vm.open(user)"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <script type="text/ng-template" id="myModalContent.html">
+                <div class="modal-header">
+                    <h3 class="modal-title">{{pop.header}}</h3>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" rows="10" placeholder="Enter reason...." ng-model="pop.reason"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="pop.ok('@SessionVars.UserName')">OK</button>
+                    <button class="btn btn-warning" ng-click="pop.cancel()">Cancel</button>
+                </div>
+            </script>
+
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+  
+    <script src="~/Scripts/app/vendorUserController.js"></script>
+    <script src="~/Scripts/app/officeController.js"></script>
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.Base" />
+  <xs:simpleType name="Content_UDCEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DISCLAIMER" />
+      <xs:enumeration value="DISCLAIMER_PTC" />
+      <xs:enumeration value="DISCLAIMER_SAVING" />
+      <xs:enumeration value="UDC_CONTACTPHONE" />
+      <xs:enumeration value="UDC_CONTACTWEB" />
+      <xs:enumeration value="UDC_SAMPLEBILL" />
+      <xs:enumeration value="UDC_ACCOUNTFORMAT" />
+      <xs:enumeration value="UDC_METERNUMBERFORMAT" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Content_UDCEnum" nillable="true" type="tns:Content_UDCEnum" />
+  <xs:simpleType name="Content_GlobalEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AGREEMENT_SPACEHEAT" />
+      <xs:enumeration value="AGREEMENT_WATERHEAT" />
+      <xs:enumeration value="AGREEMENT_LOA" />
+      <xs:enumeration value="SWITCHTYPE_STANDARD" />
+      <xs:enumeration value="SWITCHTYPE_SELFSELECTED" />
+      <xs:enumeration value="SWITCHTYPE_MOVEIN" />
+      <xs:enumeration value="SWITCHTYPE_PRIORITY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Content_GlobalEnum" nillable="true" type="tns:Content_GlobalEnum" />
+  <xs:complexType name="RewardMemberDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.Base" base="q1:CoreDetailBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+          <xs:element minOccurs="0" name="ReferralCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RewardMemberDetail" nillable="true" type="tns:RewardMemberDetail" />
+</xs:schema>

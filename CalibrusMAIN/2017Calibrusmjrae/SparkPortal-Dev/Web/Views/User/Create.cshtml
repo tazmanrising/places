@@ -1,0 +1,297 @@
+﻿@model Calibrus.SparkPortal.ViewModel.UserViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Create User</small>
+        </h1>
+    </div>
+
+    <div class="row" ng-controller="userEditController as vm" ng-init="vm.userTypeId='@Model.UserTypeId'; vm.phone='@Model.PhoneNumber'; vm.userTypeChanged();">
+
+        @using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-offset-3 col-md-6">
+                @Html.ValidationSummary(false, "Correct the following errors:", new { @class = "alert alert-danger" })
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["success"]</div>
+                }
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserTypeId, new { @class = "col-md-2 control-label", @for = "UserTypeId" })
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.DropDownListFor(model => model.UserTypeId, new SelectList(Model.UserTypes, "UserTypeId", "UserTypeName"), new { @class = "form-control col-md-3", @ng_model = "vm.userTypeId", @ng_change = "vm.userTypeChanged();" })
+                    </div>
+                </div>
+                <div class="col-md-3">@Html.ValidationMessageFor(model => model.UserTypeId)</div>
+            </div>
+
+            <div ng-class="{'hidden': !vm.userType, 'show': vm.userType}">
+
+                <div class="form-group">
+                    <label for="Username" class="col-md-2 control-label">{{vm.usernameLabel}}</label>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.Username)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.SecurityLevel == '0', 'show': vm.userType.SecurityLevel > '0'}">
+                    @Html.LabelFor(model => model.Password, new { @class = "col-md-2 control-label", @for = "Password" })
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon" ng-class="{'hidden': vm.userType.SecurityLevel == '0'}"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @ng_model = "vm.password" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.Password)</div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2 control-label", @for = "FirstName" })
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.FirstName)</div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, new { @class = "col-md-2 control-label", @for = "LastName" })
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.LastName)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Telesales' }">
+                    @Html.LabelFor(model => model.BirthDate, new { @class = "col-md-2 control-label", @for = "Birthdate" })
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.BirthDate, "{0:MM/dd/yyyy}", new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.BirthDate)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' && vm.userType.UserTypeName != 'Telesales' }">
+                    @Html.LabelFor(model => model.SSN, new { @class = "col-md-2 control-label", @for = "SSN" })
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.SSN, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.SSN)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' }">
+                    @Html.LabelFor(model => model.Gender, new { @class = "col-md-2 control-label", @for = "Gender" })
+                    <div class="col-md-6">
+
+                        <div class="input-group col-md-4">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            <select id="Gender" name="Gender" class="form-control" ng-model="vm.Gender" ng-change="vm.onGenderChanged(vm.Gender);" ng-options="gender as gender for gender in vm.Genders track by gender" ng-init="vm.Gender = @Model.Gender"></select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.Gender)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door'}">
+                    @Html.LabelFor(model => model.ShirtSize, new { @class = "col-md-2 control-label", @for = "ShirtSize" })
+                    <div class="col-md-6">
+
+                        <div class="input-group col-md-4">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            <select id="ShirtSize" name="ShirtSize" class="form-control" ng-model="vm.size" ng-options="size as size for size in vm.Sizes track by size"
+                                    ng-init="vm.onGenderChanged(); vm.size = '@Model.ShirtSize';"></select>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.ShirtSize)</div>
+                </div>
+
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' && vm.userType.UserTypeName != 'Telesales'}">
+                    @Html.LabelFor(model => model.City, new { @class = "col-md-2 control-label", @for = "City" })
+                    <div class="col-md-6">
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.City)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' && vm.userType.UserTypeName != 'Telesales'}">
+                    @Html.LabelFor(model => model.State, new { @class = "col-md-2 control-label", @for = "State" })
+                    <div class="col-md-6">
+                        <div class="input-group col-md-6">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.DropDownListFor(model => model.State, new SelectList(Model.States, "StateCode", "StateName"), "", new { @class = "form-control col-lg-3" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ValidationMessageFor(model => model.State)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParentVendorFormatted, new { @class = "col-md-2 control-label", @for = "VendorId" })
+                    <div class="col-md-6">
+                        @if (SessionVars.IsVendorAdmin || SessionVars.IsOfficeAdmin)
+                        {
+                            <div class="input-group col-md-6" ng-init="vm.selectedVendor='@Model.VendorId.Value'">
+                                <span class="input-group-addon" ng-class="{'hidden': vm.userType.UserTypeName == 'Client Administrator' || vm.userType.UserTypeName == 'Sales Administrator'  }"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                                @Html.TextBoxFor(model => model.ParentVendorFormatted, new { @class = "form-control col-md-3", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.VendorId)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon" ng-class="{'hidden': vm.userType.UserTypeName == 'Client Administrator' || vm.userType.UserTypeName == 'Sales Administrator'  }"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                                <select id="VendorId" name="VendorId" class="form-control" ng-model="vm.selectedVendor" ng-change="vm.onVendorChanged();" ng-init="vm.selectedVendor = @Model.VendorId.GetValueOrDefault(0)">
+                                    <option value="0"></option>
+                                    <option ng-repeat="vendor in vm.vendors" value="{{vendor.Id}}" ng-selected="vendor.Id == vm.selectedVendor">{{vendor.VendorName}}</option>
+                                </select>
+                            </div>
+                        }
+
+
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.VendorId)</div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ParentOfficeFormatted, new { @class = "col-md-2 control-label", @for = "OfficeId" })
+                    <div class="col-md-6">
+                        @if (SessionVars.IsOfficeAdmin)
+                        {
+                            <div class="input-group col-md-6" ng-init="vm.selectedOffice='@Model.OfficeId.Value'">
+                                <span class="input-group-addon" ng-class="{'hidden': vm.userType.UserTypeName == 'Client Administrator' || vm.userType.UserTypeName == 'Sales Administrator'  }"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                                @Html.TextBoxFor(model => model.ParentOfficeFormatted, new { @class = "form-control col-md-3", @readonly = "readonly" })
+                                @Html.HiddenFor(model => model.OfficeId)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="input-group col-md-6">
+                                <span class="input-group-addon" ng-class="{'hidden': vm.userType.UserTypeName == 'Client Administrator' || vm.userType.UserTypeName == 'Vendor Administrator' ||  vm.userType.UserTypeName == 'Sales Administrator' }"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                                <select id="OfficeId" name="OfficeId" class="form-control"
+                                        ng-model="vm.selectedOffice"
+                                        ng-init="vm.selectedOffice = @Model.OfficeId.GetValueOrDefault(0); vm.onVendorChanged()">
+                                    <option value="0"></option>
+                                    <option ng-repeat="office in vm.offices" value="{{office.Id}}" ng-selected="office.Id == vm.selectedOffice">{{office.OfficeName}}</option>
+                                </select>
+                            </div>
+                        }
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.OfficeId)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.SecurityLevel == '0', 'show': vm.userType.SecurityLevel > '0'}">
+                    @Html.LabelFor(model => model.EmailAddress, new { @class = "col-md-2 control-label", @for = "EmailAddress" })
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon" ng-class="{'hidden': vm.userType.SecurityLevel == '0'}"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control col-md-3", ng_model = "vm.email" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.EmailAddress)</div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PhoneNumber, new { @class = "col-md-2 control-label", @for = "PhoneNumber" })
+                    <div class="col-md-6">
+                        <div class="input-group col-md-4">
+                            <span class="input-group-addon" ng-class="{'hidden': vm.userType.SecurityLevel > 0}"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control col-md-4", @ng_model = "vm.phone", @ui_mask = "(999) 999-9999" })
+                        </div>
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.PhoneNumber)</div>
+                </div>              
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.SecurityLevel > '0', 'show': vm.userType.SecurityLevel == '0'}">
+                    @Html.LabelFor(model => model.Language, new { @class = "col-md-2 control-label", @for = "Language" })
+                    <div class="col-md-5">
+                        @Html.DropDownListFor(model => model.Language, new SelectList(Model.Languages), "", new { @class = "form-control col-md-3" })
+                    </div>
+                    <div class="col-md-3">@Html.ValidationMessageFor(model => model.Language)</div>
+                </div>
+
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' }">
+                    @Html.LabelFor(model => model.DrugTest, new { @class = "col-md-2 control-label", @for = "DrugTest" })
+                    <div class="col-md-2 checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.DrugTest, new { @class = "checkbox" })
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' }">
+                    @Html.LabelFor(model => model.BackgroundCheck, new { @class = "col-md-2 control-label", @for = "BackGroundCheck" })
+                    <div class="col-md-2 checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.BackgroundCheck, new { @class = "checkbox" })
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'hidden': vm.userType.UserTypeName != 'Door to Door' }">
+                    @Html.LabelFor(model => model.CodeOfConduct, new { @class = "col-md-2 control-label", @for = "CodeOfConduct" })
+                    <div class="col-md-2 checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.CodeOfConduct, new { @class = "checkbox" })
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            @Html.HiddenFor(x => x.OfficeId)
+            @Html.HiddenFor(x => x.ReferringVendorId)
+
+            @Html.HiddenFor(x => x.ParentOfficeFormatted)
+            @Html.HiddenFor(x => x.ParentVendorFormatted)
+
+            <div class="form-group">
+                <div class="col-md-10 text-center">
+                    <input class="btn btn-primary" type="submit" value="Save" />
+                    <a href="@SessionVars.ReturnUrl" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/app/userEditController.js"></script>
+}

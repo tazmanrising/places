@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FrontierModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FrontierModelStoreContainer">
+          <EntitySet Name="tblE911LoadFile" EntityType="FrontierModel.Store.tblE911LoadFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblE911Main" EntityType="FrontierModel.Store.tblE911Main" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblMain" EntityType="FrontierModel.Store.tblMain" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSNETMain" EntityType="FrontierModel.Store.tblSNETMain" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblSNETTn" EntityType="FrontierModel.Store.tblSNETTn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTn" EntityType="FrontierModel.Store.tblTn" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblE911Main_tblE911LoadFile" Association="FrontierModel.Store.FK_tblE911Main_tblE911LoadFile">
+            <End Role="tblE911LoadFile" EntitySet="tblE911LoadFile" />
+            <End Role="tblE911Main" EntitySet="tblE911Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSNETTn_tblSNETMain" Association="FrontierModel.Store.FK_tblSNETTn_tblSNETMain">
+            <End Role="tblSNETMain" EntitySet="tblSNETMain" />
+            <End Role="tblSNETTn" EntitySet="tblSNETTn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTn_tblMain" Association="FrontierModel.Store.FK_tblTn_tblMain">
+            <End Role="tblMain" EntitySet="tblMain" />
+            <End Role="tblTn" EntitySet="tblTn" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblE911LoadFile">
+          <Key>
+            <PropertyRef Name="E911LoadFileId" />
+          </Key>
+          <Property Name="E911LoadFileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoadDateTime" Type="datetime" />
+          <Property Name="FileName" Type="varchar" MaxLength="100" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="TimeZone" Type="int" />
+          <Property Name="Attempts" Type="int" />
+          <Property Name="Processed" Type="char" MaxLength="1" />
+          <Property Name="Locked" Type="char" MaxLength="1" />
+          <Property Name="LockedDateTime" Type="datetime" />
+          <Property Name="LockedAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="LastAttemptDate" Type="datetime" />
+          <Property Name="LastDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="LastDispositionCode" Type="char" MaxLength="2" />
+          <Property Name="SubscriberId" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Signature" Type="varchar" MaxLength="250" />
+          <Property Name="BirthYear" Type="varchar" MaxLength="10" />
+          <Property Name="TN" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="GeneralAction" Type="char" MaxLength="1" />
+          <Property Name="GeneralDate" Type="datetime" />
+          <Property Name="E911Action" Type="varchar" MaxLength="50" />
+          <Property Name="E911Date" Type="datetime" />
+          <Property Name="IsData" Type="char" MaxLength="1" />
+          <Property Name="IsVoip" Type="char" MaxLength="1" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblE911Main">
+          <Key>
+            <PropertyRef Name="E911MainId" />
+          </Key>
+          <Property Name="E911MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="datetime" />
+          <Property Name="WavName" Type="varchar" MaxLength="50" />
+          <Property Name="AgentId" Type="varchar" MaxLength="10" />
+          <Property Name="AgentName" Type="varchar" MaxLength="50" />
+          <Property Name="E911LoadFileId" Type="int" />
+          <Property Name="Disposition" Type="varchar" MaxLength="50" />
+          <Property Name="DispositionCode" Type="char" MaxLength="2" />
+          <Property Name="TotalTime" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="WebDateTime" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="WaveName" Type="varchar" MaxLength="50" />
+          <Property Name="DNIS" Type="char" MaxLength="4" />
+          <Property Name="TpvAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="char" MaxLength="4" />
+          <Property Name="Ssn4" Type="char" MaxLength="4" />
+          <Property Name="BusinessTaxId" Type="varchar" MaxLength="50" />
+          <Property Name="Verified" Type="char" MaxLength="1" StoreGeneratedPattern="Computed" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" StoreGeneratedPattern="Computed" />
+          <Property Name="DecisionMaker" Type="varchar" MaxLength="100" />
+          <Property Name="Business" Type="char" MaxLength="1" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CustFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="CustLastName" Type="varchar" MaxLength="50" />
+          <Property Name="Product" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="SalesAgentId" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblSNETMain">
+          <Key>
+            <PropertyRef Name="SNETMainId" />
+          </Key>
+          <Property Name="SNETMainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="WebDateTime" Type="datetime" Nullable="false" />
+          <Property Name="WaveName" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="100" />
+          <Property Name="SalesAgentId" Type="varchar" MaxLength="100" />
+          <Property Name="SalesAgentName" Type="varchar" MaxLength="100" />
+          <Property Name="DecisionMaker" Type="varchar" MaxLength="100" />
+          <Property Name="BillingName" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CustCode" Type="varchar" MaxLength="50" />
+          <Property Name="SalesCode" Type="varchar" MaxLength="50" />
+          <Property Name="MemId" Type="varchar" MaxLength="50" />
+          <Property Name="LossTrackingNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CompetitiveCarrier" Type="varchar" MaxLength="50" />
+          <Property Name="Referral" Type="varchar" MaxLength="50" />
+          <Property Name="ReferralCode" Type="varchar" MaxLength="50" />
+          <Property Name="Office" Type="varchar" MaxLength="50" />
+          <Property Name="Texas" Type="char" MaxLength="1" />
+          <Property Name="Slam" Type="char" MaxLength="1" />
+          <Property Name="Ported" Type="char" MaxLength="1" />
+          <Property Name="NonSbcAmeritechCustomer" Type="char" MaxLength="1" />
+          <Property Name="FullWinback" Type="char" MaxLength="1" />
+          <Property Name="AogOrder" Type="char" MaxLength="1" />
+          <Property Name="AogProcessed" Type="char" MaxLength="1" />
+          <Property Name="DialToneProtection" Type="char" MaxLength="1" />
+          <Property Name="LocalTollProtection" Type="char" MaxLength="1" />
+          <Property Name="LdProtection" Type="char" MaxLength="1" />
+          <Property Name="RemoveDialToneProtection" Type="char" MaxLength="1" />
+          <Property Name="RemoveLocalTollProtection" Type="char" MaxLength="1" />
+          <Property Name="RemoveLdProtection" Type="char" MaxLength="1" />
+          <Property Name="PicAddType" Type="varchar" MaxLength="10" />
+          <Property Name="PicRemoveType" Type="varchar" MaxLength="10" />
+          <Property Name="Dnis" Type="char" MaxLength="4" />
+          <Property Name="Ssn4" Type="char" MaxLength="4" />
+          <Property Name="DateOfBirth" Type="char" MaxLength="8" />
+          <Property Name="MaidenName" Type="varchar" MaxLength="50" />
+          <Property Name="ActivationDate" Type="varchar" MaxLength="20" />
+          <Property Name="Verified" Type="char" MaxLength="1" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" />
+          <Property Name="VerifiedCode" Type="char" MaxLength="1" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="100" />
+          <Property Name="TransferAgentTime" Type="int" />
+          <Property Name="AllNumbers" Type="char" MaxLength="1" />
+          <Property Name="AllNumbersYes" Type="char" MaxLength="1" />
+          <Property Name="WinbackRequestId" Type="varchar" MaxLength="20" />
+          <Property Name="WebDnis" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="tblSNETTn">
+          <Key>
+            <PropertyRef Name="SNETTnId" />
+          </Key>
+          <Property Name="SNETTnId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SNETMainId" Type="int" Nullable="false" />
+          <Property Name="Tn" Type="char" MaxLength="10" />
+          <Property Name="Btn" Type="char" MaxLength="1" />
+          <Property Name="BtnId" Type="int" />
+          <Property Name="DialTone" Type="char" MaxLength="1" />
+          <Property Name="LocalTollSwb" Type="char" MaxLength="1" />
+          <Property Name="LocalTollSbcld" Type="char" MaxLength="1" />
+          <Property Name="Ld" Type="char" MaxLength="1" />
+          <Property Name="FreezeDialTone" Type="char" MaxLength="1" />
+          <Property Name="FreezeLpic" Type="char" MaxLength="1" />
+          <Property Name="FreezePic" Type="char" MaxLength="1" />
+          <Property Name="LdCpm" Type="varchar" MaxLength="10" />
+          <Property Name="IntralataCpm" Type="varchar" MaxLength="10" />
+          <Property Name="InterlataCpm" Type="varchar" MaxLength="10" />
+          <Property Name="Mrc" Type="varchar" MaxLength="10" />
+          <Property Name="LdMrc" Type="varchar" MaxLength="10" />
+          <Property Name="CpeCharge" Type="varchar" MaxLength="10" />
+          <Property Name="CpeShippingCharge" Type="varchar" MaxLength="10" />
+          <Property Name="InstallCharge" Type="varchar" MaxLength="10" />
+          <Property Name="LocalServiceMinutes" Type="varchar" MaxLength="10" />
+          <Property Name="LocalTollServiceMinutes" Type="varchar" MaxLength="10" />
+          <Property Name="NumberOfLines" Type="varchar" MaxLength="3" />
+          <Property Name="LocalTollBlockOfTime" Type="varchar" MaxLength="50" />
+          <Property Name="LocalUsageBlockOfTime" Type="varchar" MaxLength="50" />
+          <Property Name="Promotion" Type="varchar" MaxLength="750" />
+          <Property Name="TnOrderNumber" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTn">
+          <Key>
+            <PropertyRef Name="TnId" />
+          </Key>
+          <Property Name="TnId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="int" />
+          <Property Name="Tn" Type="char" MaxLength="10" />
+          <Property Name="DialTone" Type="char" MaxLength="1" />
+          <Property Name="DialToneFreeze" Type="char" MaxLength="1" />
+          <Property Name="LocalToll" Type="char" MaxLength="1" />
+          <Property Name="LocalTollFreeze" Type="char" MaxLength="1" />
+          <Property Name="Ld" Type="char" MaxLength="1" />
+          <Property Name="LdFreeze" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_tblE911Main_tblE911LoadFile">
+          <End Role="tblE911LoadFile" Type="FrontierModel.Store.tblE911LoadFile" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblE911Main" Type="FrontierModel.Store.tblE911Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblE911LoadFile">
+              <PropertyRef Name="E911LoadFileId" />
+            </Principal>
+            <Dependent Role="tblE911Main">
+              <PropertyRef Name="E911LoadFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSNETTn_tblSNETMain">
+          <End Role="tblSNETMain" Type="FrontierModel.Store.tblSNETMain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblSNETTn" Type="FrontierModel.Store.tblSNETTn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSNETMain">
+              <PropertyRef Name="SNETMainId" />
+            </Principal>
+            <Dependent Role="tblSNETTn">
+              <PropertyRef Name="SNETMainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTn_tblMain">
+          <End Role="tblMain" Type="FrontierModel.Store.tblMain" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTn" Type="FrontierModel.Store.tblTn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMain">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="tblTn">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FrontierModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FrontierEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMains" EntityType="FrontierModel.tblMain" />
+          <EntitySet Name="tblTns" EntityType="FrontierModel.tblTn" />
+          <AssociationSet Name="FK_tblTn_tblMain" Association="FrontierModel.FK_tblTn_tblMain">
+            <End Role="tblMain" EntitySet="tblMains" />
+            <End Role="tblTn" EntitySet="tblTns" />
+          </AssociationSet>
+          <EntitySet Name="tblSNETMains" EntityType="FrontierModel.tblSNETMain" />
+          <EntitySet Name="tblSNETTns" EntityType="FrontierModel.tblSNETTn" />
+          <AssociationSet Name="FK_tblSNETTn_tblSNETMain" Association="FrontierModel.FK_tblSNETTn_tblSNETMain">
+            <End Role="tblSNETMain" EntitySet="tblSNETMains" />
+            <End Role="tblSNETTn" EntitySet="tblSNETTns" />
+          </AssociationSet>
+          <EntitySet Name="tblE911LoadFile" EntityType="FrontierModel.tblE911LoadFile" />
+          <EntitySet Name="tblE911Main" EntityType="FrontierModel.tblE911Main" />
+          <AssociationSet Name="FK_tblE911Main_tblE911LoadFile" Association="FrontierModel.FK_tblE911Main_tblE911LoadFile">
+            <End Role="tblE911LoadFile" EntitySet="tblE911LoadFile" />
+            <End Role="tblE911Main" EntitySet="tblE911Main" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" />
+          <Property Name="WebDateTime" Type="DateTime" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WaveName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DNIS" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="TpvAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Ssn4" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="BusinessTaxId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Verified" Type="String" MaxLength="1" Unicode="false" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Concern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="DecisionMaker" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Business" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CustFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CustLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SalesAgentId" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblTns" Relationship="FrontierModel.FK_tblTn_tblMain" FromRole="tblMain" ToRole="tblTn" />
+        </EntityType>
+        <EntityType Name="tblTn">
+          <Key>
+            <PropertyRef Name="TnId" />
+          </Key>
+          <Property Name="TnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="Int32" />
+          <Property Name="Tn" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="DialTone" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DialToneFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LocalToll" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LocalTollFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Ld" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LdFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="tblMain" Relationship="FrontierModel.FK_tblTn_tblMain" FromRole="tblTn" ToRole="tblMain" />
+        </EntityType>
+        <Association Name="FK_tblTn_tblMain">
+          <End Role="tblMain" Type="FrontierModel.tblMain" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTn" Type="FrontierModel.tblTn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMain">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="tblTn">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblSNETMain">
+          <Key>
+            <PropertyRef Name="SNETMainId" />
+          </Key>
+          <Property Type="Int32" Name="SNETMainId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="DateTime" />
+          <Property Type="DateTime" Name="WebDateTime" Nullable="false" />
+          <Property Type="String" Name="WaveName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TpvAgentId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TpvAgentName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SalesAgentId" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SalesAgentName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DecisionMaker" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BillingName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CompanyName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SalesCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MemId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LossTrackingNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CompetitiveCarrier" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Referral" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReferralCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Office" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Texas" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Slam" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Ported" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="NonSbcAmeritechCustomer" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FullWinback" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="AogOrder" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="AogProcessed" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DialToneProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="LocalTollProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="LdProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RemoveDialToneProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RemoveLocalTollProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="RemoveLdProtection" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="PicAddType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PicRemoveType" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Dnis" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Ssn4" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DateOfBirth" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="MaidenName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ActivationDate" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Verified" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Concern" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="VerifiedCode" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="OrderNumber" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TransferAgentTime" />
+          <Property Type="String" Name="AllNumbers" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="AllNumbersYes" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="WinbackRequestId" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WebDnis" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblSNETTns" Relationship="FrontierModel.FK_tblSNETTn_tblSNETMain" FromRole="tblSNETMain" ToRole="tblSNETTn" />
+        </EntityType>
+        <EntityType Name="tblSNETTn">
+          <Key>
+            <PropertyRef Name="SNETTnId" />
+          </Key>
+          <Property Type="Int32" Name="SNETTnId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SNETMainId" Nullable="false" />
+          <Property Type="String" Name="Tn" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Btn" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="BtnId" />
+          <Property Type="String" Name="DialTone" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="LocalTollSwb" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="LocalTollSbcld" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Ld" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FreezeDialTone" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FreezeLpic" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="FreezePic" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="LdCpm" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IntralataCpm" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InterlataCpm" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Mrc" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LdMrc" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CpeCharge" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CpeShippingCharge" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InstallCharge" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalServiceMinutes" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalTollServiceMinutes" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NumberOfLines" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalTollBlockOfTime" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalUsageBlockOfTime" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Promotion" MaxLength="750" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TnOrderNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblSNETMain" Relationship="FrontierModel.FK_tblSNETTn_tblSNETMain" FromRole="tblSNETTn" ToRole="tblSNETMain" />
+        </EntityType>
+        <Association Name="FK_tblSNETTn_tblSNETMain">
+          <End Type="FrontierModel.tblSNETMain" Role="tblSNETMain" Multiplicity="1" />
+          <End Type="FrontierModel.tblSNETTn" Role="tblSNETTn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblSNETMain">
+              <PropertyRef Name="SNETMainId" />
+            </Principal>
+            <Dependent Role="tblSNETTn">
+              <PropertyRef Name="SNETMainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblE911LoadFile">
+          <Key>
+            <PropertyRef Name="E911LoadFileId" />
+          </Key>
+          <Property Type="Int32" Name="E911LoadFileId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="LoadDateTime" />
+          <Property Type="String" Name="FileName" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Priority" />
+          <Property Type="Int32" Name="TimeZone" />
+          <Property Type="Int32" Name="Attempts" />
+          <Property Type="String" Name="Processed" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="Locked" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="LockedDateTime" />
+          <Property Type="String" Name="LockedAgentId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LastAttemptDate" />
+          <Property Type="String" Name="LastDisposition" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastDispositionCode" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="SubscriberId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Signature" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BirthYear" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TN" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GeneralAction" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="GeneralDate" />
+          <Property Type="String" Name="E911Action" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="E911Date" />
+          <Property Type="String" Name="IsData" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IsVoip" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="User" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblE911Main" Relationship="FrontierModel.FK_tblE911Main_tblE911LoadFile" FromRole="tblE911LoadFile" ToRole="tblE911Main" />
+        </EntityType>
+        <EntityType Name="tblE911Main">
+          <Key>
+            <PropertyRef Name="E911MainId" />
+          </Key>
+          <Property Type="Int32" Name="E911MainId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="CallDateTime" />
+          <Property Type="String" Name="WavName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AgentId" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AgentName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="E911LoadFileId" />
+          <Property Type="String" Name="Disposition" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DispositionCode" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="TotalTime" />
+          <NavigationProperty Name="tblE911LoadFile" Relationship="FrontierModel.FK_tblE911Main_tblE911LoadFile" FromRole="tblE911Main" ToRole="tblE911LoadFile" />
+        </EntityType>
+        <Association Name="FK_tblE911Main_tblE911LoadFile">
+          <End Type="FrontierModel.tblE911LoadFile" Role="tblE911LoadFile" Multiplicity="0..1" />
+          <End Type="FrontierModel.tblE911Main" Role="tblE911Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblE911LoadFile">
+              <PropertyRef Name="E911LoadFileId" />
+            </Principal>
+            <Dependent Role="tblE911Main">
+              <PropertyRef Name="E911LoadFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FrontierModelStoreContainer" CdmEntityContainer="FrontierEntities">
+          <EntitySetMapping Name="tblMains"><EntityTypeMapping TypeName="FrontierModel.tblMain"><MappingFragment StoreEntitySet="tblMain">
+            <ScalarProperty Name="MainId" ColumnName="MainId" />
+            <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+            <ScalarProperty Name="WebDateTime" ColumnName="WebDateTime" />
+            <ScalarProperty Name="WaveName" ColumnName="WaveName" />
+            <ScalarProperty Name="DNIS" ColumnName="DNIS" />
+            <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+            <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+            <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+            <ScalarProperty Name="Ssn4" ColumnName="Ssn4" />
+            <ScalarProperty Name="BusinessTaxId" ColumnName="BusinessTaxId" />
+            <ScalarProperty Name="Verified" ColumnName="Verified" />
+            <ScalarProperty Name="Concern" ColumnName="Concern" />
+            <ScalarProperty Name="DecisionMaker" ColumnName="DecisionMaker" />
+            <ScalarProperty Name="Business" ColumnName="Business" />
+            <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+            <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+            <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+            <ScalarProperty Name="Product" ColumnName="Product" />
+            <ScalarProperty Name="State" ColumnName="State" />
+            <ScalarProperty Name="SalesAgentId" ColumnName="SalesAgentId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblTns"><EntityTypeMapping TypeName="FrontierModel.tblTn"><MappingFragment StoreEntitySet="tblTn">
+            <ScalarProperty Name="TnId" ColumnName="TnId" />
+            <ScalarProperty Name="MainId" ColumnName="MainId" />
+            <ScalarProperty Name="Tn" ColumnName="Tn" />
+            <ScalarProperty Name="DialTone" ColumnName="DialTone" />
+            <ScalarProperty Name="DialToneFreeze" ColumnName="DialToneFreeze" />
+            <ScalarProperty Name="LocalToll" ColumnName="LocalToll" />
+            <ScalarProperty Name="LocalTollFreeze" ColumnName="LocalTollFreeze" />
+            <ScalarProperty Name="Ld" ColumnName="Ld" />
+            <ScalarProperty Name="LdFreeze" ColumnName="LdFreeze" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="tblSNETMains">
+            <EntityTypeMapping TypeName="FrontierModel.tblSNETMain">
+              <MappingFragment StoreEntitySet="tblSNETMain">
+                <ScalarProperty Name="WebDnis" ColumnName="WebDnis" />
+                <ScalarProperty Name="WinbackRequestId" ColumnName="WinbackRequestId" />
+                <ScalarProperty Name="AllNumbersYes" ColumnName="AllNumbersYes" />
+                <ScalarProperty Name="AllNumbers" ColumnName="AllNumbers" />
+                <ScalarProperty Name="TransferAgentTime" ColumnName="TransferAgentTime" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="VerifiedCode" ColumnName="VerifiedCode" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="ActivationDate" ColumnName="ActivationDate" />
+                <ScalarProperty Name="MaidenName" ColumnName="MaidenName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Ssn4" ColumnName="Ssn4" />
+                <ScalarProperty Name="Dnis" ColumnName="Dnis" />
+                <ScalarProperty Name="PicRemoveType" ColumnName="PicRemoveType" />
+                <ScalarProperty Name="PicAddType" ColumnName="PicAddType" />
+                <ScalarProperty Name="RemoveLdProtection" ColumnName="RemoveLdProtection" />
+                <ScalarProperty Name="RemoveLocalTollProtection" ColumnName="RemoveLocalTollProtection" />
+                <ScalarProperty Name="RemoveDialToneProtection" ColumnName="RemoveDialToneProtection" />
+                <ScalarProperty Name="LdProtection" ColumnName="LdProtection" />
+                <ScalarProperty Name="LocalTollProtection" ColumnName="LocalTollProtection" />
+                <ScalarProperty Name="DialToneProtection" ColumnName="DialToneProtection" />
+                <ScalarProperty Name="AogProcessed" ColumnName="AogProcessed" />
+                <ScalarProperty Name="AogOrder" ColumnName="AogOrder" />
+                <ScalarProperty Name="FullWinback" ColumnName="FullWinback" />
+                <ScalarProperty Name="NonSbcAmeritechCustomer" ColumnName="NonSbcAmeritechCustomer" />
+                <ScalarProperty Name="Ported" ColumnName="Ported" />
+                <ScalarProperty Name="Slam" ColumnName="Slam" />
+                <ScalarProperty Name="Texas" ColumnName="Texas" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="ReferralCode" ColumnName="ReferralCode" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
+                <ScalarProperty Name="CompetitiveCarrier" ColumnName="CompetitiveCarrier" />
+                <ScalarProperty Name="LossTrackingNumber" ColumnName="LossTrackingNumber" />
+                <ScalarProperty Name="MemId" ColumnName="MemId" />
+                <ScalarProperty Name="SalesCode" ColumnName="SalesCode" />
+                <ScalarProperty Name="CustCode" ColumnName="CustCode" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="BillingName" ColumnName="BillingName" />
+                <ScalarProperty Name="DecisionMaker" ColumnName="DecisionMaker" />
+                <ScalarProperty Name="SalesAgentName" ColumnName="SalesAgentName" />
+                <ScalarProperty Name="SalesAgentId" ColumnName="SalesAgentId" />
+                <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+                <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+                <ScalarProperty Name="WaveName" ColumnName="WaveName" />
+                <ScalarProperty Name="WebDateTime" ColumnName="WebDateTime" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="SNETMainId" ColumnName="SNETMainId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSNETTns">
+            <EntityTypeMapping TypeName="FrontierModel.tblSNETTn">
+              <MappingFragment StoreEntitySet="tblSNETTn">
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="TnOrderNumber" ColumnName="TnOrderNumber" />
+                <ScalarProperty Name="Promotion" ColumnName="Promotion" />
+                <ScalarProperty Name="LocalUsageBlockOfTime" ColumnName="LocalUsageBlockOfTime" />
+                <ScalarProperty Name="LocalTollBlockOfTime" ColumnName="LocalTollBlockOfTime" />
+                <ScalarProperty Name="NumberOfLines" ColumnName="NumberOfLines" />
+                <ScalarProperty Name="LocalTollServiceMinutes" ColumnName="LocalTollServiceMinutes" />
+                <ScalarProperty Name="LocalServiceMinutes" ColumnName="LocalServiceMinutes" />
+                <ScalarProperty Name="InstallCharge" ColumnName="InstallCharge" />
+                <ScalarProperty Name="CpeShippingCharge" ColumnName="CpeShippingCharge" />
+                <ScalarProperty Name="CpeCharge" ColumnName="CpeCharge" />
+                <ScalarProperty Name="LdMrc" ColumnName="LdMrc" />
+                <ScalarProperty Name="Mrc" ColumnName="Mrc" />
+                <ScalarProperty Name="InterlataCpm" ColumnName="InterlataCpm" />
+                <ScalarProperty Name="IntralataCpm" ColumnName="IntralataCpm" />
+                <ScalarProperty Name="LdCpm" ColumnName="LdCpm" />
+                <ScalarProperty Name="FreezePic" ColumnName="FreezePic" />
+                <ScalarProperty Name="FreezeLpic" ColumnName="FreezeLpic" />
+                <ScalarProperty Name="FreezeDialTone" ColumnName="FreezeDialTone" />
+                <ScalarProperty Name="Ld" ColumnName="Ld" />
+                <ScalarProperty Name="LocalTollSbcld" ColumnName="LocalTollSbcld" />
+                <ScalarProperty Name="LocalTollSwb" ColumnName="LocalTollSwb" />
+                <ScalarProperty Name="DialTone" ColumnName="DialTone" />
+                <ScalarProperty Name="BtnId" ColumnName="BtnId" />
+                <ScalarProperty Name="Btn" ColumnName="Btn" />
+                <ScalarProperty Name="Tn" ColumnName="Tn" />
+                <ScalarProperty Name="SNETMainId" ColumnName="SNETMainId" />
+                <ScalarProperty Name="SNETTnId" ColumnName="SNETTnId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblE911LoadFile">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911LoadFile">
+              <MappingFragment StoreEntitySet="tblE911LoadFile">
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="IsVoip" ColumnName="IsVoip" />
+                <ScalarProperty Name="IsData" ColumnName="IsData" />
+                <ScalarProperty Name="E911Date" ColumnName="E911Date" />
+                <ScalarProperty Name="E911Action" ColumnName="E911Action" />
+                <ScalarProperty Name="GeneralDate" ColumnName="GeneralDate" />
+                <ScalarProperty Name="GeneralAction" ColumnName="GeneralAction" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TN" ColumnName="TN" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+                <ScalarProperty Name="LastDispositionCode" ColumnName="LastDispositionCode" />
+                <ScalarProperty Name="LastDisposition" ColumnName="LastDisposition" />
+                <ScalarProperty Name="LastAttemptDate" ColumnName="LastAttemptDate" />
+                <ScalarProperty Name="LockedAgentId" ColumnName="LockedAgentId" />
+                <ScalarProperty Name="LockedDateTime" ColumnName="LockedDateTime" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="LoadDateTime" ColumnName="LoadDateTime" />
+                <ScalarProperty Name="E911LoadFileId" ColumnName="E911LoadFileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblE911Main">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911Main">
+              <MappingFragment StoreEntitySet="tblE911Main">
+                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+                <ScalarProperty Name="DispositionCode" ColumnName="DispositionCode" />
+                <ScalarProperty Name="Disposition" ColumnName="Disposition" />
+                <ScalarProperty Name="E911LoadFileId" ColumnName="E911LoadFileId" />
+                <ScalarProperty Name="AgentName" ColumnName="AgentName" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="WavName" ColumnName="WavName" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="E911MainId" ColumnName="E911MainId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FrontierData">
+        <EntityTypeShape EntityType="FrontierModel.tblMain" Width="1.5" PointX="0.75" PointY="1.125" Height="5.057109375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrontierModel.tblTn" Width="1.5" PointX="3" PointY="2.125" Height="2.9417936197916656" IsExpanded="true" />
+        <AssociationConnector Association="FrontierModel.FK_tblTn_tblMain" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5958968098958328" />
+          <ConnectorPoint PointX="3" PointY="3.5958968098958328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FrontierModel.tblSNETMain" Width="1.5" PointX="5.375" PointY="0.75" Height="10.249248046875" />
+        <EntityTypeShape EntityType="FrontierModel.tblSNETTn" Width="1.5" PointX="7.375" PointY="0.75" Height="6.4032194010416656" />
+        <AssociationConnector Association="FrontierModel.FK_tblSNETTn_tblSNETMain" >
+          <ConnectorPoint PointX="6.875" PointY="4.0477604166666667" />
+          <ConnectorPoint PointX="7.375" PointY="4.0477604166666667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="FrontierModel.tblE911LoadFile" Width="1.5" PointX="0.75" PointY="7.75" Height="6.0186165364583388" />
+        <EntityTypeShape EntityType="FrontierModel.tblE911Main" Width="1.5" PointX="3" PointY="9.375" Height="2.9417936197916674" />
+        <AssociationConnector Association="FrontierModel.FK_tblE911Main_tblE911LoadFile" >
+          <ConnectorPoint PointX="2.25" PointY="10.845896809895834" />
+          <ConnectorPoint PointX="3" PointY="10.845896809895834" />
+        </AssociationConnector>
+        </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

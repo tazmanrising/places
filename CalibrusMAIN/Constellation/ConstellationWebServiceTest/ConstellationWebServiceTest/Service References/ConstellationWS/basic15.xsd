@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Residential.Application.Detail" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Residential.Application.Detail" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfUdcZipCodes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UdcZipCodes" nillable="true" type="tns:UdcZipCodes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUdcZipCodes" nillable="true" type="tns:ArrayOfUdcZipCodes" />
+  <xs:complexType name="UdcZipCodes">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="ServiceType" type="q1:ServiceTypeEnum" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UdcCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UdcName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ZipCodes" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UdcZipCodes" nillable="true" type="tns:UdcZipCodes" />
+</xs:schema>

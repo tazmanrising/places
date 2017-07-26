@@ -1,0 +1,135 @@
+﻿@using Calibrus.SparkPortal.Web
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/" />
+    <title>Spark Portal</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-messages.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="~/Scripts/angular-ui/ui-utils.js"></script>
+</head>
+<body ng-app="portal">
+    <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="navbarController as vm">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">Spark Portal</div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @if (SessionVars.IsClientAdmin)
+                        {
+                            <a href="@Url.Action("ClientAdmin", "Home")"><i class="fa fa-home"></i> Home</a>
+                        }
+                        else if (SessionVars.IsVendorAdmin)
+                        {
+                            <a href="@Url.Action("VendorAdmin", "Home")"><i class="fa fa-home"></i> Home</a>
+                        }
+                        else if (SessionVars.IsOfficeAdmin)
+                        {
+                            <a href="@Url.Action("OfficeAdmin", "Home")"><i class="fa fa-home"></i> Home</a>
+                        }
+                    </li>
+                </ul>
+
+                @if (SessionVars.IsClientAdmin)
+                {
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Vendor")"><i class="fa fa-building-o"></i> Vendors</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Office")"><i class="fa fa-user-plus"></i> Offices</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Rate")"><i class="fa fa-file-text-o"></i> Programs</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "User")"><i class="fa fa-user"></i> Users</a></li>
+                    </ul>
+                }
+                else if (SessionVars.IsVendorAdmin)
+                {                    
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "Office")"><i class="fa fa-user-plus"></i> Offices</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "User")"><i class="fa fa-user"></i> Users</a></li>
+                    </ul>
+                }
+                else if (SessionVars.IsOfficeAdmin)
+                {
+                    <ul class="nav navbar-nav">
+                        <li><a href="@Url.Action("Index", "User")"><i class="fa fa-user"></i> Users</a></li>
+                    </ul>
+                }
+
+                @if (SessionVars.IsClientAdmin || SessionVars.IsVendorAdmin || SessionVars.IsOfficeAdmin)
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-folder-open"></i> Reports<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="@Url.Action("CallReport", "Report")">Call Report</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li ng-repeat="report in vm.reportList"><a href="~/Reports/ReportViewer.aspx?ReportName={{report.ReportName}}&ReportPath={{report.ReportPath}}" target="_new">{{report.ReportName}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    <br /><br /><br /><br />
+    <footer class="navbar navbar-fixed-bottom navbar-default" style="margin-top: 120px;">
+        <div class="pull-right navbar-text">
+            &copy; @DateTime.Now.Year.ToString() - Calibrus <i class="fa fa-fort-awesome"></i>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/app/app.js"></script>
+    <script src="~/Scripts/app/filter.js"></script>
+    <script src="~/Scripts/app/dataService.js"></script>
+    <script src="~/Scripts/app/navbarController.js"></script>
+
+    <script src="~/Scripts/highcharts.js"></script>
+    <script src="~/Scripts/highcharts-ng.js"></script>
+
+    <script language="javascript">
+
+        angular.module('portal')
+            .value('userCtx', {
+                userName: "@SessionVars.UserName",
+                userVendorId: "@SessionVars.LoggedInVendorId",
+                userOfficeId: "@SessionVars.LoggedInOfficeId",
+                isClientAdmin: "@SessionVars.IsClientAdmin",
+                isVendorAdmin: "@SessionVars.IsVendorAdmin",
+                isOfficeAdmin: "@SessionVars.IsOfficeAdmin",
+                securityLevel: "@SessionVars.SecurityLevel"
+            });
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

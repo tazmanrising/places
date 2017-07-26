@@ -1,0 +1,46 @@
+{
+  "name": "library",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Tom"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tazmanrising/IntiotgAngular",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.1",
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-ui-router": "^0.3.1",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "jscs": "^2.7.0",
+    "angular-toastr": "^2.1.1",
+    "algoliasearch": "^3.22.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "css/font-awesome.min.css",
+        "scss/font-awesome.scss"
+      ]
+    }
+  }
+}

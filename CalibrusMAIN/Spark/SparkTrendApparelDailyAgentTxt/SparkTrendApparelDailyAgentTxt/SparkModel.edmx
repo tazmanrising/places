@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SparkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SparkModelStoreContainer">
+          <EntitySet Name="Office" EntityType="SparkModel.Store.Office" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="User" EntityType="SparkModel.Store.User" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Vendor" EntityType="SparkModel.Store.Vendor" store:Type="Tables" Schema="v1" />
+          <AssociationSet Name="FK_Office_Vendor" Association="SparkModel.Store.FK_Office_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Office" EntitySet="Office" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Office" Association="SparkModel.Store.FK_User_Office">
+            <End Role="Office" EntitySet="Office" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Vendor" Association="SparkModel.Store.FK_User_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="OfficeName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OfficeEmail" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="MarketerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SalesChannelId" Type="int" Nullable="false" />
+          <Property Name="OfficeContact" Type="varchar" MaxLength="50" />
+          <Property Name="OfficePhone" Type="varchar" MaxLength="10" />
+          <Property Name="Address1" Type="varchar" MaxLength="255" />
+          <Property Name="Address2" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="StateCode" Type="char" MaxLength="2" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="SupervisiorId" Type="int" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="ShirtSize" Type="varchar" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="StateCode" Type="varchar" MaxLength="2" />
+          <Property Name="SSN" Type="char" MaxLength="4" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorNumber" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="VendorName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MarketerCode" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SalesChannelId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CommissionNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Office_Vendor">
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="1" />
+          <End Role="Office" Type="SparkModel.Store.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Office">
+          <End Role="Office" Type="SparkModel.Store.Office" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Vendor">
+          <End Role="Vendor" Type="SparkModel.Store.Vendor" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spTrendApparelDailyActivityReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="reportDate" Type="date" Mode="In" />
+          <Parameter Name="runTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spTrendApparelDailyAgentStatusActiveOnlyReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1" />
+        <Function Name="spTrendApparelDailyAgentStatusReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="reportDate" Type="date" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SparkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SparkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Offices" EntityType="SparkModel.Office" />
+          <EntitySet Name="Users" EntityType="SparkModel.User" />
+          <EntitySet Name="Vendors" EntityType="SparkModel.Vendor" />
+          <AssociationSet Name="FK_Office_Vendor" Association="SparkModel.FK_Office_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Office" Association="SparkModel.FK_User_Office">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Vendor" Association="SparkModel.FK_User_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="spTrendApparelDailyActivityReport" ReturnType="Collection(SparkModel.spTrendApparelDailyActivityReport_Result)">
+            <Parameter Name="reportDate" Mode="In" Type="DateTime" />
+            <Parameter Name="runTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spTrendApparelDailyAgentStatusReport" ReturnType="Collection(SparkModel.spTrendApparelDailyAgentStatusReport_Result)">
+          <Parameter Name="reportDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spTrendApparelDailyAgentStatusActiveOnlyReport" ReturnType="Collection(SparkModel.spTrendApparelDailyAgentStatusActiveOnlyReport_Result)" />
+        </EntityContainer>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OfficeEmail" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MarketerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesChannelId" Type="Int32" Nullable="false" />
+          <Property Name="OfficeContact" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OfficePhone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StateCode" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Vendor" Relationship="SparkModel.FK_Office_Vendor" FromRole="Office" ToRole="Vendor" />
+          <NavigationProperty Name="Users" Relationship="SparkModel.FK_User_Office" FromRole="Office" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SupervisiorId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="ShirtSize" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StateCode" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SSN" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Office" Relationship="SparkModel.FK_User_Office" FromRole="User" ToRole="Office" />
+          <NavigationProperty Name="Vendor" Relationship="SparkModel.FK_User_Vendor" FromRole="User" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorNumber" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="VendorName" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MarketerCode" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesChannelId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CommissionNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Offices" Relationship="SparkModel.FK_Office_Vendor" FromRole="Vendor" ToRole="Office" />
+          <NavigationProperty Name="Users" Relationship="SparkModel.FK_User_Vendor" FromRole="Vendor" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Office_Vendor">
+          <End Role="Vendor" Type="SparkModel.Vendor" Multiplicity="1" />
+          <End Role="Office" Type="SparkModel.Office" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="Office">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Office">
+          <End Role="Office" Type="SparkModel.Office" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Vendor">
+          <End Role="Vendor" Type="SparkModel.Vendor" Multiplicity="0..1" />
+          <End Role="User" Type="SparkModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spTrendApparelDailyActivityReport_Result">
+          <Property Type="String" Name="Vendor" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Office" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Spark_Agent_ID" Nullable="true" MaxLength="13" />
+          <Property Type="Int32" Name="Total_Sale" Nullable="true" />
+          <Property Type="DateTime" Name="Hire_Date" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spTrendApparelDailyAgentStatusReport_Result">
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Spark_Agent_ID" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="ShirtSize" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StatusDatetime" Nullable="true" />
+          <Property Type="String" Name="OfficeContact" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StateCode" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="OfficePhone" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="spTrendApparelDailyAgentStatusActiveOnlyReport_Result">
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Spark_Agent_ID" Nullable="true" MaxLength="13" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UserTypeId" Nullable="false" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="ShirtSize" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="StatusDateTime" Nullable="true" />
+          <Property Type="String" Name="OfficeContact" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StateCode" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="OfficePhone" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SparkModelStoreContainer" CdmEntityContainer="SparkEntities">
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="SparkModel.Office">
+              <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="OfficeEmail" ColumnName="OfficeEmail" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MarketerCode" ColumnName="MarketerCode" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="OfficeContact" ColumnName="OfficeContact" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SparkModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SupervisiorId" ColumnName="SupervisiorId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ShirtSize" ColumnName="ShirtSize" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="SSN" ColumnName="SSN" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="SparkModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+                <ScalarProperty Name="MarketerCode" ColumnName="MarketerCode" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CommissionNumber" ColumnName="CommissionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spTrendApparelDailyActivityReport" FunctionName="SparkModel.Store.spTrendApparelDailyActivityReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SparkModel.spTrendApparelDailyActivityReport_Result">
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Spark_Agent_ID" ColumnName="Spark_Agent_ID" />
+                <ScalarProperty Name="Total_Sale" ColumnName="Total_Sale" />
+                <ScalarProperty Name="Hire_Date" ColumnName="Hire_Date" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spTrendApparelDailyAgentStatusReport" FunctionName="SparkModel.Store.spTrendApparelDailyAgentStatusReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SparkModel.spTrendApparelDailyAgentStatusReport_Result">
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="Spark_Agent_ID" ColumnName="Spark_Agent_ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ShirtSize" ColumnName="ShirtSize" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="StatusDatetime" ColumnName="StatusDatetime" />
+                <ScalarProperty Name="OfficeContact" ColumnName="OfficeContact" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spTrendApparelDailyAgentStatusActiveOnlyReport" FunctionName="SparkModel.Store.spTrendApparelDailyAgentStatusActiveOnlyReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SparkModel.spTrendApparelDailyAgentStatusActiveOnlyReport_Result">
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="Spark_Agent_ID" ColumnName="Spark_Agent_ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ShirtSize" ColumnName="ShirtSize" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="StatusDateTime" ColumnName="StatusDateTime" />
+                <ScalarProperty Name="OfficeContact" ColumnName="OfficeContact" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

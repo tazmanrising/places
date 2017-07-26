@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA_Reporting", "QA_Reporting\QA_Reporting.csproj", "{66146C09-541D-4D49-BFA3-522AF4764372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{6B73C31B-9954-4331-8A52-E5873E3681A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QA_Report_Service", "QA_Report_Service\QA_Report_Service.csproj", "{32D4EC63-BFF5-4DB2-9BFF-A6A02C6C5E13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAdmin", "WebApiAdmin\WebApiAdmin.csproj", "{2092D8FD-4346-444B-9264-080D3BDBE889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppTester", "WebAppTester\WebAppTester.csproj", "{02E1AB5B-23C3-4F3E-A5E3-4472BDB717BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66146C09-541D-4D49-BFA3-522AF4764372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66146C09-541D-4D49-BFA3-522AF4764372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66146C09-541D-4D49-BFA3-522AF4764372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66146C09-541D-4D49-BFA3-522AF4764372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B73C31B-9954-4331-8A52-E5873E3681A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B73C31B-9954-4331-8A52-E5873E3681A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B73C31B-9954-4331-8A52-E5873E3681A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B73C31B-9954-4331-8A52-E5873E3681A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D4EC63-BFF5-4DB2-9BFF-A6A02C6C5E13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D4EC63-BFF5-4DB2-9BFF-A6A02C6C5E13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D4EC63-BFF5-4DB2-9BFF-A6A02C6C5E13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D4EC63-BFF5-4DB2-9BFF-A6A02C6C5E13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2092D8FD-4346-444B-9264-080D3BDBE889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2092D8FD-4346-444B-9264-080D3BDBE889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2092D8FD-4346-444B-9264-080D3BDBE889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2092D8FD-4346-444B-9264-080D3BDBE889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E1AB5B-23C3-4F3E-A5E3-4472BDB717BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E1AB5B-23C3-4F3E-A5E3-4472BDB717BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E1AB5B-23C3-4F3E-A5E3-4472BDB717BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E1AB5B-23C3-4F3E-A5E3-4472BDB717BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ConsoleTester\\ConsoleTester.csproj
+		SccProjectName1 = ConsoleTester
+		SccLocalPath1 = ConsoleTester
+		SccProjectUniqueName2 = QA_Report_Service\\QA_Report_Service.csproj
+		SccProjectName2 = QA_Report_Service
+		SccLocalPath2 = QA_Report_Service
+		SccProjectUniqueName3 = QA_Reporting\\QA_Reporting.csproj
+		SccProjectName3 = QA_Reporting
+		SccLocalPath3 = QA_Reporting
+		SccProjectUniqueName4 = WebApiAdmin\\WebApiAdmin.csproj
+		SccProjectName4 = WebApiAdmin
+		SccLocalPath4 = WebApiAdmin
+		SccProjectUniqueName5 = WebAppTester\\WebAppTester.csproj
+		SccProjectName5 = WebAppTester
+		SccLocalPath5 = WebAppTester
+	EndGlobalSection
+EndGlobal

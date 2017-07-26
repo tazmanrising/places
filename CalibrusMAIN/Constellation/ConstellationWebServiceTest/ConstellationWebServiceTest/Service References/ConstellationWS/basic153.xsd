@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential.DataType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Residential.DataType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" />
+  <xs:complexType name="CustomerOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q1:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerResponse" nillable="true" type="tns:CustomerData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerOperationResult" nillable="true" type="tns:CustomerOperationResult" />
+  <xs:complexType name="CustomerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgentID" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="BillingAddress" nillable="true" type="q2:Address" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="BillingContact" nillable="true" type="q3:Contact" />
+      <xs:element minOccurs="0" name="CCToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfirmationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContractDownloadGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Created_By" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.DataType" minOccurs="0" name="CreditExceptionCode" type="q4:CreditExceptionCodeEnum" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:long" />
+      <xs:element minOccurs="0" name="CustomerNameKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="D2DRepId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepositPaidAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DepositRequiredAmount" type="xs:decimal" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="GasBillingAddress" nillable="true" type="q5:Address" />
+      <xs:element minOccurs="0" name="GasPlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="GasPrice" type="xs:float" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="GasServiceAddress" nillable="true" type="q6:Address" />
+      <xs:element minOccurs="0" name="GasTerms" type="xs:float" />
+      <xs:element minOccurs="0" name="GasUDCAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GasUDCCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ISTAAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAverageBilling" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBudgetBilling" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSubscribe" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTaxExempt" type="xs:boolean" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="Language" type="q7:LanaguageEnum" />
+      <xs:element minOccurs="0" name="MeterNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MyReferralCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:float" />
+      <xs:element minOccurs="0" name="PromoCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReceiptNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferralByCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResponseMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSAProfileID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SelectedGasPlan" nillable="true" type="q8:Plan" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SelectedPlan" nillable="true" type="q9:Plan" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="ServiceAddress" nillable="true" type="q10:Address" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="ServiceContact" nillable="true" type="q11:Contact" />
+      <xs:element minOccurs="0" name="SignUpProgram" nillable="true" type="xs:string" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SignUpType" type="q12:SignUpChoiceEnum" />
+      <xs:element minOccurs="0" name="SupervisorID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SwitchDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SwitchTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TPVVerficationCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="TaxExemptReason" type="q13:TaxExemptReasonEnum" />
+      <xs:element minOccurs="0" name="Terms" type="xs:float" />
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="Type_Code" type="q14:TypeCodeEnum" />
+      <xs:element minOccurs="0" name="UDCAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebOrderId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerData" nillable="true" type="tns:CustomerData" />
+  <xs:complexType name="SMBCustomerOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q15:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerResponse" nillable="true" type="tns:SMBCustomerData" />
+          <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SmbResponseData" nillable="true" type="q16:SMBResponseData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SMBCustomerOperationResult" nillable="true" type="tns:SMBCustomerOperationResult" />
+  <xs:complexType name="SMBCustomerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Created_By" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerID" type="xs:long" />
+      <xs:element minOccurs="0" name="D2DRepId" nillable="true" type="xs:string" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="LegalAddress" nillable="true" type="q17:Address" />
+      <xs:element minOccurs="0" name="PartnerId" type="xs:long" />
+      <xs:element minOccurs="0" name="PlanID" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:float" />
+      <xs:element minOccurs="0" name="PromoCode" nillable="true" type="xs:string" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="SelectedPlan" nillable="true" type="q18:Plan" />
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="ServiceAccount" nillable="true" type="q19:ArrayOfServiceAccount" />
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="ServiceContact" nillable="true" type="q20:CustomerInformation" />
+      <xs:element minOccurs="0" name="Term" type="xs:float" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMBCustomerData" nillable="true" type="tns:SMBCustomerData" />
+  <xs:complexType name="PlanListOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q21:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="PlanListResult" nillable="true" type="q22:ArrayOfPlan" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlanListOperationResult" nillable="true" type="tns:PlanListOperationResult" />
+  <xs:complexType name="AppStateListOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q23:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AppStateListResult" nillable="true" type="q23:ArrayOfApp_State" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppStateListOperationResult" nillable="true" type="tns:AppStateListOperationResult" />
+  <xs:complexType name="AppStateUDCListOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q24:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AppStateUDCListResult" nillable="true" type="q24:ArrayOfApp_StateUDC" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppStateUDCListOperationResult" nillable="true" type="tns:AppStateUDCListOperationResult" />
+  <xs:complexType name="AppUDCListOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q25:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AppUDCListResult" nillable="true" type="q25:ArrayOfApp_UDC" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AppUDCListOperationResult" nillable="true" type="tns:AppUDCListOperationResult" />
+</xs:schema>

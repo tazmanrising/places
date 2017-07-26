@@ -1,0 +1,132 @@
+<!--developed by stephen ward-->
+<!--dynamic script editor-->
+<div class="container">
+
+
+
+        <select ng-model="vm.currentDB" ng-options="db.name for db in vm.databases | orderBy: 'name'"
+                ng-change="vm.getTables()"></select>
+        &nbsp;
+        <select ng-model="vm.currentTable" ng-options="tbl.mytable for tbl in vm.tables | orderBy: 'mytable'"
+                ng-change="vm.getScripts()"></select>
+        &nbsp; Filter: <input ng-model="vm.search"> &nbsp; <button class="btn btn-success" ng-click="vm.getScripts()">Refresh</button>
+
+    <br>
+    <br>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Sort</th>
+            <th>Active</th>
+            <th>Verbiage English</th>
+            <th>Condition</th>
+            <th>Yes No</th>
+            <th>No Concern</th>
+            <th>Loop</th>
+            <th>Edit</th>
+        </tr>
+        <tr ng-repeat="script in vm.scripts | filter:vm.search | orderBy: 'ScriptOrder' ">
+            <td>{{script.ScriptOrder}}</td>
+            <td>{{script.Active}}</td>
+            <td width="50%"><p>{{script.Verbiage}} </p> {{script.VerbiageSpanish}}</td>
+            <td>{{script.Condition}}</td>
+            <td>{{script.YesNo}}</td>
+            <td>{{script.NoConcernCode}}</td>
+            <td>{{script.Loop}}</td>
+            <td><a ng-click="vm.edit(script)"><i class="glyphicon glyphicon-pencil"></i> </a></td>
+        </tr>
+    </table>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Script Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="sort">SortOrder</label>
+                            <input type="text" class="form-control" id="sort" placeholder="sort" ng-model="vm.script.ScriptOrder">
+                        </div>
+                        <div class="form-group">
+                            <label for="active">Active</label>
+                            <input type="checkbox" class="form-control" id="active"  ng-model="vm.script.Active">
+                        </div>
+                        <div class="form-group">
+                            <label for="yesno">YesNo</label>
+                            <input type="checkbox" class="form-control" id="yesno"  ng-model="vm.script.YesNo">
+                        </div>
+                    </form>
+                    <br>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2" for="english">Verbiage English</label>
+                            <div class="col-md-10">
+                            <textarea rows="5" class="form-control" id="english" ng-model="vm.script.Verbiage">
+
+                            </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="spanish">Verbiage Spanish</label>
+                            <div class="col-md-10">
+                            <textarea rows="5" class="form-control" ng-model="vm.script.VerbiageSpanish" id="spanish">
+
+                            </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="loop">Loop</label>
+                            <div class="col-md-10">
+                            <input type="text" class="form-control" ng-model="vm.script.Loop" id="loop">
+
+                            </div>
+                        </div>
+                        <!-- yes no verbiage -->
+                        <span ng-if="vm.script.YesNo">
+                         <div class="form-group">
+                            <label class="col-md-2" for="nvenglish">No Verbiage English</label>
+                            <div class="col-md-10">
+                            <textarea rows="5" class="form-control" id="nvenglish" ng-model="vm.script.NoVerbiage">
+
+                            </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="nvspanish">No Verbiage Spanish</label>
+                            <div class="col-md-10">
+                            <textarea rows="5" class="form-control" id="nvspanish" ng-model="vm.script.NoVerbiageSpanish" id="spanish">
+
+                            </textarea>
+                            </div>
+                        </div>
+                        </span>
+
+                        <div class="form-group">
+                            <label class="col-md-2" for="condition">Condition</label>
+                            <div class="col-md-10">
+                            <input type="text" class="form-control" ng-model="vm.script.Condition" id="condition">
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="concerncode">No Concern Code</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" ng-model="vm.script.NoConcernCode" id="concerncode">
+
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.saveScript(vm.script)">Update
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

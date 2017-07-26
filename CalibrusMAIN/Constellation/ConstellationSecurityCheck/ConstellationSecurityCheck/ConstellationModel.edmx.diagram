@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36aca84e98e9471e823b1c0235106617" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="ConstellationModel.tblExperianResponse" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstellationModel.tblInfutorResponse" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstellationModel.tblMain" Width="1.5" PointX="6.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstellationModel.tblSecurityCheckResponse" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConstellationModel.AlertTypeDTD" Width="1.5" PointX="11.125" PointY="0.5" />
+        <EntityTypeShape EntityType="ConstellationModel.AlertDTD" Width="1.5" PointX="8.75" PointY="0.625" />
+        <AssociationConnector Association="ConstellationModel.FK_AlertDTD_AlertTypeDTD" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

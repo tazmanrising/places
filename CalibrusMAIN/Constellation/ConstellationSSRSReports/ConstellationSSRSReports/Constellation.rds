@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Constellation">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=tmpsql2;Initial Catalog=Constellation</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>6224572b-96e0-4282-861b-a1837287714c</DataSourceID>
+</RptDataSource>

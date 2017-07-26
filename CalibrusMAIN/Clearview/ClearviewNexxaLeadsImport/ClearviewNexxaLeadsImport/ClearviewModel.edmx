@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ClearviewModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ClearviewModelStoreContainer">
+          <EntitySet Name="Leads" EntityType="ClearviewModel.Store.Leads" store:Type="Tables" Schema="v1" />
+        </EntityContainer>
+        <EntityType Name="Leads">
+          <Key>
+            <PropertyRef Name="LeadsId" />
+          </Key>
+          <Property Name="LeadsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RecordLocator" Type="varchar" MaxLength="50" />
+          <Property Name="VendorNumber" Type="varchar" MaxLength="10" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="Zip" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="char" MaxLength="10" />
+          <Property Name="Utility" Type="varchar" MaxLength="50" />
+          <Property Name="LoadDateTime" Type="datetime" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="County" Type="varchar" MaxLength="50" />
+          <Property Name="Zip4" Type="varchar" MaxLength="4" />
+          <Property Name="ConnectDate" Type="varchar" MaxLength="50" />
+          <Property Name="DwellType" Type="varchar" MaxLength="1" />
+          <Property Name="CampaignCode" Type="varchar" MaxLength="50" />
+          <Property Name="ProcessDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ClearviewModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ClearviewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Leads" EntityType="ClearviewModel.Lead" />
+        </EntityContainer>
+        <EntityType Name="Lead">
+          <Key>
+            <PropertyRef Name="LeadsId" />
+          </Key>
+          <Property Name="LeadsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordLocator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorNumber" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Zip" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="Utility" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LoadDateTime" Type="DateTime" Precision="3" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="County" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Zip4" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="ConnectDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DwellType" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="CampaignCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProcessDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ClearviewModelStoreContainer" CdmEntityContainer="ClearviewEntities">
+          <EntitySetMapping Name="Leads">
+            <EntityTypeMapping TypeName="ClearviewModel.Lead">
+              <MappingFragment StoreEntitySet="Leads">
+                <ScalarProperty Name="LeadsId" ColumnName="LeadsId" />
+                <ScalarProperty Name="RecordLocator" ColumnName="RecordLocator" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Utility" ColumnName="Utility" />
+                <ScalarProperty Name="LoadDateTime" ColumnName="LoadDateTime" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Zip4" ColumnName="Zip4" />
+                <ScalarProperty Name="ConnectDate" ColumnName="ConnectDate" />
+                <ScalarProperty Name="DwellType" ColumnName="DwellType" />
+                <ScalarProperty Name="CampaignCode" ColumnName="CampaignCode" />
+                <ScalarProperty Name="ProcessDate" ColumnName="ProcessDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

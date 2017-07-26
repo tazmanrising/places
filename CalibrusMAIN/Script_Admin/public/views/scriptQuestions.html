@@ -1,0 +1,289 @@
+<!--<div class="container">
+    Preview:
+    <br>
+    <span>{{vm.questions[0].Name}}</span>
+</div>-->
+<form>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Liberty:</strong>&nbsp;&nbsp;&nbsp;&nbsp; State
+                <select id="States" ng-change="vm.selectScriptChange()" ng-model="vm.StateName">
+                    <option ng-repeat="state in vm.states" value="{{state.StateCode}}">{{state.StateName}}</option>
+                </select> &nbsp;&nbsp;&nbsp; <strong>SalesChannel:</strong>
+                <select id="SalesChannel" ng-change="vm.selectScriptChange()" ng-model="vm.SalesChannelId">
+                    <option ng-repeat="sales in vm.salesChannel" value="{{sales.id}}">{{sales.Name}}</option>
+                </select> &nbsp;&nbsp;&nbsp; 
+                <!--<a style="text-align: right" class="btn btn-primary" ng-click="vm.add()">Add Question</a>-->                
+                &nbsp;&nbsp;&nbsp; <a style="text-align: right" class="btn btn-warning" ng-click="vm.addScript()">Add Script Question</a>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="container-fluid">
+                            <table style="width:100%;" class="table table-striped table-condensed table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th ng-click="vm.setOrder('orderCount')">ScriptOrder</th>
+                                        <th ng-click="vm.setOrder('orderCount')">Active</th>
+                                        <!--<th ng-click="vm.setOrder('orderCount')">Script ID</th>-->
+                                        <!--<th ng-click="vm.setOrder('lastName')">QtypeId</th>-->
+                                        <th ng-click="vm.setOrder('QTypeName')">Qtype Name</th>
+                                        <!--<th ng-click="vm.setOrder('city')">StateCode</th>-->
+                                        <th ng-click="vm.setOrder('city')">State</th>
+                                        <!--<th ng-click="vm.setOrder('orderCount')">SalesChannelId</th>-->
+                                        <th ng-click="vm.setOrder('orderCount')">Sales Channel</th>
+
+                                        <!--<th ng-click="vm.setOrder('orderCount')">QuestionId</th>-->
+                                        <th ng-click="vm.setOrder('orderCount')">Question</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="question in vm.scriptQuestions">
+                                        <td>{{question.ScriptOrder}}</td>
+                                        <td>{{question.Active}}</td>
+
+                                        <!--<td>{{question.QtypeId}}</td>-->
+                                        <td>{{question.QType}}</td>
+                                        <!--<td>{{question.StateCode}}</td>-->
+                                        <td>{{question.StateName}}</td>
+                                        <!--<td>{{question.SalesChannelId}}</td>-->
+                                        <td>{{question.SalesChannel}}</td>
+
+                                        <!--<td>{{question.QuestionId}}</td>-->
+                                        <!--<td data-trigger="hover"
+                                            data-placement="left"
+                                            data-title="{{question.Verbiage}}"
+                                            bs-tooltip>
+                                        {{question.Verbiage}}</td>-->
+                                        <td>
+                                            {{question.Verbiage}}
+                                        </td>
+                                        <td><a ng-click="vm.edit(question)"><i class="glyphicon glyphicon-pencil"></i> </a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!--<div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>State:</strong>
+                                    <span> default or ALL  
+                                 {{vm.scriptQuestion.statecode}}
+                                </span>
+                                </td>
+                                <td><strong>SalesChannel:</strong>
+                                    <span>{{vm.scriptQuestion.saleschannelid}}</span>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td><strong>Question:</strong>
+                                    <select id="Questions" ng-model="vm.scriptQuestion.questionid">
+                                    <option ng-repeat="question in vm.questions" value="{{question.Id}}">{{question.Verbiage}}</option>
+                                </select>
+                                </td>
+                                <td>
+                                    <strong>Script Order:</strong> <input ng-model="vm.scriptQuestion.scriptorder" type="text"
+                                        id="scriptorder" name="scriptorder">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Active: </strong>
+                                    <input ng-model="vm.scriptQuestion.bit" type="checkbox" id="active" name="active">
+                                </td>
+                                <td><strong>QType: </strong>
+                                    <select id="qtypidid" ng-model="vm.scriptQuestion.qtypeid">
+                                        <option value="1">Agent</option>
+                                        <option value="2">Customer</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.saveScriptQuestion(vm.scriptQuestion)">Insert New Script Question
+                            </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>-->
+        </div>
+    </div>
+</form>
+<!--Script Question Modal -  this is duplicate of modal on questions.html  , so TODO :  need to consolidate and BOTH call the same modal !-->
+<div id="scriptModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Script Question Detail</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <!--<input type="hidden" ng-model="vm.scriptQuestion.StateCode" id="StateCode">
+                    <input type="hidden" ng-model="vm.scriptQuestion.SalesChannelId" id="SalesChannelId">
+                    <input type="hidden" ng-model="vm.scriptQuestion.QTypeName" id="QTypeName">
+                    <input type="hidden" ng-model="vm.scriptQuestion.StateName" id="StateName">
+                    <input type="hidden" ng-model="vm.scriptQuestion.SalesChannel" id="SalesChannel">
+                    <input type="hidden" ng-model="vm.scriptQuestion.Verbiage" id="Verbiage">-->
+
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">State</label>
+                        <div class="col-md-10">
+                            {{vm.StateName === "AA" ? "ALL" : vm.StateName}}
+                            <!--<input type="text" ng-model="vm.question.Name" id="name" name="name" class="form-control" placeholder="Name of Question">-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">SalesChannel</label>
+                        <div class="col-md-10">
+                            {{vm.SalesChannelId}}
+                            <!--<input type="text" ng-model="vm.question.Description" id="description" name="description" class="form-control" placeholder="Description of question">-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Question</label>
+                        <div class="col-md-10">
+                            <select id="Questions" ng-model="vm.scriptQuestion.QuestionId">
+                                    <option ng-repeat="question in vm.questions" value="{{question.Id}}">{{question.Name}}</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Script Order</label>
+                        <div class="col-md-10">
+                            <input ng-model="vm.scriptQuestion.ScriptOrder" type="text" id="scriptorder" name="scriptorder">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Active</label>
+                        <div class="col-md-10">
+                            <input ng-model="vm.scriptQuestion.Active" type="checkbox" id="active" name="active">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">QType</label>
+                        <div class="col-md-10">
+                            <select id="qtypidid" ng-model="vm.scriptQuestion.QtypeId">
+                                <option value="10">Agent</option>
+                                <option value="11">Customer</option>
+                          </select>
+                        </div>
+                    </div>
+
+
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.saveScriptQuestion(vm.scriptQuestion)">Save Script Question
+                            </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Question Modal -  this is duplicate of modal on questions.html  , so TODO :  need to consolidate and BOTH call the same modal !-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Question Detail</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Name</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.Name" id="name" name="name" class="form-control" placeholder="Name of Question">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Description</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.Description" id="description" name="description" class="form-control" placeholder="Description of question">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">English Label</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.LabelEnglish" id="labelenglish" name="labelenglish" class="form-control" placeholder="Verbiage">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Verbiage</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.Verbiage" id="verbiage" name="verbiage" class="form-control" placeholder="Verbiage">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Spanish Label</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.LabelSpanish" id="labelspanish" name="labelspanish" class="form-control" placeholder="Verbiage">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="english">Spanish</label>
+                        <div class="col-md-10">
+                            <input type="text" ng-model="vm.question.VerbiageSpanish" id="verbiagespanish" name="verbiagespanish" class="form-control"
+                                placeholder="Spanish">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2" for="spanish">Active</label>
+                        <div class="col-md-10">
+                            <input ng-model="vm.question.Active" type="checkbox" id="active" name="active">
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.saveQuestion(vm.question)">Save
+                        </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<input type="submit" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="panel panel-primary">
+    <div class="panel-heading" style="font-size:large">
+        {{vm.title}}
+    </div>
+
+    <div class="panel-body">
+        <div class="wizard">
+            <a ui-sref=".info"
+               ui-sref-active="active">
+                Basic Information
+            </a>
+            <a ui-sref=".price"
+               ui-sref-active="active">
+                Device Details
+            </a>
+            <a ui-sref=".tags"
+               ui-sref-active="active">
+                Search Tags
+            </a>
+        </div>
+
+        <div ui-view></div>
+    </div>
+
+</div>-->

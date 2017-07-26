@@ -1,0 +1,165 @@
+/* ================================ LEFT NAV ================================= */
+nav#left {
+	position: relative; /* for positioning pointer */
+	z-index: 2;
+	float: left;
+	height: 600px;
+	width: 235px;
+	margin-bottom: 20px;
+	padding: 28px;
+	border: 1px solid hsl(360, 0.85%, 77%);
+	background-color: hsl(60, 9%, 98%);
+	/*box-shadow: 0 0 5px 0px hsla(0, 0%, 0%, .5);*/
+}
+
+div#accordion h3, div#accordion p {
+	/*border-bottom: 1px solid hsl(0, 0.0000%, 54.5098%);*/
+}
+
+div#accordion h3 {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 2.5;
+}
+
+div#accordion h3 a {
+	color: hsl(0, 0.0000%, 44.5098%);
+}
+
+div#accordion h3.active, div#accordion h3.active a {
+	color: hsl(198, 43.2692%, 40.7843%);
+}
+
+div#accordion p {
+	margin-left: 15px;
+	font-size: 13px;
+	line-height: 2.2;	
+}
+
+div#accordion p a {
+	color: hsl(0, 0.0000%, 34.5098%);
+}
+
+div#accordion p.active, div#accordion p.active a {
+	font-weight: bold;
+	color: hsl(0, 0.0000%, 14.5098%);
+}
+
+img[alt="pointer"] {
+	position: absolute;
+	top: 30px;
+	left: 271px;
+	z-index: 1;
+}
+
+/* ================================ RIGHT CONTENT ================================= */
+div#content {
+	margin: 38px 0 38px 320px;
+	padding: 28px;
+	border-radius: 10px;
+	font-size: 13px;
+	line-height: 1.3;
+	font-style: italic;
+	letter-spacing: 1px;
+	color: white;	
+	/*background: 
+   		url(../images/contentbg.png) top repeat-x, hsl(196, 63.1285%, 34.3980%); */	
+   	/*background-color:  
+   		hsl(196, 63.1285%, 34.3980%); */*/
+	/*max-height: 500px;*/
+   	overflow: auto;
+	background-image: -webkit-gradient(linear, 0 0%, 0 100%, 
+		from(hsl(198, 44.9275%, 52.4118%)), 
+		color-stop(0.3, hsl(198, 38.5281%, 49.7059%)),
+		color-stop(0.6, hsl(198, 35.8025%, 45.6471%)),
+		to(hsl(198, 43.2692%, 40.7843%)));
+}
+
+div#content h2 {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	font-size: 29px;
+	text-shadow: 0px 2px 2px #555;
+	line-height: 65px;
+	text-indent: 10px;
+	/*background-image: -webkit-gradient(linear, 0 0%, 0 100%, 
+		from(hsl(198, 43.2692%, 40.7843%)), 
+		to(hsl(198, 44.9275%, 59.4118%)));*/
+}
+
+div#content a {
+	color: white;
+	text-decoration: underline;
+}
+
+div#info {
+	margin-top: 50px;	
+}
+
+div#info ul > li {
+	background: url(../images/dot.png) left 4px no-repeat;
+	padding-left: 30px;
+}
+
+div#info ol {
+	margin-left: 30px;
+}
+
+div#info ol > li {
+	padding-left: 30px;
+}
+
+/* ================================ STYLES THAT CHANGE BY PAGE ================================= */
+body#management img[alt="pointer"] {
+	top: 28px;
+}
+
+body#care img[alt="pointer"] {
+	top: 56px;
+}
+
+body#extension img[alt="pointer"] {
+	top: 84px;
+}
+
+body#acquisition img[alt="pointer"] {
+	top: 112px;
+}
+
+body#third img[alt="pointer"] {
+	top: 145px;
+}
+
+body#live img[alt="pointer"] {
+	top: 179px;
+}
+
+body#automated img[alt="pointer"] {
+	top: 207px;
+}
+
+body#hybrid img[alt="pointer"] {
+	top: 235px;
+}
+
+body#additional img[alt="pointer"] {
+	top: 270px;
+}
+
+body#hosted img[alt="pointer"] {
+	top: 302px;
+}
+
+body#voice img[alt="pointer"] {
+	top: 330px;
+}
+
+body#voip img[alt="pointer"] {
+	top: 358px;
+}
+
+body#clicktalk img[alt="pointer"] {
+	top: 386px;
+}
+
+

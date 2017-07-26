@@ -1,0 +1,47 @@
+<ion-view view-title="My Info">
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <h2>Spark Id</h2>
+        <p>{{vmAgentInfo.user.sparkId}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Agent</h2>
+        <p>{{vmAgentInfo.user.firstName}} {{vmAgentInfo.user.lastName}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Vendor</h2>
+        <p>{{vmAgentInfo.user.vendorName}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Office</h2>
+        <p>{{vmAgentInfo.user.officeName}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>IP Address</h2>
+        <p>{{vmAgentInfo.ipInfo.ip}}</p>
+      </ion-item>
+      <ion-item class="item-text-wrap">
+        <h2>IP Location</h2>
+        <p>{{vmAgentInfo.ipInfo.city}}, {{vmAgentInfo.ipInfo.state}}, {{vmAgentInfo.ipInfo.postal}}</p>
+      </ion-item>
+      <ion-item>
+        <h2>Geoposition</h2>
+        <ion-spinner ng-if="!vmAgentInfo.geoposition.coords"></ion-spinner>
+        <p ng-if="vmAgentInfo.geoposition.coords">
+          Latitude: {{vmAgentInfo.geoposition.coords.latitude}}
+          <br>
+          Longitude: {{vmAgentInfo.geoposition.coords.longitude}}
+        </p>
+      </ion-item>
+      <ion-item>
+        <h2>Geoposition Location</h2>
+        <ion-spinner ng-if="!vmAgentInfo.currentLocation"></ion-spinner>
+        <p ng-if="vmAgentInfo.currentLocation">
+          {{vmAgentInfo.currentLocation.city}}, {{vmAgentInfo.currentLocation.state}}, {{vmAgentInfo.currentLocation.zip}}
+        </p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

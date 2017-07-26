@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="59cd560a8e9841dfaafc36e46671adf4" Name="Diagram1">
+        <EntityTypeShape EntityType="SparkModel.Main" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.OrderDetail" Width="1.5" PointX="6.625" PointY="0.75" />
+        <EntityTypeShape EntityType="SparkModel.Program" Width="1.5" PointX="8.625" PointY="0.75" />
+        <EntityTypeShape EntityType="SparkModel.Utility" Width="1.5" PointX="10.625" PointY="0.75" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_MainId" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_Program" />
+        <AssociationConnector Association="SparkModel.FK_Program_Utility" />
+        <EntityTypeShape EntityType="SparkModel.User" Width="1.5" PointX="2.5" PointY="0.75" />
+        <AssociationConnector Association="SparkModel.FK_Main_User" />
+        <EntityTypeShape EntityType="SparkModel.Vendor" Width="1.5" PointX="0.5" PointY="0.75" />
+        <AssociationConnector Association="SparkModel.FK_User_Vendor" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

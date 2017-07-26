@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FrontierModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="FrontierModelStoreContainer">
+          <EntitySet Name="tblMain" EntityType="FrontierModel.Store.tblMain" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblTn" EntityType="FrontierModel.Store.tblTn" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tblTn_tblMain" Association="FrontierModel.Store.FK_tblTn_tblMain">
+            <End Role="tblMain" EntitySet="tblMain" />
+            <End Role="tblTn" EntitySet="tblTn" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="datetime" />
+          <Property Name="WebDateTime" Type="datetime" />
+          <Property Name="WaveName" Type="varchar" MaxLength="50" />
+          <Property Name="DNIS" Type="char" MaxLength="4" />
+          <Property Name="TpvAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="char" MaxLength="4" />
+          <Property Name="Ssn4" Type="char" MaxLength="4" />
+          <Property Name="BusinessTaxId" Type="varchar" MaxLength="50" />
+          <Property Name="Verified" Type="char" MaxLength="1" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" />
+          <Property Name="DecisionMaker" Type="varchar" MaxLength="100" />
+          <Property Name="Business" Type="char" MaxLength="1" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CustFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="CustLastName" Type="varchar" MaxLength="50" />
+          <Property Name="Product" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="char" MaxLength="2" />
+          <Property Name="SalesAgentId" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="tblTn">
+          <Key>
+            <PropertyRef Name="TnId" />
+          </Key>
+          <Property Name="TnId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="int" />
+          <Property Name="Tn" Type="char" MaxLength="10" />
+          <Property Name="DialTone" Type="char" MaxLength="1" />
+          <Property Name="DialToneFreeze" Type="char" MaxLength="1" />
+          <Property Name="LocalToll" Type="char" MaxLength="1" />
+          <Property Name="LocalTollFreeze" Type="char" MaxLength="1" />
+          <Property Name="Ld" Type="char" MaxLength="1" />
+          <Property Name="LdFreeze" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_tblTn_tblMain">
+          <End Role="tblMain" Type="FrontierModel.Store.tblMain" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTn" Type="FrontierModel.Store.tblTn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMain">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="tblTn">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spInsertAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DecisionMaker" Type="varchar" Mode="In" />
+          <Parameter Name="CustFirstName" Type="varchar" Mode="In" />
+          <Parameter Name="CustLastName" Type="varchar" Mode="In" />
+          <Parameter Name="SalesAgentID" Type="varchar" Mode="In" />
+          <Parameter Name="Business" Type="char" Mode="In" />
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="Product" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="char" Mode="In" />
+          <Parameter Name="AccountID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="spInsertTN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MainId" Type="int" Mode="In" />
+          <Parameter Name="Tn" Type="char" Mode="In" />
+          <Parameter Name="DialTone" Type="char" Mode="In" />
+          <Parameter Name="LocalToll" Type="char" Mode="In" />
+          <Parameter Name="Ld" Type="char" Mode="In" />
+          <Parameter Name="DialToneFreeze" Type="char" Mode="In" />
+          <Parameter Name="LocalTollFreeze" Type="char" Mode="In" />
+          <Parameter Name="LdFreeze" Type="char" Mode="In" />
+          <Parameter Name="TnId" Type="int" Mode="InOut" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FrontierModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="FrontierEntities">
+          <EntitySet Name="tblMains" EntityType="FrontierModel.tblMain" />
+          <EntitySet Name="tblTns" EntityType="FrontierModel.tblTn" />
+          <AssociationSet Name="FK_tblTn_tblMain" Association="FrontierModel.FK_tblTn_tblMain">
+            <End Role="tblMain" EntitySet="tblMains" />
+            <End Role="tblTn" EntitySet="tblTns" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblMain">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" />
+          <Property Name="WebDateTime" Type="DateTime" />
+          <Property Name="WaveName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DNIS" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="TpvAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BirthDate" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Ssn4" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="BusinessTaxId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Verified" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Concern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DecisionMaker" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Business" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CustFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CustLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Product" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SalesAgentId" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tblTns" Relationship="FrontierModel.FK_tblTn_tblMain" FromRole="tblMain" ToRole="tblTn" />
+        </EntityType>
+        <EntityType Name="tblTn">
+          <Key>
+            <PropertyRef Name="TnId" />
+          </Key>
+          <Property Name="TnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tn" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="DialTone" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="DialToneFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LocalToll" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LocalTollFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Ld" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="LdFreeze" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="tblMain" Relationship="FrontierModel.FK_tblTn_tblMain" FromRole="tblTn" ToRole="tblMain" />
+        </EntityType>
+        <Association Name="FK_tblTn_tblMain">
+          <End Role="tblMain" Type="FrontierModel.tblMain" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblTn" Type="FrontierModel.tblTn" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="FrontierModelStoreContainer" CdmEntityContainer="FrontierEntities">
+          <EntitySetMapping Name="tblMains">
+            <EntityTypeMapping TypeName="FrontierModel.tblMain">
+              <MappingFragment StoreEntitySet="tblMain">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="WebDateTime" ColumnName="WebDateTime" />
+                <ScalarProperty Name="WaveName" ColumnName="WaveName" />
+                <ScalarProperty Name="DNIS" ColumnName="DNIS" />
+                <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+                <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Ssn4" ColumnName="Ssn4" />
+                <ScalarProperty Name="BusinessTaxId" ColumnName="BusinessTaxId" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+                <ScalarProperty Name="DecisionMaker" ColumnName="DecisionMaker" />
+                <ScalarProperty Name="Business" ColumnName="Business" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CustFirstName" ColumnName="CustFirstName" />
+                <ScalarProperty Name="CustLastName" ColumnName="CustLastName" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="SalesAgentId" ColumnName="SalesAgentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTns">
+            <EntityTypeMapping TypeName="FrontierModel.tblTn">
+              <MappingFragment StoreEntitySet="tblTn">
+                <ScalarProperty Name="TnId" ColumnName="TnId" />
+                <ScalarProperty Name="Tn" ColumnName="Tn" />
+                <ScalarProperty Name="DialTone" ColumnName="DialTone" />
+                <ScalarProperty Name="DialToneFreeze" ColumnName="DialToneFreeze" />
+                <ScalarProperty Name="LocalToll" ColumnName="LocalToll" />
+                <ScalarProperty Name="LocalTollFreeze" ColumnName="LocalTollFreeze" />
+                <ScalarProperty Name="Ld" ColumnName="Ld" />
+                <ScalarProperty Name="LdFreeze" ColumnName="LdFreeze" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_tblTn_tblMain" TypeName="FrontierModel.FK_tblTn_tblMain" StoreEntitySet="tblTn">
+            <EndProperty Name="tblMain">
+              <ScalarProperty Name="MainId" ColumnName="MainId" />
+            </EndProperty>
+            <EndProperty Name="tblTn">
+              <ScalarProperty Name="TnId" ColumnName="TnId" />
+            </EndProperty>
+            <Condition ColumnName="MainId" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Frontier">
+        <EntityTypeShape EntityType="FrontierModel.tblMain" Width="1.5" PointX="0.75" PointY="1.125" Height="5.057109375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FrontierModel.tblTn" Width="1.5" PointX="3" PointY="2.25" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="FrontierModel.FK_tblTn_tblMain" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.62474609375" />
+          <ConnectorPoint PointX="3" PointY="3.62474609375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

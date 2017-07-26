@@ -1,0 +1,23 @@
+<ion-view view-title="Choose Address">
+  <ion-content>
+    <ion-refresher pulling-text="Refresh location..." on-refresh="vmDataEntryLineItemAddressGps.refreshNearbyLocations(true)"></ion-refresher>
+
+    <div>
+      <ion-list>
+        <div ng-if="!vmDataEntryLineItemAddressGps.nearbyLocations && !vmDataEntryLineItemAddressGps.pullToRefresh" class="text-center" style="padding: 80px 0;">
+          <ion-spinner></ion-spinner>
+          <p>Getting Location</p>
+        </div>
+        <ion-item ng-repeat="location in vmDataEntryLineItemAddressGps.nearbyLocations" class="item-icon-right item-text-wrap"
+                  ng-click="vmDataEntryLineItem.setServiceLocation(location, true)">
+          {{location.formatted_address}}
+          <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+        <ion-item ng-if="vmDataEntryLineItemAddressGps.nearbyLocations" class="item-icon-right" ui-sref="^.address.manual">
+          Manually Enter
+          <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

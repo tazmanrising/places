@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html data-ng-app="calibrus">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=11" />
+    <meta charset="utf-8">
+    <title>Script Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--bower:css-->
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="lib/angular-toastr/dist/angular-toastr.css" />
+    <!--endbower-->
+
+    <!--<script src="lib/angular-animate/angular-animate.js"></script>-->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/css/styles.css?v=1499283452854">
+    <!-- endinject -->
+
+
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+
+            <div class="navbar-header">
+
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<img alt="Brand" src="images/intel-logo-white100.png" style="height: 28px; display: inline-block; margin-top: 5px">-->
+
+            </div>
+            <div class="navbar-collapse collapse">
+
+            </div>
+
+            <!--<a class="navbar-brand" ui-sref="scriptquestions">Script Questions</a>-->
+            <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="./images/Calibrus_logo.png">
+            </a>
+            <!--<a class="navbar-brand" ui-sref="questions">Questions</a>-->
+            <!--<a class="navbar-brand" ui-sref="questions">Directives</a>
+            <a class="navbar-brand" ui-sref="editquestion">Admin</a>
+            <a class="navbar-brand" ui-sref="editquestion">Charts</a>-->
+
+        </div>
+
+    </nav>
+    <div class="container">
+        <div class="ui-view">
+            <!-- ui-view directive  or data-   so   data-ui-view -->
+
+        </div>
+    </div>
+
+    <div ng-view></div>
+
+
+    <!--bower:js-->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/angular-loader/angular-loader.js"></script>
+    <script src="lib/angular-mocks/angular-mocks.js"></script>
+    <script src="lib/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <!-- endbower -->
+    <script src="lib/angular-animate.js"></script>
+    <script src="lib/angular-strap.min.js"></script>
+    <script src="lib/angular-strap.tpl.min.js"></script>
+
+    <!-- inject:js -->
+    <script src="/app.js?v=1499283452854"></script>
+    <script src="/services/modalService.js?v=1499283452854"></script>
+    <script src="/services/questionService.js?v=1499283452854"></script>
+    <script src="/services/scriptQuestionServices.js?v=1499283452854"></script>
+    <script src="/controllers/questionController.js?v=1499283452854"></script>
+    <script src="/controllers/questionEditController.js?v=1499283452854"></script>
+    <script src="/controllers/scriptQuestionController.js?v=1499283452854"></script>
+    <script src="/directives/libertyDirective.js?v=1499283452854"></script>
+    <script src="/directives/questionDirective.js?v=1499283452854"></script>
+    <!-- endinject -->
+    <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</body>
+
+</html>

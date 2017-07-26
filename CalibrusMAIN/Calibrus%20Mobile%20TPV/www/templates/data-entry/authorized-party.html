@@ -1,0 +1,62 @@
+<ion-view view-title="Authorized Party">
+  <ion-nav-buttons side="secondary">
+  </ion-nav-buttons>
+  <ion-content>
+    
+  </ion-content>
+  <ion-content>
+    <form name="vmDataEntry.AuthorizedParty" novalidate ng-submit="vmDataEntry.processAuthorizedParty(vmDataEntry.AuthorizedParty)">
+      <ion-list>
+        <div class="item item-input item-stacked-label ui form">
+
+     <div>
+        <span class="input-label">Lookup Lead Record Locator</span>
+        <br><br>
+        <div class="ui action input">
+          <input type="text" class="mobiscroll-input" mobiscroll-numpad="vmDataEntry.mobiscroll.numberpad" name="RecordLocator" ng-required="false" ng-model="rl" placeholder="Enter Lead Record Location">
+          <div class="ui blue button" ng-click="lookupLocator(rl)">Lookup</div>
+        </div>      
+     </div>  
+        </div>
+    
+        <label class="item item-input item-stacked-label" form-validation="vmDataEntry.AuthorizedParty.FirstName">
+          <span class="input-label">First Name</span>
+          <input type="text" placeholder="Enter First Name" name="FirstName"
+                 autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                 ng-model="vmDataEntry.authorizedParty.firstName"
+                 ng-required="true">
+        </label>
+        <label class="item item-input item-stacked-label" form-validation="vmDataEntry.AuthorizedParty.LastName">
+          <span class="input-label">Last Name</span>
+          <input type="text" placeholder="Enter Last Name" name="LastName"
+                 autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                 ng-model="vmDataEntry.authorizedParty.lastName"
+                 ng-required="true">
+        </label>
+        <div>
+          <label class="item-borderless item item-input item-stacked-label" form-validation="vmDataEntry.AuthorizedParty.Phone">
+            <span class="input-label">Phone Number</span>
+            <input type="text" placeholder="( ___ ) ___-____" name="Phone"
+                   class="mobiscroll-input" mobiscroll-numpad="vmDataEntry.mobiscroll.phone"
+                   ng-model="vmDataEntry.authorizedParty.phone"
+                   ng-required="true" ng-pattern="vmDataEntry.mobiscroll.phone.pattern">
+          </label>
+          <ion-toggle class="item-borderless" ng-model="vmDataEntry.authorizedParty.phoneIsMobile" toggle-class="toggle-balanced" form-validation="vmDataEntry.AuthorizedParty.Phone">
+            Is Mobile
+          </ion-toggle>
+        </div>
+        <label class="item item-input item-stacked-label" form-validation="vmDataEntry.AuthorizedParty.Email">
+          <span class="input-label">Email</span>
+          <input type="email" placeholder="Enter Email" name="Email"
+                 ng-model="vmDataEntry.authorizedParty.email"
+                 ng-required="false">
+        </label>
+      </ion-list>
+
+      <ion-item class="item-icon-right" style="margin-top: 20px;" ng-click="vmDataEntry.processAuthorizedParty(vmDataEntry.AuthorizedParty)">
+        <span class="positive">Service Address</span>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </form>
+  </ion-content>
+</ion-view>

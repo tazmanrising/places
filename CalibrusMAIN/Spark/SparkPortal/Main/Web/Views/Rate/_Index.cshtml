@@ -1,0 +1,120 @@
+﻿@using Calibrus.SparkPortal.ViewModel
+
+<div class="container-fluid" ng-controller="rateController as vm">
+
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr >
+                <th colspan="13" >
+                    <div class="pull-right">
+                        <input type="checkbox" ng-model="vm.showInactive" ng-change="vm.filterRates()" /> Show Inactive Programs
+                        <input type="text" class="form-control input-sm" ng-model="vm.filter" ng-change="vm.filterRates()" placeholder="filter list..." />
+                    </div>
+                </th>
+            </tr>
+            <tr>
+                <th ng-click="vm.sortRates('ProgramCode');" style="cursor: pointer;">
+                    Program Code
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='ProgramCode' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='ProgramCode' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('ProgramName');" style="cursor: pointer;">
+                    Program Name
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='ProgramName' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='ProgramName' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('EffectiveStartDate');" style="cursor: pointer;">
+                    Effective Start Date
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='EffectiveStartDate' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='EffectiveStartDate' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('EffectiveEndDate');" style="cursor: pointer;">
+                    Effective End Date
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='EffectiveEndDate' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='EffectiveEndDate' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Rate');" style="cursor: pointer;">
+                    Rate
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Rate' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Rate' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('State');" style="cursor: pointer;">
+                    State
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='State' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='State' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Utility.Name');" style="cursor: pointer;">
+                    Utility
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Utility.Name' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Utility.Name' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Msf');" style="cursor: pointer;">
+                    MSF
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Msf' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Msf' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Etf');" style="cursor: pointer;">
+                    ETF
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Etf' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Etf' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Term');" style="cursor: pointer;">
+                    Term
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Term' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Term' && vm.reverse===true}"></i>
+                </th>
+                <th ng-click="vm.sortRates('Brand.BrandName');" style="cursor: pointer;">
+                    Brand
+                    <i ng-class="{'fa fa-sort-up': vm.predicate==='Brand.BrandName' && vm.reverse===false, 'fa fa-sort-down': vm.predicate==='Brand.BrandName' && vm.reverse===true}"></i>
+                </th>
+                <th>Channel</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="13">
+                    <pagination total-items="vm.totalItems" items-per-page="vm.pageSize" max-size="10" boundary-link-numbers="true" ng-model="vm.currentPage" ng-change="vm.pageChanged()"></pagination>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td colspan="13" class="text-center" ng-show="vm.loadingRates===true"><i class="fa fa-spinner fa-4x fa-pulse"></i></td>
+            </tr>
+            <tr ng-repeat="rate in vm.ratePage">
+                <td>{{rate.ProgramCode}}</td>
+                <td>{{rate.ProgramName}}</td>
+                <td>{{rate.EffectiveStartDate | date}}</td>
+                <td>{{rate.EffectiveEndDate | date}}</td>
+                <td>{{rate.Rate}}/{{rate.UnitOfMeasure.UnitOfMeasureName}}</td>
+                <td>{{rate.State}}</td>
+                <td>{{rate.Utility.Name}}</td>
+                <td>{{rate.Msf | currency}}</td>
+                <td>{{rate.Etf | currency}}</td>
+                <td>{{rate.Term}}</td>
+                <td>{{rate.Brand.BrandName}}</td>
+                <td>
+                    <div style="display:inline-block" ng-repeat="c in rate.SalesChannelPrograms"  >
+                        <div ng-switch on="c.SalesChannelId">
+                            <div ng-switch-when="1" style="margin-left:2px">D</div>
+                            <div ng-switch-when="2" style="margin-left:2px">T</div>
+                            <div ng-switch-when="3" style="margin-left:2px">O</div>
+                            <div ng-switch-when="4" style="margin-left:2px">I</div>
+                            <div ng-switch-when="5" style="margin-left:2px">R</div>
+                            <div ng-switch-when="6" style="margin-left:2px">W</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="col-lg-2 text-center">
+                    <a href="~/Rate/Edit/{{ rate.ProgramId }}"><i class="fa fa-pencil-square-o fa-2x" title="Edit"></i></a>
+                    <a href="" style="cursor:pointer;"><i class="fa fa-files-o fa-2x" title="Copy" ng-click="vm.open(rate)"></i></a>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+    
+    <script type="text/ng-template" id="myModalCopy.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{pop.header}}</h3>
+        </div>
+        <div class="modal-body">
+            {{ pop.message }}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" ng-click="pop.ok('@SessionVars.UserName')">YES</button>
+            <button class="btn btn-warning" ng-click="pop.cancel()">NO</button>
+        </div>
+    </script>
+
+</div>

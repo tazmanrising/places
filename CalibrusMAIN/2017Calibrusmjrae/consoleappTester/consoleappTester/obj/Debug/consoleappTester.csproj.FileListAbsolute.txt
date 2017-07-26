@@ -1,0 +1,6 @@
+C:\dev\Calibrus\consoleappTester\consoleappTester\bin\Debug\consoleappTester.exe.config
+C:\dev\Calibrus\consoleappTester\consoleappTester\bin\Debug\consoleappTester.exe
+C:\dev\Calibrus\consoleappTester\consoleappTester\bin\Debug\consoleappTester.pdb
+C:\dev\Calibrus\consoleappTester\consoleappTester\obj\Debug\consoleappTester.exe
+C:\dev\Calibrus\consoleappTester\consoleappTester\obj\Debug\consoleappTester.pdb
+C:\dev\Calibrus\consoleappTester\consoleappTester\obj\Debug\consoleappTester.csprojResolveAssemblyReference.cache

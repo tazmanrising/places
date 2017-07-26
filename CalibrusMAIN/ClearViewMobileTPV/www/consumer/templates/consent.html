@@ -1,0 +1,39 @@
+<ion-view view-title="Home">
+    <form name="myForm" ng-submit="vmConsent.Submit()">
+    <ion-content>
+
+        <ion-list>
+
+            <ion-item class="item-icon-right item-text-wrap item ng-binding">
+                <div class="list">
+                    You must agree to the following questions to complete your order:
+                </div>
+            
+  
+                    <div class="row" ng-repeat="script in vmConsent.scripts">
+                        <div class="col">
+                            <input required="required" value="{{script.$index}}" ng-change="vmConsent.Check()" ng-model="script.checked" name="group-one" type="checkbox"> {{script.verbiage}}
+                        </div>
+                    </div>
+
+                
+                <div>Sign below:</div>
+                <div>
+
+                    <canvas scroll="false" height="100" id="signature" style="border: 1px solid black;"></canvas>
+                    <div class='button-bar'>
+              
+                    </div>
+                    <br>
+                    
+
+ <button class="button button-block button-balanced" type="submit" ng-disabled="myForm.$invalid">Submit Order</button>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-list>
+    
+        </ion-list>
+    </ion-content>
+    </form>
+</ion-view>

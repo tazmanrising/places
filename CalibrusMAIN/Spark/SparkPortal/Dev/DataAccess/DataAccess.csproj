@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{371D28AF-D878-4F7C-92DD-9CC06C3EE618}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calibrus.SparkPortal.DataAccess</RootNamespace>
+    <AssemblyName>Calibrus.SparkPortal.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Calibrus|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Calibrus\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Logon.cs" />
+    <Compile Include="Entities\Request.cs" />
+    <Compile Include="Entities\SimpleProgram.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Infrastructure\AccountNumberType.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Brand.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\CurrentCustomer.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Disposition.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetTopOfficeStats_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetTopUserStats_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetTopVendorStats_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetTopVendors_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetVerifiedAccountsChartDetail_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetVerifiedAccountsChartSummary_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetVerifiedChartDetail_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\GetVerifiedChartSummary_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\IpLocation.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Lead.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Main.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Models\UserPartial.cs" />
+    <Compile Include="Infrastructure\Office.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\OrderDetail.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\PartialSparkPortalEntities.cs" />
+    <Compile Include="Infrastructure\Models\ChartContext.cs" />
+    <Compile Include="Infrastructure\Models\SearchContext.cs" />
+    <Compile Include="Infrastructure\PremiseType.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Program.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\ProgramVendor.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Relationship.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Report.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\SalesChannel.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\SalesChannelProgram.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\SparkPortalDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\spGetUsers_Result.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\State.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\UnitOfMeasure.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\User.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\UserLog.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\UserType.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Utility.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\UtilityType.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Vendor.cs">
+      <DependentUpon>SparkPortalDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccountNumberTypeRepository.cs" />
+    <Compile Include="Repository\BrandRepository.cs" />
+    <Compile Include="Repository\CurrentCustomerRepository.cs" />
+    <Compile Include="Repository\DispositionRepository.cs" />
+    <Compile Include="Repository\LeadRepository.cs" />
+    <Compile Include="Repository\MainRepository.cs" />
+    <Compile Include="Repository\OfficeRepository.cs" />
+    <Compile Include="Repository\PremiseTypeRepository.cs" />
+    <Compile Include="Repository\ProgramVendorRepository.cs" />
+    <Compile Include="Repository\RateRepository.cs" />
+    <Compile Include="Repository\RelationshipRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
+    <Compile Include="Repository\SalesChannelProgramRepository.cs" />
+    <Compile Include="Repository\SalesChannelRepository.cs" />
+    <Compile Include="Repository\StateRepository.cs" />
+    <Compile Include="Repository\UnitOfMeasureRepository.cs" />
+    <Compile Include="Repository\UserLogRepository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\IRepositoryContext.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RepositoryContext.cs" />
+    <Compile Include="Repository\UserTypeRepository.cs" />
+    <Compile Include="Repository\UtilityRepository.cs" />
+    <Compile Include="Repository\UtilityTypeRepository.cs" />
+    <Compile Include="Repository\VendorRepository.cs" />
+    <Compile Include="Infrastructure\SparkPortalDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SparkPortalDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\SparkPortalDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SparkPortalDataModel.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="Infrastructure\SparkPortalDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SparkPortalDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Infrastructure\SparkPortalDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SparkPortalDataModel.edmx</DependentUpon>
+      <LastGenOutput>SparkPortalDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Infrastructure\SparkPortalDataModel.edmx.diagram">
+      <DependentUpon>SparkPortalDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="Infrastructure\SparkPortalDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SparkPortalDataModel.edmx</DependentUpon>
+      <LastGenOutput>SparkPortalDataModel.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

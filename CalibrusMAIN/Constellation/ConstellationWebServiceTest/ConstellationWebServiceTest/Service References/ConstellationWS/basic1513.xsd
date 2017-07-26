@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd6" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" />
+  <xs:complexType name="ByteOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ByteResult" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ByteOperationResult" nillable="true" type="tns:ByteOperationResult" />
+  <xs:complexType name="OperationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorBusinessMessageList" nillable="true" type="tns:ArrayOfErrorMessage" />
+      <xs:element minOccurs="0" name="ErrorMessageList" nillable="true" type="tns:ArrayOfErrorMessage" />
+      <xs:element minOccurs="0" name="IsCredentialValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationResult" nillable="true" type="tns:OperationResult" />
+  <xs:complexType name="ArrayOfErrorMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErrorMessage" nillable="true" type="tns:ErrorMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfErrorMessage" nillable="true" type="tns:ArrayOfErrorMessage" />
+  <xs:complexType name="ErrorMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorMessage" nillable="true" type="tns:ErrorMessage" />
+  <xs:simpleType name="ContractType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TermsAndConditions" />
+      <xs:enumeration value="UsageLOA" />
+      <xs:enumeration value="UDS" />
+      <xs:enumeration value="D2D" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ContractType" nillable="true" type="tns:ContractType" />
+  <xs:complexType name="BoolOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BoolResult" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BoolOperationResult" nillable="true" type="tns:BoolOperationResult" />
+  <xs:complexType name="StringOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="StringResult" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StringOperationResult" nillable="true" type="tns:StringOperationResult" />
+  <xs:complexType name="ArrayOfApp_State">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="App_State" nillable="true" type="tns:App_State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApp_State" nillable="true" type="tns:ArrayOfApp_State" />
+  <xs:complexType name="App_State">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="App_State" nillable="true" type="tns:App_State" />
+  <xs:complexType name="ArrayOfApp_StateUDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="App_StateUDC" nillable="true" type="tns:App_StateUDC" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApp_StateUDC" nillable="true" type="tns:ArrayOfApp_StateUDC" />
+  <xs:complexType name="App_StateUDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AppUDCList" nillable="true" type="tns:ArrayOfApp_UDC" />
+      <xs:element minOccurs="0" name="oState" nillable="true" type="tns:App_State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="App_StateUDC" nillable="true" type="tns:App_StateUDC" />
+  <xs:complexType name="ArrayOfApp_UDC">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="App_UDC" nillable="true" type="tns:App_UDC" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfApp_UDC" nillable="true" type="tns:ArrayOfApp_UDC" />
+  <xs:complexType name="App_UDC">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Attributes" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="CommodityType" type="q2:SignUpChoiceEnum" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableBillingAddress" type="q3:FieldSetupENUM" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableConsumerBillOfRights" type="q4:FieldSetupENUM" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableCreditCheck" type="q5:FieldSetupENUM" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableCustomerNameKey" type="q6:FieldSetupENUM" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableMeterNumber" type="q7:FieldSetupENUM" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableSSN" type="q8:FieldSetupENUM" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Constellation.CNE.Residential.Data" minOccurs="0" name="EnableServiceAddressCounty" type="q9:FieldSetupENUM" />
+      <xs:element minOccurs="0" name="HasAverageBilling" type="xs:boolean" />
+      <xs:element minOccurs="0" name="HasBudgetBilling" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPrimary" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PriceToCompare" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCAccountMaxLength" type="xs:int" />
+      <xs:element minOccurs="0" name="UDCAccountRegex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCAliasName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCContactPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCLoginURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="App_UDC" nillable="true" type="tns:App_UDC" />
+  <xs:complexType name="LookUpOperationResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CountyList" nillable="true" type="q10:ArrayOfstring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LookUpOperationResult" nillable="true" type="tns:LookUpOperationResult" />
+</xs:schema>

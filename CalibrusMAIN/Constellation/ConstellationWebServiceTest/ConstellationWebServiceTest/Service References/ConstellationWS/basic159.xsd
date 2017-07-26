@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Service.DataType.PricePlan" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.Service.DataType.PricePlan" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.MX.PricePlan" />
+  <xs:import schemaLocation="http://partners.constellation.com/PartnerService/ResidentialPartnerService.svc/basic?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" />
+  <xs:complexType name="PricePlanResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Constellation.CNE.SMB.API.Core.DataType" base="q1:OperationResult">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Constellation.CNE.SocialSale.MX.PricePlan" minOccurs="0" name="PricePlans" nillable="true" type="q2:ArrayOfPricePlanInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PricePlanResult" nillable="true" type="tns:PricePlanResult" />
+</xs:schema>

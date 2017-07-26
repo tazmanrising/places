@@ -1,0 +1,33 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <ion-list class="list-borderless">
+      <ion-item>
+        <h1>Hello, {{vmHome.user.firstName}}</h1>
+        <div ng-if="!vmHome.geoposition.coords" class="text-center" style="padding: 80px 0;">
+          <ion-spinner></ion-spinner>
+          <p>Generating Map</p>
+        </div>
+        <div ng-if="vmHome.mapUrl">
+          <p>
+            <img style="height: 16px;" src="//maps.google.com/mapfiles/ms/micons/green-dot.png"> You are currently near...
+            <br>
+            <img style="height: 16px;" src="//maps.google.com/mapfiles/ms/micons/blue-dot.png"> {{vmHome.currentLocation.address1}}, {{vmHome.currentLocation.city}}, {{vmHome.currentLocation.state}} {{vmHome.currentLocation.zip}}
+          </p>
+          <img border="0" class="img-responsive"
+               ng-src="{{::vmHome.mapUrl}}"
+               alt="Current Position">
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item ng-click="vmHome.newEnrollment()" class="item-icon-right">
+        New Enrollment
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+      <ion-item ng-if="vmHome.hasCachedEnrollment" ui-sref="app.data-entry.authorizedParty" class="item-icon-right">
+        Existing Enrollment
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

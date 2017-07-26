@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkBatchXLSReport", "SparkBatchXLSReport\SparkBatchXLSReport.csproj", "{588D7489-24E3-4AE3-9C83-96C9B7575396}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SparkBatchXLSReport\\SparkBatchXLSReport.csproj
+		SccProjectName1 = SparkBatchXLSReport
+		SccLocalPath1 = SparkBatchXLSReport
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{588D7489-24E3-4AE3-9C83-96C9B7575396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{588D7489-24E3-4AE3-9C83-96C9B7575396}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{588D7489-24E3-4AE3-9C83-96C9B7575396}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{588D7489-24E3-4AE3-9C83-96C9B7575396}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

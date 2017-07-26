@@ -1,0 +1,10 @@
+{
+  "name": "CALiBRUS",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://sparkdataentry.calibrus.com/api"
+    }
+  ]
+}

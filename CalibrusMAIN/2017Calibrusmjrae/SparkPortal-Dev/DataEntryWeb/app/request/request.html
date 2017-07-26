@@ -1,0 +1,807 @@
+﻿<div class="col-md-12">
+
+    <div class="page-header"><i class="fa fa-edit"></i> Spark Data Entry Request</div>
+
+    <div class="col-md-12">
+
+        <form id="vmRequest.form" name="vmRequest.form" class="form-horizontal" novalidate ng-cloak>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Requested By
+                </div>
+                <div class="panel-body">
+                    <div class="form-group-sm">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">Spark Id:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.user.sparkId}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">Agent:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.user.firstName}} {{vmRequest.request.user.lastName}}</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">Vendor:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.user.vendorName}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">Office:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.user.officeName}}</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">IP Address:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.ipLocation.ip}}</strong></p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <label class="col-lg-3 col-md-3 col-sm-3 control-label text-nowrap">IP Location:</label>
+                            <div class="col-lg-9 col-md-9 col-sm-9">
+                                <p class="form-control-static text-primary"><strong>{{vmRequest.request.ipLocation.city}}, {{vmRequest.request.ipLocation.region}}, {{vmRequest.request.ipLocation.country}}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <uib-alert class="col-md-4 col-md-offset-4" type="danger" ng-if="vmRequest.hasErrors===true" close="vmRequest.closeErrorAlert()">
+                Please correct all form errors before continuing...
+                <ul ng-if="vmRequest.errorList.length>0">
+                    <li ng-repeat="error in vmRequest.errorList">{{error}}</li>
+                </ul>
+            </uib-alert>
+
+            <div ng-if="!vmRequest.main">
+
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="form-group-sm">
+                            <div ng-if="!vmRequest.MainClone">
+                                <label class="col-md-2 control-label text-nowrap">Record Locator:</label>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" id="RecordLocator" name="RecordLocator" class="form-control" ng-model="vmRequest.request.recordLocator" />
+                                        <span class="input-group-addon" style="cursor: pointer;" ng-click="vmRequest.getLead()"><i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingLead===true}"></i></span>
+                                    </div>
+                                    <div ng-messages="vmRequest.form.RecordLocator.$error" ng-if="vmRequest.form.RecordLocator.$invalid && vmRequest.form.RecordLocator.$touched">
+                                        <div ng-message="required" class="label label-danger">Record Locator is required.</div>
+                                        <div ng-message="notfound" class="label label-danger">Record Locator not found.</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <div class="btn btn-sm btn-default" style="cursor: pointer;" ng-click="vmRequest.manualEntry()">Enter Manually</div>
+                                </div>
+                            </div>
+                            <label class="col-md-2 control-label text-nowrap">Confirmation Number:</label>
+                            <div class="col-md-3">
+                                <div class="input-group">
+                                    <input type="text" id="CalibrusRecordLocator" name="CalibrusRecordLocator" class="form-control" ng-model="vmRequest.request.CalibrusRecordLocator" />
+                                    <span class="input-group-addon" style="cursor: pointer;" ng-click="vmRequest.getMainClone()"><i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingMainClone===true}"></i></span>
+                                </div>
+                                <div ng-messages="vmRequest.form.CalibrusRecordLocator.$error" ng-if="vmRequest.form.CalibrusRecordLocator.$invalid && vmRequest.form.CalibrusRecordLocator.$touched">
+                                    <div ng-message="required" class="label label-danger">Calibrus Record Locator is required.</div>
+                                    <div ng-message="notfound" class="label label-danger">Calibrus Record Locator not found.</div>
+                                    <div ng-message="verified" class="label label-danger">Calibrus Record Locator already verified.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12" ng-show="vmRequest.request.lead && vmRequest.request.manualOrder && !vmRequest.request.accountType">
+                    <br />
+                    <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.FirstName.$invalid && vmRequest.form.FirstName.$touched) || (vmRequest.form.FirstName.$invalid && vmRequest.submittingRequest)}">
+                        <label class="col-md-2 control-label">Account Type:</label>
+                        <div class="col-md-3">
+                            <div class="btn-group">
+                                <label class="btn btn-primary" ng-model="vmRequest.request.accountType" uib-btn-radio="'Residential'">Residential</label>
+                                <label class="btn btn-primary" ng-model="vmRequest.request.accountType" uib-btn-radio="'Business'" ng-click="vmRequest.getTitleList()">Business</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-md-12" ng-if="vmRequest.request.lead && vmRequest.request.accountType">
+                    <br />
+
+                    <div class="col-md-12" ng-if="vmRequest.request.accountType==='Residential'">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.FirstName.$invalid && vmRequest.form.FirstName.$touched) || (vmRequest.form.FirstName.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label">Authorization Name:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="FirstName" name="FirstName" class="form-control" ng-model="vmRequest.request.firstName" placeholder="First Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.LastName.$invalid && vmRequest.form.LastName.$touched) || (vmRequest.form.LastName.$invalid && vmRequest.submittingRequest)}">
+                            <div class="col-md-3">
+                                <input type="text" id="LastName" name="LastName" class="form-control" ng-model="vmRequest.request.lastName" placeholder="Last Name" required />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-messages="vmRequest.form.FirstName.$error" ng-if="(vmRequest.form.FirstName.$invalid && vmRequest.form.FirstName.$touched) || (vmRequest.form.FirstName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">First Name is required.</span>
+                            </span>
+                            <span ng-messages="vmRequest.form.LastName.$error" ng-if="(vmRequest.form.LastName.$invalid && vmRequest.form.LastName.$touched) || (vmRequest.form.LastName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Last Name is required.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" ng-if="vmRequest.request.accountType==='Business'">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.BusinessName.$invalid && vmRequest.form.BusinessName.$touched) || (vmRequest.form.BusinessName.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label">Business Information:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="BusinessName" name="BusinessName" class="form-control" ng-model="vmRequest.request.businessName" placeholder="Business Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.BusinessFirstName.$invalid && vmRequest.form.BusinessFirstName.$touched) || (vmRequest.form.BusinessFirstName.$invalid && vmRequest.submittingRequest)}">
+                            <div class="col-md-2">
+                                <input type="text" id="BusinessFirstName" name="BusinessFirstName" class="form-control" ng-model="vmRequest.request.businessFirstName" placeholder="Contact First Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.BusinessLastName.$invalid && vmRequest.form.BusinessLastName.$touched) || (vmRequest.form.BusinessLastName.$invalid && vmRequest.submittingRequest)}">
+                            <div class="col-md-2">
+                                <input type="text" id="BusinessLastName" name="BusinessLastName" class="form-control" ng-model="vmRequest.request.businessLastName" placeholder="Contact Last Name" required />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <span ng-messages="vmRequest.form.BusinessName.$error" ng-if="(vmRequest.form.BusinessName.$invalid && vmRequest.form.BusinessName.$touched) || (vmRequest.form.BusinessName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Business Name is required.</span>
+                            </span>
+                            <span ng-messages="vmRequest.form.BusinessFirstName.$error" ng-if="(vmRequest.form.BusinessFirstName.$invalid && vmRequest.form.BusinessFirstName.$touched) || (vmRequest.form.BusinessFirstName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Business First Name is required.</span>
+                            </span>
+                            <span ng-messages="vmRequest.form.BusinessLastName.$error" ng-if="(vmRequest.form.BusinessLastName.$invalid && vmRequest.form.BusinessLastName.$touched) || (vmRequest.form.BusinessLastName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Business Last Name is required.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <br ng-if="vmRequest.request.accountType==='Business'" /><br ng-if="vmRequest.request.accountType==='Business'" />
+                    <div class="col-md-12" ng-if="vmRequest.request.accountType==='Business'">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.BusinessTitle.$invalid && vmRequest.form.BusinessTitle.$touched) || (vmRequest.form.BusinessTitle.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label">Business Title:</label>
+                            <div class="col-md-3">
+                                <select name="Title" id="Title" class="form-control" ng-model="vmRequest.request.businessTitle"
+                                        ng-options="title.name as title.name for title in vmRequest.titleList" required>
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <span ng-messages="vmRequest.form.BusinessTitle.$error" ng-if="(vmRequest.form.BusinessTitle.$invalid && vmRequest.form.BusinessTitle.$touched) || (vmRequest.form.BusinessTitle.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Business Title is required.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <div class="col-md-12">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.Phone.$invalid && vmRequest.form.Phone.$touched) || (vmRequest.form.Phone.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label text-nowrap">Phone Number:</label>
+                            <div class="col-md-2">
+                                <input type="text" id="Phone" name="Phone" class="form-control" ng-model="vmRequest.request.phone" ui_mask="(999) 999-9999" required />
+                            </div>
+                            <div class="col-md-5" ng-messages="vmRequest.form.Phone.$error" ng-if="(vmRequest.form.Phone.$invalid && vmRequest.form.Phone.$touched) || (vmRequest.form.Phone.$invalid && vmRequest.submittingRequest)">
+                                <div ng-message="required" class="label label-danger">Phone Number is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <div class="col-md-12">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.UtilityType.$invalid && vmRequest.form.UtilityType.$touched) || (vmRequest.form.UtilityType.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label text-nowrap">Utility Type:</label>
+                            <div class="col-md-2">
+                                <select id="UtilityType" name="UtilityType" class="form-control"
+                                        ng-model="vmRequest.request.utilityType"
+                                        ng-change="vmRequest.orderDetailSetup(vmRequest.request.utilityType, true)" required>
+                                    <option>Electric</option>
+                                    <option>Gas</option>
+                                    <option ng-if="vmRequest.request.accountType==='Residential'">Dual Fuel</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5" ng-messages="vmRequest.form.UtilityType.$error" ng-if="(vmRequest.form.UtilityType.$invalid && vmRequest.form.UtilityType.$touched) || (vmRequest.form.UtilityType.$invalid && vmRequest.submittingRequest)">
+                                <div ng-message="required" class="label label-danger">Utility Type is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br /><br /><br />
+                    <div class="col-md-12 well well-sm" ng-repeat="detail in vmRequest.request.orderDetails track by $index">
+                        <div>
+                            <div class="col-md-6"><h4>{{detail.utilityType}}</h4></div>
+                            <div class="col-md-6 text-right"><i class="fa fa-close text-danger" ng-if="vmRequest.request.orderDetails.length > 1" ng-click="vmRequest.request.orderDetails.splice($index, 1)"></i></div>
+                        </div>
+
+                        <ng-form name="orderDetailsForm">
+                          
+                            <div class="col-md-12" style="margin-top: 5px;" >
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Address.$invalid && orderDetailsForm.Address.$touched) || (orderDetailsForm.Address.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Service Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="Address" name="Address" class="form-control" ng-model="detail.address" placeholder="Address" required />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.Address.$error" ng-if="(orderDetailsForm.Address.$invalid && orderDetailsForm.Address.$touched) || (orderDetailsForm.Address.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Service Address is required.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Address2.$invalid && orderDetailsForm.Address2.$touched) || (orderDetailsForm.Address2.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-6 col-md-offset-2">
+                                        <input type="text" id="Address2" name="Address2" class="form-control" ng-model="detail.address2" placeholder="Address2" />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.Address2.$error" ng-if="(orderDetailsForm.Address2.$invalid && orderDetailsForm.Address2.$touched) || (orderDetailsForm.Address2.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Address2 is required.</div>
+                                    </div>
+                                </div>
+                                <div class="row"><br/> </div>
+
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Zipcode.$invalid && orderDetailsForm.Zipcode.$touched) || (orderDetailsForm.Zipcode.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-offset-2 col-md-2">
+                                        <div class="input-group">
+                                            <input type="text" id="Zipcode" name="Zipcode" class="form-control" ng-model="detail.zip" ng-pattern="vmRequest.zipPattern" placeholder="Zipcode" required />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingZip===true}" style="cursor: pointer;"
+                                                   ng-click="vmRequest.getZipcodeInfo(detail,orderDetailsForm.Zipcode)"
+                                                   ng-if="detail.zip.length==5"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.City.$invalid && orderDetailsForm.City.$touched) || (orderDetailsForm.City.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3 ">
+                                        <input type="text" id="City" name="City" class="form-control" ng-model="detail.city" placeholder="City" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.State.$invalid && orderDetailsForm.State.$touched) || (orderDetailsForm.State.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-1">
+                                        <input type="text" id="State" name="State" class="form-control" ng-model="detail.state" ng-pattern="vmRequest.statePattern" placeholder="State" required readonly />
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-4">
+                                    <span ng-messages="(orderDetailsForm.City.$invalid && orderDetailsForm.City.$touched) || (orderDetailsForm.City.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">City is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.State.$error" ng-if="(orderDetailsForm.State.$invalid && orderDetailsForm.State.$touched) || (orderDetailsForm.State.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">State is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">State is invalid.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.Zipcode.$error" ng-if="(orderDetailsForm.Zipcode.$invalid && orderDetailsForm.Zipcode.$touched) || (orderDetailsForm.Zipcode.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Zip is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">Zip is invalid.</span>
+                                        <span ng-message="zipcode" class="label label-danger">{{detail.zipErrorReason}}.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" >
+                                <div class="form-group-sm">
+                                    <div class="col-md-offset-2">
+                                        <div class="btn btn-sm btn-info" ng-click="vmRequest.copyBilling(detail)"><i class="fa fa-arrow-circle-down"></i> Billing Information is same as Service Information <i class="fa fa-arrow-circle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="vmRequest.request.accountType==='Residential'">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingFirstName.$invalid && orderDetailsForm.BillingFirstName.$touched) || (orderDetailsForm.BillingFirstName.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label text-nowrap">Billing Name:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="BillingFirstName" name="BillingFirstName" class="form-control" ng-model="detail.billingFirstName" placeholder="First Name" required />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingLastName.$invalid && orderDetailsForm.BillingLastName.$touched) || (orderDetailsForm.BillingLastName.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3">
+                                        <input type="text" id="BillingLastName" name="BillingLastName" class="form-control" ng-model="detail.billingLastName" placeholder="Last Name" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span ng-messages="orderDetailsForm.BillingFirstName.$error" ng-if="(orderDetailsForm.BillingFirstName.$invalid && orderDetailsForm.BillingFirstName.$touched) || (orderDetailsForm.BillingFirstName.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">First Name is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingLastName.$error" ng-if="(orderDetailsForm.BillingLastName.$invalid && orderDetailsForm.BillingLastName.$touched) || (orderDetailsForm.BillingLastName.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Last Name is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" >
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingAddress.$invalid && orderDetailsForm.BillingAddress.$touched) || (orderDetailsForm.BillingAddress.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Billing Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="BillingAddress" name="BillingAddress" class="form-control" ng-model="detail.billingAddress" placeholder="Address" required />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.BillingAddress.$error" ng-if="(orderDetailsForm.BillingAddress.$invalid && orderDetailsForm.BillingAddress.$touched) || (orderDetailsForm.BillingAddress.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Address is required.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingAddress2.$invalid && orderDetailsForm.BillingAddress2.$touched) || (orderDetailsForm.BillingAddress2.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-6 col-md-offset-2">
+                                        <input type="text" id="BillingAddress2" name="BillingAddress2" class="form-control" ng-model="detail.billingAddress2" placeholder="Address2" />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.BillingAddress2.$error" ng-if="(orderDetailsForm.BillingAddress2.$invalid && orderDetailsForm.BillingAddress2.$touched) || (orderDetailsForm.BillingAddress2.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Address2 is required.</div>
+                                    </div>
+                                </div>
+                                <div class="row"><br /> </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingZipcode.$invalid && orderDetailsForm.BillingZipcode.$touched) || (orderDetailsForm.BillingZipcode.$invalid && vmRequest.submittingRequest)}">
+
+                                    <div class="col-md-2 col-md-offset-2">
+                                        <div class="input-group">
+                                            <input type="text" id="BillingZipcode" name="BillingZipcode" class="form-control" ng-model="detail.billingZip" ng-pattern="vmRequest.zipPattern" placeholder="Zipcode" required />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingBillingZip===true}" style="cursor: pointer;"
+                                                   ng-click="vmRequest.getBillingZipcodeInfo(detail,orderDetailsForm.BillingZipcode)"
+                                                   ng-if="detail.billingZip.length==5"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingCity.$invalid && orderDetailsForm.BillingCity.$touched) || (orderDetailsForm.BillingCity.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3 ">
+                                        <input type="text" id="BillingCity" name="BillingCity" class="form-control" ng-model="detail.billingCity" placeholder="City" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingState.$invalid && orderDetailsForm.BillingState.$touched) || (orderDetailsForm.BillingState.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-1">
+                                        <input type="text" id="BillingState" name="BillingState" class="form-control" ng-model="detail.billingState" ng-pattern="vmRequest.statePattern" placeholder="State" required readonly />
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Utility.$invalid && orderDetailsForm.Utility.$touched) || (orderDetailsForm.Utility.$invalid && vmRequest.submittingRequest)}">
+                                        <label class="col-md-2 control-label text-nowrap">Utility: <i class="fa fa-spinner fa-pulse" ng-if="!detail.utilityList && vmRequest.gettingUtilityList==true"></i></label>
+                                        <div class="col-md-3">
+                                            <select id="Utility" name="Utility" class="form-control"
+                                                    ng-model="detail.utility"
+                                                    ng-options="utility.name for utility in detail.utilityList| filter:{type:detail.utilityType}"
+                                                    required>
+                                                <!--<option ng-repeat="utility.name for utility in detail.utilityList| filter:{type:detail.utilityType}" ng-value="utility.name">{{utility.name}}</option>-->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-5" ng-messages="orderDetailsForm.Utility.$error" ng-if="(orderDetailsForm.Utility.$invalid && orderDetailsForm.Utility.$touched) || (orderDetailsForm.Utility.$invalid && vmRequest.submittingRequest)">
+                                            <div ng-message="required" class="label label-danger">Utility is required.</div>
+                                            <div ng-message="notfound" class="label label-danger">Utilities not found.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-12" style="margin-top: 5px;">
+                                    <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Program.$invalid && orderDetailsForm.Program.$touched) || (orderDetailsForm.Program.$invalid && vmRequest.submittingRequest)}">
+                                        <label class="col-md-2 control-label text-nowrap">Program:</label>
+                                        <div class="col-md-6">
+                                            <select id="Program" name="Program" class="form-control"
+                                                    ng-model="detail.program"
+                                                    ng-change="vmRequest.programChange(detail)"
+                                                    ng-options="program.display for program in detail.programList | filter:{name:detail.utility.name, utilityTypeName:detail.utilityType}"
+                                                    required>
+                                               
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4" ng-messages="orderDetailsForm.Program.$error" ng-if="(orderDetailsForm.Program.$invalid && orderDetailsForm.Program.$touched) || (orderDetailsForm.Program.$invalid && vmRequest.submittingRequest)">
+                                            <div ng-message="required" class="label label-danger">Program is required.</div>
+                                            <div ng-message="notfound" class="label label-danger">Programs not found.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top: 5px;">
+                                    <div class="form-group-sm">
+                                        <label class="col-md-2 control-label">Program Details:</label>
+                                        <p class="col-md-10 form-control-static text-success">                                     
+                                            <strong>
+                                                Utility: {{detail.program.name}},&nbsp;
+                                                Rate: {{detail.program.rate}}/{{detail.program.unitOfMeasureName}},&nbsp;
+                                                ETF: {{detail.program.etf|currency}},&nbsp;
+                                                MSF: {{detail.program.msf|currency}}
+                                            </strong>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span ng-messages="orderDetailsForm.BillingCity.$error" ng-if="(orderDetailsForm.BillingCity.$invalid && orderDetailsForm.BillingCity.$touched) || (orderDetailsForm.BillingCity.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">City is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingState.$error" ng-if="(orderDetailsForm.BillingState.$invalid && orderDetailsForm.BillingState.$touched) || (orderDetailsForm.BillingState.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">State is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">State is invalid.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingZipcode.$error" ng-if="(orderDetailsForm.BillingZipcode.$invalid && orderDetailsForm.BillingZipcode.$touched) || (orderDetailsForm.BillingZipcode.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Zip is required.</span>
+                                        <span ng-message="zipcode" class="label label-danger">{{detail.billingZipErrorReason}}.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if=" vmRequest.request.accountType==='Residential'">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Relationship.$invalid && orderDetailsForm.Relationship.$touched) || (orderDetailsForm.Relationship.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Relationship:</label>
+                                    <div class="col-md-3">
+                                        <select name="Relationship" id="Relationship" class="form-control" ng-model="detail.relationship"
+                                                ng-options="relationship.relationshipName as relationship.relationshipName for relationship in vmRequest.relationshipList" required>
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.Relationship.$error" ng-if="(orderDetailsForm.Relationship.$invalid && orderDetailsForm.Relationship.$touched) || (orderDetailsForm.Relationship.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Relationship is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" >
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.AccountNumber.$invalid && orderDetailsForm.AccountNumber.$touched) || (orderDetailsForm.AccountNumber.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">{{detail.program.accountNumberTypeName}}:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="AccountNumber" name="AccountNumber" class="form-control"
+                                               ng-model="detail.accountNumber"
+                                               ng-pattern="detail.accountNumberPattern" style="text-transform:uppercase;" on keyup="javascript:this.value=this.value.toUpperCase();"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.AccountNumber.$error" ng-if="(orderDetailsForm.AccountNumber.$invalid && orderDetailsForm.AccountNumber.$touched) || (orderDetailsForm.AccountNumber.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Account Number is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">{{detail.accountNumberPatternErrorMessage}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="detail.program.meterNumber === true">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.MeterNumber.$invalid && orderDetailsForm.MeterNumber.$touched) || (orderDetailsForm.MeterNumber.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Meter Number:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="MeterNumber" name="MeterNumber" class="form-control"
+                                               ng-model="detail.meterNumber"
+                                               ng-pattern="detail.meterNumberPattern"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.MeterNumber.$error" ng-if="(orderDetailsForm.MeterNumber.$invalid && orderDetailsForm.MeterNumber.$touched) || (orderDetailsForm.MeterNumber.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Meter Number is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">Meter Number is invalid. Must be no more than {{detail.program.meterNumberLength}} digits.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if=" detail.program.serviceReference === true">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceReference.$invalid && orderDetailsForm.ServiceReference.$touched) || (orderDetailsForm.ServiceReference.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Service Reference:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="ServiceReference" name="ServiceReference" class="form-control"
+                                               ng-model="detail.serviceReference"
+                                               ng-pattern="vmRequest.serviceReferencePattern"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.ServiceReference.$error" ng-if="(orderDetailsForm.ServiceReference.$invalid && orderDetailsForm.ServiceReference.$touched) || (orderDetailsForm.ServiceReference.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Service Reference is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">Service Reference is invalid.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-form>
+                    </div>
+
+                    <div class="col-md-12" ng-if="vmRequest.request.utilityType">
+                        <div class="btn btn-sm btn-default" ng-if="vmRequest.request.accountType==='Residential'" ng-click="vmRequest.orderDetailSetup(vmRequest.request.utilityType, false)"><i class="fa fa-plus-square"></i> Add New {{vmRequest.request.utilityType}} Account</div>
+                    </div>
+                </div>
+
+                <div class="col-md-12" ng-if="vmRequest.MainClone">
+                    <br />
+                    <div class="col-md-12">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.AuthorizationFirstName.$invalid && vmRequest.form.AuthorizationFirstName.$touched) || (vmRequest.form.AuthorizationFirstName.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label">Authorization Name:</label>
+                            <div class="col-md-3">
+                                <input type="text" id="AuthorizationFirstName" name="AuthorizationFirstName" class="form-control" ng-model="vmRequest.MainClone[0].authorizationFirstName" placeholder="First Name" required />
+                            </div>
+                        </div>
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.AuthorizationLastName.$invalid && vmRequest.form.AuthorizationLastName.$touched) || (vmRequest.form.AuthorizationLastName.$invalid && vmRequest.submittingRequest)}">
+                            <div class="col-md-3">
+                                <input type="text" id="AuthorizationLastName" name="AuthorizationLastName" class="form-control" ng-model="vmRequest.MainClone[0].authorizationLastName" placeholder="Last Name" required />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <span ng-messages="vmRequest.form.AuthorizationFirstName.$error" ng-if="(vmRequest.form.AuthorizationFirstName.$invalid && vmRequest.form.AuthorizationFirstName.$touched) || (vmRequest.form.AuthorizationFirstName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">First Name is required.</span>
+                            </span>
+                            <span ng-messages="vmRequest.form.AuthorizationLastName.$error" ng-if="(vmRequest.form.AuthorizationLastName.$invalid && vmRequest.form.AuthorizationLastName.$touched) || (vmRequest.form.AuthorizationLastName.$invalid && vmRequest.submittingRequest)">
+                                <span ng-message="required" class="label label-danger">Last Name is required.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <div class="col-md-12">
+                        <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.Btn.$invalid && vmRequest.form.Btn.$touched) || (vmRequest.form.Btn.$invalid && vmRequest.submittingRequest)}">
+                            <label class="col-md-2 control-label text-nowrap">Phone Number:</label>
+                            <div class="col-md-2">
+                                <input type="text" id="Btn" name="Btn" class="form-control" ng-model="vmRequest.MainClone[0].btn" ui_mask="(999) 999-9999" required />
+                            </div>
+                            <div class="col-md-5" ng-messages="vmRequest.form.Btn.$error" ng-if="(vmRequest.form.Btn.$invalid && vmRequest.form.Btn.$touched) || (vmRequest.form.Btn.$invalid && vmRequest.submittingRequest)">
+                                <div ng-message="required" class="label label-danger">Phone Number is required.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <!--<div class="col-md-12">
+                    <div class="form-group-sm" ng-class="{'has-error': (vmRequest.form.UtilityType.$invalid && vmRequest.form.UtilityType.$touched) || (vmRequest.form.UtilityType.$invalid && vmRequest.submittingRequest)}">
+                        <label class="col-md-2 control-label text-nowrap">Utility Type:</label>
+                        <div class="col-md-2">
+                            <select id="UtilityType" name="UtilityType" class="form-control"
+                                    ng-model="vmRequest.request.utilityType"
+                                    ng-change="vmRequest.orderDetailSetup(vmRequest.request.utilityType, true)" required>
+                                <option>Electric</option>
+                                <option>Gas</option>
+                                <option>Dual Fuel</option>
+                            </select>
+                        </div>
+                        <div class="col-md-5" ng-messages="vmRequest.form.UtilityType.$error" ng-if="(vmRequest.form.UtilityType.$invalid && vmRequest.form.UtilityType.$touched) || (vmRequest.form.UtilityType.$invalid && vmRequest.submittingRequest)">
+                            <div ng-message="required" class="label label-danger">Utility Type is required.</div>
+                        </div>
+                    </div>
+                </div>-->
+
+                    <br /><br /><br />
+                    <div class="col-md-12 well well-sm" ng-repeat="CloneOrderDetail in vmRequest.MainClone track by $index">
+                        <div>
+                            <div class="col-md-6"><h4>{{CloneOrderDetail.utilityType}}</h4></div>
+                            <div class="col-md-6 text-right"><i class="fa fa-close text-danger" ng-if="vmRequest.MainClone.length > 1" ng-click="vmRequest.MainClone.splice($index, 1)"></i></div>
+                        </div>
+
+                        <ng-form name="orderDetailsForm">
+                            <!--<div class="col-md-12">
+                            <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.UtilityType.$invalid && orderDetailsForm.UtilityType.$touched) || (orderDetailsForm.UtilityType.$invalid && vmRequest.submittingRequest)}">
+                                <label class="col-md-2 control-label text-nowrap">Utility: <i class="fa fa-spinner fa-pulse" ng-if="!detail.utilityList && vmRequest.gettingUtilityList==true"></i></label>
+                                <div class="col-md-3">
+                                    <select id="UtilityType" name="UtilityType" class="form-control"
+                                            ng-model="CloneOrderDetail.utilityType"
+                                            ng-change="vmRequest.utilityChangeClone(CloneOrderDetail)"
+                                            ng-options="utility as utility.detailString for utility in CloneOrderDetail.utilityList"
+                                            required></select>
+                                </div>
+                                <div class="col-md-5" ng-messages="orderDetailsForm.UtilityType.$error" ng-if="(orderDetailsForm.UtilityType.$invalid && orderDetailsForm.UtilityType.$touched) || (orderDetailsForm.UtilityType.$invalid && vmRequest.submittingRequest)">
+                                    <div ng-message="required" class="label label-danger">Utility is required.</div>
+                                    <div ng-message="notfound" class="label label-danger">Utilities not found.</div>
+                                </div>
+                            </div>
+                        </div>-->
+                            <!--<div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail.programId">
+                            <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Program.$invalid && orderDetailsForm.Program.$touched) || (orderDetailsForm.Program.$invalid && vmRequest.submittingRequest)}">
+                                <label class="col-md-2 control-label text-nowrap">Program:</label>
+                                <div class="col-md-6">
+                                    <select id="Program" name="Program" class="form-control"
+                                            ng-model="CloneOrderDetail.programId"
+                                            ng-change="vmRequest.programChange(CloneOrderDetail)"
+                                            ng-options="program as program.detailString for program in CloneOrderDetail.programList"
+                                            required></select>
+                                </div>
+                                <div class="col-md-4" ng-messages="orderDetailsForm.Program.$error" ng-if="(orderDetailsForm.Program.$invalid && orderDetailsForm.Program.$touched) || (orderDetailsForm.Program.$invalid && vmRequest.submittingRequest)">
+                                    <div ng-message="required" class="label label-danger">Program is required.</div>
+                                    <div ng-message="notfound" class="label label-danger">Programs not found.</div>
+                                </div>
+                            </div>
+                        </div>-->
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail.programId">
+                                <div class="form-group-sm">
+                                    <label class="col-md-2 control-label">Program Details:</label>
+                                    <p class="col-md-10 form-control-static text-success">
+                                        <strong>
+                                            Code: {{CloneOrderDetail.programCode}},&nbsp;
+                                            Utility: {{CloneOrderDetail.ldcCode}},&nbsp;
+                                            Rate: {{CloneOrderDetail.rate}}/{{CloneOrderDetail.unitOfMeasureName}},&nbsp;
+                                            ETF: {{CloneOrderDetail.etf|currency}},&nbsp;
+                                            MSF: {{CloneOrderDetail.msf|currency}}
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceAddress.$invalid && orderDetailsForm.ServiceAddress.$touched) || (orderDetailsForm.ServiceAddress.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Service Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="ServiceAddress" name="ServiceAddress" class="form-control" ng-model="CloneOrderDetail.serviceAddress" placeholder="ServiceAddress" required />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.ServiceAddress.$error" ng-if="(orderDetailsForm.ServiceAddress.$invalid && orderDetailsForm.ServiceAddress.$touched) || (orderDetailsForm.ServiceAddress.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Service Address is required.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceCity.$invalid && orderDetailsForm.ServiceCity.$touched) || (orderDetailsForm.ServiceCity.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3 col-md-offset-2">
+                                        <input type="text" id="ServiceCity" name="ServiceCity" class="form-control" ng-model="CloneOrderDetail.serviceCity" placeholder="ServiceCity" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceState.$invalid && orderDetailsForm.ServiceState.$touched) || (orderDetailsForm.ServiceState.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-1">
+                                        <input type="text" id="ServiceState" name="ServiceState" class="form-control" ng-model="CloneOrderDetail.serviceState" ng-pattern="vmRequest.statePattern" placeholder="ServiceState" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceZip.$invalid && orderDetailsForm.ServiceZip.$touched) || (orderDetailsForm.ServiceZip.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <input type="text" id="ServiceZip" name="ServiceZip" class="form-control" ng-model="CloneOrderDetail.serviceZip" ng-pattern="vmRequest.zipPattern" placeholder="ServiceZip" required />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingServiceZip===true}" style="cursor: pointer;"
+                                                   ng-click="vmRequest.getCloneZipcodeInfo(CloneOrderDetail,orderDetailsForm.ServiceZip)"
+                                                   ng-if="CloneOrderDetail.serviceZip.length==5"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span ng-messages="(orderDetailsForm.ServiceCity.$invalid && orderDetailsForm.ServiceCity.$touched) || (orderDetailsForm.ServiceCity.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">City is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.ServiceState.$error" ng-if="(orderDetailsForm.ServiceState.$invalid && orderDetailsForm.ServiceState.$touched) || (orderDetailsForm.ServiceState.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">State is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">State is invalid.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.ServiceZip.$error" ng-if="(orderDetailsForm.ServiceZip.$invalid && orderDetailsForm.ServiceZip.$touched) || (orderDetailsForm.ServiceZip.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Zip is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">Zip is invalid.</span>
+                                        <span ng-message="serviceZip" class="label label-danger">{{CloneOrderDetail.serviceZipErrorReason}}.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail">
+                                <div class="form-group-sm">
+                                    <div class="col-md-offset-2">
+                                        <div class="btn btn-sm btn-info" ng-click="vmRequest.copyBillingClone(CloneOrderDetail)"><i class="fa fa-arrow-circle-down"></i> Billing Information is same as Service Information <i class="fa fa-arrow-circle-down"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingFirstName.$invalid && orderDetailsForm.BillingFirstName.$touched) || (orderDetailsForm.BillingFirstName.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label text-nowrap">Billing Name:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="BillingFirstName" name="BillingFirstName" class="form-control" ng-model="CloneOrderDetail.billingFirstName" placeholder="First Name" required />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingLastName.$invalid && orderDetailsForm.BillingLastName.$touched) || (orderDetailsForm.BillingLastName.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3">
+                                        <input type="text" id="BillingLastName" name="BillingLastName" class="form-control" ng-model="CloneOrderDetail.billingLastName" placeholder="Last Name" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span ng-messages="orderDetailsForm.BillingFirstName.$error" ng-if="(orderDetailsForm.BillingFirstName.$invalid && orderDetailsForm.BillingFirstName.$touched) || (orderDetailsForm.BillingFirstName.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">First Name is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingLastName.$error" ng-if="(orderDetailsForm.BillingLastName.$invalid && orderDetailsForm.BillingLastName.$touched) || (orderDetailsForm.BillingLastName.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Last Name is required.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingAddress.$invalid && orderDetailsForm.BillingAddress.$touched) || (orderDetailsForm.BillingAddress.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Billing Address:</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="BillingAddress" name="BillingAddress" class="form-control" ng-model="CloneOrderDetail.billingAddress" placeholder="Address" required />
+                                    </div>
+                                    <div class="col-md-4" ng-messages="orderDetailsForm.BillingAddress.$error" ng-if="(orderDetailsForm.BillingAddress.$invalid && orderDetailsForm.BillingAddress.$touched) || (orderDetailsForm.BillingAddress.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Address is required.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingCity.$invalid && orderDetailsForm.BillingCity.$touched) || (orderDetailsForm.BillingCity.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-3 col-md-offset-2">
+                                        <input type="text" id="BillingCity" name="BillingCity" class="form-control" ng-model="CloneOrderDetail.billingCity" placeholder="City" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingState.$invalid && orderDetailsForm.BillingState.$touched) || (orderDetailsForm.BillingState.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-1">
+                                        <input type="text" id="BillingState" name="BillingState" class="form-control" ng-model="CloneOrderDetail.billingState" ng-pattern="vmRequest.statePattern" placeholder="State" required readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.BillingZipcode.$invalid && orderDetailsForm.BillingZipcode.$touched) || (orderDetailsForm.BillingZipcode.$invalid && vmRequest.submittingRequest)}">
+                                    <div class="col-md-2">
+                                        <div class="input-group">
+                                            <input type="text" id="BillingZipcode" name="BillingZipcode" class="form-control" ng-model="CloneOrderDetail.billingZip" ng-pattern="vmRequest.zipPattern" placeholder="Zipcode" required />
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search" ng-class="{'fa-spin': vmRequest.gettingBillingZip===true}" style="cursor: pointer;"
+                                                   ng-click="vmRequest.getBillingZipcodeInfo(CloneOrderDetail,orderDetailsForm.BillingZipcode)"
+                                                   ng-if="CloneOrderDetail.billingZip.length==5"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span ng-messages="orderDetailsForm.BillingCity.$error" ng-if="(orderDetailsForm.BillingCity.$invalid && orderDetailsForm.BillingCity.$touched) || (orderDetailsForm.BillingCity.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">City is required.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingState.$error" ng-if="(orderDetailsForm.BillingState.$invalid && orderDetailsForm.BillingState.$touched) || (orderDetailsForm.BillingState.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">State is required.</span>
+                                        <span ng-message="pattern" class="label label-danger">State is invalid.</span>
+                                    </span>
+                                    <span ng-messages="orderDetailsForm.BillingZipcode.$error" ng-if="(orderDetailsForm.BillingZipcode.$invalid && orderDetailsForm.BillingZipcode.$touched) || (orderDetailsForm.BillingZipcode.$invalid && vmRequest.submittingRequest)">
+                                        <span ng-message="required" class="label label-danger">Zip is required.</span>
+                                        <span ng-message="zipcode" class="label label-danger">{{CloneOrderDetail.billingZipErrorReason}}.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail.relation">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.Relation.$invalid && orderDetailsForm.Relation.$touched) || (orderDetailsForm.Relation.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Relationship:</label>
+                                    <div class="col-md-3">
+                                        <select name="Relationship" id="Relation" class="form-control" ng-model="CloneOrderDetail.relation"
+                                                ng-options="relation.relationshipName as relation.relationshipName for relation in vmRequest.relationshipList" required>
+                                            <option></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.Relation.$error" ng-if="(orderDetailsForm.Relation.$invalid && orderDetailsForm.Relation.$touched) || (orderDetailsForm.Relation.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Relationship is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.AccountNumber.$invalid && orderDetailsForm.AccountNumber.$touched) || (orderDetailsForm.AccountNumber.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">{{CloneOrderDetail.accountType}}:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="AccountNumber" name="AccountNumber" class="form-control"
+                                               ng-model="CloneOrderDetail.accountNumber"
+                                               ng-pattern="CloneOrderDetail.accountNumberPattern"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.AccountNumber.$error" ng-if="(orderDetailsForm.AccountNumber.$invalid && orderDetailsForm.AccountNumber.$touched) || (orderDetailsForm.AccountNumber.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Account Number is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">Account Number is invalid. Must be {{CloneOrderDetail.program.accountNumberLength}} digits.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail && CloneOrderDetail.meterNumber === true">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.MeterNumber.$invalid && orderDetailsForm.MeterNumber.$touched) || (orderDetailsForm.MeterNumber.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Meter Number:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="MeterNumber" name="MeterNumber" class="form-control"
+                                               ng-model="MainCloneDetail.meterNumber"
+                                               ng-pattern="MainCloneDetail.meterNumberPattern"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.MeterNumber.$error" ng-if="(orderDetailsForm.MeterNumber.$invalid && orderDetailsForm.MeterNumber.$touched) || (orderDetailsForm.MeterNumber.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Meter Number is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">Meter Number is invalid. Must be no more than {{MainCloneDetail.program.meterNumberLength}} digits.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-top: 5px;" ng-if="CloneOrderDetail && CloneOrderDetail.serviceReferenceNumber === true">
+                                <div class="form-group-sm" ng-class="{'has-error': (orderDetailsForm.ServiceReference.$invalid && orderDetailsForm.ServiceReference.$touched) || (orderDetailsForm.ServiceReference.$invalid && vmRequest.submittingRequest)}">
+                                    <label class="col-md-2 control-label">Service Reference:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="ServiceReference" name="ServiceReference" class="form-control"
+                                               ng-model="CloneOrderDetail.serviceReferenceNumber"
+                                               ng-pattern="vmRequest.serviceReferencePattern"
+                                               placeholder="" required />
+                                    </div>
+                                    <div class="col-md-7" ng-messages="orderDetailsForm.ServiceReference.$error" ng-if="(orderDetailsForm.ServiceReference.$invalid && orderDetailsForm.ServiceReference.$touched) || (orderDetailsForm.ServiceReference.$invalid && vmRequest.submittingRequest)">
+                                        <div ng-message="required" class="label label-danger">Service Reference is required.</div>
+                                        <div ng-message="pattern" class="label label-danger">Service Reference is invalid.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-form>
+                    </div>
+                </div>
+
+                <div class="col-md-12 text-center" style="margin-top: 60px; margin-bottom: 60px;" ng-if="!vmRequest.MainClone">
+                    <div class="btn" ng-click="!vmRequest.request.lead || vmRequest.submitRequest()" ng-disabled="!vmRequest.request.lead;" ng-class="{'btn-warning': (vmRequest.form.$invalid), 'btn-success': (!vmRequest.form.$invalid)}"><i class="fa fa-save"></i> Submit Request</div>
+                </div>
+
+                <div class="col-md-12 text-center" style="margin-top: 60px; margin-bottom: 60px;" ng-if="vmRequest.MainClone">
+                    <div class="btn" ng-click="vmRequest.submitRequest(vmRequest.MainClone)" ng-class="{'btn-warning': (vmRequest.form.$invalid), 'btn-success': (!vmRequest.form.$invalid)}"><i class="fa fa-save"></i> Submit Clone</div>
+                </div>
+            </div>
+
+            <div class="col-md-offset-3 col-md-6" ng-if="vmRequest.main">
+                <div class="panel panel-success">
+                    <div class="panel-heading">Request Submission Successful</div>
+                    <div class="panel-body text-center">
+                        <h4>Confirmation Number: A{{vmRequest.main.mainId}}</h4> <!-- Add "A" before MainId to denote a Website Order -->
+                        <div class="btn btn-sm btn-success" ng-click="vmRequest.newRequest()">New Request</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

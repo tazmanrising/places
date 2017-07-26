@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FrontierModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FrontierModelStoreContainer">
+          <EntitySet Name="tblE911LoadFile" EntityType="FrontierModel.Store.tblE911LoadFile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tblE911LoadFileTempHold" EntityType="FrontierModel.Store.tblE911LoadFileTempHold" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tblE911LoadFile">
+          <Key>
+            <PropertyRef Name="E911LoadFileId" />
+          </Key>
+          <Property Name="E911LoadFileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LoadDateTime" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="FileName" Type="varchar" MaxLength="100" />
+          <Property Name="Priority" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="TimeZone" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Attempts" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="Processed" Type="char" MaxLength="1" StoreGeneratedPattern="Computed" />
+          <Property Name="Locked" Type="char" MaxLength="1" StoreGeneratedPattern="Computed" />
+          <Property Name="LockedDateTime" Type="datetime" />
+          <Property Name="LockedAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="LastAttemptDate" Type="datetime" />
+          <Property Name="LastDisposition" Type="varchar" MaxLength="50" />
+          <Property Name="LastDispositionCode" Type="char" MaxLength="2" />
+          <Property Name="SubscriberId" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Signature" Type="varchar" MaxLength="250" />
+          <Property Name="BirthYear" Type="varchar" MaxLength="10" />
+          <Property Name="TN" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="GeneralAction" Type="varchar" MaxLength="50" />
+          <Property Name="GeneralDate" Type="datetime" />
+          <Property Name="E911Action" Type="varchar" MaxLength="50" />
+          <Property Name="E911Date" Type="datetime" />
+          <Property Name="IsData" Type="char" MaxLength="1" />
+          <Property Name="IsVoip" Type="char" MaxLength="1" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="DPIRegion" Type="varchar" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="tblE911LoadFileTempHold">
+          <Key>
+            <PropertyRef Name="SubscriberId" />
+          </Key>
+          <Property Name="SubscriberId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Signature" Type="varchar" MaxLength="250" />
+          <Property Name="BirthYear" Type="varchar" MaxLength="10" />
+          <Property Name="TN" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="GeneralAction" Type="varchar" MaxLength="50" />
+          <Property Name="GeneralDate" Type="datetime" />
+          <Property Name="E911Action" Type="varchar" MaxLength="50" />
+          <Property Name="E911Date" Type="datetime" />
+          <Property Name="IsData" Type="char" MaxLength="1" />
+          <Property Name="IsVoip" Type="char" MaxLength="1" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="2" />
+          <Property Name="DPIRegion" Type="varchar" MaxLength="2" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FrontierModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FrontierEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblE911LoadFile" EntityType="FrontierModel.tblE911LoadFile" />
+          <EntitySet Name="tblE911LoadFileTempHold" EntityType="FrontierModel.tblE911LoadFileTempHold" />
+        </EntityContainer>
+        <EntityType Name="tblE911LoadFile">
+          <Key>
+            <PropertyRef Name="E911LoadFileId" />
+          </Key>
+          <Property Name="E911LoadFileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoadDateTime" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FileName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Priority" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="TimeZone" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Attempts" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Processed" Type="String" MaxLength="1" Unicode="false" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Locked" Type="String" MaxLength="1" Unicode="false" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LockedDateTime" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="None" />
+          <Property Name="LockedAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastAttemptDate" Type="DateTime" Precision="3" />
+          <Property Name="LastDisposition" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastDispositionCode" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="SubscriberId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Signature" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="BirthYear" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="TN" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="GeneralAction" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GeneralDate" Type="DateTime" Precision="3" />
+          <Property Name="E911Action" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="E911Date" Type="DateTime" Precision="3" />
+          <Property Name="IsData" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="IsVoip" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="User" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="State" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DPIRegion" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblE911LoadFileTempHold">
+          <Key>
+            <PropertyRef Name="SubscriberId" />
+          </Key>
+          <Property Type="String" Name="SubscriberId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Signature" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BirthYear" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TN" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GeneralAction" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="GeneralDate" Precision="3" />
+          <Property Type="String" Name="E911Action" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="E911Date" Precision="3" />
+          <Property Type="String" Name="IsData" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="IsVoip" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="User" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DPIRegion" MaxLength="2" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FrontierModelStoreContainer" CdmEntityContainer="FrontierEntities">
+          <EntitySetMapping Name="tblE911LoadFile">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911LoadFile">
+              <MappingFragment StoreEntitySet="tblE911LoadFile">
+                <ScalarProperty Name="DPIRegion" ColumnName="DPIRegion" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="E911LoadFileId" ColumnName="E911LoadFileId" />
+                <ScalarProperty Name="LoadDateTime" ColumnName="LoadDateTime" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Attempts" ColumnName="Attempts" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="LockedDateTime" ColumnName="LockedDateTime" />
+                <ScalarProperty Name="LockedAgentId" ColumnName="LockedAgentId" />
+                <ScalarProperty Name="LastAttemptDate" ColumnName="LastAttemptDate" />
+                <ScalarProperty Name="LastDisposition" ColumnName="LastDisposition" />
+                <ScalarProperty Name="LastDispositionCode" ColumnName="LastDispositionCode" />
+                <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="TN" ColumnName="TN" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GeneralAction" ColumnName="GeneralAction" />
+                <ScalarProperty Name="GeneralDate" ColumnName="GeneralDate" />
+                <ScalarProperty Name="E911Action" ColumnName="E911Action" />
+                <ScalarProperty Name="E911Date" ColumnName="E911Date" />
+                <ScalarProperty Name="IsData" ColumnName="IsData" />
+                <ScalarProperty Name="IsVoip" ColumnName="IsVoip" />
+                <ScalarProperty Name="User" ColumnName="User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblE911LoadFileTempHold">
+            <EntityTypeMapping TypeName="FrontierModel.tblE911LoadFileTempHold">
+              <MappingFragment StoreEntitySet="tblE911LoadFileTempHold">
+                <ScalarProperty Name="DPIRegion" ColumnName="DPIRegion" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="IsVoip" ColumnName="IsVoip" />
+                <ScalarProperty Name="IsData" ColumnName="IsData" />
+                <ScalarProperty Name="E911Date" ColumnName="E911Date" />
+                <ScalarProperty Name="E911Action" ColumnName="E911Action" />
+                <ScalarProperty Name="GeneralDate" ColumnName="GeneralDate" />
+                <ScalarProperty Name="GeneralAction" ColumnName="GeneralAction" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TN" ColumnName="TN" />
+                <ScalarProperty Name="BirthYear" ColumnName="BirthYear" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubscriberId" ColumnName="SubscriberId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,99 @@
+/* ================================ HEADER ================================= */
+/*highlight current link*/
+	header ul > li:nth-of-type(1) a {
+	color: hsl(360, 1.2%, 90%);
+}
+
+/* ================================ BODY ================================= */
+/* ========== ROW1 ========== */
+/*section#r1 {
+	height: 317px;
+	padding: 0 2px 1px 2px;
+	border: 1px solid hsl(360, 0.87%, 77.4%);
+	background-color: white;
+}*/
+
+/* ========== ROW2 ========== */
+section#r2 {
+	line-height: 56px;
+	text-align: center;
+	background: hsla(360, 0.5%, 0%, 0.7);
+	margin: 20px -37px 20px -37px;
+		box-shadow: 0 0 10px 1px hsl(0, 0%, 38%);
+}
+
+section#r2 img {
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+section#r2 span {
+	font-family: Vegur;
+	font-size: 34px;
+	font-style: italic;
+	/*color: hsl(360, 0.5%, 28%);*/
+	color: hsl(360, 0.5%, 58%);
+	vertical-align: middle;
+	text-shadow: 
+		0px 2px 3px black;
+
+	/*border-bottom: 1px solid hsl(360, 0.5%, 48%);*/
+}
+
+/* ========== ROW3 ========== */
+section#r3, section#r3 a {
+	color: white;
+}
+
+section#r3 > nav {
+	float: left;
+	height: 201px;
+	width: 201px;
+	padding: 0 25px 0 25px;
+	border: 2px solid white;
+	border-radius: 8px;
+	box-shadow: 0 0 10px 1px hsl(0, 0%, 38%);
+	background: url(../images/boxbg.png) repeat-x;
+	/*background-image: -webkit-gradient(linear, 0 0%, 0 100%, 
+			from(hsla(198, 43%, 40%, 1)), 
+			color-stop(0.3, hsla(198, 43%, 38%, 1)),
+			color-stop(0.6, hsla(198, 43%, 35%, 1)),
+			to(hsla(198, 43%, 30%, 1)));	*/
+}
+
+section#r3 > nav:nth-child(-n+2) {
+	margin-right: 58.5px;
+	/*margin-right: calc((100% - 255px*3) / 2 - 1px); 
+	margin-right: -webkit-calc((100% - 255px*3) / 2 - 1px); */
+}
+
+section#r3 div.top {
+	height: 82px;
+	line-height: 82px;
+	border-bottom: 1px solid;
+	text-align: center;
+}
+
+section#r3 h3 {
+	display: inline-block;
+	vertical-align: middle;	
+	font-size: 18px;	
+	line-height: 26px;
+}
+
+section#r3 li {
+	margin-top: 15px;
+	text-align: center;
+}
+
+section#r3 nav:nth-child(3) li {
+	margin-top: 10px;
+}
+
+/* ========== ROW4 ========== */
+section#r4 > p {
+	padding: 15px 0 15px 0;
+	line-height: 16px;
+	font-size: 13px;
+	color: hsl(360, 0.5%, 38%);
+}

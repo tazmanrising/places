@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Mobiscroll</title>
+
+    <!-- Angular Include -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    
+    <link href="css/mobiscroll.custom-3.0.0-beta6.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll.custom-3.0.0-beta6.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+    /*****************************************************************/
+    /* Demo Page styling, you can ignore this in your implementation */
+    
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: arial, verdana, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    input,
+    select {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        background: #fff;
+        font-family: arial, verdana, sans-serif;
+        text-shadow: none;
+        color: #000;
+        font-size: 15px;
+        -webkit-appearance: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    button {
+        display: inline-block;
+        text-decoration: none;
+        padding: 0.8em 2.6em;
+        margin: 20px 10px 0 0;
+        outline: 0;
+        border: 0;
+        overflow: visible;
+        cursor: pointer;
+        color: #fff;
+        background: #5185a8;
+        font-family: arial, verdana, sans-serif;
+        font-size: 14px;
+        font-weight: 100;
+    }
+    
+    button:hover {
+        background: #34566d;
+    }
+    
+    .header {
+        padding: .625em;
+        background: #5185a8;
+    }
+    
+    .header h1 {
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.25em;
+        font-weight: bold;
+        text-shadow: 1px 1px 1px #000;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    
+    .demo-main,
+    .demo-wrapper {
+        padding: 1em;
+    }
+    
+    .demo-iframe {
+        padding: 10px 10px 10px 10px;
+        text-shadow: none;
+    }
+    /* Demo page styling END */
+    /*************************/
+    
+        /* Image Only demo styling */
+    .md-image-fruit .dw-ul .dw-li .mbsc-img-w {
+        text-align: center;
+    }
+    
+    .md-image-fruit .mbsc-ltr .mbsc-img-w {
+        text-align: center;
+    }
+    
+    .md-image-fruit .mbsc-sc-whl-sc .mbsc-sc-itm .mbsc-img-w {
+        text-align: center;
+    }
+
+    /* Currency demo styling */
+    .md-currency {
+        padding: 0!important;
+    }
+    
+    .md-stepper-np .md-demo {
+        text-align: center;
+    }
+    
+    .md-stepper-np .md-demo .mbsc-desc {
+        font-size: 16px;
+        padding-bottom: 16px;
+    }
+    
+    .md-stepper-np .md-demo .mbsc-btn {
+        margin-top: 36px;
+    }
+    
+    .md-stepper-np .md-title {
+        margin-top: 40px;
+    }
+    
+    .md-stepper-np {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .md-stepper-np .mbsc-segmented {
+        left: 50%;
+        margin-left: -122px;
+    }
+    
+    .md-stepper-np.mbsc-form .mbsc-stepper .mbsc-segmented-item {
+        width: 4.375em;
+    }
+    
+    .md-stepper-np.mbsc-form .mbsc-stepper .mbsc-segmented-item:nth-child(3) {
+        width: 6.25em;
+    }
+    
+    .md-stepper-np.mbsc-form .mbsc-stepper input {
+        left: 5em;
+        width: 7.1428em;
+    }
+
+    /* Tab menu demo styling */
+    .demo-main-cont.demo-comp-menustrip { padding: 0; min-height: 300px; }
+    .md-ms-tabs .md-tab-h {
+        display: none;
+    }
+    
+    .md-ms-tabs .md-tabs-sel {
+        display: block;
+    }
+    
+    .md-ms-tabs .md-tabs-sel {
+        display: block;
+    }
+    
+    .md-app-ic {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        margin-top: -12px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    
+    .md-app-detail {
+        display: block;
+        overflow: hidden;
+    }
+    
+    .md-app-size {
+        font-size: 10px;
+        display: block;
+        opacity: .6;
+        float: left;
+    }
+    
+    .md-app-date {
+        font-size: 10px;
+        display: block;
+        opacity: .6;
+        float: right;
+    }
+    
+    .md-apps-ul li.mbsc-lv-item {
+        padding-left: 50px;
+    }
+    
+    .demo-display-top .md-apps-ul {
+        padding-top: 47px;
+    }
+    
+    .demo-display-top .mbsc-lv-android .md-apps-ul {
+        padding-top: 34px;
+    }
+    
+    .demo-display-top .mbsc-lv-android-holo .md-apps-ul {
+        padding-top: 45px;
+    }
+    
+    .demo-display-top .mbsc-lv-bootstrap .md-apps-ul {
+        padding-top: 36px;
+    }
+    
+    .demo-display-top .mbsc-lv-ios .md-apps-ul {
+        padding-top: 42px;
+    }
+    
+    .demo-display-top .mbsc-lv-ios-classic .md-apps-ul {
+        padding-top: 38px;
+    }
+    
+    .demo-display-top .mbsc-lv-jqm .md-apps-ul {
+        padding-top: 33px;
+    }
+    
+    .demo-display-top .mbsc-lv-sense-ui .md-apps-ul {
+        padding-top: 39px;
+    }
+    
+    .demo-display-top .mbsc-lv-sense .md-apps-ul {
+        padding-top: 39px;
+    }
+    
+    .demo-display-top .mbsc-lv-wp .md-apps-ul {
+        padding-top: 75px;
+    }
+    
+    .demo-display-bottom .md-ms-tabs {
+        padding-bottom: 75px;
+    }
+
+    </style>
+
+    <script>
+    // -------------------------------------------------------------------
+    // Demo page code START, you can ignore this in your implementation
+    angular.element(document).ready(function () {
+        angular.bootstrap(mobiscroll.$('#main'), ['mainModule']);
+    });
+
+    angular.module('mainModule', [])
+        .controller('mainController', ['$scope', function ($scope) {
+            var $ = mobiscroll.$,
+                settings = ['theme', 'display', 'language'],
+                noDisplay = {
+                    listview: true,
+                    forms: true,
+                    menustrip: 'partial'
+                };
+
+            function demoPageConfigurator($provide) {
+                $provide.decorator('$rootScope', ['$delegate', function ($delegate) {
+                    for (var i = 0; i < settings.length; i++) {
+                        $delegate[settings[i]] = $scope[settings[i]];
+                    }
+                    return $delegate;
+                }]);
+            }
+
+            function changeDemo(newValue) {
+                var demo,
+                    element;
+
+                for (demo in $scope.alreadyBooted) {
+                    $('#demo_cont_' + demo).addClass('ng-hide');
+                }
+
+                if (newValue) {
+                    $scope.component = newValue.split(/(?=[A-Z])/)[0];
+
+                    if (noDisplay[$scope.component] == 'partial' && ($scope.display === 'modal' || $scope.display === 'bubble')) {
+                        $scope.display = undefined;
+                    }
+
+                    if ($scope.alreadyBooted[newValue]) {
+                        $('#demo_cont_' + newValue).remove();
+                        $('body').append($($scope.templates[newValue]));
+                        element = $('#demo_cont_' + newValue);
+                    } else {
+                        $scope.alreadyBooted[newValue] = true;
+                        element = $('#demo_cont_' + newValue);
+                        $scope.templates[newValue] = element[0].outerHTML;
+                    }
+
+                    element.removeClass('ng-hide');
+                    angular.module(newValue).config(demoPageConfigurator);
+                    angular.bootstrap(element, [newValue]);
+                }
+            }
+
+            $scope.alreadyBooted = {};
+            $scope.templates = {};
+            $scope.$watch('demo', changeDemo);
+
+            $scope.$watchGroup(settings, function () {
+                changeDemo($scope.demo);
+            });
+
+            $scope.noDisplay = function () {
+                return noDisplay[$scope.component];
+            };
+
+        }]);
+    // Demo page code END
+    // -------------------------------------------------------------------
+
+            // Date selection demo script
+        angular
+            .module('datetimeDate', ['mobiscroll-datetime'])
+            .controller('demoController', ['$scope', function ($scope) {
+                var now = new Date(),
+                    max = new Date(now.getFullYear() + 100, now.getMonth(), now.getDate());
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-mode
+                    max: max              // More info about max: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-max
+                };
+        
+            }]);
+
+        // Invalid days demo script
+        angular
+            .module('datetimeInvalid', ['mobiscroll-datetime'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                var today = new Date(),
+                    currYear = today.getFullYear(),
+                    currMonth = today.getMonth(),
+                    maxDate = new Date(currYear, currMonth + 6, today.getDate()),
+                    closed = ['w0', 'w6', '1/1', '1/2', '12/25', '12/26'],
+                    booked = [new Date(currYear, currMonth, 26), new Date(currYear, currMonth + 1, 10), new Date(currYear, currMonth + 2, 25)],
+                    invalid = closed.concat(booked);
+        
+                $scope.settings = {
+                    theme: $scope.theme,      // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,        // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,      // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,            // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-mode
+                    min: today,               // More info about min: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-min
+                    max: maxDate,             // More info about max: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-max
+                    invalid: invalid,         // More info about invalid: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-invalid
+                    dateWheels: 'dd D MM yy'  // More info about dateWheels: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!localization-dateWheels
+                };
+        
+            }]);
+
+        // Time selection demo script
+        angular
+            .module('datetimeTime', ['mobiscroll-datetime'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-mode
+                    headerText: false,    // More info about headerText: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-headerText
+                    maxWidth: 90          // More info about maxWidth: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-maxWidth
+                };
+        
+            }]);
+
+        // Basic usage demo script
+        angular
+            .module('selectBasic', ['mobiscroll-select'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-mode
+                    minWidth: 200         // More info about minWidth: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-minWidth
+                };
+        
+            }]);
+
+        // Group options demo script
+        angular
+            .module('selectGroupselect', ['mobiscroll-select'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,    // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,      // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,    // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,          // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-mode
+                    label: 'City',          // More info about label: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-label
+                    group: true,            // More info about group: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-group
+                    groupLabel: 'Country',  // More info about groupLabel: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-groupLabel
+                    width: [100, 170]       // More info about width: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-width
+                };
+        
+            }]);
+
+        // Image and Text demo script
+        angular
+            .module('imageText', ['mobiscroll-image'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.data = [{
+                    name: 'BMW',
+                    imgsrc: 'BMW_logo.png',
+                    p: 'BMW'
+                }, {
+                    name: 'Dacia',
+                    imgsrc: 'Dacia_logo.png',
+                    p: 'Dacia'
+                }, {
+                    name: 'Ferrari',
+                    imgsrc: 'ferrari_logo.png',
+                    p: 'Ferrari'
+                }, {
+                    name: 'Mercedes',
+                    imgsrc: 'mercedes_logo.png',
+                    p: 'Mercedes'
+                }, {
+                    name: 'Opel',
+                    imgsrc: 'opel_logo.png',
+                    p: 'Opel'
+                }, {
+                    name: 'Renault',
+                    imgsrc: 'renault_logo.png',
+                    p: 'Renault'
+                }, {
+                    name: 'Volkswagen',
+                    imgsrc: 'volkswagen_logo.png',
+                    p: 'Volkswagen'
+                }, {
+                    name: 'Jaguar',
+                    imgsrc: 'Jaguar_logo.png',
+                    p: 'Jaguar'
+                }, {
+                    name: 'Lotus',
+                    imgsrc: 'Lotus_logo.png',
+                    p: 'Lotus'
+                }, {
+                    name: 'Chevrolet',
+                    imgsrc: 'Chevrolet_logo.png',
+                    p: 'Chevrolet'
+                }, {
+                    name: 'Ford',
+                    imgsrc: 'vFord_logo.png',
+                    p: 'Ford'
+                }, {
+                    name: 'Citroen',
+                    imgsrc: 'Citroen_logo.png',
+                    p: 'Citroen'
+                }, {
+                    name: 'Porsche',
+                    imgsrc: 'Porsche_logo.png',
+                    p: 'Porsche'
+                }, {
+                    name: 'Audi',
+                    imgsrc: 'Audi_logo.png',
+                    p: 'Audi'
+                }, {
+                    name: 'Seat',
+                    imgsrc: 'Seat_logo.png',
+                    p: 'Seat'
+                }];
+        
+                $scope.settings = {
+                    theme: $scope.theme,               // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                 // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,               // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,                     // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-mode
+                    placeholder: 'Please Select ...',  // More info about placeholder: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-placeholder
+                    labels: ['Make'],                  // More info about labels: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-labels
+                    enhance: true,                     // More info about enhance: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-enhance
+                    defaultValue: ['Ferrari']          // More info about defaultValue: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-defaultValue
+                };
+        
+            }]);
+
+        // Image Only demo script
+        angular
+            .module('imageBasic', ['mobiscroll-image'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.data = [{
+                    name: '1',
+                    imgsrc: 'fruit-1.png'
+                }, {
+                    name: '2',
+                    imgsrc: 'fruit-2.png'
+                }, {
+                    name: '3',
+                    imgsrc: 'fruit-3.png'
+                }, {
+                    name: '4',
+                    imgsrc: 'fruit-4.png'
+                }, {
+                    name: '5',
+                    imgsrc: 'fruit-5.png'
+                }, {
+                    name: '6',
+                    imgsrc: 'fruit-1.png'
+                }, {
+                    name: '7',
+                    imgsrc: 'fruit-2.png'
+                }, {
+                    name: '8',
+                    imgsrc: 'fruit-3.png'
+                }, {
+                    name: '9',
+                    imgsrc: 'fruit-4.png'
+                }, {
+                    name: '10',
+                    imgsrc: 'fruit-5.png'
+                }, {
+                    name: '11',
+                    imgsrc: 'fruit-1.png'
+                }, {
+                    name: '12',
+                    imgsrc: 'fruit-2.png'
+                }, {
+                    name: '13',
+                    imgsrc: 'fruit-3.png'
+                }, {
+                    name: '14',
+                    imgsrc: 'fruit-4.png'
+                }, {
+                    name: '15',
+                    imgsrc: 'fruit-5.png'
+                }, {
+                    name: '16',
+                    imgsrc: 'fruit-1.png'
+                }, {
+                    name: '17',
+                    imgsrc: 'fruit-2.png'
+                }, {
+                    name: '18',
+                    imgsrc: 'fruit-3.png'
+                }, {
+                    name: '19',
+                    imgsrc: 'fruit-4.png'
+                }, {
+                    name: '20',
+                    imgsrc: 'fruit-5.png'
+                }];
+        
+                $scope.settings = {
+                    theme: $scope.theme,                // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                  // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,                // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,                      // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-mode
+                    cssClass: 'md-image-fruit',
+                    labels: ['Select Favorite Fruit'],  // More info about labels: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-labels
+                    placeholder: 'Please Select ...',   // More info about placeholder: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-placeholder
+                    width: 200,                         // More info about width: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-width
+                    enhance: true                       // More info about enhance: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-enhance
+                };
+        
+            }]);
+
+        // With time scroller demo script
+        angular
+            .module('calendarTime', ['mobiscroll-calendar'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,             // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,               // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,             // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,                   // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-mode
+                    controls: ['calendar', 'time'],  // More info about controls: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-controls
+                    showScrollArrows: true           // More info about showScrollArrows: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-showScrollArrows
+                };
+        
+            }]);
+
+        // Basic usage demo script
+        angular
+            .module('calendarBasic', ['mobiscroll-calendar'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode         // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-mode
+                };
+        
+            }]);
+
+        // Multi day select demo script
+        angular
+            .module('calendarMultiday', ['mobiscroll-calendar'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                var now = new Date(),
+                    year = now.getFullYear(),
+                    month = now.getMonth();
+        
+                $scope.settings = {
+                    theme: $scope.theme,                                                                           // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                                                                             // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,                                                                           // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,                                                                                 // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-mode
+                    counter: true,                                                                                 // More info about counter: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-counter
+                    select: 'multiple',                                                                            // More info about select: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-select
+                    defaultValue: [new Date(year, month, 1), new Date(year, month, 2), new Date(year, month, 10)]  // More info about defaultValue: https://docs.mobiscroll.com/3-0-0_beta6/angular/calendar#!opt-defaultValue
+                };
+        
+            }]);
+
+        // Multiple select demo script
+        angular
+            .module('selectMultiple', ['mobiscroll-select'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-mode
+                    minWidth: 200         // More info about minWidth: https://docs.mobiscroll.com/3-0-0_beta6/angular/select#!opt-minWidth
+                };
+        
+            }]);
+
+        // Decimal demo script
+        angular
+            .module('numberDecimal', ['mobiscroll-number'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/number#!opt-mode
+                    maxWidth: 100         // More info about maxWidth: https://docs.mobiscroll.com/3-0-0_beta6/angular/number#!opt-maxWidth
+                };
+        
+            }]);
+
+        //  Decimal demo script
+        angular
+            .module('numpadDecimal', ['mobiscroll-numpad'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,
+                    min: 1,
+                    scale: 2,
+                    preset: 'decimal'     // More info about preset: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-preset
+                };
+        
+            }]);
+
+        // Currency demo script
+        angular
+            .module('numpadCurrency', ['mobiscroll-form', 'mobiscroll-numpad'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode
+                };
+        
+                $scope.numpadSettings = {
+                    preset: 'decimal',    // More info about preset: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-preset
+                    min: 5,
+                    max: 500,
+                    prefix: '$',
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode
+                };
+        
+                $scope.price = 25;
+        
+            }]);
+
+        // Time demo script
+        angular
+            .module('numpadTime', ['mobiscroll-numpad'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,
+                    preset: 'time',       // More info about preset: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-preset
+                    timeFormat: 'HH:ii A'
+                };
+        
+            }]);
+
+        // Masked Entry - PIN demo script
+        angular
+            .module('numpadPin', ['mobiscroll-numpad'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,                // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                  // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,                // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,
+                    template: 'dddd',                   // More info about template: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-template
+                    allowLeadingZero: true,             // More info about allowLeadingZero: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-allowLeadingZero
+                    placeholder: '-',                   // More info about placeholder: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-placeholder
+                    mask: '*',                          // More info about mask: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!opt-mask
+                    validate: function (event, inst) {  // More info about validate: https://docs.mobiscroll.com/3-0-0_beta6/angular/numpad#!event-validate
+                        return {
+                            invalid: event.values.length != 4
+                        };
+                    }
+                };
+        
+            }]);
+
+        // Min & Max date demo script
+        angular
+            .module('datetimeMinmax', ['mobiscroll-datetime'])
+            .controller('demoController', ['$scope', function ($scope) {
+                var now = new Date(),
+                    minDate = new Date(now.getFullYear() - 110, 0, 1),
+                    maxDate = new Date(now.getFullYear() - 18, 11, 31);
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-mode
+                    min: minDate,         // More info about min: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-min
+                    max: maxDate          // More info about max: https://docs.mobiscroll.com/3-0-0_beta6/angular/datetime#!opt-max
+                };
+        
+            }]);
+
+        // Tab menu demo script
+        angular
+            .module('menustripTabs', ['mobiscroll-menustrip'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,                 // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                   // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,                 // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,
+                    type: 'tabs',                        // More info about type: https://docs.mobiscroll.com/3-0-0_beta6/angular/menustrip#!opt-type
+                    onItemTap: function (event, inst) {  // More info about onItemTap: https://docs.mobiscroll.com/3-0-0_beta6/angular/menustrip#!event-onItemTap
+                        document.querySelector('.md-tabs-sel').classList.remove('md-tabs-sel');
+                        document.querySelector('.' + event.target.getAttribute('data-tab')).classList.add('md-tabs-sel');
+                    }
+                };
+        
+                mobiscroll.listview('.md-apps-ul', {
+                    theme: $scope.theme,                 // Specify theme like: theme: 'ios' or omit setting to use default
+                    
+                    swipe: false
+                });
+        
+            }]);
+
+        // Icon and Text demo script
+        angular
+            .module('imageIcons', ['mobiscroll-image'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.data = [{
+                    val: 'Share',
+                    icon: 'share',
+                    p: 'Share'
+                }, {
+                    val: 'Bookmark',
+                    icon: 'star',
+                    p: 'Bookmark'
+                }, {
+                    val: 'Flag',
+                    icon: 'flag',
+                    p: 'Flag'
+                }, {
+                    val: 'Tag',
+                    icon: 'tag',
+                    p: 'Tag'
+                }, {
+                    val: 'Download',
+                    icon: 'download',
+                    p: 'Download'
+                }, {
+                    val: 'Delete',
+                    icon: 'remove',
+                    p: 'Delete'
+                }];
+        
+                $scope.settings = {
+                    theme: $scope.theme,               // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,                 // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,               // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,                     // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-mode
+                    placeholder: 'Please Select ...',  // More info about placeholder: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-placeholder
+                    showLabel: false,                  // More info about showLabel: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-showLabel
+                    enhance: true                      // More info about enhance: https://docs.mobiscroll.com/3-0-0_beta6/angular/image#!opt-enhance
+                };
+        
+            }]);
+
+        // Step demo script
+        angular
+            .module('numberStep', ['mobiscroll-number'])
+            .controller('demoController', ['$scope', function ($scope) {
+        
+                $scope.settings = {
+                    theme: $scope.theme,  // Specify theme like: theme: 'ios' or omit setting to use default
+                lang: $scope.language,    // Specify language like: lang: 'pl' or omit setting to use default
+                display: $scope.display,  // Specify display mode like: display: 'bottom' or omit setting to use default
+                mode: $scope.mode,        // More info about mode: https://docs.mobiscroll.com/3-0-0_beta6/angular/number#!opt-mode
+                    layout: 'fixed',      // More info about layout: https://docs.mobiscroll.com/3-0-0_beta6/angular/number#!opt-layout
+                    step: 5               // More info about step: https://docs.mobiscroll.com/3-0-0_beta6/angular/number#!opt-step
+                };
+        
+            }]);
+
+    </script>
+</head>
+
+<body>
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Demo configurator markup START, ignore this in your implementation -->
+    <div class="header">
+        <h1>Mobiscroll</h1>
+    </div>
+    <div id="main" class="demo-main" ng-controller="mainController">
+        <div>
+            <label for="theme">Theme</label>
+            <select ng-model="theme" name="theme" id="theme" class="settings">
+                <option value="">Default / Auto</option>
+                <option value="mobiscroll">Mobiscroll</option>
+                <option value="mobiscroll-dark">Mobiscroll Dark</option>
+                <option value="calibrus">CALiBRUS</option>
+            </select>
+        </div>
+        <div ng-hide="noDisplay() === true">
+            <label for="display">Display</label>
+            <select ng-model="display" name="display" id="display" class="settings">
+                <option value="">Default</option>
+                <option ng-show="noDisplay() !== 'partial'" value="center">Center</option>
+                <option value="inline">Inline</option>
+                <option ng-show="noDisplay() !== 'partial'" value="bubble">Bubble</option>
+                <option value="top">Top</option>
+                <option value="bottom">Bottom</option>
+            </select>
+        </div>
+        <div>
+            <label for="language">Language</label>
+            <select ng-model="language" name="language" id="language" class="settings">
+                <option value="">English</option>
+                
+            </select>
+        </div>
+        <div>
+            <label for="demo">Demo</label>
+            <select ng-model="demo" name="demo" id="demo" class="settings">
+                <option value="">Please select a demo</option>
+                <optgroup label="Datetime">
+                    <option value="datetimeDate" selected>Date selection</option>
+                    <option value="datetimeInvalid" >Invalid days</option>
+                    <option value="datetimeTime" >Time selection</option>
+                    <option value="datetimeMinmax" >Min & Max date</option>
+                </optgroup>
+                <optgroup label="Select">
+                    <option value="selectBasic" >Basic usage</option>
+                    <option value="selectGroupselect" >Group options</option>
+                    <option value="selectMultiple" >Multiple select</option>
+                </optgroup>
+                <optgroup label="Image">
+                    <option value="imageText" >Image and Text</option>
+                    <option value="imageBasic" >Image Only</option>
+                    <option value="imageIcons" >Icon and Text</option>
+                </optgroup>
+                <optgroup label="Calendar">
+                    <option value="calendarTime" >With time scroller</option>
+                    <option value="calendarBasic" >Basic usage</option>
+                    <option value="calendarMultiday" >Multi day select</option>
+                </optgroup>
+                <optgroup label="Number">
+                    <option value="numberDecimal" >Decimal</option>
+                    <option value="numberStep" >Step</option>
+                </optgroup>
+                <optgroup label="Numpad">
+                    <option value="numpadDecimal" > Decimal</option>
+                    <option value="numpadCurrency" >Currency</option>
+                    <option value="numpadTime" >Time</option>
+                    <option value="numpadPin" >Masked Entry - PIN</option>
+                </optgroup>
+                <optgroup label="Menustrip">
+                    <option value="menustripTabs" >Tab menu</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+    <!-- Demo configurator markup END -->
+    <!-- ------------------------------------------------------------------ -->
+
+        <!-- ------------------------------------------------------------------------------- -->
+    <!-- Date selection START -->
+<div id="demo_cont_datetimeDate" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Date selection END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Invalid days START -->
+<div id="demo_cont_datetimeInvalid" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mydatetime" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Invalid days END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Time selection START -->
+<div id="demo_cont_datetimeTime" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mytime" mobiscroll-time="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Time selection END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Basic usage START -->
+<div id="demo_cont_selectBasic" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <select ng-model="myselect" mobiscroll-select="settings" mobiscroll-instance="demo">
+        <option value="1">Atlanta</option>
+        <option value="2">Berlin</option>
+        <option value="3">Boston</option>
+        <option value="4">Chicago</option>
+        <option value="5">London</option>
+        <option value="6">Los Angeles</option>
+        <option value="7">New York</option>
+        <option value="8">Paris</option>
+        <option value="9">San Francisco</option>
+    </select>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Basic usage END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Group options START -->
+<div id="demo_cont_selectGroupselect" class="ng-hide demo-wrapper"  ng-controller="demoController">
+
+    <select ng-model="myselect" mobiscroll-select="settings" mobiscroll-instance="demo">
+        <optgroup label="USA">
+            <option value="1">Atlanta</option>
+            <option value="2">Boston</option>
+            <option value="3">Chicago</option>
+            <option value="4">Los Angeles</option>
+            <option value="5">New York</option>
+            <option value="6">San Francisco</option>
+        </optgroup>
+        <optgroup label="UK">
+            <option value="7">Bath</option>
+            <option value="8">Bristol</option>
+            <option value="9">Cambridge</option>
+            <option value="10">London</option>
+            <option value="11">Leeds</option>
+            <option value="12">Manchester</option>
+            <option value="13">Newcastle</option>
+            <option value="14">Oxford</option>
+        </optgroup>
+        <optgroup label="China">
+            <option value="15">Beijing</option>
+            <option value="16">Chongqing</option>
+            <option value="17">Shanghai</option>
+            <option value="18">Shenzhen</option>
+            <option value="19">Tianjin</option>
+        </optgroup>
+    </select>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Group options END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Image and Text START -->
+<div id="demo_cont_imageText" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <ul mobiscroll-image="settings" mobiscroll-instance="demo" ng-model="selected" style="display:none">
+        <li ng-repeat="item in data" data-val="{{item.name}}">
+            <img ng-src="images/{{item.imgsrc}}" />
+            <p>{{item.p}}</p>
+        </li>
+    </ul>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Image and Text END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Image Only START -->
+<div id="demo_cont_imageBasic" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <ul mobiscroll-image="settings" mobiscroll-instance="demo" ng-model="selected" style="display:none">
+        <li ng-repeat="item in data" data-val="{{item.name}}">
+            <img ng-src="images/{{item.imgsrc}}" />
+        </li>
+    </ul>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Image Only END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- With time scroller START -->
+
+<div id="demo_cont_calendarTime" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mycalendar" mobiscroll-calendar="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- With time scroller END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Basic usage START -->
+
+<div id="demo_cont_calendarBasic" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mycalendar" mobiscroll-calendar="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Basic usage END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Multi day select START -->
+
+<div id="demo_cont_calendarMultiday" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mycalendar" mobiscroll-calendar="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Multi day select END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Multiple select START -->
+<div id="demo_cont_selectMultiple" class="ng-hide demo-wrapper"  ng-controller="demoController">
+
+    <select ng-model="myselect" mobiscroll-select="settings" mobiscroll-instance="demo" multiple>
+        <option value="1">Books</option>
+        <option value="2">Movies, Music & Games</option>
+        <option value="3" selected>Electronics & Computers</option>
+        <option value="4" selected>Home, Garden & Tools</option>
+        <option value="5">Health & Beauty</option>
+        <option value="6">Toys, Kids & Baby</option>
+        <option value="7">Clothing & Jewelry</option>
+        <option value="8">Sports & Outdoors</option>
+        <option value="9">Automotive & Industrial</option>
+    </select>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Multiple select END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Decimal START -->
+<div id="demo_cont_numberDecimal" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mynumber" mobiscroll-number="settings" mobiscroll-instance="demo" placeholder="Please Select ..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Decimal END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!--  Decimal START -->
+<div id="demo_cont_numpadDecimal" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mynumpad" mobiscroll-numpad="settings" mobiscroll-instance="demo" placeholder="Please Select ..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!--  Decimal END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Currency START -->
+<div class="md-currency">
+    <div id="demo_cont_numpadCurrency" class="ng-hide demo-wrapper"  ng-controller="demoController">
+        <div mobiscroll-form="settings" class="md-stepper-np" style="display:none">
+            <div class="mbsc-padding md-demo">
+                <h4 class="md-title">Automatically top up account</h4>
+                <div class="mbsc-desc ">Top up from credit card if account falls bellow $10</div>
+                <div>
+                    <input type="number" data-role="stepper" ng-model="price" min="10" max="120" step="10" ng-click="numpadInst.show()" readonly />
+                    <div class="md-numpad" mobiscroll-numpad="numpadSettings" ng-model="price" mobiscroll-instance="numpadInst"></div>
+                </div>
+                <button class="mbsc-btn-block">Save Settings</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Currency END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Time START -->
+<div id="demo_cont_numpadTime" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mynumpad" mobiscroll-numpad="settings" mobiscroll-instance="demo" placeholder="Please Select ..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Time END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Masked Entry - PIN START -->
+<div id="demo_cont_numpadPin" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mynumpad" mobiscroll-numpad="settings" mobiscroll-instance="demo" placeholder="Please Select ..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Masked Entry - PIN END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Min & Max date START -->
+<div id="demo_cont_datetimeMinmax" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mydate" mobiscroll-date="settings" mobiscroll-instance="demo" placeholder="Please Select..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+    
+</div>
+    <!-- Min & Max date END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Tab menu START -->
+<div id="demo_cont_menustripTabs" class="ng-hide demo-wrapper"  ng-controller="demoController" class="md-ms-tabs">
+    <ul mobiscroll-menustrip="settings" mobiscroll-instance="demo" style="display:none">
+        <li data-tab="tab-downloaded" data-selected="true">Downloaded</li>
+        <li data-tab="tab-all">All</li>
+        <li data-tab="tab-external">External storage</li>
+        <li data-tab="tab-running">Running</li>
+        <li data-tab="tab-disabled">Disabled</li>
+    </ul>
+    <div id="menustripTabs-tab-downloaded" class="md-tab-h md-tabs-sel tab-downloaded">
+        <ul class="md-apps-ul" style="display:none;">
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-calendar"></span>Calendar<span class="md-app-detail"><span class="md-app-size">26.71MB</span><span class="md-app-date">19/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-camera"></span>Camera<span class="md-app-detail"><span class="md-app-size">43.11MB</span><span class="md-app-date">10/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-folder"></span>File Manager<span class="md-app-detail"><span class="md-app-size">12.66MB</span><span class="md-app-date">9/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-earth"></span>Maps<span class="md-app-detail"><span class="md-app-size">46.21MB</span><span class="md-app-date">21/10/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-newspaper"></span>News<span class="md-app-detail"><span class="md-app-size">24.00MB</span><span class="md-app-date">20/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-play"></span>Youtube<span class="md-app-detail"><span class="md-app-size">26.47MB</span><span class="md-app-date">18/10/2014</span></span>
+            </li>
+        </ul>
+    </div>
+    <div id="menustripTabs-tab-external" class="md-tab-h tab-external">
+        <ul class="md-apps-ul" style="display:none;">
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-calendar"></span>Calendar<span class="md-app-detail"><span class="md-app-size">26.71MB</span><span class="md-app-date">09/09/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-earth"></span>Maps<span class="md-app-detail"><span class="md-app-size">46.21MB</span><span class="md-app-date">19/08/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-newspaper"></span>News<span class="md-app-detail"><span class="md-app-size">24.00MB</span><span class="md-app-date">17/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-play"></span>Youtube<span class="md-app-detail"><span class="md-app-size">26.47MB</span><span class="md-app-date">16/11/2014</span></span>
+            </li>
+        </ul>
+    </div>
+    <div id="menustripTabs-tab-running" class="md-tab-h tab-running">
+        <ul class="md-apps-ul" style="display:none;">
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-clock"></span>Clock<span class="md-app-detail"><span class="md-app-size">1.52MB</span><span class="md-app-date">16/10/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-folder"></span>File Manager<span class="md-app-detail"><span class="md-app-size">12.66MB</span><span class="md-app-date">10/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-bubble"></span>Messages<span class="md-app-detail"><span class="md-app-size">25.57MB</span><span class="md-app-date">09/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-newspaper"></span>News<span class="md-app-detail"><span class="md-app-size">24.00MB</span><span class="md-app-date">08/11/2014</span></span>
+            </li>
+        </ul>
+    </div>
+    <div id="menustripTabs-tab-all" class="md-tab-h tab-all">
+        <ul class="md-apps-ul" style="display:none;">
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-globe"></span>Browser<span class="md-app-detail"><span class="md-app-size">74.68MB</span><span class="md-app-date">18/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-calendar"></span>Calendar<span class="md-app-detail"><span class="md-app-size">26.71MB</span><span class="md-app-date">17/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-camera"></span>Camera<span class="md-app-detail"><span class="md-app-size">43.11MB</span><span class="md-app-date">19/10/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-clock"></span>Clock<span class="md-app-detail"><span class="md-app-size">1.52MB</span><span class="md-app-date">10/10/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-user4"></span>Contacts<span class="md-app-detail"><span class="md-app-size">5.43MB</span><span class="md-app-date">11/08/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-copy3"></span>Docs<span class="md-app-detail"><span class="md-app-size">32.41MB</span><span class="md-app-date">19/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-folder"></span>File Manager<span class="md-app-detail"><span class="md-app-size">12.66MB</span><span class="md-app-date">18/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-image2"></span>Gallery<span class="md-app-detail"><span class="md-app-size">1.68MB</span><span class="md-app-date">17/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-earth"></span>Maps<span class="md-app-detail"><span class="md-app-size">46.21MB</span><span class="md-app-date">18/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-phone"></span>Phone<span class="md-app-detail"><span class="md-app-size">1.28MB</span><span class="md-app-date">19/11/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-foundation-mail"></span>Email<span class="md-app-detail"><span class="md-app-size">6.65MB</span><span class="md-app-date">05/07/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-bubble"></span>Messages<span class="md-app-detail"><span class="md-app-size">25.57MB</span><span class="md-app-date">06/06/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-newspaper"></span>News<span class="md-app-detail"><span class="md-app-size">24.00MB</span><span class="md-app-date">20/10/2014</span></span>
+            </li>
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-play"></span>Youtube<span class="md-app-detail"><span class="md-app-size">26.47MB</span><span class="md-app-date">18/11/2014</span></span>
+            </li>
+        </ul>
+    </div>
+    <div id="menustripTabs-tab-disabled" class="md-tab-h tab-disabled">
+        <ul class="md-apps-ul" style="display:none;">
+            <li><span class="md-app-ic mbsc-ic mbsc-ic-user4"></span>Contacts<span class="md-app-detail"><span class="md-app-size">26.71MB</span><span class="md-app-date">17/11/2014</span></span>
+            </li>
+        </ul>
+    </div>
+</div>
+    <!-- Tab menu END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Icon and Text START -->
+<div id="demo_cont_imageIcons" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <ul mobiscroll-image="settings" mobiscroll-instance="demo" ng-model="selected" style="display:none">
+        <li ng-repeat="item in data" data-val="{{item.val}}" data-icon="{{item.icon}}">
+            <p>{{item.p}}</p>
+        </li>
+    </ul>
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Icon and Text END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Step START -->
+<div id="demo_cont_numberStep" class="ng-hide demo-wrapper"  ng-controller="demoController">
+    <input ng-model="mynumber" mobiscroll-number="settings" mobiscroll-instance="demo" placeholder="Please Select ..." />
+
+    <button ng-click="demo.clear()">Clear</button>
+    <button ng-click="demo.show()">Show</button>
+
+</div>
+    <!-- Step END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+</body>
+
+</html>

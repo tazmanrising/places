@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66146C09-541D-4D49-BFA3-522AF4764372}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QA_Reporting</RootNamespace>
+    <AssemblyName>QA_Reporting</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/e131e8ff-2e39-4a40-ab0b-796105834c58/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/QA_Reporting</ApplicationInsightsResourceId>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TokenApi.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\TokenApi.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="apps\assets\css\" />
+    <Folder Include="apps\assets\images\" />
+    <Folder Include="apps\assets\js\" />
+    <Folder Include="apps\assets\lib\" />
+    <Folder Include="apps\src\directives\" />
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QAReportingController.cs" />
+    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="CustomAttributes\CustomApiAccessAuthorize.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QAContext.cs" />
+    <Compile Include="Models\QAList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CommonUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="apps\app.js" />
+    <Content Include="apps\gulpfile.js" />
+    <Content Include="apps\index.html" />
+    <Content Include="apps\other.html" />
+    <Content Include="apps\public\css\styles.css" />
+    <Content Include="apps\public\js\app.js" />
+    <Content Include="apps\public\lib\angular-route\angular-route.js" />
+    <Content Include="apps\public\lib\angular-route\angular-route.min.js" />
+    <Content Include="apps\public\lib\angular-route\index.js" />
+    <Content Include="apps\public\lib\angular\angular-csp.css" />
+    <Content Include="apps\public\lib\angular\angular.js" />
+    <Content Include="apps\public\lib\angular\angular.min.js" />
+    <Content Include="apps\public\lib\angular\index.js" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="apps\public\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="apps\public\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="apps\public\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="apps\public\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="apps\public\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="apps\public\lib\bootstrap\Gruntfile.js" />
+    <Content Include="apps\public\lib\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="apps\public\lib\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="apps\public\lib\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="apps\public\lib\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="apps\public\lib\bootstrap\grunt\change-version.js" />
+    <Content Include="apps\public\lib\bootstrap\js\affix.js" />
+    <Content Include="apps\public\lib\bootstrap\js\alert.js" />
+    <Content Include="apps\public\lib\bootstrap\js\button.js" />
+    <Content Include="apps\public\lib\bootstrap\js\carousel.js" />
+    <Content Include="apps\public\lib\bootstrap\js\collapse.js" />
+    <Content Include="apps\public\lib\bootstrap\js\dropdown.js" />
+    <Content Include="apps\public\lib\bootstrap\js\modal.js" />
+    <Content Include="apps\public\lib\bootstrap\js\popover.js" />
+    <Content Include="apps\public\lib\bootstrap\js\scrollspy.js" />
+    <Content Include="apps\public\lib\bootstrap\js\tab.js" />
+    <Content Include="apps\public\lib\bootstrap\js\tooltip.js" />
+    <Content Include="apps\public\lib\bootstrap\js\transition.js" />
+    <Content Include="apps\public\lib\bootstrap\package.js" />
+    <Content Include="apps\public\lib\font-awesome\.gitignore" />
+    <Content Include="apps\public\lib\font-awesome\css\font-awesome.css" />
+    <Content Include="apps\public\lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="apps\public\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="apps\public\lib\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="apps\public\lib\jquery\AUTHORS.txt" />
+    <Content Include="apps\public\lib\jquery\dist\core.js" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.js" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.min.js" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.slim.js" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.slim.min.js" />
+    <Content Include="apps\public\lib\jquery\external\sizzle\dist\sizzle.js" />
+    <Content Include="apps\public\lib\jquery\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="apps\public\lib\jquery\external\sizzle\LICENSE.txt" />
+    <Content Include="apps\public\lib\jquery\LICENSE.txt" />
+    <Content Include="apps\public\lib\jquery\src\ajax.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\jsonp.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\load.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\parseXML.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\script.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\var\location.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\var\nonce.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\var\rquery.js" />
+    <Content Include="apps\public\lib\jquery\src\ajax\xhr.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes\attr.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes\classes.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes\prop.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes\support.js" />
+    <Content Include="apps\public\lib\jquery\src\attributes\val.js" />
+    <Content Include="apps\public\lib\jquery\src\callbacks.js" />
+    <Content Include="apps\public\lib\jquery\src\core.js" />
+    <Content Include="apps\public\lib\jquery\src\core\access.js" />
+    <Content Include="apps\public\lib\jquery\src\core\DOMEval.js" />
+    <Content Include="apps\public\lib\jquery\src\core\init.js" />
+    <Content Include="apps\public\lib\jquery\src\core\parseHTML.js" />
+    <Content Include="apps\public\lib\jquery\src\core\ready-no-deferred.js" />
+    <Content Include="apps\public\lib\jquery\src\core\ready.js" />
+    <Content Include="apps\public\lib\jquery\src\core\readyException.js" />
+    <Content Include="apps\public\lib\jquery\src\core\stripAndCollapse.js" />
+    <Content Include="apps\public\lib\jquery\src\core\support.js" />
+    <Content Include="apps\public\lib\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="apps\public\lib\jquery\src\css.js" />
+    <Content Include="apps\public\lib\jquery\src\css\addGetHookIf.js" />
+    <Content Include="apps\public\lib\jquery\src\css\adjustCSS.js" />
+    <Content Include="apps\public\lib\jquery\src\css\curCSS.js" />
+    <Content Include="apps\public\lib\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="apps\public\lib\jquery\src\css\showHide.js" />
+    <Content Include="apps\public\lib\jquery\src\css\support.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\cssExpand.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\getStyles.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\isHiddenWithinTree.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\rmargin.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="apps\public\lib\jquery\src\css\var\swap.js" />
+    <Content Include="apps\public\lib\jquery\src\data.js" />
+    <Content Include="apps\public\lib\jquery\src\data\Data.js" />
+    <Content Include="apps\public\lib\jquery\src\data\var\acceptData.js" />
+    <Content Include="apps\public\lib\jquery\src\data\var\dataPriv.js" />
+    <Content Include="apps\public\lib\jquery\src\data\var\dataUser.js" />
+    <Content Include="apps\public\lib\jquery\src\deferred.js" />
+    <Content Include="apps\public\lib\jquery\src\deferred\exceptionHook.js" />
+    <Content Include="apps\public\lib\jquery\src\deprecated.js" />
+    <Content Include="apps\public\lib\jquery\src\dimensions.js" />
+    <Content Include="apps\public\lib\jquery\src\effects.js" />
+    <Content Include="apps\public\lib\jquery\src\effects\animatedSelector.js" />
+    <Content Include="apps\public\lib\jquery\src\effects\Tween.js" />
+    <Content Include="apps\public\lib\jquery\src\event.js" />
+    <Content Include="apps\public\lib\jquery\src\event\ajax.js" />
+    <Content Include="apps\public\lib\jquery\src\event\alias.js" />
+    <Content Include="apps\public\lib\jquery\src\event\focusin.js" />
+    <Content Include="apps\public\lib\jquery\src\event\support.js" />
+    <Content Include="apps\public\lib\jquery\src\event\trigger.js" />
+    <Content Include="apps\public\lib\jquery\src\exports\amd.js" />
+    <Content Include="apps\public\lib\jquery\src\exports\global.js" />
+    <Content Include="apps\public\lib\jquery\src\jquery.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\getAll.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\support.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="apps\public\lib\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="apps\public\lib\jquery\src\offset.js" />
+    <Content Include="apps\public\lib\jquery\src\queue.js" />
+    <Content Include="apps\public\lib\jquery\src\queue\delay.js" />
+    <Content Include="apps\public\lib\jquery\src\selector-native.js" />
+    <Content Include="apps\public\lib\jquery\src\selector-sizzle.js" />
+    <Content Include="apps\public\lib\jquery\src\selector.js" />
+    <Content Include="apps\public\lib\jquery\src\serialize.js" />
+    <Content Include="apps\public\lib\jquery\src\traversing.js" />
+    <Content Include="apps\public\lib\jquery\src\traversing\findFilter.js" />
+    <Content Include="apps\public\lib\jquery\src\traversing\var\dir.js" />
+    <Content Include="apps\public\lib\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="apps\public\lib\jquery\src\traversing\var\siblings.js" />
+    <Content Include="apps\public\lib\jquery\src\var\arr.js" />
+    <Content Include="apps\public\lib\jquery\src\var\class2type.js" />
+    <Content Include="apps\public\lib\jquery\src\var\concat.js" />
+    <Content Include="apps\public\lib\jquery\src\var\document.js" />
+    <Content Include="apps\public\lib\jquery\src\var\documentElement.js" />
+    <Content Include="apps\public\lib\jquery\src\var\fnToString.js" />
+    <Content Include="apps\public\lib\jquery\src\var\getProto.js" />
+    <Content Include="apps\public\lib\jquery\src\var\hasOwn.js" />
+    <Content Include="apps\public\lib\jquery\src\var\indexOf.js" />
+    <Content Include="apps\public\lib\jquery\src\var\ObjectFunctionString.js" />
+    <Content Include="apps\public\lib\jquery\src\var\pnum.js" />
+    <Content Include="apps\public\lib\jquery\src\var\push.js" />
+    <Content Include="apps\public\lib\jquery\src\var\rcssNum.js" />
+    <Content Include="apps\public\lib\jquery\src\var\rnothtmlwhite.js" />
+    <Content Include="apps\public\lib\jquery\src\var\slice.js" />
+    <Content Include="apps\public\lib\jquery\src\var\support.js" />
+    <Content Include="apps\public\lib\jquery\src\var\toString.js" />
+    <Content Include="apps\public\lib\jquery\src\wrap.js" />
+    <Content Include="apps\src\controllers\hotListController.js" />
+    <Content Include="apps\src\controllers\qaController.js" />
+    <Content Include="apps\src\services\qaService.js" />
+    <Content Include="apps\src\views\home.html" />
+    <Content Include="apps\src\views\index.html" />
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="lib\TokenApi.Core.dll" />
+    <Content Include="lib\TokenApi.Core.pdb" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="apps\public\lib\angular-route\.bower.json" />
+    <Content Include="apps\public\lib\angular-route\angular-route.min.js.map" />
+    <Content Include="apps\public\lib\angular-route\bower.json" />
+    <Content Include="apps\public\lib\angular-route\LICENSE.md" />
+    <Content Include="apps\public\lib\angular-route\package.json" />
+    <Content Include="apps\public\lib\angular-route\README.md" />
+    <Content Include="apps\public\lib\angular\.bower.json" />
+    <Content Include="apps\public\lib\angular\angular.min.js.gzip" />
+    <Content Include="apps\public\lib\angular\angular.min.js.map" />
+    <Content Include="apps\public\lib\angular\bower.json" />
+    <Content Include="apps\public\lib\angular\LICENSE.md" />
+    <Content Include="apps\public\lib\angular\package.json" />
+    <Content Include="apps\public\lib\angular\README.md" />
+    <Content Include="apps\public\lib\bootstrap\.bower.json" />
+    <Content Include="apps\public\lib\bootstrap\bower.json" />
+    <Content Include="apps\public\lib\bootstrap\CHANGELOG.md" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="apps\public\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="apps\public\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="apps\public\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="apps\public\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="apps\public\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="apps\public\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="apps\public\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="apps\public\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="apps\public\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="apps\public\lib\bootstrap\Gemfile" />
+    <Content Include="apps\public\lib\bootstrap\Gemfile.lock" />
+    <Content Include="apps\public\lib\bootstrap\grunt\.jshintrc" />
+    <Content Include="apps\public\lib\bootstrap\grunt\configBridge.json" />
+    <Content Include="apps\public\lib\bootstrap\grunt\npm-shrinkwrap.json" />
+    <Content Include="apps\public\lib\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="apps\public\lib\bootstrap\ISSUE_TEMPLATE.md" />
+    <Content Include="apps\public\lib\bootstrap\js\.jscsrc" />
+    <Content Include="apps\public\lib\bootstrap\js\.jshintrc" />
+    <Content Include="apps\public\lib\bootstrap\less\.csscomb.json" />
+    <Content Include="apps\public\lib\bootstrap\less\.csslintrc" />
+    <Content Include="apps\public\lib\bootstrap\less\alerts.less" />
+    <Content Include="apps\public\lib\bootstrap\less\badges.less" />
+    <Content Include="apps\public\lib\bootstrap\less\bootstrap.less" />
+    <Content Include="apps\public\lib\bootstrap\less\breadcrumbs.less" />
+    <Content Include="apps\public\lib\bootstrap\less\button-groups.less" />
+    <Content Include="apps\public\lib\bootstrap\less\buttons.less" />
+    <Content Include="apps\public\lib\bootstrap\less\carousel.less" />
+    <Content Include="apps\public\lib\bootstrap\less\close.less" />
+    <Content Include="apps\public\lib\bootstrap\less\code.less" />
+    <Content Include="apps\public\lib\bootstrap\less\component-animations.less" />
+    <Content Include="apps\public\lib\bootstrap\less\dropdowns.less" />
+    <Content Include="apps\public\lib\bootstrap\less\forms.less" />
+    <Content Include="apps\public\lib\bootstrap\less\glyphicons.less" />
+    <Content Include="apps\public\lib\bootstrap\less\grid.less" />
+    <Content Include="apps\public\lib\bootstrap\less\input-groups.less" />
+    <Content Include="apps\public\lib\bootstrap\less\jumbotron.less" />
+    <Content Include="apps\public\lib\bootstrap\less\labels.less" />
+    <Content Include="apps\public\lib\bootstrap\less\list-group.less" />
+    <Content Include="apps\public\lib\bootstrap\less\media.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\alerts.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\buttons.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\center-block.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\forms.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\gradients.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\grid.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\image.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\labels.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\list-group.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\opacity.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\pagination.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\panels.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\reset-text.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\resize.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\size.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\table-row.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="apps\public\lib\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="apps\public\lib\bootstrap\less\modals.less" />
+    <Content Include="apps\public\lib\bootstrap\less\navbar.less" />
+    <Content Include="apps\public\lib\bootstrap\less\navs.less" />
+    <Content Include="apps\public\lib\bootstrap\less\normalize.less" />
+    <Content Include="apps\public\lib\bootstrap\less\pager.less" />
+    <Content Include="apps\public\lib\bootstrap\less\pagination.less" />
+    <Content Include="apps\public\lib\bootstrap\less\panels.less" />
+    <Content Include="apps\public\lib\bootstrap\less\popovers.less" />
+    <Content Include="apps\public\lib\bootstrap\less\print.less" />
+    <Content Include="apps\public\lib\bootstrap\less\progress-bars.less" />
+    <Content Include="apps\public\lib\bootstrap\less\responsive-embed.less" />
+    <Content Include="apps\public\lib\bootstrap\less\responsive-utilities.less" />
+    <Content Include="apps\public\lib\bootstrap\less\scaffolding.less" />
+    <Content Include="apps\public\lib\bootstrap\less\tables.less" />
+    <Content Include="apps\public\lib\bootstrap\less\theme.less" />
+    <Content Include="apps\public\lib\bootstrap\less\thumbnails.less" />
+    <Content Include="apps\public\lib\bootstrap\less\tooltip.less" />
+    <Content Include="apps\public\lib\bootstrap\less\type.less" />
+    <Content Include="apps\public\lib\bootstrap\less\utilities.less" />
+    <Content Include="apps\public\lib\bootstrap\less\variables.less" />
+    <Content Include="apps\public\lib\bootstrap\less\wells.less" />
+    <Content Include="apps\public\lib\bootstrap\LICENSE" />
+    <Content Include="apps\public\lib\bootstrap\nuget\bootstrap.less.nuspec" />
+    <Content Include="apps\public\lib\bootstrap\nuget\bootstrap.nuspec" />
+    <Content Include="apps\public\lib\bootstrap\nuget\MyGet.ps1" />
+    <Content Include="apps\public\lib\bootstrap\package.json" />
+    <Content Include="apps\public\lib\bootstrap\README.md" />
+    <Content Include="apps\public\lib\font-awesome\.bower.json" />
+    <Content Include="apps\public\lib\font-awesome\.npmignore" />
+    <Content Include="apps\public\lib\font-awesome\bower.json" />
+    <Content Include="apps\public\lib\font-awesome\css\font-awesome.css.map" />
+    <Content Include="apps\public\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="apps\public\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="apps\public\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="apps\public\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="apps\public\lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="apps\public\lib\font-awesome\less\animated.less" />
+    <Content Include="apps\public\lib\font-awesome\less\bordered-pulled.less" />
+    <Content Include="apps\public\lib\font-awesome\less\core.less" />
+    <Content Include="apps\public\lib\font-awesome\less\fixed-width.less" />
+    <Content Include="apps\public\lib\font-awesome\less\font-awesome.less" />
+    <Content Include="apps\public\lib\font-awesome\less\icons.less" />
+    <Content Include="apps\public\lib\font-awesome\less\larger.less" />
+    <Content Include="apps\public\lib\font-awesome\less\list.less" />
+    <Content Include="apps\public\lib\font-awesome\less\mixins.less" />
+    <Content Include="apps\public\lib\font-awesome\less\path.less" />
+    <Content Include="apps\public\lib\font-awesome\less\rotated-flipped.less" />
+    <Content Include="apps\public\lib\font-awesome\less\screen-reader.less" />
+    <Content Include="apps\public\lib\font-awesome\less\stacked.less" />
+    <Content Include="apps\public\lib\font-awesome\less\variables.less" />
+    <Content Include="apps\public\lib\font-awesome\scss\font-awesome.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_animated.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_core.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_icons.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_larger.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_list.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_mixins.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_path.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_stacked.scss" />
+    <Content Include="apps\public\lib\font-awesome\scss\_variables.scss" />
+    <Content Include="apps\public\lib\jquery\.bower.json" />
+    <Content Include="apps\public\lib\jquery\bower.json" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.min.map" />
+    <Content Include="apps\public\lib\jquery\dist\jquery.slim.min.map" />
+    <Content Include="apps\public\lib\jquery\external\sizzle\dist\sizzle.min.map" />
+    <Content Include="apps\public\lib\jquery\README.md" />
+    <Content Include="apps\public\lib\jquery\src\.eslintrc.json" />
+    <Content Include="apps\.bowerrc" />
+    <Content Include="apps\.jscsrc" />
+    <Content Include="apps\.jsshintrc" />
+    <Content Include="apps\bower.json" />
+    <Content Include="apps\package.json" />
+    <Content Include="apps\readme.md" />
+    <Content Include="lib\TokenApi.Core.dll.config" />
+    <None Include="Properties\PublishProfiles\QAManager.pubxml" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5762</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5762/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="SelfHostServer">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:5762/" workingDir="" />
+          </servers>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

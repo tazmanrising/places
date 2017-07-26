@@ -1,0 +1,185 @@
+﻿<div class="form-group" style="margin:10px;">
+    <!--Drop Down List for Scripts-->
+    <div id="divScriptViewer" class="row">
+        <div class="col-lg-3">
+            <div>
+                <strong>Choose a script to review</strong>
+            </div>
+            <div>
+                <select name="ddlScriptViewer"
+                        class="form-control"
+                        style="font-weight:bold;"
+                        ng-model="vm.ScriptViewer"
+                        ng-options="script.Script for script in vm.scriptLookupList"
+                        ng-change="vm.getScript()"></select>
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <div>&nbsp;</div>
+            <div>
+                <i ng-if="vm.ScriptViewerLoading" class="fa fa-spinner fa-spin" style="font-size:30px"></i>
+            </div>
+        </div>
+    </div>
+
+    <!--Gridview for Script list-->
+    <div id="divScriptGridView" class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sort Order</th>
+                        <th>Active</th>
+                        <th>English</th>
+                        <th>Condition</th>
+                        <th>View</th>
+                        <th>History</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="s in vm.currentScript| orderBy:'ScriptOrder'">
+                        <td>{{s.ScriptOrder}}</td>
+                        <td align="center">{{s.Active}}</tdalign="center">
+                        <td width="60%"><p>{{s.Verbiage}}</p> <span style="font-style:italic"> {{s.VerbiageSpanish}}</span></td>
+                        <td align="center">{{s.Condition}}</td>
+                        <td align="center"><i ng-click="vm.modalEmail(s)" class="glyphicon glyphicon-modal-window"></i></td>
+                        <td align="center">
+                            <button ng-if="s.History > 0" ng-click="vm.getHistory(s)" class="btn btn-success">{{s.History}}</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--Modal Eamil-->
+    <div id="modalEmail" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Script Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="sort">SortOrder</label>
+                            <input type="text" class="form-control" id="sort" placeholder="sort" ng-model="vm.scriptDetail.ScriptOrder">
+                        </div>
+                        <div class="form-group">
+                            <label for="active">Active</label>
+                            <input type="checkbox" class="form-control" id="active" ng-model="vm.scriptDetail.Active">
+                        </div>
+                        <div class="form-group">
+                            <label for="yesno">YesNo</label>
+                            <input type="checkbox" class="form-control" id="yesno" ng-model="vm.scriptDetail.YesNo">
+                        </div>
+                    </form>
+                    <br>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2" for="english">Verbiage English</label>
+                            <div class="col-md-10">
+                                <textarea rows="5" class="form-control" id="english" ng-model="vm.scriptDetail.Verbiage"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="spanish">Verbiage Spanish</label>
+                            <div class="col-md-10">
+                                <textarea rows="5" class="form-control" ng-model="vm.scriptDetail.VerbiageSpanish" id="spanish"></textarea>
+                            </div>
+                        </div>
+                        <!-- yes no verbiage -->
+                        <span ng-if="vm.scriptDetail.YesNo">
+                            <div class="form-group">
+                                <label class="col-md-2" for="nvenglish">No Verbiage English</label>
+                                <div class="col-md-10">
+                                    <textarea rows="5" class="form-control" id="nvenglish" ng-model="vm.scriptDetail.NoVerbiage"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2" for="nvspanish">No Verbiage Spanish</label>
+                                <div class="col-md-10">
+                                    <textarea rows="5" class="form-control" id="nvspanish" ng-model="vm.scriptDetail.NoVerbiageSpanish" id="spanish"></textarea>
+                                </div>
+                            </div>
+                        </span>
+
+                        <div class="form-group">
+                            <label class="col-md-2" for="condition">Condition</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" ng-model="vm.scriptDetail.Condition" id="condition">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="concerncode">No Concern Code</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" ng-model="vm.scriptDetail.NoConcernCode" id="concerncode">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="notes">Notes</label>
+                            <div class="col-md-10">
+                                <textarea rows="5" class="form-control" ng-model="vm.scriptDetail.Notes" id="notes"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="ccdistro">Email Distribution</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" ng-model="vm.scriptDetail.CCDistro" id="ccdistro">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div style="float:left">
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.emailScriptChanges(vm.scriptDetail)">
+                            Email Change Request
+                        </button>
+                    </div>
+                    <div style="float:right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal History-->
+    <div id="modalHistory" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Script History</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Modified</th>
+                                <th>Active</th>
+                                <th>Verbiage</th>
+                                <th>Yes / No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="h in vm.scriptHistory">
+                                <td width="20%">{{h.ChangeDate }}</td>
+                                <td width="10%" align="center">{{h.Active}}</td>
+                                <td width="50%"><p>{{h.Verbiage}}</p> {{h.VerbiageSpanish}}</td>
+                                <td align="center">{{h.YesNo}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <div style="float:right">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

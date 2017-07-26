@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LibertyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LibertyModelStoreContainer">
+          <EntitySet Name="ContractTerm" EntityType="LibertyModel.Store.ContractTerm" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Main" EntityType="LibertyModel.Store.Main" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="MarketProduct" EntityType="LibertyModel.Store.MarketProduct" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="Office" EntityType="LibertyModel.Store.Office" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="OrderDetail" EntityType="LibertyModel.Store.OrderDetail" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="SalesChannel" EntityType="LibertyModel.Store.SalesChannel" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="User" EntityType="LibertyModel.Store.User" store:Type="Tables" Schema="v1" />
+          <AssociationSet Name="FK_Main_ContractTerm" Association="LibertyModel.Store.FK_Main_ContractTerm">
+            <End Role="ContractTerm" EntitySet="ContractTerm" />
+            <End Role="Main" EntitySet="Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_MarketProduct" Association="LibertyModel.Store.FK_Main_MarketProduct">
+            <End Role="MarketProduct" EntitySet="MarketProduct" />
+            <End Role="Main" EntitySet="Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_SalesChannel" Association="LibertyModel.Store.FK_Main_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannel" />
+            <End Role="Main" EntitySet="Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_User" Association="LibertyModel.Store.FK_Main_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Main" EntitySet="Main" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_MainId" Association="LibertyModel.Store.FK_OrderDetail_MainId">
+            <End Role="Main" EntitySet="Main" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Office" Association="LibertyModel.Store.FK_User_Office">
+            <End Role="Office" EntitySet="Office" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ContractTerm">
+          <Key>
+            <PropertyRef Name="ContractTermId" />
+          </Key>
+          <Property Name="ContractTermId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MonthlyTerm" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Main">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="datetime" />
+          <Property Name="WebDateTime" Type="datetime" />
+          <Property Name="WavName" Type="varchar" MaxLength="50" />
+          <Property Name="Dnis" Type="char" MaxLength="4" />
+          <Property Name="Verified" Type="char" MaxLength="1" />
+          <Property Name="Concern" Type="varchar" MaxLength="50" />
+          <Property Name="ConcernCode" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentName" Type="varchar" MaxLength="50" />
+          <Property Name="TpvAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="TotalTime" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="RecordLocator" Type="varchar" MaxLength="50" />
+          <Property Name="SalesState" Type="varchar" MaxLength="2" />
+          <Property Name="AuthorizationFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="AuthorizationMiddle" Type="varchar" MaxLength="1" />
+          <Property Name="AuthorizationLastName" Type="varchar" MaxLength="50" />
+          <Property Name="Btn" Type="varchar" MaxLength="10" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="100" />
+          <Property Name="CompanyContactFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyContactLastName" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyContactTitle" Type="varchar" MaxLength="50" />
+          <Property Name="Territory" Type="varchar" MaxLength="50" />
+          <Property Name="LeadType" Type="varchar" MaxLength="50" />
+          <Property Name="Relation" Type="varchar" MaxLength="50" />
+          <Property Name="NumberOfAccounts" Type="varchar" MaxLength="5" />
+          <Property Name="AccountFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="AccountLastName" Type="varchar" MaxLength="50" />
+          <Property Name="OutboundWavName" Type="varchar" MaxLength="50" />
+          <Property Name="QaDateChange" Type="datetime" />
+          <Property Name="QaReasonChange" Type="varchar" MaxLength="100" />
+          <Property Name="QaAgentId" Type="varchar" MaxLength="10" />
+          <Property Name="QaOriginalConcern" Type="varchar" MaxLength="50" />
+          <Property Name="QaChanged" Type="bit" />
+          <Property Name="Rate" Type="varchar" MaxLength="10" />
+          <Property Name="RateEffectiveDate" Type="varchar" MaxLength="10" />
+          <Property Name="SubTermMonth1Start" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth1End" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth2Start" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth2End" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth3Start" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth3End" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth4Start" Type="varchar" MaxLength="2" />
+          <Property Name="SubTermMonth4End" Type="varchar" MaxLength="2" />
+          <Property Name="SalesChannelId" Type="int" />
+          <Property Name="MarketStateId" Type="int" />
+          <Property Name="MarketUtilityId" Type="int" />
+          <Property Name="MarketProductId" Type="int" />
+          <Property Name="BusinessName" Type="varchar" MaxLength="50" />
+          <Property Name="BusinessTaxId" Type="varchar" MaxLength="50" />
+          <Property Name="SOHOAccount" Type="varchar" MaxLength="3" />
+          <Property Name="ContractTermId" Type="int" />
+          <Property Name="SalesAgentId" Type="varchar" MaxLength="50" />
+          <Property Name="EnergyGRT" Type="varchar" MaxLength="10" />
+          <Property Name="ContractID" Type="varchar" MaxLength="50" />
+          <Property Name="EFLVersionCode" Type="varchar" MaxLength="50" />
+          <Property Name="SwitchOrMoveIn" Type="varchar" MaxLength="10" />
+          <Property Name="MaterialPreference" Type="varchar" MaxLength="10" />
+          <Property Name="EstDateExpiration" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MarketProduct">
+          <Key>
+            <PropertyRef Name="MarketProductId" />
+          </Key>
+          <Property Name="MarketProductId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MarketStateId" Type="int" />
+          <Property Name="Product" Type="varchar" MaxLength="100" />
+          <Property Name="ProductWebForm" Type="varchar" MaxLength="200" />
+          <Property Name="Commercial" Type="bit" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="SubTermRate" Type="bit" />
+        </EntityType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Name="OfficeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="OfficeName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OfficeEmail" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="int" />
+          <Property Name="UtilityType" Type="varchar" MaxLength="50" />
+          <Property Name="ProgramId" Type="int" />
+          <Property Name="AccountType" Type="varchar" MaxLength="50" />
+          <Property Name="AccountNumber" Type="varchar" MaxLength="100" />
+          <Property Name="MeterNumber" Type="varchar" MaxLength="100" />
+          <Property Name="RateClass" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerNameKey" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceReferenceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceAddress" Type="varchar" MaxLength="100" />
+          <Property Name="ServiceAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="ServiceCity" Type="varchar" MaxLength="100" />
+          <Property Name="ServiceState" Type="varchar" MaxLength="2" />
+          <Property Name="ServiceZip" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceCounty" Type="varchar" MaxLength="50" />
+          <Property Name="BillingAddress" Type="varchar" MaxLength="100" />
+          <Property Name="BillingAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="BillingCity" Type="varchar" MaxLength="100" />
+          <Property Name="BillingState" Type="varchar" MaxLength="2" />
+          <Property Name="BillingZip" Type="varchar" MaxLength="50" />
+          <Property Name="BillingCounty" Type="varchar" MaxLength="50" />
+          <Property Name="InCityLimits" Type="varchar" MaxLength="50" />
+          <Property Name="SubTermRate1" Type="varchar" MaxLength="10" />
+          <Property Name="SubTermRate2" Type="varchar" MaxLength="10" />
+          <Property Name="SubTermRate3" Type="varchar" MaxLength="10" />
+          <Property Name="SubTermRate4" Type="varchar" MaxLength="10" />
+          <Property Name="NameKey" Type="varchar" MaxLength="50" />
+          <Property Name="ServiceNumber" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="SalesChannelId" />
+          </Key>
+          <Property Name="SalesChannelId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="OfficeId" Type="int" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="SupervisiorId" Type="int" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ModifiedDateTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Main_ContractTerm">
+          <End Role="ContractTerm" Type="LibertyModel.Store.ContractTerm" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Store.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractTerm">
+              <PropertyRef Name="ContractTermId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="ContractTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_MarketProduct">
+          <End Role="MarketProduct" Type="LibertyModel.Store.MarketProduct" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Store.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketProduct">
+              <PropertyRef Name="MarketProductId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="MarketProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_SalesChannel">
+          <End Role="SalesChannel" Type="LibertyModel.Store.SalesChannel" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Store.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_User">
+          <End Role="User" Type="LibertyModel.Store.User" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Store.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_MainId">
+          <End Role="Main" Type="LibertyModel.Store.Main" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="LibertyModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Main">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Office">
+          <End Role="Office" Type="LibertyModel.Store.Office" Multiplicity="0..1" />
+          <End Role="User" Type="LibertyModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibertyModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LibertyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContractTerms" EntityType="LibertyModel.ContractTerm" />
+          <EntitySet Name="Mains" EntityType="LibertyModel.Main" />
+          <EntitySet Name="MarketProducts" EntityType="LibertyModel.MarketProduct" />
+          <EntitySet Name="OrderDetails" EntityType="LibertyModel.OrderDetail" />
+          <EntitySet Name="SalesChannels" EntityType="LibertyModel.SalesChannel" />
+          <EntitySet Name="Users" EntityType="LibertyModel.User" />
+          <AssociationSet Name="FK_Main_ContractTerm" Association="LibertyModel.FK_Main_ContractTerm">
+            <End Role="ContractTerm" EntitySet="ContractTerms" />
+            <End Role="Main" EntitySet="Mains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_MarketProduct" Association="LibertyModel.FK_Main_MarketProduct">
+            <End Role="MarketProduct" EntitySet="MarketProducts" />
+            <End Role="Main" EntitySet="Mains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_SalesChannel" Association="LibertyModel.FK_Main_SalesChannel">
+            <End Role="SalesChannel" EntitySet="SalesChannels" />
+            <End Role="Main" EntitySet="Mains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Main_User" Association="LibertyModel.FK_Main_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Main" EntitySet="Mains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_MainId" Association="LibertyModel.FK_OrderDetail_MainId">
+            <End Role="Main" EntitySet="Mains" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="Offices" EntityType="LibertyModel.Office" />
+          <AssociationSet Name="FK_User_Office" Association="LibertyModel.FK_User_Office">
+            <End Role="Office" EntitySet="Offices" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ContractTerm">
+          <Key>
+            <PropertyRef Name="ContractTermId" />
+          </Key>
+          <Property Name="ContractTermId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MonthlyTerm" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mains" Relationship="LibertyModel.FK_Main_ContractTerm" FromRole="ContractTerm" ToRole="Main" />
+        </EntityType>
+        <EntityType Name="Main">
+          <Key>
+            <PropertyRef Name="MainId" />
+          </Key>
+          <Property Name="MainId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CallDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WebDateTime" Type="DateTime" Precision="3" />
+          <Property Name="WavName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Dnis" Type="String" MaxLength="4" Unicode="false" FixedLength="true" />
+          <Property Name="Verified" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="Concern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ConcernCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TpvAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TotalTime" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RecordLocator" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SalesState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationMiddle" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorizationLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Btn" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyContactTitle" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Territory" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LeadType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Relation" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NumberOfAccounts" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="AccountFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AccountLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OutboundWavName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="QaDateChange" Type="DateTime" Precision="3" />
+          <Property Name="QaReasonChange" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="QaAgentId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="QaOriginalConcern" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="QaChanged" Type="Boolean" />
+          <Property Name="Rate" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="RateEffectiveDate" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth1Start" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth1End" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth2Start" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth2End" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth3Start" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth3End" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth4Start" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermMonth4End" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="SalesChannelId" Type="Int32" />
+          <Property Name="MarketStateId" Type="Int32" />
+          <Property Name="MarketUtilityId" Type="Int32" />
+          <Property Name="MarketProductId" Type="Int32" />
+          <Property Name="BusinessName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BusinessTaxId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SOHOAccount" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="ContractTermId" Type="Int32" />
+          <Property Name="SalesAgentId" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ContractTerm" Relationship="LibertyModel.FK_Main_ContractTerm" FromRole="Main" ToRole="ContractTerm" />
+          <NavigationProperty Name="MarketProduct" Relationship="LibertyModel.FK_Main_MarketProduct" FromRole="Main" ToRole="MarketProduct" />
+          <NavigationProperty Name="SalesChannel" Relationship="LibertyModel.FK_Main_SalesChannel" FromRole="Main" ToRole="SalesChannel" />
+          <NavigationProperty Name="User" Relationship="LibertyModel.FK_Main_User" FromRole="Main" ToRole="User" />
+          <NavigationProperty Name="OrderDetails" Relationship="LibertyModel.FK_OrderDetail_MainId" FromRole="Main" ToRole="OrderDetail" />
+          <Property Type="String" Name="EnergyGRT" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContractID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EFLVersionCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SwitchOrMoveIn" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MaterialPreference" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EstDateExpiration" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MarketProduct">
+          <Key>
+            <PropertyRef Name="MarketProductId" />
+          </Key>
+          <Property Name="MarketProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketStateId" Type="Int32" />
+          <Property Name="Product" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ProductWebForm" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Commercial" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="SubTermRate" Type="Boolean" />
+          <NavigationProperty Name="Mains" Relationship="LibertyModel.FK_Main_MarketProduct" FromRole="MarketProduct" ToRole="Main" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MainId" Type="Int32" />
+          <Property Name="UtilityType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProgramId" Type="Int32" />
+          <Property Name="AccountType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AccountNumber" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="MeterNumber" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="RateClass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerNameKey" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceReferenceNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceAddress2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCity" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingAddress2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCity" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BillingState" Type="String" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="BillingZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BillingCounty" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="InCityLimits" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermRate1" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermRate2" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermRate3" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SubTermRate4" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="NameKey" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ServiceNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Main" Relationship="LibertyModel.FK_OrderDetail_MainId" FromRole="OrderDetail" ToRole="Main" />
+        </EntityType>
+        <EntityType Name="SalesChannel">
+          <Key>
+            <PropertyRef Name="SalesChannelId" />
+          </Key>
+          <Property Name="SalesChannelId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Mains" Relationship="LibertyModel.FK_Main_SalesChannel" FromRole="SalesChannel" ToRole="Main" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="OfficeId" Type="Int32" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Language" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="SupervisiorId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Mains" Relationship="LibertyModel.FK_Main_User" FromRole="User" ToRole="Main" />
+          <NavigationProperty Name="Office" Relationship="LibertyModel.FK_User_Office" FromRole="User" ToRole="Office" />
+        </EntityType>
+        <Association Name="FK_Main_ContractTerm">
+          <End Role="ContractTerm" Type="LibertyModel.ContractTerm" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractTerm">
+              <PropertyRef Name="ContractTermId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="ContractTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_MarketProduct">
+          <End Role="MarketProduct" Type="LibertyModel.MarketProduct" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketProduct">
+              <PropertyRef Name="MarketProductId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="MarketProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_SalesChannel">
+          <End Role="SalesChannel" Type="LibertyModel.SalesChannel" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesChannel">
+              <PropertyRef Name="SalesChannelId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="SalesChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Main_User">
+          <End Role="User" Type="LibertyModel.User" Multiplicity="0..1" />
+          <End Role="Main" Type="LibertyModel.Main" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Main">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_MainId">
+          <End Role="Main" Type="LibertyModel.Main" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="LibertyModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Main">
+              <PropertyRef Name="MainId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="MainId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="OfficeId" />
+          </Key>
+          <Property Type="Int32" Name="OfficeId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="VendorId" Nullable="false" />
+          <Property Type="String" Name="OfficeName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OfficeEmail" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ModifiedDateTime" Precision="3" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="LibertyModel.FK_User_Office" FromRole="Office" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_Office">
+          <End Type="LibertyModel.Office" Role="Office" Multiplicity="0..1" />
+          <End Type="LibertyModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="OfficeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibertyModelStoreContainer" CdmEntityContainer="LibertyEntities">
+          <EntitySetMapping Name="ContractTerms">
+            <EntityTypeMapping TypeName="LibertyModel.ContractTerm">
+              <MappingFragment StoreEntitySet="ContractTerm">
+                <ScalarProperty Name="ContractTermId" ColumnName="ContractTermId" />
+                <ScalarProperty Name="MonthlyTerm" ColumnName="MonthlyTerm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mains">
+            <EntityTypeMapping TypeName="LibertyModel.Main">
+              <MappingFragment StoreEntitySet="Main">
+                <ScalarProperty Name="EstDateExpiration" ColumnName="EstDateExpiration" />
+                <ScalarProperty Name="MaterialPreference" ColumnName="MaterialPreference" />
+                <ScalarProperty Name="SwitchOrMoveIn" ColumnName="SwitchOrMoveIn" />
+                <ScalarProperty Name="EFLVersionCode" ColumnName="EFLVersionCode" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="EnergyGRT" ColumnName="EnergyGRT" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="WebDateTime" ColumnName="WebDateTime" />
+                <ScalarProperty Name="WavName" ColumnName="WavName" />
+                <ScalarProperty Name="Dnis" ColumnName="Dnis" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+                <ScalarProperty Name="ConcernCode" ColumnName="ConcernCode" />
+                <ScalarProperty Name="TpvAgentName" ColumnName="TpvAgentName" />
+                <ScalarProperty Name="TpvAgentId" ColumnName="TpvAgentId" />
+                <ScalarProperty Name="TotalTime" ColumnName="TotalTime" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RecordLocator" ColumnName="RecordLocator" />
+                <ScalarProperty Name="SalesState" ColumnName="SalesState" />
+                <ScalarProperty Name="AuthorizationFirstName" ColumnName="AuthorizationFirstName" />
+                <ScalarProperty Name="AuthorizationMiddle" ColumnName="AuthorizationMiddle" />
+                <ScalarProperty Name="AuthorizationLastName" ColumnName="AuthorizationLastName" />
+                <ScalarProperty Name="Btn" ColumnName="Btn" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyContactFirstName" ColumnName="CompanyContactFirstName" />
+                <ScalarProperty Name="CompanyContactLastName" ColumnName="CompanyContactLastName" />
+                <ScalarProperty Name="CompanyContactTitle" ColumnName="CompanyContactTitle" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+                <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="NumberOfAccounts" ColumnName="NumberOfAccounts" />
+                <ScalarProperty Name="AccountFirstName" ColumnName="AccountFirstName" />
+                <ScalarProperty Name="AccountLastName" ColumnName="AccountLastName" />
+                <ScalarProperty Name="OutboundWavName" ColumnName="OutboundWavName" />
+                <ScalarProperty Name="QaDateChange" ColumnName="QaDateChange" />
+                <ScalarProperty Name="QaReasonChange" ColumnName="QaReasonChange" />
+                <ScalarProperty Name="QaAgentId" ColumnName="QaAgentId" />
+                <ScalarProperty Name="QaOriginalConcern" ColumnName="QaOriginalConcern" />
+                <ScalarProperty Name="QaChanged" ColumnName="QaChanged" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="RateEffectiveDate" ColumnName="RateEffectiveDate" />
+                <ScalarProperty Name="SubTermMonth1Start" ColumnName="SubTermMonth1Start" />
+                <ScalarProperty Name="SubTermMonth1End" ColumnName="SubTermMonth1End" />
+                <ScalarProperty Name="SubTermMonth2Start" ColumnName="SubTermMonth2Start" />
+                <ScalarProperty Name="SubTermMonth2End" ColumnName="SubTermMonth2End" />
+                <ScalarProperty Name="SubTermMonth3Start" ColumnName="SubTermMonth3Start" />
+                <ScalarProperty Name="SubTermMonth3End" ColumnName="SubTermMonth3End" />
+                <ScalarProperty Name="SubTermMonth4Start" ColumnName="SubTermMonth4Start" />
+                <ScalarProperty Name="SubTermMonth4End" ColumnName="SubTermMonth4End" />
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="MarketStateId" ColumnName="MarketStateId" />
+                <ScalarProperty Name="MarketUtilityId" ColumnName="MarketUtilityId" />
+                <ScalarProperty Name="MarketProductId" ColumnName="MarketProductId" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="BusinessTaxId" ColumnName="BusinessTaxId" />
+                <ScalarProperty Name="SOHOAccount" ColumnName="SOHOAccount" />
+                <ScalarProperty Name="ContractTermId" ColumnName="ContractTermId" />
+                <ScalarProperty Name="SalesAgentId" ColumnName="SalesAgentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketProducts">
+            <EntityTypeMapping TypeName="LibertyModel.MarketProduct">
+              <MappingFragment StoreEntitySet="MarketProduct">
+                <ScalarProperty Name="MarketProductId" ColumnName="MarketProductId" />
+                <ScalarProperty Name="MarketStateId" ColumnName="MarketStateId" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="ProductWebForm" ColumnName="ProductWebForm" />
+                <ScalarProperty Name="Commercial" ColumnName="Commercial" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SubTermRate" ColumnName="SubTermRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="LibertyModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="UtilityType" ColumnName="UtilityType" />
+                <ScalarProperty Name="ProgramId" ColumnName="ProgramId" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="MeterNumber" ColumnName="MeterNumber" />
+                <ScalarProperty Name="RateClass" ColumnName="RateClass" />
+                <ScalarProperty Name="CustomerNameKey" ColumnName="CustomerNameKey" />
+                <ScalarProperty Name="ServiceReferenceNumber" ColumnName="ServiceReferenceNumber" />
+                <ScalarProperty Name="ServiceAddress" ColumnName="ServiceAddress" />
+                <ScalarProperty Name="ServiceAddress2" ColumnName="ServiceAddress2" />
+                <ScalarProperty Name="ServiceCity" ColumnName="ServiceCity" />
+                <ScalarProperty Name="ServiceState" ColumnName="ServiceState" />
+                <ScalarProperty Name="ServiceZip" ColumnName="ServiceZip" />
+                <ScalarProperty Name="ServiceCounty" ColumnName="ServiceCounty" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="BillingZip" ColumnName="BillingZip" />
+                <ScalarProperty Name="BillingCounty" ColumnName="BillingCounty" />
+                <ScalarProperty Name="InCityLimits" ColumnName="InCityLimits" />
+                <ScalarProperty Name="SubTermRate1" ColumnName="SubTermRate1" />
+                <ScalarProperty Name="SubTermRate2" ColumnName="SubTermRate2" />
+                <ScalarProperty Name="SubTermRate3" ColumnName="SubTermRate3" />
+                <ScalarProperty Name="SubTermRate4" ColumnName="SubTermRate4" />
+                <ScalarProperty Name="NameKey" ColumnName="NameKey" />
+                <ScalarProperty Name="ServiceNumber" ColumnName="ServiceNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesChannels">
+            <EntityTypeMapping TypeName="LibertyModel.SalesChannel">
+              <MappingFragment StoreEntitySet="SalesChannel">
+                <ScalarProperty Name="SalesChannelId" ColumnName="SalesChannelId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LibertyModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SupervisiorId" ColumnName="SupervisiorId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offices">
+            <EntityTypeMapping TypeName="LibertyModel.Office">
+              <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OfficeEmail" ColumnName="OfficeEmail" />
+                <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

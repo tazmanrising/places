@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5137AF42-9019-47A3-B1B3-64087ACD614B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{371D28AF-D878-4F7C-92DD-9CC06C3EE618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{B0E2CDC8-E390-4575-A30E-E2011E73C905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{7118FD4F-1546-4CD3-976F-AFA3486F3F29}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\ELMAH-1.2-db-SQLServer.sql = Documents\ELMAH-1.2-db-SQLServer.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEntryWeb", "DataEntryWeb\DataEntryWeb.csproj", "{EAEB6346-6736-47FD-BBB6-014AA74DADA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Calibrus|Any CPU = Calibrus|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5137AF42-9019-47A3-B1B3-64087ACD614B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B993FD7-0202-43E0-90A4-9DB8DAEDBB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371D28AF-D878-4F7C-92DD-9CC06C3EE618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E2CDC8-E390-4575-A30E-E2011E73C905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAE1A6CE-03A3-4F9E-BA8C-78BF18D374BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE4A1457-5A6F-4B58-8879-77FFC5D562A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Calibrus|Any CPU.ActiveCfg = Calibrus|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Calibrus|Any CPU.Build.0 = Calibrus|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAEB6346-6736-47FD-BBB6-014AA74DADA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://mikejrae.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = ViewModel\\ViewModel.csproj
+		SccProjectName0 = ViewModel
+		SccLocalPath0 = ViewModel
+		SccProjectUniqueName1 = Business\\Business.csproj
+		SccProjectName1 = Business
+		SccLocalPath1 = Business
+		SccProjectUniqueName2 = Common\\Common.csproj
+		SccProjectName2 = Common
+		SccLocalPath2 = Common
+		SccProjectUniqueName3 = Tests\\Tests.csproj
+		SccProjectName3 = Tests
+		SccLocalPath3 = Tests
+		SccProjectUniqueName4 = DataAccess\\DataAccess.csproj
+		SccProjectName4 = DataAccess
+		SccLocalPath4 = DataAccess
+		SccProjectUniqueName5 = Web\\Web.csproj
+		SccProjectName5 = Web
+		SccLocalPath5 = Web
+		SccProjectUniqueName6 = DataEntryWeb\\DataEntryWeb.csproj
+		SccProjectName6 = DataEntryWeb
+		SccLocalPath6 = DataEntryWeb
+		SccLocalPath7 = .
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,107 @@
+﻿@using Calibrus.ClearviewPortal.Web
+@model Calibrus.ClearviewPortal.ViewModel.OfficeViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>
+            Admin Maintenance
+            <small>Create Office</small>
+        </h1>
+    </div>
+
+    <div class="row">
+
+        <h3>Office Information</h3><br />
+
+        @using (Html.BeginForm("Create", "Office", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-offset-3 col-md-6">
+                @Html.ValidationSummary(true, "Please fix the following errors:", new { @class = "alert alert-danger" })
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success">@TempData["success"]</div>
+                }
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OfficeName, new { @class = "col-lg-2 control-label", @for = "OfficeName" })
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.OfficeName, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-lg-3">@Html.ValidationMessageFor(model => model.OfficeName)</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OfficeEmail, new { @class = "col-lg-2 control-label", @for = "OfficeEmail" })
+                <div class="col-lg-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.OfficeEmail, new { @class = "form-control" })
+                    </div>
+
+                </div>
+                <div class="col-lg-3">@Html.ValidationMessageFor(model => model.OfficeEmail)</div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MarketerCode, new { @class = "col-md-2 control-label ", @for = "MarketerCode" })
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                        @Html.TextBoxFor(model => model.MarketerCode, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    @Html.ValidationMessageFor(model => model.MarketerCode)
+                </div>
+            </div>            
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParentVendorFormatted, new { @class = "col-lg-2 control-label", @for = "ParentVendorFormatted" })
+                <div class="col-lg-5">
+                    @if (Model.VendorId.HasValue)
+                    {
+                        @Html.HiddenFor(o => o.VendorId)
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.TextBoxFor(model => model.ParentVendorFormatted, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-ellipsis-v text-danger "></i></span>
+                            @Html.DropDownListFor(model => model.VendorId, new SelectList(Model.Vendors, "VendorId", "VendorName"), "", new { @class = "form-control col-lg-3" })
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-3">@Html.ValidationMessageFor(model => model.VendorId)</div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-10 text-center">
+                    <input class="btn btn-primary" type="submit" value="Create" />
+                    <a href="@SessionVars.ReturnUrl" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="SparkDataSource">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=TMPSQL2;Initial Catalog=Spark</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>c425be6a-0286-4741-aa08-5d12372329e1</DataSourceID>
+</RptDataSource>

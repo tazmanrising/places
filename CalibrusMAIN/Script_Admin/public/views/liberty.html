@@ -1,0 +1,98 @@
+<!-- <airline-code carrier="{{ y.MktCarrier }}"></airline-code> -->
+
+<!-- <blue-note text="I am awesome" />
+
+
+<airline-code carrier="test"></airline-code>
+
+
+<div>blah</div>
+<test text="1"></test>
+<test text="2"></test> -->
+
+
+<!-- <profile ng-repeat="user in vm.users" data="user"></profile> -->
+
+           <button type="button" class="btn btn-success" ng-click="vm.enrollment()">New Enrollment
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br><br>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> <strong>Liberty - Door to Door:</strong>&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info"
+                            ng-click="vm.getLocalStorage()">Local Storage</button> </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="container-fluid">
+                                    <h2>
+                                        <div>
+                                            {{vm.liberty2[vm.q].Verbiage}}
+                                            <div id="qa"></div>
+                                        </div>
+                                    </h2>
+
+
+                                    <!-- <profile ng-repeat="user in vm.users" data="user"></profile> -->
+
+
+                                    <br>
+
+                                     <div id='directives'> </div>
+
+                                  <div ng-repeat="d in vm.liberty2[vm.q].directive" com-dir="d">
+                                         directive: {{d}}                      
+                                   
+                                  </div>
+
+                                  <br><br>
+
+                                   <!-- <d-agent data='adfaf'> </d-agent>  -->
+                                     <!-- {{vm.liberty2[0].directive}} -->
+
+
+                                      <!-- <div ng-repeat="dir in vm.liberty2[vm.q].directive">
+                                        {{dir.Tag}}"<br><br>
+                                    </div>  -->
+
+                                    <!-- <div ng-repeat="dir in vm.liberty2[vm.q].directive">
+                                        <div compile-directive="{{dir.Tag}}"></div><br><br>
+                                    </div> -->
+
+
+                                    <!--<div compile-directive="{{vm.liberty2[vm.q].directive[0].Tag}}"></div>-->
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" ng-click="vm.navigation('b')">Previous
+                                </button>&nbsp;&nbsp;
+                                        <button type="button" class="btn btn-success" ng-click="vm.navigation('f')">Next
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    </div>
+                                    <br><br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <div ng-repeat="question in vm.liberty2">
+                    <div><a ng-href="#" ng-click="$event.preventDefault();vm.questionContainer($index)">{{question.Verbiage}}</a></div><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+
+</div>

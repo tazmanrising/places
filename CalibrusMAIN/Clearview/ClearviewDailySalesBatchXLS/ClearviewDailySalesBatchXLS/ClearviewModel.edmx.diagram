@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="81020a961e1b425c9109bf53c52a294a" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="ClearviewModel.AccountNumberType" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Brand" Width="1.5" PointX="0.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Main" Width="1.5" PointX="8.625" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Office" Width="1.5" PointX="4.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.OrderDetail" Width="1.5" PointX="10.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.PremiseType" Width="1.5" PointX="0.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Program" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.SalesChannel" Width="1.5" PointX="6.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UnitOfMeasure" Width="1.5" PointX="0.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.User" Width="1.5" PointX="6.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Utility" Width="1.5" PointX="0.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.UtilityType" Width="1.5" PointX="4.625" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClearviewModel.Vendor" Width="1.5" PointX="4.625" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_AccountNumberType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Main_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_OfficeDetail_Main" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Office_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_User_Office" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_OfficeDetail_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_PremiseType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_Utility" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Program_UtilityType" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_Vendor_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="ClearviewModel.FK_User_Vendor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

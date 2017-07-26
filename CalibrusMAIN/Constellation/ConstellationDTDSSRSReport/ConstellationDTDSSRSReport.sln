@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ConstellationDTDSSRSReport", "ConstellationDTDSSRSReport\ConstellationDTDSSRSReport.rptproj", "{353F8D1A-37B0-427C-9162-057973B55D9D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ConstellationDTDSSRSReport\\ConstellationDTDSSRSReport.rptproj
+		SccProjectName1 = ConstellationDTDSSRSReport
+		SccLocalPath1 = ConstellationDTDSSRSReport
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Debug|Default.ActiveCfg = Debug
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Debug|Default.Build.0 = Debug
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Debug|Default.Deploy.0 = Debug
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.DebugLocal|Default.Build.0 = DebugLocal
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Release|Default.ActiveCfg = Release
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Release|Default.Build.0 = Release
+		{353F8D1A-37B0-427C-9162-057973B55D9D}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

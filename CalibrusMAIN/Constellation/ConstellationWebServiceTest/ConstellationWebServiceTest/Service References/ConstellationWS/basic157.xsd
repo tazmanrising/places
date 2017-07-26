@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CreditRulesEngineDomain.ResidentialService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CreditRulesEngineDomain.ResidentialService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfMarkets">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Markets" nillable="true" type="tns:Markets" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMarkets" nillable="true" type="tns:ArrayOfMarkets" />
+  <xs:complexType name="Markets">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Commodity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Markets" nillable="true" type="tns:Markets" />
+  <xs:complexType name="ArrayOfDecisionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DecisionList" nillable="true" type="tns:DecisionList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDecisionList" nillable="true" type="tns:ArrayOfDecisionList" />
+  <xs:complexType name="DecisionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Commodity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditDecision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecurityDeposit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDCCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DecisionList" nillable="true" type="tns:DecisionList" />
+</xs:schema>

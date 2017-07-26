@@ -1,0 +1,329 @@
+/* ================================ GENERAL ================================= */
+/* ========== BY ELEMENT ========== */
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;	
+}
+
+body {
+	font: 14px/1.2 Arial, Helvetica, sans-serif;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	/*text-decoration: underline;*/
+}
+
+button {
+	background: transparent;
+}
+
+/* ========== BY CLASS ========== */
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	content: ".";
+	clear: both;	
+	line-height: 0;
+	height: 0;
+}
+
+.center {
+	display: block;
+	margin: 0 auto;
+}
+
+.centered960 {
+	width: 960px;
+	margin: 0 auto;
+}
+
+/* ========== STICKY FOOTER ========== */
+html, body {
+	height: 100%;
+}
+
+#main {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -53px; /* the bottom margin is the negative value of the footer's height */
+}
+
+#header-spacer {
+	height: 123px;
+}
+
+footer, .push {
+	height: 53px; /* .push must be the same height as footer */
+}
+
+/* ================================ HEADER ================================= */
+header {
+	position: relative; /*for box shadow to appear on top*/
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	z-index: 100;
+	height: 123px;
+	color: hsl(360, 1.2%, 51%);
+	/*first img is on top*/
+	background: 
+   		url(../images/Calibrus_header_left_glare.png) left no-repeat,  
+   		url(../images/Calibrus_header_right_glare.png) right no-repeat,   
+   		url(../images/Calibrus_header_bg.png) repeat-x;
+   	box-shadow: 0 0 12px 6px hsla(0, 0%, 0%, .5);	
+}
+
+header .centered960 {
+	line-height: 123px;
+}
+
+header img[src*="logo"] 
+{
+    float: left;
+	vertical-align: middle;
+	margin: 27px 0 0 -13px;
+}
+
+header ul {
+	float: right;
+	margin-top: 68px;
+	line-height: 21px;
+}
+
+header ul > li {
+	/*allows for vertical centering*/
+	display: inline-block;
+}
+
+header ul > li:nth-child(-n+3) {
+	padding: 0 15px;
+}
+
+header ul > li:nth-child(-n+2) {
+	border-right: 1px solid;
+}
+
+header ul > li a {
+	color: hsl(360, 1.2%, 71%);
+}
+
+header input {
+	padding: 0 31px 0 7px;
+	width: 150px;
+	border: 1px solid black;
+}
+
+/* ================================ MAIN ================================= */
+div#main {
+	box-shadow: 
+		2px 0 3px hsl(0, 0%, 38%) inset, 
+		-2px 0 3px hsl(0, 0%, 38%) inset; /*shadow on left, right side*/
+	background: 
+   		url(../images/background.png) repeat;
+}
+
+div#innerMain {
+	position: relative;
+	margin: 0 38px;
+	padding-top: 1px; /*prevent margin-collapse*/
+}
+
+/* ================================ FOOTER ================================= */
+footer {
+	height: 53px;
+	color: hsl(360, 0.5%, 38%);
+	font-size: 12px;
+	/*background: 
+   		url(../images/Calibrus_footer_bg.png) repeat-x;*/
+   	background: 
+   		url(../images/Calibrus_footer_bg.png) repeat-x;
+   	box-shadow: 0 0 10px 4px hsla(0, 0%, 0%, .5);	
+}
+
+footer a {
+	color: hsl(360, 0.5%, 38%);
+}
+
+footer ul {
+	float: left;
+	margin-top: 18px;
+}
+
+footer ul > li {
+	float: left;
+	padding: 0 5px;
+}
+
+footer a {
+	font-size: 12px;
+}
+
+footer ul > li:nth-child(1) {
+	border-right: 1px solid;
+}
+
+footer p {
+	float: right;
+	margin-top: 18px;
+	line-height: 16px;
+	font-size: 12px;
+}
+
+/* ========== PAGE SPECIFIC ========== */
+.simple div#innerMain {
+	
+	padding: 80px 60px 60px 60px;
+	border: 1px solid hsl(0, 0.0000%, 61.5686%);
+	font-size: 13px;
+	color: hsl(0, 0.0000%, 34.5098%);
+	background-color: hsl(60, 9%, 98%);
+}
+
+.simple h2 {
+	line-height: 2.5;
+	margin-bottom: 10px;
+	font-size: 30px;
+	font-weight: bold;	
+}
+
+.simple h2 {
+	line-height: 2.5;
+	margin-bottom: 10px;
+	font-size: 30px;
+	font-weight: bold;	
+}
+
+.simple h3 {
+	line-height: 2.5;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+label#message-label {
+	margin-top: -10px;
+}
+
+div#online-required {
+	width: 508px;
+	margin-bottom: 20px;
+}
+
+span#online {
+	float: left;
+	/*color: hsl(240, 22.0000%, 39.2157%);*/
+	color: hsl(27, 86.4734%, 59.4118%);
+	font-weight: bold;
+}
+
+span#required {
+	float: right;
+	color: hsl(27, 86.4734%, 59.4118%);
+}
+
+body#contact-us div#address-phone {
+	padding: 20px 0 50px 0;
+}
+
+body#contact-us div#address-phone li {
+	line-height: 1.5;
+}
+
+body#contact-us div#address-phone a {
+	color: hsl(214, 60.0000%, 50.0000%);
+}
+
+body#contact-us div#address {
+	float: left;
+	width: 200px;
+	padding-right: 40px;
+	border-right: 1px solid hsl(0, 0.0000%, 61.5686%);
+}
+
+body#contact-us div#phone {
+	float: left;
+	padding: 0 40px 0 40px;
+	width: 200px;
+}
+
+body#contact-us td:first-child {
+	width: 100px;
+}
+
+body#contact-us input {
+	text-indent: 5px;
+	height: 20px;
+	margin-top: 2px;
+}
+
+body#contact-us input, body#contact-us textarea, body#contact-us select {
+	border: 1px solid hsl(0, 0.0000%, 61.5686%);
+}
+
+#txtName, #txtCompany, #txtEmail, #txtTitle {
+	width: 300px;
+}
+
+#txtPhone, #ddlState {
+	width: 150px;
+}
+
+#ddlState {
+	height: 20px;
+	margin-top: 2px;
+	background-color: hsla(0, 0%, 0%, 0);
+}
+
+#txtMessage {
+	width: 400px;
+	margin-top: 2px;
+	padding-top: 3px;
+	text-indent: 5px;
+}
+
+body#contact-us input#btnSubmit {
+	width: 100px;
+	border-radius: 3px;
+	text-indent: 0;
+	text-align: center;
+	color: hsl(0, 0.0000%, 34.5098%);
+	background-color: hsl(0, 0.0000%, 91.5686%);
+}
+
+
+.pnlContainer
+{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 510px;
+    display: block;
+}
+
+.pnlerror
+{
+    padding: 5px;
+    border: 1px dashed #808080;
+    margin-top: 10px;
+    background-color: #FFFFDD;
+    width: 500px;
+}
+
+.errorlist
+{
+    margin: 0px 0px 0px 20px;
+}

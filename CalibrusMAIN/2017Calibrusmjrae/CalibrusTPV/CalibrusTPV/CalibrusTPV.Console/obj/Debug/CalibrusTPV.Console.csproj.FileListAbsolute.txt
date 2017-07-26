@@ -1,0 +1,12 @@
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\CalibrusTPV.Console.exe.config
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\CalibrusTPV.Console.exe
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\CalibrusTPV.Console.pdb
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\CalibrusTPV.Data.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\EntityFramework.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\EntityFramework.SqlServer.dll
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\CalibrusTPV.Data.pdb
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\EntityFramework.xml
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\bin\Debug\EntityFramework.SqlServer.xml
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\obj\Debug\CalibrusTPV.Console.csprojResolveAssemblyReference.cache
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\obj\Debug\CalibrusTPV.Console.exe
+C:\dev\Calibrus\CalibrusTPV\CalibrusTPV\CalibrusTPV.Console\obj\Debug\CalibrusTPV.Console.pdb

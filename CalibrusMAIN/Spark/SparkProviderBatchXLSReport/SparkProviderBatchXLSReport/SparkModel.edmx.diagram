@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d812600b8f2400cb509d9264f0149ac" Name="Diagram1">
+        <EntityTypeShape EntityType="SparkModel.AccountNumberType" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Main" Width="1.5" PointX="8.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Office" Width="1.5" PointX="8.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.OrderDetail" Width="1.5" PointX="11.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.PremiseType" Width="1.5" PointX="0.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Program" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.ProgramVendor" Width="1.5" PointX="4.625" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.SalesChannel" Width="1.5" PointX="6.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.UnitOfMeasure" Width="1.5" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.User" Width="1.5" PointX="6.875" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Utility" Width="1.5" PointX="0.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.UtilitySalesChannel" Width="1.5" PointX="4.625" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.UtilityType" Width="1.5" PointX="6.875" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Vendor" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="SparkModel.FK_Program_AccountNumberType" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Main_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_MainId" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Office_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Office_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_User_Office" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_PremiseType" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_UnitOfMeasure" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_Utility" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_UtilityType" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_ProgramVendor_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_ProgramVendor_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_UtilitySalesChannel_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Vendor_SalesChannel" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_User_Vendor" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_UtilitySalesChannel_Utility" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SparkModel.Brand" Width="1.5" PointX="1.0566532076600257" PointY="22.017878095627704" />
+        <AssociationConnector Association="SparkModel.FK_Program_Brand" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

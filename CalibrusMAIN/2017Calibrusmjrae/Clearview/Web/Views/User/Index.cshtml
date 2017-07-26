@@ -1,0 +1,28 @@
+﻿@using Calibrus.ClearviewPortal.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-info">User List</h2>
+
+<div >
+
+    @Html.Action("_Index")
+
+    <div class="col-md-12" ng-controller="securityController as vm">
+        <div class="col-md-2 col-md-offset-5" ng-if="vm.user.securityLevel>0 && vm.user.securityLevel!=750">
+            <a href="@Url.Action("Create", new { controller = "User" })" class="btn btn-success">New User</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/app/securityController.js"></script>
+    <script src="~/Scripts/app/userController.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+}

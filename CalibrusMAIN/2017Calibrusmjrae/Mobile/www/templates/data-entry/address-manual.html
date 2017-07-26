@@ -1,0 +1,63 @@
+<ion-view view-title="Enter Address">
+  <ion-content scroll="true">
+    <form name="vmDataEntry.ManualAddress" novalidate ng-submit="vmDataEntryLineItem.processAddress(vmDataEntry.ManualAddress)">
+      <ion-list>
+        <label class="item item-input item-stacked-label" form-validation="vmDataEntry.ManualAddress.Address">
+          <span class="input-label">Address</span>
+          <input type="text" placeholder="Enter Address" name="Address"
+                 g-places-autocomplete force-selection="true"
+                 options="vmDataEntry.autocompleteOptions"
+                 ng-model="vmDataEntry.manualLocation.address"
+                 ng-change="vmDataEntryLineItem.setServiceLocation(vmDataEntry.manualLocation.address)"
+                 ng-required="true">
+        </label>
+        <!--{{vmDataEntry.manualLocation.address}}-->
+        <ion-item ng-if="vmDataEntryLineItem.lineItem.serviceLocation" class="item-icon-left item-icon-right item-text-wrap">
+          <!--<ion-content >-->
+            <ion-delete-button class="ion-minus-circled"></ion-delete-button>
+            <i style="vertical-align: top; margin-top: -25px;" class="icon ion-location"></i> {{vmDataEntryLineItem.lineItem.serviceLocation.address1}}
+            <br> {{vmDataEntryLineItem.lineItem.serviceLocation.city}}, {{vmDataEntryLineItem.lineItem.serviceLocation.state}}
+            {{vmDataEntryLineItem.lineItem.serviceLocation.zip}} <br>
+            <p ng-if="vmDataEntryLineItem.lineItem.serviceLocation.verified">
+              <i class="ion-checkmark balanced"></i> Verified
+            </p>
+            <p ng-if="!vmDataEntryLineItem.lineItem.serviceLocation.verified">
+              <span></span><i class="ion-alert-circled assertive"></i> Not Verified
+            </p> 
+            
+        </ion-item>
+        <ion-item >
+       
+            <a ng-model="vmDataEntryLineItem.secondAddress" ng-click="vmDataEntryLineItem.showAddress(vmDataEntryLineItem.secondAddress)">
+              <i class="ion-android-add-circle"></i>&nbsp;Add Additional Address Information</a>
+            <div style="height: 100px;" ng-if="vmDataEntryLineItem.secondAddress">
+              <div class="row">
+                <div class="col col-5">
+                  <select ng-model="vmDataEntryLineItem.buildingType">
+                    <option value="APT">APT</option> 
+                    <option value="LOT">LOT</option>
+                    <option value="STE">STE</option>
+                    <option value="UNIT">UNIT</option>
+                </select>
+                </div>
+                <div class="col-75">
+                  <input type="text" ng-model="vmDataEntryLineItem.lineItem.serviceLocation.address2" placeholder="Enter Second Address">
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col"></div>
+              </div>
+            </div>
+            <i ng-if="false" class="icon ion-edit"></i>
+       
+        </ion-item>
+
+        <ion-item class="item-icon-right" style="margin-top: 20px;" ng-click="vmDataEntryLineItem.processAddress(vmDataEntry.ManualAddress)">
+          <span class="positive">Utilities & Programs</span>
+          <i class="icon ion-ios-arrow-right"></i>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
+</ion-view>

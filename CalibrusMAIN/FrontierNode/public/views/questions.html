@@ -1,0 +1,234 @@
+<div class="panel panel-default">
+    <div class="panel-heading"> <strong>Frontier:</strong>&nbsp;&nbsp;&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div ng-if="vm.question.language == 'e'">
+                        <h3>Hello this is <strong>{{vm.question.agent}}</strong> with verification. May I have the customer’s
+                            telephone number please?
+                        </h3>
+                    </div>
+                    <div ng-if="vm.question.language == 's'">
+                        <h3>Hola, soy <strong>{{vm.question.agent}}</strong> con Calibrus. Me permite el numero de telefono de
+                            cliente por favor?
+
+                        </h3>
+                    </div>
+
+                    <div class="container-fluid">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="form-group">
+                                <input class="col-xs-3" type="text" ng-model="vm.question.tn" id="tn" name="tn">
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.savePhone(vm.question.tn)">Search
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="vm.customer" class="panel panel-default">
+    <div class="panel-heading">&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+
+                    <div ng-if="vm.question.language == 'e'">
+                        <h3>And will I be speaking with {{vm.customer[0].Name}}? Okay, I am ready for transfer.</h3>
+                    </div>
+                    <div ng-if="vm.question.language == 's'">
+                        <h3>Hablare con {{vm.customer[0].Name}}? Okay, listo para tralado.</h3>
+                    </div>
+                    <!--<div>
+                        <input type="radio" name="speakwith" ng-model="speakwith" value="yes">Yes
+                        <input type="radio" ng-click="vm.popup()" name="speakwith" ng-model="speakwith" value="no">No
+                    </div>-->
+                    <div class="form-group">
+                        <button type="button" ng-model="speakwith" ng-click="vm.questionAnswer('speakwith','yes')" class="btn btn-success">Yes
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" ng-model="speakwith" class="btn btn-danger" ng-click="vm.questionAnswer('speakwith','no')">No
+                                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="importing-data" ng-show="vm.customer &&  vm.customer.speakwith == 'yes'" class="panel panel-default">
+    <div class="panel-heading">
+        &nbsp;
+
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div ng-if="vm.question.language == 'e'" class="container-fluid">
+                    <h3> Hello, <strong>{{vm.customer[0].Name}}</strong>, this is <strong>Calibrus Agent</strong> with verification.
+                        Thank you for your recent purchase of Frontier VoIP or Digital Voice service. According to our records,
+                        we do not have your 911 acknowledgment on file, which is required by the Federal Communications Commission.
+                        The good news is we can complete the confirmation over the phone. It will just take a minute or so.<br><br>                        Your Frontier VoIP or Digital Voice service requires electrical power for the service to function.
+                        To make a 911 call using your Frontier VoIP or Digital Voice service during a power outage, you must
+                        have previously installed a backup battery device. A fully charged backup battery device will provide
+                        8 hours or longer of basic voice service, including 911 dialing. You will also need to ensure you
+                        have a phone, other than a cordless phone, that does not require electrical power to operate and
+                        is connected to the Frontier VoIP or Digital Voice service.<br><br> If you change the location where
+                        your Frontier VoIP or Digital Voice service is used, your new location may not be available to 911
+                        authorities. Your Frontier VoIP or Digital Voice service uses the Internet to complete 911 and other
+                        calls.
+                        <br><br> If your Internet service is not functioning, you will not be able to call 911.</h3>
+                </div>
+                <div ng-if="vm.question.language == 's'" class="container-fluid">
+                    <h3> Hola, <strong>{{vm.customer[0].Name}}</strong>, Yo soy <strong>Calibrus Agent</strong> >> con verificacion.
+                        Gracias por tu reciente compra del servicio de voz digital o VoIP de Frontier. De acuerdo a nuestros
+                        archivos, no tenemos tu confirmación del 911 en nuestros expedientes, lo cual es requerido por la
+                        comisión federal de comunicaciones. Afortunadamente, esta confirmación se puede completar por el
+                        teléfono y sólo toma aproximadamente un minuto.<br><br> Tu servicio de voz digital o VoIP de Frontier
+                        requiere el uso de electricidad para que funcione el servicio. Para hacer una llamada al 911 a través
+                        del servicio de voz digital o VoIP de Frontier durante un corte de electricidad, debes haber instalado
+                        ya un dispositivo de batería de respaldo. Una batería de respaldo completamente cargada te proveerá
+                        8 horas o más de servicio de voz básico, incluso el 911. También debes asegurarte de tener un teléfono
+                        que no sea inalámbrico y que no requiera electricidad para funcionar y que esté conectado al servicio
+                        de voz digital o VoIP de Frontier.<br><br> Si cambias de ubicación a otra donde tu servicio de voz
+                        digital o VoIP de Frontier no es usado, tu nueva localización puede no estar disponible a las autoridades
+                        del 911. Tu servicio de voz digital o VoIP de Frontier usa internet para completar llamadas al 911
+                        y otras llamadas.<br><br> Si tu servicio de internet no está en funcionamiento, no vas a poder llamar al
+                        911.
+                        <br><br> </h3>
+                </div>
+                <br>
+                <div class="container-fluid">
+                    <h3 ng-if="vm.question.language == 'e'">Do you understand these conditions associated with your Frontier Voice service as it relates to calling
+                        911?
+                    </h3>
+                    <h3 ng-if="vm.question.language == 's'">¿Entiendes las condiciones relacionadas con tu servicio de voz de Frontier tal como se relacionan a llamadas
+                        al 911?
+                    </h3>
+                    <div class="form-group">
+                        <button type="button" ng-model="e911" ng-click="vm.questionAnswer('e911','yes')" class="btn btn-success">Yes
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" ng-model="e911" class="btn btn-danger" ng-click="vm.questionAnswer('e911','no')">No
+                                </button>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="vm.customer && vm.customer.speakwith == 'yes' && vm.customer.e911 == 'yes'" class="panel panel-default">
+    <div class="panel-heading">&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+
+                    <div class="container-fluid">
+                        <h3 ng-if="vm.question.language == 'e'"> Are you 18 years old or older?</h3>
+                        <h3 ng-if="vm.question.language == 's'"> Tiene usted al menos 18 anos de edad?</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" ng-model="e18" ng-click="vm.questionAnswer('e18','yes')" class="btn btn-success">Yes
+                                </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" ng-model="e18" class="btn btn-danger" ng-click="vm.questionAnswer('e18','no')">No
+                                </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="vm.customer && vm.customer.speakwith == 'yes' && vm.customer.e911 == 'yes' && vm.customer.e18=='yes'" class="panel panel-default">
+    <div class="panel-heading">&nbsp;</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div ng-if="vm.question.language == 'e'" class="container-fluid">
+                        <h3>Thank you for your cooperation. The confirmation is complete. Have a nice day.</h3>
+                    </div>
+                    <div ng-if="vm.question.language == 's'" class="container-fluid">
+                        <h3>Gracias por su cooperación, la confirmación está completa. Que tenga un buen día.</h3>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.popup()">End Call
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Dispositions</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="container-fluid">
+                        <div class="form-group">
+                            <h3 ng-if="vm.question.language == 'e'"> I’m sorry. I am unable to complete this confirmation. Please contact Frontier directly regarding
+                                this change.</h3>
+                            <h3 ng-if="vm.question.language == 's'"> No, lo siento.  No voya poder completar la verificacion.  Por favor comonicase con Frontier referent este cambio.</h3>
+                        </div>
+                        <div class="form-group">
+                            Verified &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Verified">
+                        </div>
+                        <!--<div class="form-group">
+                            Incorrect Number &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Incorrect">
+                        </div>-->
+                        <div class="form-group">
+                            Customer Refused &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Refused">
+                        </div>
+                        <div class="form-group">
+                            Customer Changed Mind &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Changed">
+                        </div>
+                        <div class="form-group">
+                            Language Barrier &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Language">
+                        </div>
+                        <div class="form-group">
+                            Customer Confused &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Confused">
+                        </div>
+                        <div class="form-group">
+                            Does Not Agree &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Agree">
+                        </div>
+                        <div class="form-group">
+                            Not 18 Years or Older &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Older">
+                        </div>
+                        <div class="form-group">
+                            Customer Had Questions &nbsp;<input type="radio" name="disposition" ng-model="disposition" value="Questions">
+                        </div>
+                        <br>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="vm.update911(disposition)">Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!--<input type="submit" class="btn btn-default" data-dismiss="modal">Close</button>-->
+            </div>
+        </div>
+    </div>
+</div>

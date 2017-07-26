@@ -1,0 +1,185 @@
+<ion-view view-title="Current Utilities">
+  <ion-content>
+    <form name="vmDataEntry.CurrentUtilityInfo" novalidate
+          ng-submit="vmDataEntryLineItemCurrentUtilities.processCurrentUtilities(vmDataEntry.CurrentUtilityInfo)">
+      <ion-list>
+        <ion-item ng-repeat="utility in [{type:'electric',name:'Electric'},{type:'naturalGas',name:'Natural Gas'}]"
+                  ng-if="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram">
+          <h1>
+            <i class="icon"
+               ng-class="{'ion-outlet energized': utility.type === 'electric', 'ion-fireball assertive': utility.type === 'naturalGas', }"></i>
+            Current {{utility.name}}
+          </h1>
+          <ion-list>
+            <div class="item item-divider">
+              Service Details
+            </div>
+            <ion-item class="item-nested-padding">
+              <div class="list-borderless">
+                <label class="item item-input item-stacked-label">
+                  <span class="input-label">Utility Name</span>
+                  <input type="text" name="Provider"
+                         ng-disabled="true"
+                         ng-model="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.name"
+                         ng-required="true">
+                </label>
+                <label class="item item-input item-stacked-label" form-validation="vmDataEntry.CurrentUtilityInfo.AccountNumber">
+                  <span class="input-label">{{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberTypeName}}</span>
+                  <input type="text"
+                         ng-attr-placeholder="Enter {{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberTypeName}}"
+                         name="AccountNumber"
+                         autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                         ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.accountNumber"
+                         ng-attr-maxlength="{{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberLength}}"
+                         ng-minlength="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberLength"
+                         ng-maxlength="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberLength"
+                         ng-required="true"
+                         ng-keypress="filterValue($event)">
+                  <div class="form-messages item-text-wrap">
+                    <p class="muted">Length of
+                      {{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberTypeName}} is
+                      {{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.accountNumberLength}}
+                      characters.</p>
+                  </div>
+                </label>
+                <label class="item item-input item-stacked-label" form-validation="vmDataEntry.CurrentUtilityInfo.RelationshipToAuthorizedParty">
+                  Relationship to Account Holder
+                  <select name="RelationshipToAuthorizedParty" mobiscroll-select="vmDataEntry.mobiscroll.select"
+                          ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.relationshipToAuthorizedParty"
+                          ng-required="true">
+                    <option value="">Choose</option>
+                    <option ng-repeat="relationship in vmDataEntryLineItem.relationships"
+                            ng-value="relationship.relationshipName">
+                      {{relationship.relationshipName}}
+                    </option>
+                  </select>
+                </label>
+                <label ng-if="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.meterNumberLength"
+                       class="item item-input item-stacked-label">
+                  <span class="input-label">Meter</span>
+                  <input type="text" ng-attr-placeholder="Enter Meter" name="Meter"
+                         autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                         ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.meter"
+                         ng-attr-maxlength="{{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.meterNumberLength}}"
+                         ng-maxlength="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.meterNumberLength"
+                         ng-required="true">
+                  <div class="form-messages item-text-wrap">
+                    <p class="muted">Length of Meter is
+                      {{vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.meterNumberLength}}
+                      characters.</p>
+                  </div>
+                </label>
+                <label ng-if="vmDataEntryLineItem.lineItem.services[utility.type].utilityAndProgram.serviceReference"
+                       class="item item-input item-stacked-label">
+                  <span class="input-label">Service Reference</span>
+                  <input type="text" placeholder="Enter Service Reference" name="ServiceReference"
+                         autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                         ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.serviceReference"
+                         ng-required="true">
+                  <div class="form-messages item-text-wrap">
+                    <p class="muted"></p>
+                  </div>
+                </label>
+              </div>
+            </ion-item>
+
+            <div class="item item-divider">
+              Account Holder Information
+            </div>
+            <ion-item class="item-nested-padding">
+              <ion-list class="list-borderless">
+                <ion-toggle
+                  ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.nameSameAsAuthorizedParty"
+                  class=""
+                  toggle-class="toggle-balanced">Is the same as Authorized Party
+                </ion-toggle>
+
+                <div
+                  ng-if="vmDataEntryLineItem.lineItem.services[utility.type].currentService.nameSameAsAuthorizedParty">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" placeholder="Enter First Name" name="FirstName"
+                           autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                           ng-model="vmDataEntry.authorizedParty.firstName"
+                           ng-disabled="true"
+                           ng-required="true">
+                  </label>
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" placeholder="Enter Last Name" name="LastName"
+                           autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                           ng-model="vmDataEntry.authorizedParty.lastName"
+                           ng-disabled="true"
+                           ng-required="true">
+                  </label>
+                </div>
+
+                <div
+                  ng-if="!vmDataEntryLineItem.lineItem.services[utility.type].currentService.nameSameAsAuthorizedParty">
+                  <label class="item item-input item-stacked-label" form-validation="vmDataEntry.CurrentUtilityInfo.FirstName">
+                    <span class="input-label">First Name</span>
+                    <input type="text" placeholder="Enter First Name" name="FirstName"
+                           autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                           ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.firstName"
+                           ng-required="true">
+                  </label>
+                  <label class="item item-input item-stacked-label" form-validation="vmDataEntry.CurrentUtilityInfo.LastName">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" placeholder="Enter Last Name" name="LastName"
+                           autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false"
+                           ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.lastName"
+                           ng-required="true">
+                  </label>
+                </div>
+              </ion-list>
+            </ion-item>
+
+            <div class="item item-divider">
+              Billing Address
+            </div>
+            <ion-item class="item-nested-padding">
+              <ion-list class="list-borderless">
+                <ion-toggle
+                  ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.billingAddressSameAsServiceAddress"
+                  toggle-class="toggle-balanced">Is the same as Service Address
+                </ion-toggle>
+
+                <div
+                  ng-if="vmDataEntryLineItem.lineItem.services[utility.type].currentService.billingAddressSameAsServiceAddress">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Address</span>
+                    <input type="text" placeholder="Enter Address" name="Address" disabled="disabled"
+                           ng-value="vmDataEntryLineItem.lineItem.serviceLocation.formattedAddress">
+                  </label>
+                </div>
+
+                <div
+                  ng-if="!vmDataEntryLineItem.lineItem.services[utility.type].currentService.billingAddressSameAsServiceAddress">
+                  <label class="item item-input item-stacked-label" form-validation="vmDataEntry.CurrentUtilityInfo.Address">
+                    <span class="input-label">Address</span>
+                    <input type="text" placeholder="Enter Address" name="Address"
+                           g-places-autocomplete force-selection="true"
+                           options="vmDataEntry.autocompleteOptions"
+                           ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.manualLocation.address"
+                           ng-change="vmDataEntryLineItem.setBillingLocation(vmDataEntryLineItem.lineItem.services[utility.type].currentService.manualLocation.address, utility.type)"
+                           ng-required="true">
+                  </label>
+                    <label class="item item-input item-stacked-label">
+                      <span class="input-label">Address 2</span><br>
+                      <input class="text" placeholder="Address 2" name="Address2" ng-model="vmDataEntryLineItem.lineItem.services[utility.type].currentService.billingLocation.address2">
+                   </label>
+                </div>
+              </ion-list>
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </ion-list>
+
+      <ion-item class="item-icon-right" style="margin-top: 20px;"
+                ng-click="vmDataEntryLineItemCurrentUtilities.processCurrentUtilities(vmDataEntry.CurrentUtilityInfo)">
+        <span class="positive">Enrollment Summary</span>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </form>
+  </ion-content>
+</ion-view>

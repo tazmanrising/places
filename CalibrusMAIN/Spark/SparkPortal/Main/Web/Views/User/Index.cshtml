@@ -1,0 +1,26 @@
+﻿@using Calibrus.SparkPortal.ViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-info">User List</h2>
+
+<div >
+
+    @Html.Action("_Index")
+
+    <div class=" col-md-2 col-md-offset-5" >
+        <a href="@Url.Action("Create", new { controller = "User" })" class="btn btn-success">New User</a>
+    </div>
+
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/app/rateController.js"></script>
+    <script src="~/Scripts/app/vendorController.js"></script>
+    <script src="~/Scripts/app/userController.js"></script>
+}

@@ -1,0 +1,155 @@
+﻿<div class="row" ng-controller="dashboardController as vm">
+
+    <div class="col-md-12 well well-lg" >
+        <highchart id="chart2" config="vm.verifiedAccountsPieChartConfigD" class="col-md-3"></highchart>
+        <highchart id="chart2" config="vm.verifiedAccountsPieChartConfigW" class="col-md-3"></highchart>
+        <highchart id="chart2" config="vm.verifiedAccountsPieChartConfigM" class="col-md-3"></highchart>
+        <highchart id="chart2" config="vm.verifiedAccountsPieChartConfigY" class="col-md-3"></highchart>
+    </div>
+
+    <hr>
+
+    <div class="col-md-12 well well-lg">
+        <div class="col-md-3 pull-right">
+            <select class="form-control col-md-2" name="TopVendorsRange" ng-model="vm.range" ng-change="vm.rangeChanged(vm.range)">
+                <option value="D">Today</option>
+                <option value="W">WTD</option>
+                <option value="M">MTD</option>
+                <option value="Y">YTD</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-12 ">
+        <div class="alert alert-info">Top Vendors</div>
+        <table class="table table-bordered table-condensed table-striped" ng-if="vm.topVendorsStats">
+            <thead>
+                <tr class="bg-info">
+                    <th>Vendor Number</th>
+                    <th>Vendor Name</th>
+                    <th>Active Offices</th>
+                    <th style="width: 15%">Verified Accounts</th>
+                    <th style="width: 15%">Non-Verified Accounts</th>
+                    <th style="width: 15%">Verified %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stat in vm.topVendorsStats" ng-init="vm.vendorVerifiedTotal = vm.vendorVerifiedTotal + stat.VerifiedAccounts; vm.vendorNonVerifiedTotal = vm.vendorNonVerifiedTotal + stat.NonVerifiedAccounts">
+                    <td>{{stat.VendorNumber}}</td>
+                    <td>{{stat.VendorName}}</td>
+                    <td>{{stat.ActiveOffices}}</td>
+                    <td class="bg-success">{{stat.VerifiedAccounts}}</td>
+                    <td class="bg-danger">{{stat.NonVerifiedAccounts}}</td>
+                    <td>{{(stat.VerifiedAccounts/(stat.VerifiedAccounts+stat.NonVerifiedAccounts))*100 | number : 2}}%</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th class="bg-success">{{vm.vendorVerifiedTotal}}</th>
+                    <th class="bg-danger">{{vm.vendorNonVerifiedTotal}}</th>
+                    <th>{{(vm.vendorVerifiedTotal/(vm.vendorVerifiedTotal+vm.vendorNonVerifiedTotal))*100 | number : 2}}%</th>
+                </tr>
+            </tfoot>
+        </table>  
+        <div class="text-center" ng-if="vm.topVendorsloading==true">
+            <i class="fa fa-2x fa-spinner fa-pulse"></i>
+        </div>
+    </div>
+
+    <div class="col-md-12 ">
+        <div class="alert alert-info">Top Offices</div>
+        <table class="table table-bordered table-condensed table-striped" ng-if="vm.topOfficesStats">
+            <thead>
+                <tr class="bg-info">
+                    <th>Office Name</th>
+                    <th>Vendor Name</th>
+                    <th>Active Users</th>
+                    <th style="width: 15%">Verified Accounts</th>
+                    <th style="width: 15%">Non-Verified Accounts</th>
+                    <th style="width: 15%">Verified %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stat in vm.topOfficesStats" ng-init="vm.officeVerifiedTotal = vm.officeVerifiedTotal + stat.VerifiedAccounts; vm.officeNonVerifiedTotal = vm.officeNonVerifiedTotal + stat.NonVerifiedAccounts">
+                    <td>{{stat.OfficeName}}</td>
+                    <td>{{stat.VendorName}}</td>
+                    <td>{{stat.ActiveUsers}}</td>
+                    <td class="bg-success">{{stat.VerifiedAccounts}}</td>
+                    <td class="bg-danger">{{stat.NonVerifiedAccounts}}</td>
+                    <td>{{(stat.VerifiedAccounts/(stat.VerifiedAccounts+stat.NonVerifiedAccounts))*100 | number : 2}}%</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th class="bg-success">{{vm.officeVerifiedTotal}}</th>
+                    <th class="bg-danger">{{vm.officeNonVerifiedTotal}}</th>
+                    <th>{{(vm.officeVerifiedTotal/(vm.officeVerifiedTotal+vm.officeNonVerifiedTotal))*100 | number : 2}}%</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center" ng-if="vm.topOfficesloading==true">
+            <i class="fa fa-2x fa-spinner fa-pulse"></i>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="alert alert-info">Top Agents</div>
+        <table class="table table-bordered table-condensed table-striped table-hover" ng-if="vm.topUsersStats">
+            <thead>
+                <tr class="bg-info">
+                    <th>Spark ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Office Name</th>
+                    <th>Vendor Name</th>
+                    <th style="width: 15%">Verified Accounts</th>
+                    <th style="width: 15%">Non-Verified Accounts</th>
+                    <th style="width: 15%">Verified %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stat in vm.topUsersStats" ng-init="vm.userVerifiedTotal = vm.userVerifiedTotal + stat.VerifiedAccounts; vm.userNonVerifiedTotal = vm.userNonVerifiedTotal + stat.NonVerifiedAccounts">
+                    <td>{{stat.SparkId}}</td>
+                    <td>{{stat.FirstName}}</td>
+                    <td>{{stat.LastName}}</td>
+                    <td>{{stat.OfficeName}}</td>
+                    <td>{{stat.VendorName}}</td>
+                    <td class="bg-success">{{stat.VerifiedAccounts}}</td>
+                    <td class="bg-danger">{{stat.NonVerifiedAccounts}}</td>
+                    <td>{{(stat.VerifiedAccounts/(stat.VerifiedAccounts+stat.NonVerifiedAccounts))*100 | number : 2}}%</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <th class="bg-success">{{vm.userVerifiedTotal}}</th>
+                    <th class="bg-danger">{{vm.userNonVerifiedTotal}}</th>
+                    <th>{{(vm.userVerifiedTotal/(vm.userVerifiedTotal+vm.userNonVerifiedTotal))*100 | number : 2}}%</th>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center" ng-if="vm.topUsersloading==true">
+            <i class="fa fa-2x fa-spinner fa-pulse"></i>
+        </div>
+    </div>
+
+
+    
+</div>
+
+@section scripts {
+
+    
+
+   
+}

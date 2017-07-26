@@ -1,0 +1,616 @@
+﻿/* DEFAULTS
+----------------------------------------------------------*/
+
+body
+{
+    background-color: #006699;
+    font-family: 'Century Gothic' , Arial, Helvetica, Verdana, sans-serif;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+a:link, a:visited
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #034af3;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    width: 1024px;
+    background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 1px solid #496077;
+}
+
+.header
+{
+    margin: 0px 0px;
+    padding: 0px 0px;
+    width: 100%;
+    background-color: Silver;
+    border-bottom-style: solid;
+    border-bottom-color: #496077;
+    border-bottom-width: thin;
+}
+/*
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 1.5em;
+}
+*/
+.main
+{
+    padding: 0px 12px;
+    margin: 0px 8px 8px 8px;
+   /* min-height: 250px;*/
+}
+
+
+
+.leftCol
+{
+    padding: 6px 0px;
+    margin: 12px 8px 8px 8px;
+    width: 200px;
+    min-height: 200px;
+}
+
+.footer
+{
+    color: #4e5766;
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+}
+
+
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.hideSkiplink
+{
+    /*background-color:#3a4f63;*/
+    width: 100%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.menu
+{
+    margin: 4px 0px 4px 8px;
+    font-size: .75em;
+    color: Red;
+}
+
+.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+.menu ul li a, .menu ul li a:visited
+{
+    background-color: #465c71;
+    border: 1px #4e667d solid;
+    color: #F7F7F7;
+    display: block;
+    line-height: 1.0em;
+    padding: 4px 10px;
+    margin-left: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.menu ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+fieldset p
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline
+{
+    display: inline;
+}
+
+legend
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input.textEntry
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+
+.clear
+{
+    clear: both;
+}
+
+.title
+{
+    /*display: block;*/
+    float: left;
+    text-align: left;
+    width: auto;
+    margin: 5px 0px 0px 10px;
+}
+
+.links
+{
+    /*display: block;*/
+    width: 350px;
+}
+/*
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+*/
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+/* CUSTOM  
+----------------------------------------------------------*/
+
+ol
+{
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.loginContainer
+{
+    width: 320px;
+    margin: 0 auto;
+}
+
+.login
+{
+    padding: 0px 0px 0px 0px;
+    margin: 20px auto 0px auto;
+    width: 350px;
+    height: 150px;
+    background-color: White;
+    border: 1px solid #496077;
+    text-align: center;
+}
+
+.mainContainer
+{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.mainTable
+{
+    border-style: solid;
+    border-width: thin;
+    border-color: Black;
+    text-align: left;
+    background-color: White;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    width: 800px;
+}
+
+.tnTable
+{
+    border-style: none;
+    text-align: left;
+    background-color: White;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    width: 600px;
+}
+
+.tnColumn
+{
+    width: 25%;
+}
+
+.displayContainer
+{
+    width: 585px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.displayTable
+{
+    border-left-color: #000000;
+    border-bottom-color: #000000;
+    width: 585px;
+    border-top-style: solid;
+    border-top-color: #000000;
+    border-right-style: solid;
+    border-left-style: solid;
+    background-color: #ffffff;
+    border-right-color: #000000;
+    border-bottom-style: solid;
+    text-align: center;
+}
+
+.loginHeader
+{
+    text-align: center; /*background-color: #006633;*/
+    background-color: Silver;
+    border-bottom-style: solid;
+    border-bottom-color: #496077;
+    border-bottom-width: thin;
+    font-size: 1.1em;
+    font-weight: 600;
+    font-variant: small-caps;
+    color: White;
+    padding: 5px 0px 5px 0px;
+}
+
+.footer
+{
+    border-top-style: solid;
+    border-top-color: Black;
+    border-top-width: thin;
+    text-align: right;
+}
+
+.loginContent
+{
+    width: 50%;
+    text-align: right;
+    border-right-style: solid;
+    border-right-color: Black;
+    border-right-width: thin;
+    padding-right: 10px;
+}
+
+.loginDataentry
+{
+    text-align: left;
+    padding-right: 10px;
+}
+
+.content
+{
+    display: inline;
+    width: 135px;
+    float: left;
+}
+
+.dataentry
+{
+    width: 285px;
+    text-align: left;
+    padding-right: 10px;
+    display: inline;
+    float: left;
+}
+
+.formRow
+{
+    display: block;
+    padding-top: 7px;
+}
+
+.header-text
+{
+    font-size: larger;
+    font-weight: bold;
+    font-variant: normal;
+}
+
+.inputText
+{
+    font-family: 'Century Gothic';
+    font-size: 14px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.recordlocator-text
+{
+    font-size: xx-large;
+    font-weight: bold;
+    font-variant: normal;
+    color: #006633;
+}
+
+.submitButton
+{
+    margin: 15px 0px 0px 0px;
+    background-color: #666666;
+    color: White; /*border: thin solid #000000;*/
+    text-align: center;
+}
+
+.standardButton
+{
+    background-color: #CCCCCC;
+    border: thin solid #000000;
+    text-align: center;
+}
+
+
+.detailsLink
+{
+    cursor: hand;
+    color: #000066;
+    text-decoration: underline;
+    font-size: small;
+}
+
+
+.pnlContainer
+{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 510px;
+    display: block;
+}
+
+.pnlerror
+{
+    padding: 5px;
+    border: 1px dashed #808080;
+    margin-top: 10px;
+    background-color: #FFFFDD;
+    width: 500px;
+}
+
+.errorlist
+{
+    margin: 0px 0px 0px 20px;
+}
+
+.transcribeDropDown
+{
+    font-family: 'Century Gothic';
+    font-size: 12px;
+}
+
+.MyCalendar .ajax__calendar_container
+{
+    border: 1px solid #646464;
+    background-color: White;
+    color: Black;
+    font-family: 'Century Gothic';
+    margin: 0px;
+    padding: 0px;
+}
+.MyCalendar .ajax__calendar_header
+{
+    margin: 0px;
+    padding: 2px 0px;
+    text-align: center;
+    background-color: #465c71;
+    border-bottom-style: solid;
+    border-bottom-color: Black;
+    border-bottom-width: thin;
+    border-left-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    vertical-align: bottom;
+    font-family: 'Century Gothic';
+    color: White;
+}
+.MyCalendar .ajax__calendar_other .ajax__calendar_day, .MyCalendar .ajax__calendar_other .ajax__calendar_year
+{
+    color: black;
+    font-family: 'Century Gothic';
+}
+.MyCalendar .ajax__calendar_hover .ajax__calendar_day, .MyCalendar .ajax__calendar_hover .ajax__calendar_month, .MyCalendar .ajax__calendar_hover .ajax__calendar_year
+{
+    background-color: #666666;
+    color: White;
+    font-family: 'Century Gothic';
+}
+.MyCalendar .ajax__calendar_active .ajax__calendar_day, .MyCalendar .ajax__calendar_active .ajax__calendar_month, .MyCalendar .ajax__calendar_active .ajax__calendar_year
+{
+    background-color: Silver;
+    color: White;
+    font-weight: bold;
+    font-family: 'Century Gothic';
+}
+.MyCalendar .ajax__calendar_today
+{
+    font-weight: bold;
+    border-style: dotted;
+    border-width: thin;
+    border-color: Black;
+    background-color: #E3E3DB;
+    font-family: 'Century Gothic';
+    vertical-align: middle;
+}
+
+.modalBackground
+{
+    background-color: #000000;
+    filter: alpha(opacity=90);
+    opacity: 0.8;
+}
+
+.ModalWindow
+{
+    border: solid 1px #c0c0c0;
+    background: #f0f0f0;
+    padding: 0px 10px 10px 10px;
+    position: absolute;
+    top: -1000px;
+}
+
+.ModalLabel
+{
+    font-weight: bold;
+}
+
+.ServiceList
+{
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+
+

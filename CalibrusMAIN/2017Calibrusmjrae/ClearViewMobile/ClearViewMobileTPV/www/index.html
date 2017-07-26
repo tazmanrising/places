@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+  <base href="/">
+
+  <link rel="manifest" href="manifest.json">
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
+
+
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="lib/angular-google-places-autocomplete/src/autocomplete.css" rel="stylesheet">
+  <link href="lib/angular-liveaddress/liveaddress.css" rel="stylesheet">
+  <link href="lib/mobiscroll.custom/css/mobiscroll.custom-3.0.0-beta6.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+  <link href="css/ionic.app.css" rel="stylesheet">
+  -->
+
+  <script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCVWozJgXKF65-HdpAZ8y_hg-oHKc6-dJY"></script>
+  <script src="lib/moment/moment.js"></script>
+  <script src="lib/signature_pad/signature_pad.js"></script>
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="lib/angular-google-places-autocomplete/src/autocomplete.js"></script>
+  <script src="lib/angular-liveaddress/liveaddress.js"></script>
+  <script src="lib/angular-signature/src/signature.js"></script>
+  <script src="lib/angular-cache/dist/angular-cache.js"></script>
+  <script src="lib/mobiscroll.custom/js/mobiscroll.custom-3.0.0-beta6.min.js"></script>
+
+  <script src="js/app.js?v=2"></script>
+  <script src="js/routes.js"></script>
+
+  <script src="js/controllers/agent-info.js"></script>
+  <script src="js/controllers/app.js"></script>
+  <script src="js/controllers/data-entry.js?v=3"></script>
+  <script src="js/controllers/data-entry-line-item.js"></script>
+  <script src="js/controllers/data-entry-line-item-address.js"></script>
+  <script src="js/controllers/data-entry-line-item-address-gps.js"></script>
+  <script src="js/controllers/data-entry-line-item-current-utilities.js"></script>
+  <script src="js/controllers/data-entry-line-item-utilities-and-programs.js"></script>
+  <script src="js/controllers/data-entry-summary-and-signature.js"></script>
+  <script src="js/controllers/home.js?v=2"></script>
+  <script src="js/controllers/logon.js?v=2"></script>
+
+  <script src="js/directives/form-validation.js"></script>
+  <script src="js/directives/utility-program-pricing.js"></script>
+
+  <script src="js/services/address.js"></script>
+  <script src="js/services/caches.js"></script>
+  <script src="js/services/calibrus-clearview.js?v=2"></script>
+  <script src="js/services/enrollment.js"></script>
+  <script src="js/services/form-validation.js"></script>
+  <script src="js/services/geolocation.js"></script>
+  <script src="js/services/google.js?v=2"></script>
+  <script src="js/services/ip-info.js"></script>
+  <script src="js/services/maps.js"></script>
+  <script src="js/services/mobiscroll.js"></script>
+  <script src="js/services/smarty-streets.js"></script>
+  <script src="js/services/usa-states.js"></script>
+  <script src="js/services/user.js?v=2"></script>
+  <script src="js/factories/userFactory.js?v=3"></script>
+</head>
+
+<body ng-app="calibrus" ng-cloak>
+<div ng-if="$root.hasGeolocation">
+  <ion-nav-view></ion-nav-view>
+</div>
+<div ng-if="!$root.hasGeolocation" class="pane">
+  <ion-content scroll="false">
+    <div class="row row-center" style="height: 100%;">
+      <div class="col text-center">
+        <h1 class="assertive">Oh No!</h1>
+        <p>This browser doesn't support geolocation!<br>You'll need to open this app in a browser like
+          chrome or firefox.</p>
+      </div>
+    </div>
+  </ion-content>
+</div>
+</body>
+</html>

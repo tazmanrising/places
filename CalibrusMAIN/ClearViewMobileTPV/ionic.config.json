@@ -1,0 +1,12 @@
+{
+  "name": "CALiBRUS",
+  "type": "ionic1",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:13497/api"
+    }
+  ],
+  "watchPatterns": []
+}

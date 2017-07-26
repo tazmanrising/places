@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html ng-app="qaManager">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>QA Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!--bower:css-->
+  <link rel="stylesheet" href="public/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <!--endbower-->
+  <!-- bower:js -->
+  <script src="public/lib/jquery/dist/jquery.js"></script>
+  <script src="public/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="public/lib/angular/angular.js"></script>
+  <script src="public/lib/angular-route/angular-route.js"></script>
+  <!-- endbower -->
+  <!-- inject:css -->
+
+  <link rel="stylesheet" href="/public/css/styles.css">
+
+  <!-- endinject -->
+
+
+  <style type="text/css">
+    .navbar {
+      background-color: #0071C5;
+      background-image: none;
+      color: #FFFFFF !important;
+    }
+    
+    .navbar-custom {
+      color: #FFFFFF !important;
+    }
+    
+    .navbar a {
+      color: white !important;
+    }
+    
+    ul.nav a:hover {
+      color: #A8A8A8 !important;
+    }
+  </style>
+
+
+  <!-- inject:js -->
+
+  <script src="/public/js/app.js"></script>
+
+  <script src="/app.js"></script>
+
+  <script src="/src/services/qaService.js"></script>
+
+  <script src="/src/controllers/hotListController.js"></script>
+
+  <script src="/src/controllers/qaController.js"></script>
+
+  <!-- endinject -->
+
+
+  <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+
+
+</head>
+
+<body>
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+
+            <div class="navbar-header">
+
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<img alt="Brand" src="images/intel-logo-white100.png" style="height: 28px; display: inline-block; margin-top: 5px">-->
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-custom">
+                    <li><a ui-sref="deviceList">QA Manager</a></li>
+                    <li>
+                        <a ui-sref="deviceEdit.info({deviceId:0})">
+                            <i class="glyphicon glyphicon-plus"></i> Add Agent</a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand" ui-sref="home">QA...</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+    <div class="container">
+        <div class="ui-view">
+            <!-- ui-view directive  or data-   so   data-ui-view -->
+
+        </div>
+    </div>
+  
+    <div ng-view></div>
+  
+
+
+
+</body>
+
+</html>

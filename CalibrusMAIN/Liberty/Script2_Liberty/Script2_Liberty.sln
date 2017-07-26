@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Script2_Liberty", "Script2_Liberty\Script2_Liberty.csproj", "{110745E8-6004-46CA-8499-6977998C0408}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Script2_Liberty.Data", "Script2_Liberty.Data\Script2_Liberty.Data.csproj", "{B2AC5583-3587-478F-90DF-A0B835328B5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Script2_Liberty.ConsoleTester", "Script2_Liberty.ConsoleTester\Script2_Liberty.ConsoleTester.csproj", "{65F15D5C-E05D-4410-A153-09F5E315CD94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{110745E8-6004-46CA-8499-6977998C0408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{110745E8-6004-46CA-8499-6977998C0408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{110745E8-6004-46CA-8499-6977998C0408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{110745E8-6004-46CA-8499-6977998C0408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2AC5583-3587-478F-90DF-A0B835328B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2AC5583-3587-478F-90DF-A0B835328B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2AC5583-3587-478F-90DF-A0B835328B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2AC5583-3587-478F-90DF-A0B835328B5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65F15D5C-E05D-4410-A153-09F5E315CD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65F15D5C-E05D-4410-A153-09F5E315CD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65F15D5C-E05D-4410-A153-09F5E315CD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65F15D5C-E05D-4410-A153-09F5E315CD94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://calibrus.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Script2_Liberty\\Script2_Liberty.csproj
+		SccProjectName1 = Script2_Liberty
+		SccLocalPath1 = Script2_Liberty
+		SccProjectUniqueName2 = Script2_Liberty.Data\\Script2_Liberty.Data.csproj
+		SccProjectName2 = Script2_Liberty.Data
+		SccLocalPath2 = Script2_Liberty.Data
+		SccProjectUniqueName3 = Script2_Liberty.ConsoleTester\\Script2_Liberty.ConsoleTester.csproj
+		SccProjectName3 = Script2_Liberty.ConsoleTester
+		SccLocalPath3 = Script2_Liberty.ConsoleTester
+	EndGlobalSection
+EndGlobal

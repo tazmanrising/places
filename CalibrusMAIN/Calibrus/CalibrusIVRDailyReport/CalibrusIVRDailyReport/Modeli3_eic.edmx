@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="i3_eicModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2000" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="i3_eicModelStoreContainer">
+          <EntitySet Name="CallDetail" EntityType="i3_eicModel.Store.CallDetail" store:Type="Tables" store:Schema="dbo" store:Name="CallDetail">
+            <DefiningQuery>SELECT 
+      [CallDetail].[CallId] AS [CallId], 
+      [CallDetail].[CallType] AS [CallType], 
+      [CallDetail].[CallDirection] AS [CallDirection], 
+      [CallDetail].[LineId] AS [LineId], 
+      [CallDetail].[StationId] AS [StationId], 
+      [CallDetail].[LocalUserId] AS [LocalUserId], 
+      [CallDetail].[LocalNumber] AS [LocalNumber], 
+      [CallDetail].[LocalName] AS [LocalName], 
+      [CallDetail].[RemoteNumber] AS [RemoteNumber], 
+      [CallDetail].[RemoteNumberCountry] AS [RemoteNumberCountry], 
+      [CallDetail].[RemoteNumberLoComp1] AS [RemoteNumberLoComp1], 
+      [CallDetail].[RemoteNumberLoComp2] AS [RemoteNumberLoComp2], 
+      [CallDetail].[RemoteNumberFmt] AS [RemoteNumberFmt], 
+      [CallDetail].[RemoteNumberCallId] AS [RemoteNumberCallId], 
+      [CallDetail].[RemoteName] AS [RemoteName], 
+      [CallDetail].[InitiatedDate] AS [InitiatedDate], 
+      [CallDetail].[InitiatedDateTimeGmt] AS [InitiatedDateTimeGmt], 
+      [CallDetail].[ConnectedDate] AS [ConnectedDate], 
+      [CallDetail].[ConnectedDateTimeGmt] AS [ConnectedDateTimeGmt], 
+      [CallDetail].[TerminatedDate] AS [TerminatedDate], 
+      [CallDetail].[TerminatedDateTimeGmt] AS [TerminatedDateTimeGmt], 
+      [CallDetail].[CallDurationSeconds] AS [CallDurationSeconds], 
+      [CallDetail].[HoldDurationSeconds] AS [HoldDurationSeconds], 
+      [CallDetail].[LineDurationSeconds] AS [LineDurationSeconds], 
+      [CallDetail].[DNIS] AS [DNIS], 
+      [CallDetail].[CallEventLog] AS [CallEventLog], 
+      [CallDetail].[CustomNum1] AS [CustomNum1], 
+      [CallDetail].[CustomNum2] AS [CustomNum2], 
+      [CallDetail].[CustomNum3] AS [CustomNum3], 
+      [CallDetail].[CustomString1] AS [CustomString1], 
+      [CallDetail].[CustomString2] AS [CustomString2], 
+      [CallDetail].[CustomString3] AS [CustomString3], 
+      [CallDetail].[CustomDateTime] AS [CustomDateTime], 
+      [CallDetail].[CustomDateTimeGmt] AS [CustomDateTimeGmt], 
+      [CallDetail].[InteractionType] AS [InteractionType], 
+      [CallDetail].[AccountCode] AS [AccountCode], 
+      [CallDetail].[PurposeCode] AS [PurposeCode], 
+      [CallDetail].[DispositionCode] AS [DispositionCode], 
+      [CallDetail].[CallNote] AS [CallNote], 
+      [CallDetail].[SiteId] AS [SiteId], 
+      [CallDetail].[SubSiteId] AS [SubSiteId], 
+      [CallDetail].[I3TimeStampGMT] AS [I3TimeStampGMT], 
+      [CallDetail].[WrapUpCode] AS [WrapUpCode]
+      FROM [dbo].[CallDetail] AS [CallDetail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'i3_eic.dbo.CallDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CallDetail">
+          <Key>
+            <PropertyRef Name="CallType" />
+            <PropertyRef Name="CallDirection" />
+            <PropertyRef Name="LineId" />
+            <PropertyRef Name="StationId" />
+            <PropertyRef Name="LocalUserId" />
+            <PropertyRef Name="LocalNumber" />
+            <PropertyRef Name="LocalName" />
+            <PropertyRef Name="RemoteNumber" />
+            <PropertyRef Name="RemoteNumberCountry" />
+            <PropertyRef Name="RemoteNumberLoComp1" />
+            <PropertyRef Name="RemoteNumberLoComp2" />
+            <PropertyRef Name="RemoteNumberFmt" />
+            <PropertyRef Name="RemoteNumberCallId" />
+            <PropertyRef Name="RemoteName" />
+            <PropertyRef Name="InitiatedDate" />
+            <PropertyRef Name="InitiatedDateTimeGmt" />
+            <PropertyRef Name="ConnectedDate" />
+            <PropertyRef Name="ConnectedDateTimeGmt" />
+            <PropertyRef Name="TerminatedDate" />
+            <PropertyRef Name="TerminatedDateTimeGmt" />
+            <PropertyRef Name="CallDurationSeconds" />
+            <PropertyRef Name="HoldDurationSeconds" />
+            <PropertyRef Name="LineDurationSeconds" />
+            <PropertyRef Name="DNIS" />
+            <PropertyRef Name="CallEventLog" />
+            <PropertyRef Name="CustomNum1" />
+            <PropertyRef Name="CustomNum2" />
+            <PropertyRef Name="CustomNum3" />
+            <PropertyRef Name="CustomString1" />
+            <PropertyRef Name="CustomString2" />
+            <PropertyRef Name="CustomString3" />
+            <PropertyRef Name="CustomDateTime" />
+            <PropertyRef Name="CustomDateTimeGmt" />
+            <PropertyRef Name="InteractionType" />
+            <PropertyRef Name="SiteId" />
+            <PropertyRef Name="SubSiteId" />
+            <PropertyRef Name="I3TimeStampGMT" />
+          </Key>
+          <Property Name="CallId" Type="char" MaxLength="18" />
+          <Property Name="CallType" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="CallDirection" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="LineId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StationId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LocalUserId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LocalNumber" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="LocalName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RemoteNumber" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RemoteNumberCountry" Type="smallint" Nullable="false" />
+          <Property Name="RemoteNumberLoComp1" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="RemoteNumberLoComp2" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="RemoteNumberFmt" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RemoteNumberCallId" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RemoteName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="InitiatedDate" Type="datetime" Nullable="false" />
+          <Property Name="InitiatedDateTimeGmt" Type="datetime" Nullable="false" />
+          <Property Name="ConnectedDate" Type="datetime" Nullable="false" />
+          <Property Name="ConnectedDateTimeGmt" Type="datetime" Nullable="false" />
+          <Property Name="TerminatedDate" Type="datetime" Nullable="false" />
+          <Property Name="TerminatedDateTimeGmt" Type="datetime" Nullable="false" />
+          <Property Name="CallDurationSeconds" Type="int" Nullable="false" />
+          <Property Name="HoldDurationSeconds" Type="int" Nullable="false" />
+          <Property Name="LineDurationSeconds" Type="int" Nullable="false" />
+          <Property Name="DNIS" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CallEventLog" Type="varchar" Nullable="false" MaxLength="2000" />
+          <Property Name="CustomNum1" Type="int" Nullable="false" />
+          <Property Name="CustomNum2" Type="int" Nullable="false" />
+          <Property Name="CustomNum3" Type="int" Nullable="false" />
+          <Property Name="CustomString1" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomString2" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomString3" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CustomDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CustomDateTimeGmt" Type="datetime" Nullable="false" />
+          <Property Name="InteractionType" Type="int" Nullable="false" />
+          <Property Name="AccountCode" Type="varchar" MaxLength="50" />
+          <Property Name="PurposeCode" Type="int" />
+          <Property Name="DispositionCode" Type="int" />
+          <Property Name="CallNote" Type="varchar" MaxLength="1024" />
+          <Property Name="SiteId" Type="smallint" Nullable="false" />
+          <Property Name="SubSiteId" Type="smallint" Nullable="false" />
+          <Property Name="I3TimeStampGMT" Type="datetime" Nullable="false" />
+          <Property Name="WrapUpCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="i3_eicModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="i3_eicEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="CallDetails" EntityType="i3_eicModel.CallDetail" />
+        </EntityContainer>
+        <EntityType Name="CallDetail">
+          <Key>
+            <PropertyRef Name="CallType" />
+            <PropertyRef Name="CallDirection" />
+            <PropertyRef Name="LineId" />
+            <PropertyRef Name="StationId" />
+            <PropertyRef Name="LocalUserId" />
+            <PropertyRef Name="LocalNumber" />
+            <PropertyRef Name="LocalName" />
+            <PropertyRef Name="RemoteNumber" />
+            <PropertyRef Name="RemoteNumberCountry" />
+            <PropertyRef Name="RemoteNumberLoComp1" />
+            <PropertyRef Name="RemoteNumberLoComp2" />
+            <PropertyRef Name="RemoteNumberFmt" />
+            <PropertyRef Name="RemoteNumberCallId" />
+            <PropertyRef Name="RemoteName" />
+            <PropertyRef Name="InitiatedDate" />
+            <PropertyRef Name="InitiatedDateTimeGmt" />
+            <PropertyRef Name="ConnectedDate" />
+            <PropertyRef Name="ConnectedDateTimeGmt" />
+            <PropertyRef Name="TerminatedDate" />
+            <PropertyRef Name="TerminatedDateTimeGmt" />
+            <PropertyRef Name="CallDurationSeconds" />
+            <PropertyRef Name="HoldDurationSeconds" />
+            <PropertyRef Name="LineDurationSeconds" />
+            <PropertyRef Name="DNIS" />
+            <PropertyRef Name="CallEventLog" />
+            <PropertyRef Name="CustomNum1" />
+            <PropertyRef Name="CustomNum2" />
+            <PropertyRef Name="CustomNum3" />
+            <PropertyRef Name="CustomString1" />
+            <PropertyRef Name="CustomString2" />
+            <PropertyRef Name="CustomString3" />
+            <PropertyRef Name="CustomDateTime" />
+            <PropertyRef Name="CustomDateTimeGmt" />
+            <PropertyRef Name="InteractionType" />
+            <PropertyRef Name="SiteId" />
+            <PropertyRef Name="SubSiteId" />
+            <PropertyRef Name="I3TimeStampGMT" />
+          </Key>
+          <Property Type="String" Name="CallId" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="CallType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CallDirection" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LineId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StationId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalUserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocalName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RemoteNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="RemoteNumberCountry" Nullable="false" />
+          <Property Type="String" Name="RemoteNumberLoComp1" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RemoteNumberLoComp2" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RemoteNumberFmt" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RemoteNumberCallId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RemoteName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="InitiatedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="InitiatedDateTimeGmt" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ConnectedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ConnectedDateTimeGmt" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="TerminatedDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="TerminatedDateTimeGmt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CallDurationSeconds" Nullable="false" />
+          <Property Type="Int32" Name="HoldDurationSeconds" Nullable="false" />
+          <Property Type="Int32" Name="LineDurationSeconds" Nullable="false" />
+          <Property Type="String" Name="DNIS" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CallEventLog" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CustomNum1" Nullable="false" />
+          <Property Type="Int32" Name="CustomNum2" Nullable="false" />
+          <Property Type="Int32" Name="CustomNum3" Nullable="false" />
+          <Property Type="String" Name="CustomString1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomString2" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomString3" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CustomDateTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="CustomDateTimeGmt" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="InteractionType" Nullable="false" />
+          <Property Type="String" Name="AccountCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PurposeCode" />
+          <Property Type="Int32" Name="DispositionCode" />
+          <Property Type="String" Name="CallNote" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="SiteId" Nullable="false" />
+          <Property Type="Int16" Name="SubSiteId" Nullable="false" />
+          <Property Type="DateTime" Name="I3TimeStampGMT" Nullable="false" Precision="3" />
+          <Property Type="String" Name="WrapUpCode" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="i3_eicModelStoreContainer" CdmEntityContainer="i3_eicEntities" >
+          <EntitySetMapping Name="CallDetails">
+            <EntityTypeMapping TypeName="i3_eicModel.CallDetail">
+              <MappingFragment StoreEntitySet="CallDetail">
+                <ScalarProperty Name="WrapUpCode" ColumnName="WrapUpCode" />
+                <ScalarProperty Name="I3TimeStampGMT" ColumnName="I3TimeStampGMT" />
+                <ScalarProperty Name="SubSiteId" ColumnName="SubSiteId" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="CallNote" ColumnName="CallNote" />
+                <ScalarProperty Name="DispositionCode" ColumnName="DispositionCode" />
+                <ScalarProperty Name="PurposeCode" ColumnName="PurposeCode" />
+                <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+                <ScalarProperty Name="InteractionType" ColumnName="InteractionType" />
+                <ScalarProperty Name="CustomDateTimeGmt" ColumnName="CustomDateTimeGmt" />
+                <ScalarProperty Name="CustomDateTime" ColumnName="CustomDateTime" />
+                <ScalarProperty Name="CustomString3" ColumnName="CustomString3" />
+                <ScalarProperty Name="CustomString2" ColumnName="CustomString2" />
+                <ScalarProperty Name="CustomString1" ColumnName="CustomString1" />
+                <ScalarProperty Name="CustomNum3" ColumnName="CustomNum3" />
+                <ScalarProperty Name="CustomNum2" ColumnName="CustomNum2" />
+                <ScalarProperty Name="CustomNum1" ColumnName="CustomNum1" />
+                <ScalarProperty Name="CallEventLog" ColumnName="CallEventLog" />
+                <ScalarProperty Name="DNIS" ColumnName="DNIS" />
+                <ScalarProperty Name="LineDurationSeconds" ColumnName="LineDurationSeconds" />
+                <ScalarProperty Name="HoldDurationSeconds" ColumnName="HoldDurationSeconds" />
+                <ScalarProperty Name="CallDurationSeconds" ColumnName="CallDurationSeconds" />
+                <ScalarProperty Name="TerminatedDateTimeGmt" ColumnName="TerminatedDateTimeGmt" />
+                <ScalarProperty Name="TerminatedDate" ColumnName="TerminatedDate" />
+                <ScalarProperty Name="ConnectedDateTimeGmt" ColumnName="ConnectedDateTimeGmt" />
+                <ScalarProperty Name="ConnectedDate" ColumnName="ConnectedDate" />
+                <ScalarProperty Name="InitiatedDateTimeGmt" ColumnName="InitiatedDateTimeGmt" />
+                <ScalarProperty Name="InitiatedDate" ColumnName="InitiatedDate" />
+                <ScalarProperty Name="RemoteName" ColumnName="RemoteName" />
+                <ScalarProperty Name="RemoteNumberCallId" ColumnName="RemoteNumberCallId" />
+                <ScalarProperty Name="RemoteNumberFmt" ColumnName="RemoteNumberFmt" />
+                <ScalarProperty Name="RemoteNumberLoComp2" ColumnName="RemoteNumberLoComp2" />
+                <ScalarProperty Name="RemoteNumberLoComp1" ColumnName="RemoteNumberLoComp1" />
+                <ScalarProperty Name="RemoteNumberCountry" ColumnName="RemoteNumberCountry" />
+                <ScalarProperty Name="RemoteNumber" ColumnName="RemoteNumber" />
+                <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+                <ScalarProperty Name="LocalNumber" ColumnName="LocalNumber" />
+                <ScalarProperty Name="LocalUserId" ColumnName="LocalUserId" />
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="LineId" ColumnName="LineId" />
+                <ScalarProperty Name="CallDirection" ColumnName="CallDirection" />
+                <ScalarProperty Name="CallType" ColumnName="CallType" />
+                <ScalarProperty Name="CallId" ColumnName="CallId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="5c81a8994e1240cb83a5ee521c497890" Name="Diagram1" >
+        <EntityTypeShape EntityType="i3_eicModel.CallDetail" Width="1.5" PointX="10.99469148693359" PointY="28.176651833661204" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

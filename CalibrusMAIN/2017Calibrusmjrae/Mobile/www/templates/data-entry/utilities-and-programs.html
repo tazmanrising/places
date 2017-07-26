@@ -1,0 +1,46 @@
+<ion-view view-title="Utilities &amp; Programs">
+  <ion-content>
+    <ion-list>
+      <div ng-if="vmDataEntryLineItemUtilitiesAndPrograms.utilitiesAndProgramsIsLoading === true" class="text-center"
+           style="padding: 80px 0;">
+        <ion-spinner></ion-spinner>
+        <p>Getting Programs</p>
+      </div>
+      <div ng-if="vmDataEntryLineItemUtilitiesAndPrograms.utilitiesAndPrograms">
+        <div class="item item-divider">
+          Electric
+          <i ng-if="vmDataEntryLineItem.lineItem.services.electric.selectedProgramId"
+            class="ion-trash-b pull-right" ng-click="vmDataEntryLineItem.clearUtilityAndProgram('electric')"></i>
+        </div>
+        <ion-radio
+          ng-repeat="utilityAndProgram in vmDataEntryLineItemUtilitiesAndPrograms.utilitiesAndPrograms|filter:{utilityTypeName:'Electric'}"
+          name="Electric"
+          class="item-text-wrap item-radio-right-padding"
+          ng-value="utilityAndProgram.programId"
+          ng-change="vmDataEntryLineItem.setUtilityAndProgram('electric',utilityAndProgram,vmDataEntryLineItemUtilitiesAndPrograms.serviceProviders.electric)"
+          ng-model="vmDataEntryLineItem.lineItem.services.electric.selectedProgramId">
+          <utility-program-pricing program="utilityAndProgram"></utility-program-pricing>
+        </ion-radio>
+        <div class="item item-divider">
+          Natural Gas
+          <i ng-if="vmDataEntryLineItem.lineItem.services.naturalGas.selectedProgramId"
+             class="ion-trash-b pull-right" ng-click="vmDataEntryLineItem.clearUtilityAndProgram('naturalGas')"></i>
+        </div>
+        <ion-radio
+          ng-repeat="utilityAndProgram in vmDataEntryLineItemUtilitiesAndPrograms.utilitiesAndPrograms|filter:{utilityTypeName:'Gas'}"
+          name="NaturalGas"
+          class="item-text-wrap item-radio-right-padding"
+          ng-value="utilityAndProgram.programId"
+          ng-change="vmDataEntryLineItem.setUtilityAndProgram('naturalGas',utilityAndProgram,vmDataEntryLineItemUtilitiesAndPrograms.serviceProviders.naturalGas)"
+          ng-model="vmDataEntryLineItem.lineItem.services.naturalGas.selectedProgramId">
+          <utility-program-pricing program="utilityAndProgram"></utility-program-pricing>
+        </ion-radio>
+      </div>
+      <ion-item class="item-icon-right" style="margin-top: 20px;"
+                ng-click="vmDataEntryLineItemUtilitiesAndPrograms.goToCurrentUtilityInformation()">
+        <span class="positive">Customer Billing Information</span>
+        <i class="icon ion-ios-arrow-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

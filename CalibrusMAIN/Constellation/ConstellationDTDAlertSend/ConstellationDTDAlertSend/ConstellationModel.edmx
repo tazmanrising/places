@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ConstellationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ConstellationModelStoreContainer">
+          <EntitySet Name="AlertDTD" EntityType="ConstellationModel.Store.AlertDTD" store:Type="Tables" Schema="v1" />
+          <EntitySet Name="AlertTypeDTD" EntityType="ConstellationModel.Store.AlertTypeDTD" store:Type="Tables" Schema="v1" />
+          <AssociationSet Name="FK_AlertDTD_AlertTypeDTD" Association="ConstellationModel.Store.FK_AlertDTD_AlertTypeDTD">
+            <End Role="AlertTypeDTD" EntitySet="AlertTypeDTD" />
+            <End Role="AlertDTD" EntitySet="AlertDTD" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AlertDTD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AlertDateTime" Type="datetime" Nullable="false" />
+          <Property Name="AlertTypeId" Type="int" Nullable="false" />
+          <Property Name="EnrollmentId" Type="int" />
+          <Property Name="MainId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SentFlag" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="SentDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AlertTypeDTD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" MaxLength="200" />
+          <Property Name="ReportName" Type="varchar" MaxLength="200" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" />
+          <Property Name="ToList" Type="varchar(max)" />
+          <Property Name="CCList" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_AlertDTD_AlertTypeDTD">
+          <End Role="AlertTypeDTD" Type="ConstellationModel.Store.AlertTypeDTD" Multiplicity="1" />
+          <End Role="AlertDTD" Type="ConstellationModel.Store.AlertDTD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AlertTypeDTD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlertDTD">
+              <PropertyRef Name="AlertTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spDTDAgentCallBackNumberAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="EnrollmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAgentDeactivation15DaysInactivityAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAgentDeactivationBTNAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="EnrollmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAgentDidNotLeavePremisesAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAgentWith6OrMoreSalesInOneDayAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAPIConfirmCustomerSignUpByTypeAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAPIUpdateTPVStatusErrorAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAPIUpdateTPVVerificationCodeAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDAptUnitNumberExceedsLimitAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDBTNPreviouslyUsedAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="EnrollmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="EnrollmentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDLotOrTrailerAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="MainId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDNoSaleAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spDTDPOSIDErrorsAlert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="Mainid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGetAlertDTDDistroListByVendor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="v1">
+          <Parameter Name="AlertTypeDTDId" Type="int" Mode="In" />
+          <Parameter Name="VendorId" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ConstellationModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ConstellationEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlertTypeDTDs" EntityType="ConstellationModel.AlertTypeDTD" />
+          <FunctionImport Name="spDTDAPIConfirmCustomerSignUpByTypeAlert" ReturnType="Collection(ConstellationModel.spDTDAPIConfirmCustomerSignUpByTypeAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAPIUpdateTPVStatusErrorAlert" ReturnType="Collection(ConstellationModel.spDTDAPIUpdateTPVStatusErrorAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAPIUpdateTPVVerificationCodeAlert" ReturnType="Collection(ConstellationModel.spDTDAPIUpdateTPVVerificationCodeAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert" ReturnType="Collection(ConstellationModel.spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentWith6OrMoreSalesInOneDayAlert" ReturnType="Collection(ConstellationModel.spDTDAgentWith6OrMoreSalesInOneDayAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDPOSIDErrorsAlert" ReturnType="Collection(ConstellationModel.spDTDPOSIDErrorsAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentDidNotLeavePremisesAlert" ReturnType="Collection(ConstellationModel.spDTDAgentDidNotLeavePremisesAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert" ReturnType="Collection(ConstellationModel.spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert_Result)">
+          <Parameter Name="EnrollmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AlertDTDs" EntityType="ConstellationModel.AlertDTD" />
+          <AssociationSet Name="FK_AlertDTD_AlertTypeDTD" Association="ConstellationModel.FK_AlertDTD_AlertTypeDTD">
+            <End Role="AlertTypeDTD" EntitySet="AlertTypeDTDs" />
+            <End Role="AlertDTD" EntitySet="AlertDTDs" />
+          </AssociationSet>
+          <FunctionImport Name="spDTDLotOrTrailerAlert" ReturnType="Collection(ConstellationModel.spDTDLotOrTrailerAlert_Result)">
+          <Parameter Name="MainId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDBTNPreviouslyUsedAlert" ReturnType="Collection(ConstellationModel.spDTDBTNPreviouslyUsedAlert_Result)">
+          <Parameter Name="EnrollmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentCallBackNumberAlert" ReturnType="Collection(ConstellationModel.spDTDAgentCallBackNumberAlert_Result)">
+          <Parameter Name="EnrollmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAptUnitNumberExceedsLimitAlert" ReturnType="Collection(ConstellationModel.spDTDAptUnitNumberExceedsLimitAlert_Result)">
+          <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentDeactivationBTNAlert" ReturnType="Collection(ConstellationModel.spDTDAgentDeactivationBTNAlert_Result)">
+          <Parameter Name="EnrollmentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetAlertDTDDistroListByVendor" ReturnType="Collection(String)">
+            <Parameter Name="AlertTypeDTDId" Mode="In" Type="Int32" />
+            <Parameter Name="VendorId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDAgentDeactivation15DaysInactivityAlert" ReturnType="Collection(ConstellationModel.spDTDAgentDeactivation15DaysInactivityAlert_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spDTDNoSaleAlert" ReturnType="Collection(ConstellationModel.spDTDNoSaleAlert_Result)">
+            <Parameter Name="Mainid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AlertTypeDTD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Type" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReportName" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Template" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Subject" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ToList" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CCList" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AlertDTDs" Relationship="ConstellationModel.FK_AlertDTD_AlertTypeDTD" FromRole="AlertTypeDTD" ToRole="AlertDTD" />
+        </EntityType>
+        <ComplexType Name="spDTDAPIConfirmCustomerSignUpByTypeAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+          <Property Type="String" Name="Concern" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAPIUpdateTPVStatusErrorAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+          <Property Type="String" Name="Concern" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAPIUpdateTPVVerificationCodeAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+          <Property Type="String" Name="Concern" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentDidNotLeavePremisesAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentWith6OrMoreSalesInOneDayAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDPOSIDErrorsAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert_Result">
+          <Property Type="Int32" Name="EnrollmentId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="false" />
+          <Property Type="String" Name="VendorId" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CallBackNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TlpAgent" Nullable="false" MaxLength="13" />
+        </ComplexType>
+        <EntityType Name="AlertDTD">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="AlertDateTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="AlertTypeId" Nullable="false" />
+          <Property Type="Int32" Name="EnrollmentId" />
+          <Property Type="Int32" Name="MainId" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="SentFlag" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="SentDateTime" Precision="3" />
+          <NavigationProperty Name="AlertTypeDTD" Relationship="ConstellationModel.FK_AlertDTD_AlertTypeDTD" FromRole="AlertDTD" ToRole="AlertTypeDTD" />
+        </EntityType>
+        <Association Name="FK_AlertDTD_AlertTypeDTD">
+          <End Type="ConstellationModel.AlertTypeDTD" Role="AlertTypeDTD" Multiplicity="1" />
+          <End Type="ConstellationModel.AlertDTD" Role="AlertDTD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AlertTypeDTD">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlertDTD">
+              <PropertyRef Name="AlertTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="spDTDLotOrTrailerAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="false" Precision="23" />
+          <Property Type="String" Name="VendorId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TlpAgent" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BillingAddress1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BillingAddress2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDBTNPreviouslyUsedAlert_Result">
+          <Property Type="DateTime" Name="CallDateTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PreviousCallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BTNUsed" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SalesAgentName" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="VendorId" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="PreviousCustomerName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="PreviousAddress" Nullable="true" MaxLength="254" />
+          <Property Type="Int32" Name="PreviousVerificationCode" Nullable="true" />
+          <Property Type="String" Name="PreviousAgentId" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentCallBackNumberAlert_Result">
+          <Property Type="Int32" Name="EnrollmentId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="false" />
+          <Property Type="String" Name="VendorId" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CallBackNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TlpAgent" Nullable="false" MaxLength="13" />
+        </ComplexType>
+        <ComplexType Name="spDTDAptUnitNumberExceedsLimitAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Market" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentDeactivationBTNAlert_Result">
+          <Property Type="DateTime" Name="CallDateTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="PreviousCallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="BTNUsed" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SalesAgentName" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VendorId" Nullable="false" />
+          <Property Type="String" Name="PreviousCustomerName" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="PreviousAddress" Nullable="true" MaxLength="254" />
+          <Property Type="Int32" Name="PreviousVerificationCode" Nullable="true" />
+          <Property Type="String" Name="PreviousAgentId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PreviousUDCAccountNumber" Nullable="true" MaxLength="116" />
+        </ComplexType>
+        <ComplexType Name="spDTDAgentDeactivation15DaysInactivityAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VendorId" Nullable="false" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spDTDNoSaleAlert_Result">
+          <Property Type="Int32" Name="MainId" Nullable="false" />
+          <Property Type="DateTime" Name="CallDateTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="VendorNumber" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VendorId" Nullable="false" />
+          <Property Type="String" Name="AgentId" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ResponseId" Nullable="true" />
+          <Property Type="String" Name="Concern" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ConstellationModelStoreContainer" CdmEntityContainer="ConstellationEntities">
+          <EntitySetMapping Name="AlertTypeDTDs">
+            <EntityTypeMapping TypeName="ConstellationModel.AlertTypeDTD">
+              <MappingFragment StoreEntitySet="AlertTypeDTD">
+                <ScalarProperty Name="CCList" ColumnName="CCList" />
+                <ScalarProperty Name="ToList" ColumnName="ToList" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAPIConfirmCustomerSignUpByTypeAlert" FunctionName="ConstellationModel.Store.spDTDAPIConfirmCustomerSignUpByTypeAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAPIConfirmCustomerSignUpByTypeAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAPIUpdateTPVStatusErrorAlert" FunctionName="ConstellationModel.Store.spDTDAPIUpdateTPVStatusErrorAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAPIUpdateTPVStatusErrorAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAPIUpdateTPVVerificationCodeAlert" FunctionName="ConstellationModel.Store.spDTDAPIUpdateTPVVerificationCodeAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAPIUpdateTPVVerificationCodeAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert" FunctionName="ConstellationModel.Store.spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentWith2OrMoreSalesInOneDayTxOnlyAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAgentWith6OrMoreSalesInOneDayAlert" FunctionName="ConstellationModel.Store.spDTDAgentWith6OrMoreSalesInOneDayAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentWith6OrMoreSalesInOneDayAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDPOSIDErrorsAlert" FunctionName="ConstellationModel.Store.spDTDPOSIDErrorsAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDPOSIDErrorsAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAgentDidNotLeavePremisesAlert" FunctionName="ConstellationModel.Store.spDTDAgentDidNotLeavePremisesAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentDidNotLeavePremisesAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert" FunctionName="ConstellationModel.Store.spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDCallBackNumberAlreadyExistsOnGoodSaleAlert_Result">
+                <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="CallBackNumber" ColumnName="CallBackNumber" />
+                <ScalarProperty Name="TlpAgent" ColumnName="TlpAgent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AlertDTDs">
+            <EntityTypeMapping TypeName="ConstellationModel.AlertDTD">
+              <MappingFragment StoreEntitySet="AlertDTD">
+                <ScalarProperty Name="SentDateTime" ColumnName="SentDateTime" />
+                <ScalarProperty Name="SentFlag" ColumnName="SentFlag" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+                <ScalarProperty Name="AlertTypeId" ColumnName="AlertTypeId" />
+                <ScalarProperty Name="AlertDateTime" ColumnName="AlertDateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spDTDLotOrTrailerAlert" FunctionName="ConstellationModel.Store.spDTDLotOrTrailerAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDLotOrTrailerAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="TlpAgent" ColumnName="TlpAgent" />
+                <ScalarProperty Name="BillingAddress1" ColumnName="BillingAddress1" />
+                <ScalarProperty Name="BillingAddress2" ColumnName="BillingAddress2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDBTNPreviouslyUsedAlert" FunctionName="ConstellationModel.Store.spDTDBTNPreviouslyUsedAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDBTNPreviouslyUsedAlert_Result">
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="PreviousCallDateTime" ColumnName="PreviousCallDateTime" />
+                <ScalarProperty Name="BTNUsed" ColumnName="BTNUsed" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="SalesAgentName" ColumnName="SalesAgentName" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="PreviousCustomerName" ColumnName="PreviousCustomerName" />
+                <ScalarProperty Name="PreviousAddress" ColumnName="PreviousAddress" />
+                <ScalarProperty Name="PreviousVerificationCode" ColumnName="PreviousVerificationCode" />
+                <ScalarProperty Name="PreviousAgentId" ColumnName="PreviousAgentId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAgentCallBackNumberAlert" FunctionName="ConstellationModel.Store.spDTDAgentCallBackNumberAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentCallBackNumberAlert_Result">
+                <ScalarProperty Name="EnrollmentId" ColumnName="EnrollmentId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="CallBackNumber" ColumnName="CallBackNumber" />
+                <ScalarProperty Name="TlpAgent" ColumnName="TlpAgent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAptUnitNumberExceedsLimitAlert" FunctionName="ConstellationModel.Store.spDTDAptUnitNumberExceedsLimitAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAptUnitNumberExceedsLimitAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDAgentDeactivationBTNAlert" FunctionName="ConstellationModel.Store.spDTDAgentDeactivationBTNAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentDeactivationBTNAlert_Result">
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="PreviousCallDateTime" ColumnName="PreviousCallDateTime" />
+                <ScalarProperty Name="BTNUsed" ColumnName="BTNUsed" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="SalesAgentName" ColumnName="SalesAgentName" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="PreviousCustomerName" ColumnName="PreviousCustomerName" />
+                <ScalarProperty Name="PreviousAddress" ColumnName="PreviousAddress" />
+                <ScalarProperty Name="PreviousVerificationCode" ColumnName="PreviousVerificationCode" />
+                <ScalarProperty Name="PreviousAgentId" ColumnName="PreviousAgentId" />
+                <ScalarProperty Name="PreviousUDCAccountNumber" ColumnName="PreviousUDCAccountNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGetAlertDTDDistroListByVendor" FunctionName="ConstellationModel.Store.spGetAlertDTDDistroListByVendor" />
+          <FunctionImportMapping FunctionImportName="spDTDAgentDeactivation15DaysInactivityAlert" FunctionName="ConstellationModel.Store.spDTDAgentDeactivation15DaysInactivityAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDAgentDeactivation15DaysInactivityAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDTDNoSaleAlert" FunctionName="ConstellationModel.Store.spDTDNoSaleAlert">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConstellationModel.spDTDNoSaleAlert_Result">
+                <ScalarProperty Name="MainId" ColumnName="MainId" />
+                <ScalarProperty Name="CallDateTime" ColumnName="CallDateTime" />
+                <ScalarProperty Name="VendorNumber" ColumnName="VendorNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Concern" ColumnName="Concern" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

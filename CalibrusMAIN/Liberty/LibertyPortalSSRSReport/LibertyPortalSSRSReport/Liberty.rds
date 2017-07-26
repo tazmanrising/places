@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Liberty">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=TMPSQL2;Initial Catalog=Liberty</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>05e99923-0f08-46b8-8529-2f43c6f73204</DataSourceID>
+</RptDataSource>

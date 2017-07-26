@@ -1,0 +1,33 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www"
+  },
+  "author": "Tom",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.5.5",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-nodemon": "^2.2.1",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mongoose": "^4.9.7",
+    "morgan": "~1.7.0",
+    "mssql": "^4.0.2",
+    "seriate": "^0.9.0",
+    "serve-favicon": "~2.3.0",
+    "wiredep": "^4.0.0"
+  }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2a185e420da4b03a111308b42569f40" Name="Diagram1">
+        <EntityTypeShape EntityType="SparkModel.Main" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.OrderDetail" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Program" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.User" Width="1.5" PointX="2.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Utility" Width="1.5" PointX="12.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.UtilityType" Width="1.5" PointX="14.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SparkModel.Vendor" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="SparkModel.FK_Main_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_MainId" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_OrderDetail_Program" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_Utility" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_Program_UtilityType" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkModel.FK_User_Vendor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SparkModel.AccountNumberType" Width="1.5" PointX="12.5" PointY="6.875" />
+        <EntityTypeShape EntityType="SparkModel.Office" Width="1.5" PointX="0.5" PointY="3.5" />
+        <EntityTypeShape EntityType="SparkModel.PremiseType" Width="1.5" PointX="14.75" PointY="5.375" />
+        <EntityTypeShape EntityType="SparkModel.SalesChannel" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="SparkModel.UnitOfMeasure" Width="1.5" PointX="12.625" PointY="1.25" />
+        <AssociationConnector Association="SparkModel.FK_Program_AccountNumberType" />
+        <AssociationConnector Association="SparkModel.FK_Office_Vendor" />
+        <AssociationConnector Association="SparkModel.FK_User_Office" />
+        <AssociationConnector Association="SparkModel.FK_Program_PremiseType" />
+        <AssociationConnector Association="SparkModel.FK_Program_UnitOfMeasure" />
+        <AssociationConnector Association="SparkModel.FK_Vendor_SalesChannel" />
+        <AssociationConnector Association="SparkModel.FK_Office_SalesChannel" />
+        <EntityTypeShape EntityType="SparkModel.Brand" Width="1.5" PointX="14.75" PointY="7.625" />
+        <AssociationConnector Association="SparkModel.FK_Program_Brand" />
+        <EntityTypeShape EntityType="SparkModel.Source" Width="1.5" PointX="7.375" PointY="9.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
